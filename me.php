@@ -23,7 +23,7 @@
         if(isset($_SESSION['username'])) {
             $username = $_SESSION['username'];
         } else {
-            die('$'."_SESSION['username'] isn't set because you had never been at file one");
+            die('$'."_SESSION['username'] isn't set");
         }
         echo $username;
     ?>
