@@ -53,6 +53,10 @@
             </select>
         </div>
         <div>
+            <label for="register_name">Denominazione</label>
+            <input type="text" id="register_name" placeholder="Inserisci denominazione" name="name">
+        </div>
+        <div>
             <input type="checkbox" id="accept_conditions" name="accept_conditions">
             <label for="accept_conditions">Accetto termini e condizioni</label>
         </div>
