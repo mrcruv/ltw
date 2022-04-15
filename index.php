@@ -63,6 +63,27 @@
         <button type="submit" name="register_submit">Registrati!</button>
     </form>
 
+    <br>
+
+    <form id="login_form" action="scripts/login.php" method="post" onsubmit="return validate_login();">
+        <div>
+            <div>
+                <label for="login_username">Username</label>
+                <input type="text" id="login_username" placeholder="Inserisci username" name="username">
+            </div>
+        </div>
+        <div>
+            <label for="login_password">Password</label>
+            <input type="password" aria-describedby="password_help" id="login_password" placeholder="Inserisci password" name="password">
+        </div>
+        <div>
+            <input type="checkbox" id="remember_me_login" name="remember">
+            <label for="accept_conditions">Ricordami</label>
+        </div>
+        <button type="submit" name="login_submit">Effettua il login!</button>
+    </form>
+
+
     <?php require_once 'includes/footer.php';?>
 
 </body>
