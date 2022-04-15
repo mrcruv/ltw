@@ -1,6 +1,6 @@
 CREATE OR REPLACE TABLE utenti (
     username varchar(30) PRIMARY KEY,
-    password varchar(30) NOT NULL,
+    password varchar(60) NOT NULL,
     piva char(11) UNIQUE NOT NULL,
     cf varchar(16) UNIQUE NOT NULL,
     sito_web varchar(255),
