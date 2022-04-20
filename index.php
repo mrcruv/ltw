@@ -42,6 +42,11 @@
             <label for="register_website">Sito web</label>
             <input type="text" id="register_website" placeholder="Inserisci sito web" name="website">
         </div>
+
+        <br>
+        <label>Ente</label>
+        <br>
+
         <div>
             <label for="register_type">Tipo ente</label>
             <select id="register_type" name="type">
@@ -50,13 +55,35 @@
             </select>
         </div>
         <div>
-            <label for="register_name">Denominazione</label>
-            <input type="text" id="register_name" placeholder="Inserisci denominazione" name="name">
+            <label for="register_company_name">Denominazione</label>
+            <input type="text" id="register_company_name" placeholder="Inserisci denominazione" name="company_name">
+        </div>
+
+        <br>
+            <label>Esperto</label>
+        <br>
+
+        <div>
+            <label for="register_name">Nome</label>
+            <input type="text" id="register_name" placeholder="Inserisci nome" name="name">
+        </div>
+        <div>
+            <label for="register_surname">Cognome</label>
+            <input type="text" id="register_surname" placeholder="Inserisci cognome" name="surname">
+        </div>
+        <div>
+            <label for="register_city">Denominazione</label>
+            <input type="text" id="register_city" placeholder="Inserisci citta' di nascita" name="city">
+        </div>
+        <div>
+            <label for="register_date">Data di nascita</label>
+            <input type="date" id="register_date" placeholder="Inserisci data di nascita" name="date">
         </div>
         <div>
             <input type="checkbox" id="accept_conditions" name="accept_conditions">
             <label for="accept_conditions">Accetto termini e condizioni</label>
         </div>
+
         <button type="submit" name="register_submit">Registrati!</button>
     </form>
 

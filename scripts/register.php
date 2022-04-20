@@ -13,8 +13,15 @@ $pec = $_POST["pec"];
 $piva = $_POST["piva"];
 $website = $_POST["website"];
 $accept_conditions = $_POST["accept_conditions"];
-$name = $_POST["name"];
+
+$company_name = $_POST["company_name"];
 $type = $_POST["type"];
+
+//$name = $_POST["name"];
+//$surname = $_POST["surname"];
+//$city = $_POST["city"];
+//$date = $_POST["city"];
+
 $hash = password_hash($password, PASSWORD_BCRYPT);
 
 $query = "SELECT * FROM utenti WHERE username=? OR pec=? OR cf=? OR piva=?";
@@ -35,8 +42,14 @@ mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 $query = "INSERT INTO enti(username, denominazione, tipo)
                     VALUES (?, ?, ?);";
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
-mysqli_stmt_bind_param($statement, 'sss', $username, $name, $type) or die(mysqli_error($connection));
+mysqli_stmt_bind_param($statement, 'sss', $username, $company_name, $type) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
+
+//$query = "INSERT INTO esperti(username, nome, cognome, citta, data)
+//                    VALUES (?, ?, ?, ?, ?);";
+//$statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
+//mysqli_stmt_bind_param($statement, 'sssss', $username, $name, $surname, $city, $date) or die(mysqli_error($connection));
+//mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 
 require_once("../includes/close_connection.php");
 
