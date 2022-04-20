@@ -23,9 +23,8 @@
         if(isset($_SESSION['username'])) {
             $username = $_SESSION['username'];
         } else {
-            die('$'."_SESSION['username'] isn't set");
+            header("Location: ../index.php");
         }
-        echo $username;
     ?>
 
     <?php require_once 'includes/footer.php';?>
