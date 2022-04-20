@@ -1,3 +1,8 @@
+<?php
+require_once 'includes/info.php';
+global $sitename;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,15 +11,26 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Title</title>
+    <title><?php echo($sitename); ?></title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+    <script src="scripts/form_switch.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#expert_fields").hide();
+            $("#entity_button").attr("disabled", true);
+            switch_form_handler();
+        });
+    </script>
 </head>
 <body class="d-flex flex-column min-vh-100">
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
+    <br>
     <form id="register_form" action="scripts/register.php" method="post" onsubmit="return validate_register();">
         <div>
             <div>
@@ -43,42 +59,50 @@
             <input type="text" id="register_website" placeholder="Inserisci sito web" name="website">
         </div>
 
-        <br>
-        <label>Ente</label>
-        <br>
-
-        <div>
-            <label for="register_type">Tipo ente</label>
-            <select id="register_type" name="type">
-                <option value="pubblico">pubblico</option>
-                <option value="privato">privato</option>
-            </select>
-        </div>
-        <div>
-            <label for="register_company_name">Denominazione</label>
-            <input type="text" id="register_company_name" placeholder="Inserisci denominazione" name="company_name">
-        </div>
-
-        <br>
-            <label>Esperto</label>
+        <br><br>
+        <button type="button" id="entity_button">Ente</button>
+        <button type="button" id="expert_button">Esperto</button>
         <br>
 
-        <div>
-            <label for="register_name">Nome</label>
-            <input type="text" id="register_name" placeholder="Inserisci nome" name="name">
+        <div id="entity_fields">
+            <label>Ente</label>
+            <br>
+
+            <div>
+                <label for="register_type">Tipo ente</label>
+                <select id="register_type" name="type">
+                    <option value="pubblico">pubblico</option>
+                    <option value="privato">privato</option>
+                </select>
+            </div>
+            <div>
+                <label for="register_entity_name">Denominazione</label>
+                <input type="text" id="register_entity_name" placeholder="Inserisci denominazione" name="entity_name">
+            </div>
         </div>
-        <div>
-            <label for="register_surname">Cognome</label>
-            <input type="text" id="register_surname" placeholder="Inserisci cognome" name="surname">
+
+        <div id="expert_fields">
+                <label>Esperto</label>
+            <br>
+
+            <div>
+                <label for="register_name">Nome</label>
+                <input type="text" id="register_name" placeholder="Inserisci nome" name="name">
+            </div>
+            <div>
+                <label for="register_surname">Cognome</label>
+                <input type="text" id="register_surname" placeholder="Inserisci cognome" name="surname">
+            </div>
+            <div>
+                <label for="register_city">Denominazione</label>
+                <input type="text" id="register_city" placeholder="Inserisci citta' di nascita" name="city">
+            </div>
+            <div>
+                <label for="register_date">Data di nascita</label>
+                <input type="date" id="register_date" placeholder="Inserisci data di nascita" name="date">
+            </div>
         </div>
-        <div>
-            <label for="register_city">Denominazione</label>
-            <input type="text" id="register_city" placeholder="Inserisci citta' di nascita" name="city">
-        </div>
-        <div>
-            <label for="register_date">Data di nascita</label>
-            <input type="date" id="register_date" placeholder="Inserisci data di nascita" name="date">
-        </div>
+
         <div>
             <input type="checkbox" id="accept_conditions" name="accept_conditions">
             <label for="accept_conditions">Accetto termini e condizioni</label>
