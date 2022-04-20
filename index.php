@@ -34,20 +34,17 @@
             <label for="register_cf">Codice fiscale</label>
             <input type="text" id="register_cf" placeholder="Inserisci codice fiscale" name="cf">
         </div>
-        </div>
         <div>
             <label for="register_piva">Partita Iva</label>
             <input type="text" id="register_piva" placeholder="Inserisci partita iva" name="piva">
-        </div>
         </div>
         <div>
             <label for="register_website">Sito web</label>
             <input type="text" id="register_website" placeholder="Inserisci sito web" name="website">
         </div>
-        </div>
         <div>
             <label for="register_type">Tipo ente</label>
-            <select id="register_type" placeholder="Ente pubblico o privato?" name="type">
+            <select id="register_type" name="type">
                 <option value="pubblico">pubblico</option>
                 <option value="privato">privato</option>
             </select>
@@ -78,7 +75,7 @@
         </div>
         <div>
             <input type="checkbox" id="remember_me_login" name="remember">
-            <label for="accept_conditions">Ricordami</label>
+            <label for="remember_me_login">Ricordami</label>
         </div>
         <button type="submit" name="login_submit">Effettua il login!</button>
     </form>
