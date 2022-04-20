@@ -14,7 +14,7 @@ $piva = $_POST["piva"];
 $website = $_POST["website"];
 $accept_conditions = $_POST["accept_conditions"];
 
-$company_name = $_POST["company_name"];
+$company_name = $_POST["entity_name"];
 $type = $_POST["type"];
 
 //$name = $_POST["name"];
