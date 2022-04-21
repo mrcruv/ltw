@@ -1,7 +1,12 @@
+<?php
+require_once("info.php");
+global $sitename;
+?>
+
 <nav class="navbar navbar-expand-lg navbar-light" id="nav_header">
         <div class="container-fluid">
           <div class="title">
-            <a class="navbar-brand">DigitalOutsourching</a>
+            <a class="navbar-brand"><?php echo($sitename); ?></a>
           </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
