@@ -15,19 +15,11 @@
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-    <?php require_once 'includes/header.php';?>
+    <?php require_once 'includes/header.php'; ?>
 
-    <?php
-        session_start();
+    <?php require_once 'scripts/session.php'; ?>
 
-        if(isset($_SESSION['username'])) {
-            $username = $_SESSION['username'];
-        } else {
-            header("Location: ../index.php");
-        }
-    ?>
-
-    <?php require_once 'includes/footer.php';?>
+    <?php require_once 'includes/footer.php'; ?>
 
 </body>
 </html>
