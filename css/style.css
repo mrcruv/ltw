@@ -1,0 +1,24 @@
+.content {
+  padding: 7rem 0; }
+
+.tab {
+    display: none;
+}
+  
+.tab.active {
+    display: block;
+}
+
+.step {
+  display: none;
+}
+
+.step.active {
+  display: block;
+}
+
+.switch:hover{
+
+  border-bottom: 1px solid;
+
+}
