@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <title>Login</title>
+
+  </head>
+  <body>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>  
+    
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <img src="images/undraw_remotely_2j6y.svg" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-5 contents">
+          <!-- Pills navs -->
+          <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+            <li class="nav-item" role="presentation">
+              <a class="nav-link active" data-target="pills-login" href="#">Login</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" id="tab-register" data-target="pills-register" href="#">Register</a>
+            </li>
+          </ul>
+          <!-- Pills navs -->
+
+          <!-- Pills content -->
+          <div class="tab-content">
+            <div class="tab active" data-tab="pills-login">
+              <form>
+
+                <div class="form-outline mb-2">
+                  <input type="text" id="login_username" class="form-control" placeholder="Username" name="username"/>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="password" id="login_password" class="form-control" placeholder="Password" name="password" aria-describedby="password_help"/>
+                </div>
+
+                <!-- 2 column grid layout -->
+                <div class="row mb-4">
+                  <div class="col-md-6 d-flex justify-content-center">
+                    <!-- Checkbox -->
+                    <div class="form-check mb-3 mb-md-0">
+                      <input class="form-check-input" type="checkbox" id="remember_me_login" name="remember"/>
+                      <label class="form-check-label" for="remember_me_login"> Remember me </label>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 d-flex justify-content-center">
+                    <a href="#!">Forgot password?</a>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+              </form>
+            </div>
+          </div>
+          <div class="tab-content">
+            <div class="tab" data-tab="pills-register">
+              <ul class="nav nav-pills nav-justified mb-3 border rounded" id="ex1" role="tablist">
+                  <button class="btn switch" type="button" id="entity_button">Ente</button>
+                  <button class="btn switch" type="button" id="expert_button">Esperto</button>
+              </ul>
+
+                <h3 id="text_entity">Ente</h3>
+                <h3 id="text_expert">Esperto</h3>
+
+                <form>
+                      <div class="form-outline mb-2">
+                        <input type="text" id="register_username" class="form-control" placeholder="Username" name="username"/>
+                      </div>
+
+                      <div class="form-outline mb-2">
+                        <input type="email" id="register_pec" class="form-control" placeholder="PEC" name="pec"/>
+                      </div>
+
+                      <div class="form-outline mb-2">
+                        <input type="text" id="register_cf" class="form-control" placeholder="Codice Fiscale" name="cf"/>
+                      </div>
+
+                      <div class="form-outline mb-2">
+                        <input type="text" id="register_piva" class="form-control" placeholder="Partita IVA" name="piva"/>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <input type="text" id="register_website" class="form-control" placeholder="Sito Web" name="website"/>
+                      </div>
+
+                      <!-- Password input -->
+                      <div class="form-outline mb-4">
+                        <input type="password" aria-describedby="password_help" id="register_password" class="form-control" placeholder="Password" name="password"/>
+                      </div>
+                  
+                  <div id="entity_fields">
+                    <div class="form-outline mb-2">
+                        <select class="custom-select" id="inputEnteSelect">
+                          <option selected>Scegli il tipo di Ente</option>
+                          <option value="Pubblico">Pubblico</option>
+                          <option value="Privato">Privato</option>
+                        </select>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <input type="text" id="username" class="form-control" placeholder="Denominazione"/>
+                      </div>       
+                    </div>
+
+                  <div id="expert_fields">
+                      <div class="form-outline mb-2">
+                        <input type="text" id="name" class="form-control" placeholder="Nome"/>
+                      </div>
+
+                      <div class="form-outline mb-2">
+                        <input type="text" id="surname" class="form-control" placeholder="Cognome"/>
+                      </div>
+
+                      <div class="form-outline mb-2">
+                        <input type="text" id="city" class="form-control" placeholder="Città di Nascita"/>
+                      </div>
+
+                      <div class="form-outline mb-2">
+                        <input type="date" id="pec" class="form-control" placeholder="Data di Nascita"/>
+                      </div>
+
+                      <div class="form-outline mb-2">
+                        <input type="text" id="codFiscale" class="form-control" placeholder="Codice Fiscale"/>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <input type="text" id="pIva" class="form-control" placeholder="Partita IVA"/>
+                      </div>
+                  </div>
+
+                  <div class="row mb-4">
+                    <div class="col-md d-flex justify-content-center">
+                      <!-- Checkbox -->
+                      <div class="form-check mb-3 mb-md-0">
+                        <input class="form-check-input" type="checkbox" value="" id="termCheck"/>
+                        <label class="form-check-label" for="termCheck"> Accetta Termini & Condizioni</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Submit button -->
+                  <button type="submit" class="btn btn-primary btn-block mb-3">Register</button>
+
+                </form>
+              </div>
+            </div>
+
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/script.js"></script>
+  
+  </body>
+</html>
