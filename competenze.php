@@ -35,7 +35,21 @@
     <button type="submit" name="add_competence_submit">Aggiungi competenza</button>
 </form>
 
-<?php require_once 'scripts/show_competence.php'; ?>
+    <?php
+    require_once 'scripts/show_competence.php';
+    echo("<table>");
+    echo("<tr><th>COMPETENZA</th><th>SETTORE</th><th>DESCRIZIONE</th></tr>");
+    $array = show_all_competences();
+    $n = count($array);
+    for ($i = 0; $i < $n; $i += 1) {
+        echo("<tr>");
+        echo("<td>" . $array[$i]["name"] . "</td>");
+        echo("<td>" . $array[$i]["area"] . "</td>");
+        echo("<td>" . $array[$i]["description"] . "</td>");
+        echo("</tr>");
+    }
+    echo("</table>");
+    ?>
 
 <?php require_once 'includes/footer.php'; ?>
 </body>

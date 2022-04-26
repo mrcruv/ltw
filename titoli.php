@@ -39,7 +39,22 @@
     <button type="submit" name="add_title_submit">Aggiungi titolo di studio</button>
 </form>
 
-<?php require_once 'scripts/show_title.php'; ?>
+<?php
+require_once 'scripts/show_title.php';
+echo("<table>");
+echo("<tr><th>NOME</th><th>DATA CONSEGUIMENTO</th><th>NOTE</th><th>VOTO</th></tr>");
+$array = show_all_titles();
+$n = count($array);
+for ($i = 0; $i < $n; $i += 1) {
+    echo("<tr>");
+    echo("<td>" . $array[$i]["name"] . "</td>");
+    echo("<td>" . $array[$i]["date"] . "</td>");
+    echo("<td>" . $array[$i]["notes"] . "</td>");
+    echo("<td>" . $array[$i]["grade"] . "</td>");
+    echo("</tr>");
+}
+echo("</table>");
+?>
 
 <?php require_once 'includes/footer.php'; ?>
 </body>

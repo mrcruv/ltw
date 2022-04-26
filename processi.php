@@ -35,7 +35,21 @@
         <button type="submit" name="add_process_submit">Aggiungi processo</button>
     </form>
 
-    <?php require_once 'scripts/show_process.php'; ?>
+    <?php
+    require_once 'scripts/show_process.php';
+    echo("<table>");
+    echo("<tr><th>NOME</th><th>TIPOLOGIA</th><th>DESCRIZIONE</th></tr>");
+    $array = show_all_processes();
+    $n = count($array);
+    for ($i = 0; $i < $n; $i += 1) {
+        echo("<tr>");
+        echo("<td>" . $array[$i]["name"] . "</td>");
+        echo("<td>" .  $array[$i]["type"] . "</td>");
+        echo("<td>" .  $array[$i]["description"] . "</td>");
+        echo("</tr>");
+    }
+    echo("</table>");
+    ?>
 
     <?php require_once 'includes/footer.php'; ?>
 </body>
