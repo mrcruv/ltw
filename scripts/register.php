@@ -32,7 +32,7 @@ $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection
 mysqli_stmt_bind_param($statement, 'ssssss', $username, $hash, $pec, $cf, $piva, $website) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 
-if(isset($_POST['user_type'])){
+if(isset($_POST['register_box'])){
     
     $company_name = $_POST["entity_name"];
     $type = $_POST["type"];
@@ -43,7 +43,7 @@ if(isset($_POST['user_type'])){
     mysqli_stmt_bind_param($statement, 'sss', $username, $company_name, $type) or die(mysqli_error($connection));
     mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 }
-else if(!isset($_POST['user_type'])){
+else if(!isset($_POST['register_box'])){
     
     $name = $_POST["name"];
     $surname = $_POST["surname"];
