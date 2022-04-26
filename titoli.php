@@ -26,7 +26,7 @@
     </div>
     <div
     <label for="title_date">Data conseguimento titolo</label>
-    <input type="text" id="title_date" placeholder="Inserisci data conseguimento" name="date">
+    <input type="date" id="title_date" placeholder="Inserisci data conseguimento" name="date">
     </div>
     <div
     <label for="title_notes">Note</label>
@@ -34,7 +34,7 @@
     </div>
     <div>
     <label for="title_grade">Voto</label>
-    <input type="text" id="title_grade" placeholder="Inserisci voto" name="grade">
+    <input type="number" id="title_grade" placeholder="Inserisci voto" name="grade">
     </div>
     <button type="submit" name="add_title_submit">Aggiungi titolo di studio</button>
 </form>
