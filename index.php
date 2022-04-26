@@ -18,14 +18,6 @@ global $sitename;
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <script src="scripts/form_switch.js"></script>
-    <script>
-        $(document).ready(function(){
-            $("#expert_fields").hide();
-            $("#entity_button").attr("disabled", true);
-            $("#register_user_type").prop('checked', true);
-            switch_form_handler();
-        });
-    </script>
 
     <title><?php echo($sitename); ?></title>
 </head>
@@ -167,8 +159,5 @@ global $sitename;
     </div>
 </div>
 </div>
-
-<script src="script.js"></script>
-
 </body>
 </html>
