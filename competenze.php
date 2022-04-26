@@ -20,11 +20,11 @@
 <?php require_once 'scripts/session.php'; ?>
 
 <form id="add_competence_form" action="scripts/add_competence.php" method="post">
-    <div
+    <div>
     <label for="competence_name">Nome competenza</label>
     <input type="text" id="competence_name" placeholder="Inserisci nome" name="name">
     </div>
-    <div
+    <div>
     <label for="competence_area">Settore competenza</label>
     <input type="text" id="competence_area" placeholder="Inserisci settore" name="area">
     </div>
