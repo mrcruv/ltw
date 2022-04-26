@@ -1,7 +1,5 @@
 <?php
 require_once("includes/open_connection.php");
-global $connection;
-
 if(!isset($_SESSION))
 {
     session_start();

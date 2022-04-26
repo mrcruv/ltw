@@ -1,13 +1,11 @@
 <?php
 require_once("includes/open_connection.php");
-
 if (!isset($_SESSION)) {
     session_start();
 }
 
-function show_all_processes() {
+function show_all_processes($username) {
     global $connection;
-    $username = $_SESSION["username"];
     $query = "SELECT nome, tipologia, descrizione FROM processi WHERE ente=?";
     $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
     mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
@@ -20,6 +18,8 @@ function show_all_processes() {
         $rows[$i] = array("name" => $name, "type" => $type, "description" => $description);
         $i += 1;
     }
+    mysqli_stmt_free_result($statement);
+    mysqli_stmt_close($statement) or die(mysqli_error($connection));
 //    require_once("includes/close_connection.php");
     return $rows;
 }

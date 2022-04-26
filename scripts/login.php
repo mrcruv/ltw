@@ -1,7 +1,6 @@
 <?php
 require_once("../includes/open_connection.php");
 global $connection;
-
 if (!isset($_POST["login_submit"])) {
     header ("Location: ../index.php");
 }
@@ -15,14 +14,14 @@ $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection
 mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 mysqli_stmt_bind_result($statement, $result_password);
-
 if (!mysqli_stmt_fetch($statement)) {
+    mysqli_stmt_free_result($statement);
+    mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header("Location: ../index.php");
 }
 else if (password_verify($password, $result_password)){
-
-    mysqli_stmt_close($statement);
-    
+    mysqli_stmt_free_result($statement);
+    mysqli_stmt_close($statement) or die(mysqli_error($connection));
     session_start();
 
     $_SESSION['username'] = $username;
@@ -38,6 +37,8 @@ else if (password_verify($password, $result_password)){
     else {
         $_SESSION['usertype'] = 'ente'; 
     }
+    mysqli_stmt_free_result($statement);
+    mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
     header("Location: ../me.php");
 }
@@ -45,4 +46,4 @@ else {
     header("Location: ../index.php");
 }
 
-require_once("../includes/close_connection.php");
+//require_once("../includes/close_connection.php");
