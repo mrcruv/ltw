@@ -18,7 +18,7 @@ function show_all_titles()
     mysqli_stmt_bind_result($statement, $name, $date, $notes, $grade);
     $num_rows = mysqli_stmt_num_rows($statement);
     $i = 0;
-    $rows = array($num_rows);
+    $rows = array();
     while (mysqli_stmt_fetch($statement)) {
         $rows[$i] = array("name" => $name, "date" => $date, "notes" => $notes, "grade" => $grade);
         $i += 1;
