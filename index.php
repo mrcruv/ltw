@@ -30,7 +30,7 @@ global $sitename;
     <div class="container">
         <div class="row">
             <div class="col-md-5">
-                <img src="" alt="Image" class="img-fluid">
+                <img src="img/img1.png" alt="Image" class="img-fluid">
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-5 contents">
@@ -78,19 +78,16 @@ global $sitename;
                         <ul class="nav nav-pills nav-justified mb-3 border rounded" id="entity_expert_name" role="tablist">
                             <button class="btn switch" type="button" id="entity_button">Ente</button>
                             <button class="btn switch" type="button" id="expert_button">Esperto</button>
-                            <input type="checkbox" id="register_user_type" name="user_type">
-
-                            <input type="radio" id="entity_box" name="register_box" value="ente"
-                                   checked>
-                            <label for="entity_box">Ente</label>
-                            <input type="radio" id="expert_box" name="register_box" value="esperto">
-                            <label for="expert_box">Esperto</label>
+                            <!--<input type="checkbox" id="register_user_type" name="user_type">-->
                         </ul>
 
                         <h3 id="text_entity">Ente</h3>
                         <h3 id="text_expert">Esperto</h3>
 
                         <form id="register_form" action="scripts/register.php" method="post" onsubmit="return validate_register();">
+                            <div id="div_user_type">
+                                <input type="checkbox" id="usertype_box" name="register_box" checked>
+                            </div>
                             <div class="form-outline mb-2">
                                 <input type="text" id="register_username" class="form-control" placeholder="Username" name="username"/>
                             </div>
