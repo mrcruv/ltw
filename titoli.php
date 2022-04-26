@@ -45,13 +45,18 @@ echo("<table>");
 echo("<tr><th>NOME</th><th>DATA CONSEGUIMENTO</th><th>NOTE</th><th>VOTO</th></tr>");
 $array = show_all_titles();
 $n = count($array);
-for ($i = 0; $i < $n; $i += 1) {
-    echo("<tr>");
-    echo("<td>" . $array[$i]["name"] . "</td>");
-    echo("<td>" . $array[$i]["date"] . "</td>");
-    echo("<td>" . $array[$i]["notes"] . "</td>");
-    echo("<td>" . $array[$i]["grade"] . "</td>");
-    echo("</tr>");
+if (!is_array($array) or $n <= 0) {
+    echo('<tr><td colspan="4">NON CI SONO TITOLI DI STUDIO AL MOMENTO</td></tr>');
+}
+else {
+    for ($i = 0; $i < $n; $i += 1) {
+        echo("<tr>");
+        echo("<td>" . $array[$i]["name"] . "</td>");
+        echo("<td>" . $array[$i]["date"] . "</td>");
+        echo("<td>" . $array[$i]["notes"] . "</td>");
+        echo("<td>" . $array[$i]["grade"] . "</td>");
+        echo("</tr>");
+    }
 }
 echo("</table>");
 ?>
