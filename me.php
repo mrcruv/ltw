@@ -1,11 +1,13 @@
 <?php
 require_once 'includes/info.php';
-global $sitename;
+require_once("includes/open_connection.php");
+global $sitename, $connection;
 if(!isset($_SESSION))
 {
     session_start();
 }
 $username = $_SESSION["username"];
+$usertype = $_SESSION["usertype"];
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +31,49 @@ $username = $_SESSION["username"];
 
     <?php require_once 'scripts/session.php'; ?>
 
+    <?php
+    $query = "SELECT piva, cf, sito_web, pec FROM utenti WHERE username=?";
+    $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
+    mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
+    mysqli_stmt_execute($statement) or die(mysqli_error($connection));
+    mysqli_stmt_bind_result($statement, $piva, $cf, $website, $pec);
+    if (mysqli_stmt_fetch($statement)) {
+        echo("username: " . $username . "<br>");
+        echo("codice fiscale: " . $cf . "<br>");
+        echo("partita IVA: " . $piva . "<br>");
+        echo("sito web: " . $website . "<br>");
+        echo("PEC: " . $pec . "<br>");
+        echo("tipo utente: " . $usertype . "<br>");
+    }
+    else echo("error");
+    mysqli_stmt_close($statement);
 
+    if ($usertype == 'ente') {
+        $query = "SELECT denominazione, tipo FROM enti WHERE username=?";
+        $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
+        mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
+        mysqli_stmt_execute($statement) or die(mysqli_error($connection));
+        mysqli_stmt_bind_result($statement, $name, $type);
+        if (mysqli_stmt_fetch($statement)) {
+            echo("denominazione ente: " . $name . "<br>");
+            echo("tipo ente: " . $type . "<br>");
+        }
+        else echo("error");
+    }
+    else {
+        $query = "SELECT nome, cognome, citta_nascita, data_nascita FROM esperti WHERE username=?";
+        $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
+        mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
+        mysqli_stmt_execute($statement) or die(mysqli_error($connection));
+        mysqli_stmt_bind_result($statement, $name, $surname, $city, $date);
+        if (mysqli_stmt_fetch($statement)) {
+            echo("nome e cognome esperto: " . $name . " " . $surname . "<br>");
+            echo("città e data di nascita: " . $city . ", " . $date . "<br>");
+        }
+        else echo("error");
+    }
+    mysqli_stmt_close($statement);
+    ?>
 
     <?php require_once 'includes/footer.php'; ?>
 
