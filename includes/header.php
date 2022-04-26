@@ -5,10 +5,8 @@ if(!isset($_SESSION))
 {
     session_start();
 }
-
 $username = $_SESSION["username"];
 $usertype = $_SESSION["usertype"];
-
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light" id="nav_header">
@@ -31,9 +29,7 @@ $usertype = $_SESSION["usertype"];
               <li class="nav-item">
                 <a class="nav-link" href="esperti.php">Esperti</a>
               </li>
-          <?php }
-                else{
-          ?>
+          <?php } else { ?>
               <li class="nav-item">
                 <a class="nav-link" href="titoli.php">Titoli di studio</a>
               </li>
