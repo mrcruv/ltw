@@ -5,4 +5,4 @@ session_unset();
 session_destroy();
 //Reindirizza alla home page
 header("location: ../index.php");
-?>
+
