@@ -79,6 +79,12 @@ global $sitename;
                             <button class="btn switch" type="button" id="entity_button">Ente</button>
                             <button class="btn switch" type="button" id="expert_button">Esperto</button>
                             <input type="checkbox" id="register_user_type" name="user_type">
+
+                            <input type="radio" id="entity_box" name="register_box" value="ente"
+                                   checked>
+                            <label for="entity_box">Ente</label>
+                            <input type="radio" id="expert_box" name="register_box" value="esperto">
+                            <label for="expert_box">Esperto</label>
                         </ul>
 
                         <h3 id="text_entity">Ente</h3>
