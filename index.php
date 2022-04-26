@@ -22,6 +22,7 @@ global $sitename;
         $(document).ready(function(){
             $("#expert_fields").hide();
             $("#entity_button").attr("disabled", true);
+            $("#register_user_type").prop('checked', true);
             switch_form_handler();
         });
     </script>
@@ -62,6 +63,7 @@ global $sitename;
         <br><br>
         <button type="button" id="entity_button">Ente</button>
         <button type="button" id="expert_button">Esperto</button>
+        <input type="checkbox" id="register_user_type" name="user_type"> 
         <br>
 
         <div id="entity_fields">
@@ -107,7 +109,6 @@ global $sitename;
             <input type="checkbox" id="accept_conditions" name="accept_conditions">
             <label for="accept_conditions">Accetto termini e condizioni</label>
         </div>
-
         <button type="submit" name="register_submit">Registrati!</button>
     </form>
 
@@ -136,3 +137,4 @@ global $sitename;
 
 </body>
 </html>
+
