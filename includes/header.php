@@ -13,21 +13,27 @@ global $sitename;
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="me.php">Dashboard</a>
+                </li>
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="">Opzione 1</a>
+                <a class="nav-link" href="processi.php">Processi</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="">Opzione 2</a>
+                <a class="nav-link" href="esperti.php">Esperti</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="">Opzione 3</a>
+                <a class="nav-link" href="assegnazioni.php">Assegnazioni</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="">Opzione 4</a>
+                <a class="nav-link" href="titoli.php">Titoli di studio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="">Opzione 5</a>
+                <a class="nav-link" href="competenze.php">Competenze</a>
               </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="scripts/logout.php"><button type="button">LOGOUT</button></a>
+                </li>
             </ul>
           </div>
         </div>
