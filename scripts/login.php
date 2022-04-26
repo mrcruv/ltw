@@ -10,8 +10,6 @@ $username = $_POST["username"];
 $password = $_POST["password"];
 $hash = password_hash($password, PASSWORD_BCRYPT);
 
-
-
 $query = "SELECT password FROM utenti WHERE username=?";
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
 mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
@@ -22,8 +20,25 @@ if (!mysqli_stmt_fetch($statement)) {
     header("Location: ../index.php");
 }
 else if (password_verify($password, $result_password)){
+
+    mysqli_stmt_close($statement);
+    
     session_start();
+
     $_SESSION['username'] = $username;
+
+    $query = "SELECT username FROM enti WHERE username=?";
+    $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
+    mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
+    mysqli_stmt_execute($statement) or die(mysqli_error($connection));
+    mysqli_stmt_bind_result($statement, $result_password);
+    if (!mysqli_stmt_fetch($statement)) {
+        $_SESSION['usertype'] = 'esperto';
+    }
+    else {
+        $_SESSION['usertype'] = 'ente'; 
+    }
+
     header("Location: ../me.php");
 }
 else {
