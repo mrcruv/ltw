@@ -1,9 +1,9 @@
 $(document).ready(function(){
     $("#expert_fields").hide();
     $("#text_expert").hide();
+    $("#div_user_type").hide();
     $("#entity_button").attr("disabled", true)
     $("#expert_button").attr("disabled", false)
-    $("#register_user_type").prop('checked', true);
 
     $("#expert_button").click(function() {
         $("#expert_fields").show();
@@ -13,7 +13,7 @@ $(document).ready(function(){
         $("#expert_button").attr("disabled", true)
         $("#text_expert").show();
         $("#text_entity").hide();
-        $("#register_user_type").prop('checked', false);
+        $("#usertype_box").prop('checked', false);
     });
 
     $("#entity_button").click(function(){
@@ -24,7 +24,7 @@ $(document).ready(function(){
         $("#entity_button").attr("disabled", true)
         $("#text_entity").show();
         $("#text_expert").hide();
-        $("#register_user_type").prop('checked', true);
+        $("#usertype_box").prop('checked', true);
     });
 
     $('.nav-item a').on('click', function(e) {
