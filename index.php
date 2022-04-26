@@ -1,6 +1,10 @@
 <?php
 require_once 'includes/info.php';
 global $sitename;
+if (!isset($_SESSION))
+{
+    session_start();
+}
 ?>
 
 <!DOCTYPE html>
