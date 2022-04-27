@@ -6,7 +6,7 @@ if (!isset($_SESSION))
     session_start();
 }
 if (!isset($_SESSION["usertype"]) or $_SESSION["usertype"] != "ente") {
-    header ("Location: ../me.php");
+    header ("Location: me.php");
 }
 ?>
 
