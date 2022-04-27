@@ -30,7 +30,7 @@ $usertype = $_SESSION["usertype"];
 
     <?php require_once 'scripts/session.php'; ?>
 
-    <?php if ($usertype == 'ente') { ?>
+    <?php if ($_SESSION["usertype"] == 'ente') { ?>
     <form id="add_availability_form" action="scripts/add_availability.php" method="post">
         <div>
             <label for="process">Processo</label>
@@ -39,10 +39,12 @@ $usertype = $_SESSION["usertype"];
                     <option selected>Scegli il processo</option>
                     <?php
                     require_once 'scripts/show_process.php';
-                    $array = show_all_processes($username);
+                    $array = show_all_processes($_SESSION["username"]);
                     $n = count($array);
                     for ($i = 0; $i < $n; $i += 1) {
-                        echo("<option value='$array[$i]['name']'>");
+                        echo("<option value=");
+                        echo($array[$i]["name"]);
+                        echo(">");
                         echo($array[$i]["name"]);
                         echo("</option>");
                     }
@@ -52,7 +54,7 @@ $usertype = $_SESSION["usertype"];
         </div>
 
         <div>
-        <label for="expert">Esperto</label>
+            <label for="expert">Esperto</label>
             <div>
                 <select id="availability_expert" name="expert">
                     <option selected>Scegli l'esperto</option>
@@ -61,7 +63,9 @@ $usertype = $_SESSION["usertype"];
                     $array = show_all_experts();
                     $n = count($array);
                     for ($i = 0; $i < $n; $i += 1) {
-                        echo("<option value='$array[$i]['username']'>");
+                        echo("<option value=");
+                        echo($array[$i]["username"]);
+                        echo(">");
                         echo($array[$i]["username"]);
                         echo("</option>");
                     }
