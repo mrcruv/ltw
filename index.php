@@ -20,8 +20,10 @@ if (!isset($_SESSION))
     <link rel="stylesheet" href="css/style.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 
     <script src="scripts/form_switch.js"></script>
+    <script src="scripts/validate_register.js"></script>
 
     <title><?php echo($sitename); ?></title>
 </head>
@@ -88,7 +90,7 @@ if (!isset($_SESSION))
                         <h3 id="text_entity">Ente</h3>
                         <h3 id="text_expert">Esperto</h3>
 
-                        <form id="register_form" action="scripts/register.php" method="post" onsubmit="return validate_register();">
+                        <form id="register_form" action="scripts/register.php" method="post">
                             <div id="div_user_type">
                                 <input type="checkbox" id="usertype_box" name="register_box" checked>
                             </div>
