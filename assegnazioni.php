@@ -106,7 +106,7 @@ $usertype = $_SESSION["usertype"];
     require_once 'scripts/show_availability.php';
     echo("<table>");
     echo("<tr><th>PROCESSO</th><th>ENTE</th><th>DATA RICHIESTA</th>
-        <th>DATA ASSEGNAZIONE</th><th>DATA RIFIUTO</th></tr>");
+        <th>DATA ASSEGNAZIONE</th><th>DATA RIFIUTO</th><th>STATO</th><th></th></tr>");
     $array = show_all_availabilities_from_expert($_SESSION["username"]);
     $n = count($array);
     if (!is_array($array) or $n <= 0) {
@@ -120,7 +120,19 @@ $usertype = $_SESSION["usertype"];
             echo("<td>" . $array[$i]["request_date"] . "</td>");
             echo("<td>" . $array[$i]["allocation_date"] . "</td>");
             echo("<td>" . $array[$i]["rejection_date"] . "</td>");
-            echo("</tr>");
+            if (is_null($array[$i]["allocation_date"])) {
+                if (is_null($array[$i]["rejection_date"])) {
+                    echo("<td>" . "assegnazione pendente" . "</td>");
+                    echo("<td>" . '<button type="button">accetta</button>');
+                    echo('<button type="button">rifiuta</button>' . "</td>");
+                }
+                else {
+                    echo("<td>" . "assegnazione rifiutata" . "</td>");
+                }
+            }
+            else {
+                echo("<td>" . "assegnazione accettata" . "</td>");
+            }
         }
     }
     echo("</table>");
