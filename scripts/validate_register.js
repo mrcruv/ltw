@@ -26,9 +26,14 @@ jQuery.validator.addMethod("password_regex", function(value, element) {
         return /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(value);   
         }); 
 
-              
-$().ready(function() {
+jQuery.validator.addMethod("name_regex", function(value, element) {   
+        return /^[a-zA-Z]{1,30}$/.test(value);   
+        }); 
 
+
+
+$().ready(function() {
+    if($("#usertype_box").prop('checked')==true){
         $("#register_form").validate({
             rules : {
                 username : {
@@ -53,9 +58,18 @@ $().ready(function() {
                 password : {
                     required: true,
                     password_regex: true
+                },
+                type: {
+                    required: true
+                },
+                entity_name: {
+                    required: true,
+                    username_regex: true
+                },
+                term: {
+                    required: true
                 }
             },
-
             messages: {
                 username: {
                     required: "Inserire username",  
@@ -67,7 +81,7 @@ $().ready(function() {
                 },
                 cf: {
                     required: "Inserire Codice Fiscale",  
-                    pec_regex: "Inserire Codice Fiscale nel formato corretto"
+                    cf_regex: "Inserire Codice Fiscale nel formato corretto"
                 },
                 piva : {
                     required : "Inserire Partita IVA",
@@ -78,12 +92,114 @@ $().ready(function() {
                 },
                 password : {
                     required: "Inserire password",
-                    password_regex: "La password deve essere lunga almeno 8 caratteri. Inserire:\n- Almeno un carattere alfanumerico minuscolo\n- Almeno un carattere alfanumerico maiuscolo\n- Almeno un carattere numerico\n- Almeno un carattere speciale\n"
-                }
+                    password_regex: "La password deve essere lunga almeno 8 caratteri. <br> Inserire:<br>- Almeno un carattere alfanumerico minuscolo<br>- Almeno un carattere alfanumerico maiuscolo<br>- Almeno un carattere numerico<br>- Almeno un carattere speciale"
+                },
+                type: {
+                    required: "Inserire il tipo di ente"
+                },
+                entity_name: {
+                    required: "Inserire nome ente",
+                    username_regex: "Inserire caratteri alfanumerici"
+                },
+                term: "<br>Accettare Termini & Condizioni"
             },
             // Settiamo il submit handler per la form
             submitHandler: function(form) {
                 form.submit();
             }
         });
-    });
+    }
+    else if($("#usertype_box").prop('checked')==false){
+            $("#register_form").validate({
+                rules : {
+                    username : {
+                        required: true,  
+                        username_regex: true
+                    },
+                    pec : {
+                        required : true,
+                        pec_regex: true
+                    },
+                    cf : {
+                        required : true,
+                        cf_regex: true
+                    },
+                    piva : {
+                        required : true,
+                        piva_regex: true
+                    },
+                    website : {
+                        website_regex: true
+                    },
+                    password : {
+                        required: true,
+                        password_regex: true
+                    },
+                    name: {
+                        required: true,
+                        name_regex: true
+                    },
+                    surname: {
+                        required: true,
+                        name_regex: true
+                    },
+                    city: {
+                        required: true,
+                        name_regex: true
+                    },
+                    date:{
+                        required: true
+                    },
+                    term: {
+                        required: true
+                    }
+    
+                },
+                messages: {
+                    username: {
+                        required: "Inserire username",  
+                        username_regex: "Inserire caratteri alfanumerici"
+                    },
+                    pec: {
+                        required: "Inserire PEC",  
+                        cf_regex: "Inserire PEC nel formato corretto"
+                    },
+                    cf: {
+                        required: "Inserire Codice Fiscale",  
+                        pec_regex: "Inserire Codice Fiscale nel formato corretto"
+                    },
+                    piva : {
+                        required : "Inserire Partita IVA",
+                        piva_regex: "Inserire Partita IVA nel formato corretto"
+                    },
+                    website : {
+                        website_regex: "Inserire il sito web nel formato corretto"
+                    },
+                    password : {
+                        required: "Inserire password",
+                        password_regex: "La password deve essere lunga almeno 8 caratteri. <br> Inserire:<br>- Almeno un carattere alfanumerico minuscolo<br>- Almeno un carattere alfanumerico maiuscolo<br>- Almeno un carattere numerico<br>- Almeno un carattere speciale"
+                    },
+                    name: {
+                        required: "Inserire nome",
+                        name_regex: "Inserire caratteri alfabetici"
+                    },
+                    surname: {
+                        required: "Inserire cognome",
+                        name_regex: "Inserire caratteri alfabetici"
+                    },
+                    city: {
+                        required: "Inserisci la città di nascita",
+                        name_regex: "Inserisci caratteri alfabetici"
+                    },
+                    date:{
+                        required: "Inserisci la data di nascita"
+                    },
+                    term: "<br>Accettare Termini & Condizioni"
+                },
+                // Settiamo il submit handler per la form
+                submitHandler: function(form) {
+                    form.submit();
+                }
+            });
+        }
+});           
