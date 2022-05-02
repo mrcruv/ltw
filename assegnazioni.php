@@ -1,6 +1,6 @@
 <?php
-require_once 'includes/info.php';
-global $sitename;
+global $sitename, $paths;
+require_once("includes/info.php");
 if (!isset($_SESSION))
 {
     session_start();
@@ -26,19 +26,19 @@ $usertype = $_SESSION["usertype"];
 <body class="d-flex flex-column min-vh-100">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-    <?php require_once 'includes/header.php'; ?>
+    <?php require_once($paths["header"]); ?>
 
-    <?php require_once 'scripts/session.php'; ?>
+    <?php require_once($paths["session"]); ?>
 
     <?php if ($_SESSION["usertype"] == 'ente') { ?>
-    <form id="add_availability_form" action="scripts/add_availability.php" method="post">
+    <form id="add_availability_form" action="<?php echo($paths["add_availability"]); ?>" method="post">
         <div>
             <label for="process">Processo</label>
             <div>
                 <select id="availability_process" name="process">
                     <option selected>Scegli il processo</option>
                     <?php
-                    require_once 'scripts/show_process.php';
+                    require_once($paths["show_process"]);
                     $array = show_all_processes($_SESSION["username"]);
                     $n = count($array);
                     for ($i = 0; $i < $n; $i += 1) {
@@ -59,7 +59,7 @@ $usertype = $_SESSION["usertype"];
                 <select id="availability_expert" name="expert">
                     <option selected>Scegli l'esperto</option>
                     <?php
-                    require_once 'scripts/show_expert.php';
+                    require_once($paths["show_expert"]);
                     $array = show_all_experts();
                     $n = count($array);
                     for ($i = 0; $i < $n; $i += 1) {
@@ -77,7 +77,7 @@ $usertype = $_SESSION["usertype"];
     </form>
 
     <?php
-    require_once 'scripts/show_availability.php';
+    require_once($paths["show_availability"]);
     echo("<table>");
     echo("<tr><th>PROCESSO</th><th>ESPERTO</th><th>DATA RICHIESTA</th>
     <th>DATA ASSEGNAZIONE</th><th>DATA RIFIUTO</th></tr>");
@@ -103,7 +103,7 @@ $usertype = $_SESSION["usertype"];
     <?php } else { ?>
 
     <?php
-    require_once 'scripts/show_availability.php';
+    require_once($paths["show_availability"]);
     echo("<table>");
     echo("<tr><th>PROCESSO</th><th>ENTE</th><th>DATA RICHIESTA</th>
         <th>DATA ASSEGNAZIONE</th><th>DATA RIFIUTO</th><th>STATO</th><th></th></tr>");
@@ -139,6 +139,6 @@ $usertype = $_SESSION["usertype"];
     ?>
     <?php } ?>
 
-    <?php require_once 'includes/footer.php'; ?>
+    <?php require_once($paths["footer"]); ?>
 </body>
 </html>

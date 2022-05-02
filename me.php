@@ -1,13 +1,13 @@
 <?php
-require_once 'includes/info.php';
-require_once("includes/open_connection.php");
-global $sitename, $connection;
+global $sitename, $connection, $paths;
+require_once("includes/info.php");
+require_once($paths["open_connection"]);
 if (!isset($_SESSION))
 {
     session_start();
 }
 if (!isset($_SESSION["username"])) {
-    header ("Location: ../index.php");
+    header ("Location: " . $paths["index"]);
 }
 $username = $_SESSION["username"];
 $usertype = $_SESSION["usertype"];
@@ -30,9 +30,9 @@ $usertype = $_SESSION["usertype"];
 <body class="d-flex flex-column min-vh-100">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-    <?php require_once 'includes/header.php'; ?>
+    <?php require_once($paths["header"]); ?>
 
-    <?php require_once 'scripts/session.php'; ?>
+    <?php require_once($paths["session"]); ?>
 
     <?php
     $query = "SELECT piva, cf, sito_web, pec FROM utenti WHERE username=?";
@@ -78,7 +78,7 @@ $usertype = $_SESSION["usertype"];
     mysqli_stmt_close($statement);
     ?>
 
-    <form id="update_password_form" action="scripts/update_password.php" method="post" onsubmit="return true;">
+    <form id="update_password_form" action="<?php echo($paths["update_password"]); ?>" method="post" onsubmit="return true;">
         <div>
             <input type="password" id="old_password" placeholder="Password attuale" name="old_password"/>
         </div>
@@ -88,7 +88,6 @@ $usertype = $_SESSION["usertype"];
         <button type="submit" name="update_password_submit">Cambia password</button>
     </form>
 
-    <?php require_once 'includes/footer.php'; ?>
-
+    <?php require_once($paths["footer"]); ?>
 </body>
 </html>

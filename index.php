@@ -1,6 +1,6 @@
 <?php
-require_once 'includes/info.php';
-global $sitename;
+global $sitename, $paths;
+require_once("includes/info.php");
 if (!isset($_SESSION))
 {
     session_start();
@@ -52,7 +52,7 @@ if (!isset($_SESSION))
 
                 <div class="tab-content">
                     <div class="tab active" data-tab="pills-login">
-                        <form id="login_form" action="scripts/login.php" method="post" onsubmit="return validate_login();">
+                        <form id="login_form" action="<?php echo($paths["login"]); ?>" method="post" onsubmit="return validate_login();">
 
                             <div class="form-outline mb-2">
                                 <input type="text" id="login_username" class="form-control" placeholder="Username" name="username"/>
@@ -90,7 +90,7 @@ if (!isset($_SESSION))
                         <h3 id="text_entity">Ente</h3>
                         <h3 id="text_expert">Esperto</h3>
 
-                        <form id="register_form" action="scripts/register.php" method="post">
+                        <form id="register_form" action="<?php echo($paths["register"]); ?>" method="post">
                             <div id="div_user_type">
                                 <input type="checkbox" id="usertype_box" name="register_box" checked>
                             </div>

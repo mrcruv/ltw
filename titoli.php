@@ -1,12 +1,12 @@
 <?php
-require_once 'includes/info.php';
-global $sitename;
+global $sitename, $paths;
+require_once("includes/info.php");
 if (!isset($_SESSION))
 {
     session_start();
 }
 if (!isset($_SESSION["usertype"]) or $_SESSION["usertype"] != "esperto") {
-    header ("Location: me.php");
+    header ("Location: " . $paths["me"]);
 }
 ?>
 
@@ -27,11 +27,11 @@ if (!isset($_SESSION["usertype"]) or $_SESSION["usertype"] != "esperto") {
 <body class="d-flex flex-column min-vh-100">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-    <?php require_once 'includes/header.php'; ?>
+    <?php require_once($paths["header"]); ?>
 
-    <?php require_once 'scripts/session.php'; ?>
+    <?php require_once($paths["session"]); ?>
 
-    <form id="add_title_form" action="scripts/add_title.php" method="post">
+    <form id="add_title_form" action="<?php echo($paths["add_title"]); ?>" method="post">
         <div
             <label for="title_name">Denominazione titolo</label>
             <input type="text" id="title_name" placeholder="Inserisci denominazione" name="name">
@@ -52,7 +52,7 @@ if (!isset($_SESSION["usertype"]) or $_SESSION["usertype"] != "esperto") {
     </form>
 
     <?php
-    require_once 'scripts/show_title.php';
+    require_once($paths["show_title"]);
     echo("<table>");
     echo("<tr><th>NOME</th><th>DATA CONSEGUIMENTO</th><th>NOTE</th><th>VOTO</th></tr>");
     $array = show_all_titles($_SESSION["username"]);
@@ -73,6 +73,6 @@ if (!isset($_SESSION["usertype"]) or $_SESSION["usertype"] != "esperto") {
     echo("</table>");
     ?>
 
-    <?php require_once 'includes/footer.php'; ?>
+    <?php require_once($paths["footer"]); ?>
 </body>
 </html>

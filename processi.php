@@ -1,12 +1,12 @@
 <?php
-require_once 'includes/info.php';
-global $sitename;
+global $sitename, $connection, $paths;
+require_once("includes/info.php");
 if (!isset($_SESSION))
 {
     session_start();
 }
 if (!isset($_SESSION["usertype"]) or $_SESSION["usertype"] != "ente") {
-    header ("Location: ../me.php");
+    header ("Location: " . $paths["me"]);
 }
 ?>
 
@@ -27,9 +27,9 @@ if (!isset($_SESSION["usertype"]) or $_SESSION["usertype"] != "ente") {
 <body class="d-flex flex-column min-vh-100">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-    <?php require_once 'includes/header.php'; ?>
+    <?php require_once($paths["header"]); ?>
 
-    <?php require_once 'scripts/session.php'; ?>
+    <?php require_once($paths["session"]); ?>
 
     <form id="add_process_form" action="scripts/add_process.php" method="post">
         <div
@@ -48,7 +48,7 @@ if (!isset($_SESSION["usertype"]) or $_SESSION["usertype"] != "ente") {
     </form>
 
     <?php
-    require_once 'scripts/show_process.php';
+    require_once($paths["show_process"]);
     echo("<table>");
     echo("<tr><th>NOME</th><th>TIPOLOGIA</th><th>DESCRIZIONE</th></tr>");
     $array = show_all_processes($_SESSION["username"]);
@@ -68,6 +68,6 @@ if (!isset($_SESSION["usertype"]) or $_SESSION["usertype"] != "ente") {
     echo("</table>");
     ?>
 
-    <?php require_once 'includes/footer.php'; ?>
+    <?php require_once($paths["footer"]); ?>
 </body>
 </html>
