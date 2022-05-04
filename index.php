@@ -23,7 +23,8 @@ if (!isset($_SESSION))
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 
     <script src="scripts/form_switch.js"></script>
-    <script src="scripts/validate_register.js"></script>
+    <script src="scripts/validate_register_entity.js"></script>
+    <script src="scripts/validate_register_expert.js"></script>
 
     <title><?php echo($sitename); ?></title>
 </head>
@@ -90,70 +91,103 @@ if (!isset($_SESSION))
                         <h3 id="text_entity">Ente</h3>
                         <h3 id="text_expert">Esperto</h3>
 
-                        <form id="register_form" action="<?php echo($paths["register"]); ?>" method="post">
-                            <div id="div_user_type">
-                                <input type="checkbox" id="usertype_box" name="register_box" checked>
-                            </div>
+                        <form id="register_entity_form" action="<?php echo($paths["register_entity"]); ?>" method="post">
+
                             <div class="form-outline mb-2">
-                                <input type="text" id="register_username" class="form-control" placeholder="Username" name="username"/>
+                                <input type="text" id="register_entity_username" class="form-control" placeholder="Username" name="entity_username"/>
                             </div>
 
                             <div class="form-outline mb-2">
-                                <input type="email" id="register_pec" class="form-control" placeholder="PEC" name="pec"/>
+                                <input type="email" id="register_entity_pec" class="form-control" placeholder="PEC" name="entity_pec"/>
                             </div>
 
                             <div class="form-outline mb-2">
-                                <input type="text" id="register_cf" class="form-control" placeholder="Codice Fiscale" name="cf"/>
+                                <input type="text" id="register_entity_cf" class="form-control" placeholder="Codice Fiscale" name="entity_cf"/>
                             </div>
 
                             <div class="form-outline mb-2">
-                                <input type="text" id="register_piva" class="form-control" placeholder="Partita IVA" name="piva"/>
+                                <input type="text" id="register_entity_piva" class="form-control" placeholder="Partita IVA" name="entity_piva"/>
                             </div>
 
                             <div class="form-outline mb-4">
-                                <input type="text" id="register_website" class="form-control" placeholder="Sito Web" name="website"/>
+                                <input type="text" id="register_entity_website" class="form-control" placeholder="Sito Web" name="entity_website"/>
                             </div>
 
                             <div class="form-outline mb-4">
-                                <input type="password" aria-describedby="password_help" id="register_password" class="form-control" placeholder="Password" name="password"/>
+                                <input type="password" aria-describedby="password_help" id="register_entity_password" class="form-control" placeholder="Password" name="entity_password"/>
                             </div>
 
-                            <div id="entity_fields">
-                                <div class="form-outline mb-2">
-                                    <select class="form-select" id="register_type" name="type">
-                                        <option selected>Scegli il tipo di Ente</option>
-                                        <option value="Pubblico">Pubblico</option>
-                                        <option value="Privato">Privato</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-outline mb-4">
-                                    <input type="text" id="register_entity_name" class="form-control" placeholder="Denominazione" name="entity_name"/>
-                                </div>
+                            <div class="form-outline mb-2">
+                                <select class="form-select" id="register_entity_type" name="type">
+                                    <option selected>Scegli il tipo di Ente</option>
+                                    <option value="Pubblico">Pubblico</option>
+                                    <option value="Privato">Privato</option>
+                                </select>
                             </div>
 
-                            <div id="expert_fields">
-                                <div class="form-outline mb-2">
-                                    <input type="text" id="register_name" class="form-control" placeholder="Nome" name="name"/>
-                                </div>
-
-                                <div class="form-outline mb-2">
-                                    <input type="text" id="register_surname" class="form-control" placeholder="Cognome" name="surname"/>
-                                </div>
-
-                                <div class="form-outline mb-2">
-                                    <input type="text" id="register_city" class="form-control" placeholder="Città di Nascita" name="city"/>
-                                </div>
-
-                                <div class="form-outline mb-4">
-                                    <input type="date" id="register_date" class="form-control" placeholder="Data di Nascita" name="date"/>
-                                </div>
+                            <div class="form-outline mb-4">
+                                <input type="text" id="register_entity_name" class="form-control" placeholder="Denominazione" name="entity_name"/>
                             </div>
 
                             <div class="row mb-4">
                                 <div class="col-md d-flex justify-content-center">
                                     <div class="form-check mb-2 mb-md-0">
-                                        <input class="form-check-input" type="checkbox" value="" id="termCheck"/>
+                                        <input class="form-check-input" type="checkbox" value="" id="termCheck_entity" name="entity_term"/>
+                                        <label class="form-check-label mb-2" for="termCheck">Accetta Termini & Condizioni</label>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-block" name="register_submit">Registrati</button>
+                            </div>
+                        
+                        </form>
+
+                        <form id="register_expert_form" action="<?php echo($paths["register_expert"]); ?>" method="post">
+
+                            <div class="form-outline mb-2">
+                                <input type="text" id="register_expert_username" class="form-control" placeholder="Username" name="expert_username"/>
+                            </div>
+
+                            <div class="form-outline mb-2">
+                                <input type="email" id="register_expert_pec" class="form-control" placeholder="PEC" name="expert_pec"/>
+                            </div>
+
+                            <div class="form-outline mb-2">
+                                <input type="text" id="register_expert_cf" class="form-control" placeholder="Codice Fiscale" name="expert_cf"/>
+                            </div>
+
+                            <div class="form-outline mb-2">
+                                <input type="text" id="register_expert_piva" class="form-control" placeholder="Partita IVA" name="expert_piva"/>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="text" id="register_expert_website" class="form-control" placeholder="Sito Web" name="expert_website"/>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="password" aria-describedby="password_help" id="register_expert_password" class="form-control" placeholder="Password" name="expert_password"/>
+                            </div>
+
+                            <div class="form-outline mb-2">
+                                    <input type="text" id="register_expert_name" class="form-control" placeholder="Nome" name="name"/>
+                            </div>
+
+                            <div class="form-outline mb-2">
+                                <input type="text" id="register_expert_surname" class="form-control" placeholder="Cognome" name="surname"/>
+                            </div>
+
+                            <div class="form-outline mb-2">
+                                <input type="text" id="register_expert_city" class="form-control" placeholder="Città di Nascita" name="city"/>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="date" id="register_expert_date" class="form-control" placeholder="Data di Nascita" name="date"/>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md d-flex justify-content-center">
+                                    <div class="form-check mb-2 mb-md-0">
+                                        <input class="form-check-input" type="checkbox" value="" id="termCheck_expert" name="expert_term"/>
                                         <label class="form-check-label mb-2" for="termCheck">Accetta Termini & Condizioni</label>
                                     </div>
                                 </div>
@@ -170,3 +204,4 @@ if (!isset($_SESSION))
 </div>
 </body>
 </html>
+
