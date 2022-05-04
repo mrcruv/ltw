@@ -33,105 +33,28 @@ jQuery.validator.addMethod("name_regex", function(value, element) {
 
 
 $().ready(function() {
-    if($("#usertype_box").prop('checked')==true){
-        $("#register_form").validate({
-            rules : {
-                username : {
-                    required: true,  
-                    username_regex: true
-                },
-                pec : {
-                    required : true,
-                    pec_regex: true
-                },
-                cf : {
-                    required : true,
-                    cf_regex: true
-                },
-                piva : {
-                    required : true,
-                    piva_regex: true
-                },
-                website : {
-                    website_regex: true
-                },
-                password : {
-                    required: true,
-                    password_regex: true
-                },
-                type: {
-                    required: true
-                },
-                entity_name: {
-                    required: true,
-                    username_regex: true
-                },
-                term: {
-                    required: true
-                }
-            },
-            messages: {
-                username: {
-                    required: "Inserire username",  
-                    username_regex: "Inserire caratteri alfanumerici"
-                },
-                pec: {
-                    required: "Inserire PEC",  
-                    pec_regex: "Inserire PEC nel formato corretto"
-                },
-                cf: {
-                    required: "Inserire Codice Fiscale",  
-                    cf_regex: "Inserire Codice Fiscale nel formato corretto"
-                },
-                piva : {
-                    required : "Inserire Partita IVA",
-                    piva_regex: "Inserire Partita IVA nel formato corretto"
-                },
-                website : {
-                    website_regex: "Inserire il sito web nel formato corretto"
-                },
-                password : {
-                    required: "Inserire password",
-                    password_regex: "La password deve essere lunga almeno 8 caratteri. <br> Inserire:<br>- Almeno un carattere alfanumerico minuscolo<br>- Almeno un carattere alfanumerico maiuscolo<br>- Almeno un carattere numerico<br>- Almeno un carattere speciale"
-                },
-                type: {
-                    required: "Inserire il tipo di ente"
-                },
-                entity_name: {
-                    required: "Inserire nome ente",
-                    username_regex: "Inserire caratteri alfanumerici"
-                },
-                term: "<br>Accettare Termini & Condizioni"
-            },
-            // Settiamo il submit handler per la form
-            submitHandler: function(form) {
-                form.submit();
-            }
-        });
-    }
-    else if($("#usertype_box").prop('checked')==false){
-            $("#register_form").validate({
+        $("#register_expert_form").validate({
                 rules : {
-                    username : {
+                    expert_username : {
                         required: true,  
                         username_regex: true
                     },
-                    pec : {
+                    expert_pec : {
                         required : true,
                         pec_regex: true
                     },
-                    cf : {
+                    expert_cf : {
                         required : true,
                         cf_regex: true
                     },
-                    piva : {
+                    expert_piva : {
                         required : true,
                         piva_regex: true
                     },
-                    website : {
+                    expert_website : {
                         website_regex: true
                     },
-                    password : {
+                    expert_password : {
                         required: true,
                         password_regex: true
                     },
@@ -150,32 +73,32 @@ $().ready(function() {
                     date:{
                         required: true
                     },
-                    term: {
+                    expert_term: {
                         required: true
                     }
     
                 },
                 messages: {
-                    username: {
+                    expert_username: {
                         required: "Inserire username",  
                         username_regex: "Inserire caratteri alfanumerici"
                     },
-                    pec: {
+                    expert_pec: {
                         required: "Inserire PEC",  
                         cf_regex: "Inserire PEC nel formato corretto"
                     },
-                    cf: {
+                    expert_cf: {
                         required: "Inserire Codice Fiscale",  
                         pec_regex: "Inserire Codice Fiscale nel formato corretto"
                     },
-                    piva : {
+                    expert_piva : {
                         required : "Inserire Partita IVA",
                         piva_regex: "Inserire Partita IVA nel formato corretto"
                     },
-                    website : {
+                    expert_website : {
                         website_regex: "Inserire il sito web nel formato corretto"
                     },
-                    password : {
+                    expert_password : {
                         required: "Inserire password",
                         password_regex: "La password deve essere lunga almeno 8 caratteri. <br> Inserire:<br>- Almeno un carattere alfanumerico minuscolo<br>- Almeno un carattere alfanumerico maiuscolo<br>- Almeno un carattere numerico<br>- Almeno un carattere speciale"
                     },
@@ -194,12 +117,11 @@ $().ready(function() {
                     date:{
                         required: "Inserisci la data di nascita"
                     },
-                    term: "<br>Accettare Termini & Condizioni"
+                    expert_term: "<br>Accettare Termini & Condizioni"
                 },
                 // Settiamo il submit handler per la form
                 submitHandler: function(form) {
                     form.submit();
                 }
             });
-        }
-});           
+});               
