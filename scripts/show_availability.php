@@ -1,9 +1,6 @@
 <?php
 require_once("includes/open_connection.php");
-if(!isset($_SESSION))
-{
-    session_start();
-}
+require_once('includes/session.php');
 
 function show_all_availabilities_from_expert($expert_username)
 {
