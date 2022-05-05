@@ -30,7 +30,7 @@ $usertype = $_SESSION["usertype"];
 
     <?php require_once($paths["session"]); ?>
 
-    <?php if ($_SESSION["usertype"] == 'ente') { ?>
+    <?php if ($_SESSION["usertype"] == 'ente'): ?>
     <form id="add_availability_form" action="<?php echo($paths["add_availability"]); ?>" method="post">
         <div>
             <label for="process">Processo</label>
@@ -80,7 +80,7 @@ $usertype = $_SESSION["usertype"];
     require_once($paths["show_availability"]);
     echo("<table>");
     echo("<tr><th>PROCESSO</th><th>ESPERTO</th><th>DATA RICHIESTA</th>
-    <th>DATA ASSEGNAZIONE</th><th>DATA RIFIUTO</th></tr>");
+    <th>DATA ASSEGNAZIONE</th><th>DATA RIFIUTO</th><th>STATO</th></tr>");
     $array = show_all_availabilities_from_entity($_SESSION["username"]);
     $n = count($array);
     if (!is_array($array) or $n <= 0) {
@@ -94,13 +94,24 @@ $usertype = $_SESSION["usertype"];
             echo("<td>" . $array[$i]["request_date"] . "</td>");
             echo("<td>" . $array[$i]["allocation_date"] . "</td>");
             echo("<td>" . $array[$i]["rejection_date"] . "</td>");
+            if (is_null($array[$i]["allocation_date"])) {
+                if (is_null($array[$i]["rejection_date"])) {
+                    echo("<td>" . "assegnazione pendente" . "</td>");
+                }
+                else {
+                    echo("<td>" . "assegnazione rifiutata" . "</td>");
+                }
+            }
+            else {
+                echo("<td>" . "assegnazione accettata" . "</td>");
+            }
             echo("</tr>");
         }
     }
     echo("</table>");
     ?>
 
-    <?php } else { ?>
+    <?php else: ?>
 
     <?php
     require_once($paths["show_availability"]);
@@ -123,8 +134,10 @@ $usertype = $_SESSION["usertype"];
             if (is_null($array[$i]["allocation_date"])) {
                 if (is_null($array[$i]["rejection_date"])) {
                     echo("<td>" . "assegnazione pendente" . "</td>");
-                    echo("<td>" . '<button type="button">accetta</button>');
-                    echo('<button type="button">rifiuta</button>' . "</td>");
+                    echo("<td><a href=\"scripts/accept_reject.php?action=accept&process=" . $array[$i]["process"] . "\">");
+                    echo("<button type='button'>accetta</button></a>");
+                    echo("<a href=\"scripts/accept_reject.php?action=reject&process=" . $array[$i]["process"] . "\">");
+                    echo("<button type='button'>rifiuta</button></a>" . "</td>");
                 }
                 else {
                     echo("<td>" . "assegnazione rifiutata" . "</td>");
@@ -137,7 +150,7 @@ $usertype = $_SESSION["usertype"];
     }
     echo("</table>");
     ?>
-    <?php } ?>
+    <?php endif ?>
 
     <?php require_once($paths["footer"]); ?>
 </body>
