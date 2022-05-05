@@ -9,7 +9,7 @@ $username = $_SESSION['username'];
 $usertype = $_SESSION['usertype'];
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-light" id="nav_header">
+<nav class="navbar navbar-expand-lg navbar-light shadow p-2 mb-5" id="nav_header">
         <div class="container-fluid">
           <div class="title">
             <a class="navbar-brand"><?php echo($sitename); ?></a>
@@ -40,10 +40,13 @@ $usertype = $_SESSION['usertype'];
               <li class="nav-item">
                 <a class="nav-link" href="assegnazioni.php">Assegnazioni</a>
               </li>
+          </ul>
+            <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link" href="scripts/logout.php"><button type="button">LOGOUT</button></a>
+                <a class="nav-link" href="scripts/logout.php"><button class="btn btn-secondary btn-lg btn-sm" type="button">Logout</button></a>
               </li>
             </ul>
           </div>
         </div>
-    </nav>
+</nav>
+
