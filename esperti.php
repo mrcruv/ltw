@@ -1,12 +1,9 @@
 <?php
-global $sitename, $paths;
-require_once("includes/info.php");
-if (!isset($_SESSION))
-{
-    session_start();
-}
-if (!isset($_SESSION["usertype"]) or $_SESSION["usertype"] != "ente") {
-    header ("Location: " . $paths["me"]);
+global $sitename;
+require_once('includes/info.php');
+require_once('includes/session.php');
+if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'ente') {
+    header ('Location: me.php');
 }
 ?>
 
@@ -27,14 +24,12 @@ if (!isset($_SESSION["usertype"]) or $_SESSION["usertype"] != "ente") {
 <body class="d-flex flex-column min-vh-100">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-    <?php require_once($paths["header"]); ?>
-
-    <?php require_once($paths["session"]); ?>
+    <?php require_once('includes/header.php'); ?>
 
     <?php
-    require_once($paths["show_expert"]);
-    echo("<table>");
-    echo("<tr><th>USERNAME</th><th>NOME</th><th>COGNOME</th><th>CITTA DI NASCITA</th><th>DATA DI NASCITA</th></tr>");
+    require_once('scripts/show_expert.php');
+    echo('<table>');
+    echo('<tr><th>USERNAME</th><th>NOME</th><th>COGNOME</th><th>CITTA DI NASCITA</th><th>DATA DI NASCITA</th></tr>');
     $array = show_all_experts();
     $n = count($array);
     if (!is_array($array) or $n <= 0) {
@@ -42,18 +37,18 @@ if (!isset($_SESSION["usertype"]) or $_SESSION["usertype"] != "ente") {
     }
     else {
         for ($i = 0; $i < $n; $i += 1) {
-            echo("<tr>");
-            echo("<td>" . $array[$i]["username"] . "</td>");
-            echo("<td>" . $array[$i]["name"] . "</td>");
-            echo("<td>" . $array[$i]["surname"] . "</td>");
-            echo("<td>" . $array[$i]["city"] . "</td>");
-            echo("<td>" . $array[$i]["date"] . "</td>");
-            echo("</tr>");
+            echo('<tr>');
+            echo('<td>' . $array[$i]['username'] . '</td>');
+            echo('<td>' . $array[$i]['name'] . '</td>');
+            echo('<td>' . $array[$i]['surname'] . '</td>');
+            echo('<td>' . $array[$i]['city'] . '</td>');
+            echo('<td>' . $array[$i]['date'] . '</td>');
+            echo('</tr>');
         }
     }
-    echo("</table>");
+    echo('</table>');
     ?>
 
-    <?php require_once($paths["footer"]); ?>
+    <?php require_once('includes/footer.php'); ?>
 </body>
 </html>

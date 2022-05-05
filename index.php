@@ -1,9 +1,11 @@
 <?php
-global $sitename, $paths;
-require_once("includes/info.php");
-if (!isset($_SESSION))
-{
+global $sitename;
+require_once('includes/info.php');
+if (!isset($_SESSION)) {
     session_start();
+}
+if (isset($_SESSION['username'])) {
+    header('Location: me.php');
 }
 ?>
 
@@ -53,7 +55,7 @@ if (!isset($_SESSION))
 
                 <div class="tab-content">
                     <div class="tab active" data-tab="pills-login">
-                        <form id="login_form" action="<?php echo($paths["login"]); ?>" method="post" onsubmit="return validate_login();">
+                        <form id="login_form" action="<?php echo('scripts/login.php'); ?>" method="post">
 
                             <div class="form-outline mb-2">
                                 <input type="text" id="login_username" class="form-control" placeholder="Username" name="username"/>
@@ -72,7 +74,7 @@ if (!isset($_SESSION))
                                 </div>
 
                                 <div class="col-md-6 d-flex justify-content-center mb-2">
-                                    <a href="#!">Forgot password?</a>
+                                    <a href="#">Forgot password?</a>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary btn-block mb-4" name="login_submit">Sign in</button>
@@ -83,15 +85,15 @@ if (!isset($_SESSION))
                 <div class="tab-content">
                     <div class="tab" data-tab="pills-register">
                         <ul class="nav nav-pills nav-justified mb-3 border rounded" id="entity_expert_name" role="tablist">
-                            <button class="btn switch" type="button" id="entity_button">Ente</button>
-                            <button class="btn switch" type="button" id="expert_button">Esperto</button>
+                            <li><button class="btn switch" type="button" id="entity_button">Ente</button></li>
+                            <li><button class="btn switch" type="button" id="expert_button">Esperto</button></li>
                             <!--<input type="checkbox" id="register_user_type" name="user_type">-->
                         </ul>
 
                         <h3 id="text_entity">Ente</h3>
                         <h3 id="text_expert">Esperto</h3>
 
-                        <form id="register_entity_form" action="<?php echo($paths["register_entity"]); ?>" method="post">
+                        <form id="register_entity_form" action="<?php echo('scripts/register_entity.php'); ?>" method="post">
 
                             <div class="form-outline mb-2">
                                 <input type="text" id="register_entity_username" class="form-control" placeholder="Username" name="entity_username"/>
@@ -142,7 +144,7 @@ if (!isset($_SESSION))
                         
                         </form>
 
-                        <form id="register_expert_form" action="<?php echo($paths["register_expert"]); ?>" method="post">
+                        <form id="register_expert_form" action="<?php echo('scripts/register_expert.php'); ?>" method="post">
 
                             <div class="form-outline mb-2">
                                 <input type="text" id="register_expert_username" class="form-control" placeholder="Username" name="expert_username"/>
@@ -200,7 +202,6 @@ if (!isset($_SESSION))
             </div>
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>
