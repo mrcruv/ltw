@@ -1,12 +1,12 @@
 <?php
-require_once("info.php");
 global $sitename;
+require_once('info.php');
 if(!isset($_SESSION))
 {
     session_start();
 }
-$username = $_SESSION["username"];
-$usertype = $_SESSION["usertype"];
+$username = $_SESSION['username'];
+$usertype = $_SESSION['usertype'];
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light" id="nav_header">
@@ -22,21 +22,21 @@ $usertype = $_SESSION["usertype"];
               <li class="nav-item">
                 <a class="nav-link" href="me.php">Dashboard</a>
               </li>
-          <?php if($usertype == 'ente') { ?>
+          <?php if($usertype == 'ente'): ?>
               <li class="nav-item">
                 <a class="nav-link" href="processi.php">Processi</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="esperti.php">Esperti</a>
               </li>
-          <?php } else { ?>
+          <?php else:?>
               <li class="nav-item">
                 <a class="nav-link" href="titoli.php">Titoli di studio</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="competenze.php">Competenze</a>
               </li>
-          <?php } ?>
+          <?php endif ?>
               <li class="nav-item">
                 <a class="nav-link" href="assegnazioni.php">Assegnazioni</a>
               </li>

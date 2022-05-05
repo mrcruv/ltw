@@ -5,6 +5,6 @@
 
 <footer class="text-center mt-auto" id="footer">
     <div>
-        <?php echo("<p>$sitename © $current_year - Authors: " . implode(", ",$authors) . "</p>"); ?>
+        <?php echo('<p>$sitename © $current_year - Authors: ' . implode(', ',$authors) . '</p>'); ?>
     </div>
 </footer>
