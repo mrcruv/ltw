@@ -121,9 +121,9 @@ if (isset($_SESSION['username'])) {
 
                             <div class="form-outline mb-2">
                                 <select class="form-select" id="register_entity_type" name="type">
-                                    <option selected>Scegli il tipo di Ente</option>
-                                    <option value="Pubblico">Pubblico</option>
-                                    <option value="Privato">Privato</option>
+                                    <option selected disabled>Scegli il tipo di Ente</option>
+                                    <option value="pubblico">Ente pubblico</option>
+                                    <option value="privato">Ente privato</option>
                                 </select>
                             </div>
 
@@ -134,7 +134,7 @@ if (isset($_SESSION['username'])) {
                             <div class="row mb-4">
                                 <div class="col-md d-flex justify-content-center">
                                     <div class="form-check mb-2 mb-md-0">
-                                        <input class="form-check-input" type="checkbox" value="" id="termCheck_entity" name="entity_term"/>
+                                        <input class="form-check-input" type="checkbox" value="yes" id="termCheck_entity" name="entity_term"/>
                                         <label class="form-check-label mb-2" for="termCheck">Accetta Termini & Condizioni</label>
                                     </div>
                                 </div>

@@ -43,7 +43,8 @@ if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'ente') {
                         <input type="text" class="form-control" id="process_type" placeholder="Tipologia processo" name="type">
                     </div>
                     <div class="form-group mb-3">
-                        <input type="text area" class="form-control" id="process_description" placeholder="Descrizione processo" name="description">
+                        <textarea form ="add_process_form" class="form-control" id="process_description" placeholder="Descrizione processo" name="description">
+                        </textarea>
                     </div>
                     <button type="submit" class="btn btn-primary" name="add_process_submit">Aggiungi</button>
                 </form>
