@@ -26,59 +26,86 @@ $usertype = $_SESSION['usertype'];
 
     <?php require_once('includes/header.php'); ?>
 
+    <header class="py-2 shadow p-3 mb-3">
+        <div class="text-center my-1">
+            <?php if($usertype == 'ente') {?>
+                <img class="img-fluid rounded-circle mb-4" src="img/logo_ente.png" alt="..." />
+            <?php
+            }
+            else { ?>
+                <img class="img-fluid rounded-circle mb-4" src="img/logo_esperto.png" alt="..." />
+            <?php } ?>
+            <h1 class="text-black fs-3 fw-bolder"> <?php echo $username ?></h1>
+            <p class="text-black-50 mb-0 text-uppercase"><?php echo $usertype ?></p>
+        </div>
+    </header>
+
+
     <?php
     $query = 'SELECT piva, cf, sito_web, pec FROM utenti WHERE username=?';
     $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
     mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
     mysqli_stmt_execute($statement) or die(mysqli_error($connection));
     mysqli_stmt_bind_result($statement, $piva, $cf, $website, $pec);
-    if (mysqli_stmt_fetch($statement)) {
-        echo('username: ' . $username . '<br>');
-        echo('codice fiscale: ' . $cf . '<br>');
-        echo('partita IVA: ' . $piva . '<br>');
-        echo('sito web: ' . $website . '<br>');
-        echo('PEC: ' . $pec . '<br>');
-        echo('tipo utente: ' . $usertype . '<br>');
-    }
-    else echo('error');
-    mysqli_stmt_close($statement);
-
-    if ($usertype == 'ente') {
-        $query = "SELECT denominazione, tipo FROM enti WHERE username=?";
-        $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
-        mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
-        mysqli_stmt_execute($statement) or die(mysqli_error($connection));
-        mysqli_stmt_bind_result($statement, $name, $type);
-        if (mysqli_stmt_fetch($statement)) {
-            echo('denominazione ente: ' . $name . '<br>');
-            echo('tipo ente: ' . $type . '<br>');
+    if (mysqli_stmt_fetch($statement)) {?>
+    <div class="row container-fluid">
+        <div class="col-md-4 offset-md-1 text-center">
+            <h3>Info</h3>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><small class="text-muted">Codice fiscale</small><h6><?php echo $cf ?></h6></li>
+                <li class="list-group-item"><small class="text-muted">Partita IVA</small><h6><?php echo $piva ?></h6></li>
+                <li class="list-group-item"><small class="text-muted">Sito web</small><h6><?php echo $website ?></h6></li>
+                <li class="list-group-item"><small class="text-muted">PEC</small><h6><?php echo $pec ?></h6></li>
+        <?php
         }
         else echo('error');
-    }
-    else {
-        $query = 'SELECT nome, cognome, citta_nascita, data_nascita FROM esperti WHERE username=?';
-        $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
-        mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
-        mysqli_stmt_execute($statement) or die(mysqli_error($connection));
-        mysqli_stmt_bind_result($statement, $name, $surname, $city, $date);
-        if (mysqli_stmt_fetch($statement)) {
-            echo('nome e cognome esperto: ' . $name . ' ' . $surname . '<br>');
-            echo('città e data di nascita: ' . $city . ', ' . $date . '<br>');
-        }
-        else echo('error');
-    }
-    mysqli_stmt_close($statement);
-    ?>
+        mysqli_stmt_close($statement);
 
-    <form id="update_password_form" action="<?php echo('scripts/update_password.php'); ?>" method="post">
-        <div>
-            <input type="password" id="old_password" placeholder="Password attuale" name="old_password"/>
+        if ($usertype == 'ente') {
+            $query = "SELECT denominazione, tipo FROM enti WHERE username=?";
+            $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
+            mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
+            mysqli_stmt_execute($statement) or die(mysqli_error($connection));
+            mysqli_stmt_bind_result($statement, $name, $type);
+            if (mysqli_stmt_fetch($statement)) { ?>
+                <li class="list-group-item"><small class="text-muted">Denominazione</small><h6><?php echo $name ?></h6></li>
+                <li class="list-group-item"><small class="text-muted">Tipo</small><h6><?php echo $type ?></h6></li>
+            </ul>
+
+        <?php
+            }
+            else echo('error');
+        }
+        else {
+            $query = 'SELECT nome, cognome, citta_nascita, data_nascita FROM esperti WHERE username=?';
+            $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
+            mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
+            mysqli_stmt_execute($statement) or die(mysqli_error($connection));
+            mysqli_stmt_bind_result($statement, $name, $surname, $city, $date);
+            if (mysqli_stmt_fetch($statement)) {?>
+                <li class="list-group-item"><small class="text-muted">Nome e Cognome</small><h6><?php echo $name . ' ' . $surname ?></h6></li>
+                <li class="list-group-item"><small class="text-muted">Città e Data di Nascita</small><h6><?php echo $city . ', ' . $date ?></h6></li>
+            </ul>
+        <?php
+            }
+            else echo('error');
+        }
+        mysqli_stmt_close($statement);
+        ?>
         </div>
-        <div>
-            <input type="password" id="new_password" placeholder="Nuova password" name="new_password"/>
+        <div class="col-md-2 offset-md-4 text-center align-middle">
+            <h3>Cambia Password</h3>
+            <form id="update_password_form" action="<?php echo('scripts/update_password.php'); ?>" method="post">
+                <div class="form-group mb-3 mt-4">
+                    <input type="password" class="form-control" id="old_password" placeholder="Password attuale" name="old_password"/>
+                </div>
+                <div class="form-group mb-3">
+                    <input type="password" class="form-control" id="new_password" placeholder="Nuova password" name="new_password"/>
+                </div>
+                <button type="submit" class="btn btn-primary" name="update_password_submit">Cambia password</button>
+            </form>
         </div>
-        <button type="submit" name="update_password_submit">Cambia password</button>
-    </form>
+    </div>
 
     <?php require_once('includes/footer.php'); ?>
 </body>
