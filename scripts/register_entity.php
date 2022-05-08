@@ -1,15 +1,34 @@
 <?php
 global $connection;
 require_once('../includes/open_connection.php');
-if (!isset($_POST['update_password_submit'])) {
+if (!isset($_POST['register_submit'])) {
     header ('Location: ../me.php');
 }
 
-$username = $_POST['entity_username'];
-$password = $_POST['entity_password'];
-$cf = $_POST['entity_cf'];
-$pec = $_POST['entity_pec'];
-$piva = $_POST['entity_piva'];
+$username_regex = '/^[a-zA-Z0-9]{1,30}$/';
+$password_regex = '/^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8}$/';
+$cf_regex = '/[A-Za-z]{6}[0-9lmnpqrstuvLMNPQRSTUV]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9lmnpqrstuvLMNPQRSTUV]{2}[A-Za-z]{1}[0-9lmnpqrstuvLMNPQRSTUV]{3}[A-Za-z]{1}/';
+$pec_regex = '/(?:\w*.?pec(?:.?\w+)*)/';
+$piva_regex = '/^[0-9]{11}$/';
+$website_regex = '/^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/';
+$name_regex = '/^[a-zA-Z0-9]{1,30}$/';
+
+$username = trim($_POST['entity_username']);
+$password = trim($_POST['entity_password']);
+$cf = strtoupper(trim($_POST['entity_cf']));
+$pec = strtolower(trim($_POST['entity_pec']));
+$piva = trim($_POST['entity_piva']);
+
+!empty($username) or die('username non inserito');
+preg_match($username_regex, $username) or die('username non corretto');
+!empty($password) or die('password non inserita');
+//preg_match($password_regex, $password) or die('password non corretta');
+!empty($cf) or die('c.f. non inserito');
+preg_match($cf_regex, $cf) or die('cf non corretto');
+!empty($pec) or die('pec non inserita');
+preg_match($pec_regex, $pec) or die('pec non corretta');
+!empty($piva) or die('p. iva non inserita');
+preg_match($piva_regex, $piva) or die('p. iva non corretta');
 
 $query = 'SELECT * FROM utenti WHERE username=? OR pec=? OR cf=? OR piva=?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
@@ -17,12 +36,18 @@ mysqli_stmt_bind_param($statement, 'ssss', $username, $pec, $cf, $piva) or die(m
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 if (mysqli_stmt_fetch($statement)) {
         mysqli_stmt_close($statement) or die(mysqli_error($connection));
+        echo('utente già esistente');
         header('Location: ../index.php');
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
-$website = $_POST['entity_website'];
-#$accept_conditions = $_POST['accept_conditions'];
+$website = strtolower(trim($_POST['entity_website']));
+$accept_conditions = isset($_POST['entity_term']) ? $_POST['entity_term'] : 'no';
+
+!empty($website) or die('sito web non inserito');
+preg_match($website_regex, $website) or die('sito web non corretto');
+($accept_conditions == 'yes') or die('condizioni non accettate');
+
 $hash = password_hash($password, PASSWORD_BCRYPT);
 
 $query = 'INSERT INTO utenti(username, password, pec, cf, piva, sito_web)
@@ -32,8 +57,12 @@ mysqli_stmt_bind_param($statement, 'ssssss', $username, $hash, $pec, $cf, $piva,
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
-$company_name = $_POST['entity_name'];
-$type = $_POST['type'];
+$company_name = trim($_POST['entity_name']);
+$type = strtolower(trim($_POST['type']));
+
+!empty($company_name) or die('denominazione non inserita');
+preg_match($name_regex, $company_name) or die('denominazione non corretta');
+($type == 'pubblico' OR $type == 'privato') or die('tipo non corretto');
 
 $query = 'INSERT INTO enti(username, denominazione, tipo)
                 VALUES (?, ?, ?)';
