@@ -25,50 +25,71 @@ if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'esperto') {
 </head>
 <body class="d-flex flex-column min-vh-100">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="scripts/add_form.js"></script>
 
-    <?php require_once('includes/header.php'); ?>
 
-    <form id="add_title_form" action="<?php echo('scripts/add_title.php'); ?>" method="post">
-        <div>
-            <label for="title_name">Denominazione titolo</label>
-            <input type="text" id="title_name" placeholder="Inserisci denominazione" name="name">
-        </div>
-        <div>
-            <label for="title_date">Data conseguimento titolo</label>
-            <input type="date" id="title_date" placeholder="Inserisci data conseguimento" name="date">
-        </div>
-        <div>
-            <label for="title_notes">Note</label>
-            <input type="text" id="title_notes" placeholder="Inserisci note" name="notes">
-        </div>
-        <div>
-            <label for="title_grade">Voto</label>
-            <input type="number" id="title_grade" placeholder="Inserisci voto" name="grade">
-        </div>
-        <button type="submit" name="add_title_submit">Aggiungi titolo di studio</button>
-    </form>
+    <?php require_once('includes/header.php'); 
 
-    <?php
     require_once('scripts/show_title.php');
-    echo('<table>');
-    echo('<tr><th>NOME</th><th>DATA CONSEGUIMENTO</th><th>NOTE</th><th>VOTO</th></tr>');
-    $array = show_all_titles($_SESSION["username"]);
-    $n = count($array);
-    if (!is_array($array) or $n <= 0) {
-        echo('<tr><td colspan="4">NON CI SONO TITOLI DI STUDIO AL MOMENTO</td></tr>');
-    }
-    else {
-        for ($i = 0; $i < $n; $i += 1) {
-            echo('<tr>');
-            echo('<td>' . $array[$i]['name'] . '</td>');
-            echo('<td>' . $array[$i]['date'] . '</td>');
-            echo('<td>' . $array[$i]['notes'] . '</td>');
-            echo('<td>' . $array[$i]['grade'] . '</td>');
-            echo('</tr>');
-        }
-    }
-    echo('</table>');
     ?>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 offset-md-4 text-center align-middle">
+                <h5>Aggiungi Titolo di Studio</h5>
+                <a class="btn btn-primary rounded-circle" id="add_button">+</a>
+
+                <form id="add_title_form" class="add_form" action="<?php echo('scripts/add_title.php'); ?>" method="post">
+                    <div class="form-group mb-3 mt-4">
+                        <input type="text" id="title_name" class="form-control" placeholder="Denominazione" name="name">
+                    </div>
+                    <div class="form-group mb-3">
+                        <input type="date" id="title_date" class="form-control" placeholder="Data conseguimento" name="date">
+                    </div>
+                    <div class="form-group mb-3">
+                        <input type="text" id="title_notes" class="form-control" placeholder="Note" name="notes">
+                    </div>
+                    <div class="form-group mb-3">
+                        <input type="number" id="title_grade" class="form-control" placeholder="Voto" name="grade">
+                    </div>
+                    <button type="submit" class="btn btn-primary" name="add_title_submit">Aggiungi</button>
+                </form>
+            </div>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Data di Conseguimento</th>
+                    <th scope="col">Note</th>
+                    <th scope="col">Voto</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php $array = show_all_titles($_SESSION["username"]);
+            $n = count($array);
+            if (!is_array($array) or $n <= 0) { ?>
+                <tr><td colspan="5"><h6>Non ci sono Titoli di studio al momento</h6></td></tr>
+            <?php
+            }
+            else {
+                for ($i = 0; $i < $n; $i += 1) { ?>
+                <tr>
+                    <th scope="row"><?php echo $i+1?></th>
+                    <td><?php echo $array[$i]['name']?></td>
+                    <td><?php echo $array[$i]['date']?></td>
+                    <td><?php echo $array[$i]['notes']?></td>
+                    <td><?php echo $array[$i]['grade']?></td>
+                </tr>
+                <?php
+                }
+            }  ?> 
+            </tbody>
+        </table>
+
+    </div>
 
     <?php require_once('includes/footer.php'); ?>
 </body>
