@@ -22,130 +22,178 @@ $usertype = $_SESSION['usertype'];
 </head>
 <body class="d-flex flex-column min-vh-100">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="scripts/add_form.js"></script>
+
 
     <?php require_once('includes/header.php'); ?>
 
-    <?php if ($_SESSION['usertype'] == 'ente'): ?>
-    <form id="add_availability_form" action="<?php echo('scripts/add_availability.php'); ?>" method="post">
-        <div>
-            <label for="process">Processo</label>
-            <div>
-                <select id="availability_process" name="process">
-                    <option selected>Scegli il processo</option>
-                    <?php
-                    require_once('scripts/show_process.php');
-                    $array = show_all_processes($_SESSION['username']);
-                    $n = count($array);
-                    for ($i = 0; $i < $n; $i += 1) {
-                        echo('<option value=');
-                        echo($array[$i]['name']);
-                        echo('>');
-                        echo($array[$i]['name']);
-                        echo('</option>');
-                    }
-                    ?>
-                </select>
+    <div class="container-fluid">
+
+        <?php if ($_SESSION['usertype'] == 'ente'): ?>
+        
+        <div class="row">
+            <div class="col-md-3 offset-md-4 text-center align-middle">
+                <h5>Aggiungi assegnazione</h5>
+                <a class="btn btn-primary rounded-circle" id="add_button">+</a>
+
+                <form id="add_availability_form" class="add_form" action="<?php echo('scripts/add_availability.php'); ?>" method="post">
+                    <div>
+                        <div>
+                            <select id="availability_process" class="form-select mt-4 mb-3" name="process">
+                                <option selected>Scegli il Processo</option>
+                                <?php
+                                require_once('scripts/show_process.php');
+                                $array = show_all_processes($_SESSION['username']);
+                                $n = count($array);
+                                for ($i = 0; $i < $n; $i += 1) {
+                                    echo('<option value=');
+                                    echo($array[$i]['name']);
+                                    echo('>');
+                                    echo($array[$i]['name']);
+                                    echo('</option>');
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div>
+                            <select id="availability_expert" class="form-select mb-3" name="expert">
+                                <option selected>Scegli l'esperto</option>
+                                <?php
+                                require_once('scripts/show_expert.php');
+                                $array = show_all_experts();
+                                $n = count($array);
+                                for ($i = 0; $i < $n; $i += 1) {
+                                    echo('<option value=');
+                                    echo($array[$i]['username']);
+                                    echo('>');
+                                    echo($array[$i]['username']);
+                                    echo('</option>');
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" name="add_availability_submit">Aggiungi</button>
+                </form>
             </div>
         </div>
 
-        <div>
-            <label for="expert">Esperto</label>
-            <div>
-                <select id="availability_expert" name="expert">
-                    <option selected>Scegli l'esperto</option>
-                    <?php
-                    require_once('scripts/show_expert.php');
-                    $array = show_all_experts();
-                    $n = count($array);
-                    for ($i = 0; $i < $n; $i += 1) {
-                        echo('<option value=');
-                        echo($array[$i]['username']);
-                        echo('>');
-                        echo($array[$i]['username']);
-                        echo('</option>');
+        <?php
+        require_once('scripts/show_availability.php'); ?>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Processo</th>
+                    <th scope="col">Esperto</th>
+                    <th scope="col">Data della Richiesta</th>
+                    <th scope="col">Data della Assegnazione</th>
+                    <th scope="col">Data della Rifiuto</th>
+                    <th scope="col">Stato</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php $array = show_all_availabilities_from_entity($_SESSION['username']);
+            $n = count($array);
+            if (!is_array($array) or $n <= 0) { ?>
+                <tr><td colspan="7"><h6>Non ci sono Assegnazioni al momento</h6></td></tr>
+            <?php
+            }
+            else {
+                for ($i = 0; $i < $n; $i += 1) { ?>
+                <tr>
+                    <th scope="row"><?php echo $i+1?></th>
+                    <td><?php echo $array[$i]['process']?></td>
+                    <td><?php echo $array[$i]['expert']?></td>
+                    <td><?php echo $array[$i]['request_date']?></td>
+                    <td><?php echo $array[$i]['allocation_date']?></td>
+                    <td><?php echo $array[$i]['rejection_date']?></td>
+                    <?php 
+                    if (is_null($array[$i]['allocation_date'])) {
+                        if (is_null($array[$i]['rejection_date'])) {
+                            echo('<td>' . 'assegnazione pendente' . '</td>');
+                        }
+                        else {
+                            echo('<td>' . 'assegnazione rifiutata' . '</td>');
+                        }
                     }
+                    else {
+                        echo('<td>' . 'assegnazione accettata' . '</td>');
+                    }
+
                     ?>
-                </select>
-            </div>
-        </div>
-        <button type="submit" name="add_availability_submit">Aggiungi assegnazione</button>
-    </form>
+                </tr>
+                <?php
+                }
+            }  ?> 
+            </tbody>
+        </table>
 
-    <?php
-    require_once('scripts/show_availability.php');
-    echo('<table>');
-    echo('<tr><th>PROCESSO</th><th>ESPERTO</th><th>DATA RICHIESTA</th>
-    <th>DATA ASSEGNAZIONE</th><th>DATA RIFIUTO</th><th>STATO</th></tr>');
-    $array = show_all_availabilities_from_entity($_SESSION['username']);
-    $n = count($array);
-    if (!is_array($array) or $n <= 0) {
-        echo('<tr><td colspan="5">NON CI SONO ASSEGNAZIONI AL MOMENTO</td></tr>');
-    }
-    else {
-        for ($i = 0; $i < $n; $i += 1) {
-            echo('<tr>');
-            echo('<td>' . $array[$i]['process'] . '</td>');
-            echo('<td>' . $array[$i]['expert'] . '</td>');
-            echo('<td>' . $array[$i]['request_date'] . '</td>');
-            echo('<td>' . $array[$i]['allocation_date'] . '</td>');
-            echo('<td>' . $array[$i]['rejection_date'] . '</td>');
-            if (is_null($array[$i]['allocation_date'])) {
-                if (is_null($array[$i]['rejection_date'])) {
-                    echo('<td>' . 'assegnazione pendente' . '</td>');
-                }
-                else {
-                    echo('<td>' . 'assegnazione rifiutata' . '</td>');
-                }
+        <?php else: ?>
+
+        <?php
+        require_once('scripts/show_availability.php'); ?>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Processo</th>
+                    <th scope="col">Esperto</th>
+                    <th scope="col">Data della Richiesta</th>
+                    <th scope="col">Data della Assegnazione</th>
+                    <th scope="col">Data della Rifiuto</th>
+                    <th scope="col">Stato</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php $array = show_all_availabilities_from_expert($_SESSION['username']);
+            $n = count($array);
+            if (!is_array($array) or $n <= 0) { ?>
+                <tr><td colspan="7"><h6>Non ci sono Assegnazioni al momento</h6></td></tr>
+            <?php
             }
             else {
-                echo('<td>' . 'assegnazione accettata' . '</td>');
-            }
-            echo('</tr>');
-        }
-    }
-    echo('</table>');
-    ?>
+                for ($i = 0; $i < $n; $i += 1) { ?>
+                <tr>
+                    <th scope="row"><?php echo $i+1?></th>
+                    <td><?php echo $array[$i]['process']?></td>
+                    <td><?php echo $array[$i]['entity']?></td>
+                    <td><?php echo $array[$i]['request_date']?></td>
+                    <td><?php echo $array[$i]['allocation_date']?></td>
+                    <td><?php echo $array[$i]['rejection_date']?></td>
+                    <?php 
+                    if (is_null($array[$i]['allocation_date'])) {
+                        if (is_null($array[$i]['rejection_date'])) {
+                            echo('<td>' . 'assegnazione pendente' . '</td>');
+                            echo('<td><a href="scripts/accept_reject.php?action=accept&process=' . $array[$i]['process'] . '">');
+                            echo('<button type="button">accetta</button></a>');
+                            echo('<a href="scripts/accept_reject.php?action=reject&process=' . $array[$i]['process'] . '">');
+                            echo('<button type="button">rifiuta</button></a>' . '</td>');
+                        }
+                        else {
+                            echo('<td>' . 'assegnazione rifiutata' . '</td>');
+                        }
+                    }
+                    else {
+                        echo('<td>' . 'assegnazione accettata' . '</td>');
+                    }
 
-    <?php else: ?>
-
-    <?php
-    require_once('scripts/show_availability.php');
-    echo('<table>');
-    echo('<tr><th>PROCESSO</th><th>ENTE</th><th>DATA RICHIESTA</th>
-        <th>DATA ASSEGNAZIONE</th><th>DATA RIFIUTO</th><th>STATO</th><th></th></tr>');
-    $array = show_all_availabilities_from_expert($_SESSION['username']);
-    $n = count($array);
-    if (!is_array($array) or $n <= 0) {
-        echo('<tr><td colspan="5">NON CI SONO ASSEGNAZIONI AL MOMENTO</td></tr>');
-    }
-    else {
-        for ($i = 0; $i < $n; $i += 1) {
-            echo('<tr>');
-            echo('<td>' . $array[$i]['process'] . '</td>');
-            echo('<td>' . $array[$i]['entity'] . '</td>');
-            echo('<td>' . $array[$i]['request_date'] . '</td>');
-            echo('<td>' . $array[$i]['allocation_date'] . '</td>');
-            echo('<td>' . $array[$i]['rejection_date'] . '</td>');
-            if (is_null($array[$i]['allocation_date'])) {
-                if (is_null($array[$i]['rejection_date'])) {
-                    echo('<td>' . 'assegnazione pendente' . '</td>');
-                    echo('<td><a href="scripts/accept_reject.php?action=accept&process=' . $array[$i]['process'] . '">');
-                    echo('<button type="button">accetta</button></a>');
-                    echo('<a href="scripts/accept_reject.php?action=reject&process=' . $array[$i]['process'] . '">');
-                    echo('<button type="button">rifiuta</button></a>' . '</td>');
+                    ?>
+                </tr>
+                <?php
                 }
-                else {
-                    echo('<td>' . 'assegnazione rifiutata' . '</td>');
-                }
-            }
-            else {
-                echo('<td>' . 'assegnazione accettata' . '</td>');
-            }
-        }
-    }
-    echo('</table>');
-    ?>
-    <?php endif ?>
+            }  ?> 
+            </tbody>
+        </table>
+        
+        <?php endif ?>
+    
+    </div>
 
     <?php require_once('includes/footer.php'); ?>
 </body>
