@@ -9,7 +9,7 @@ $username = $_SESSION['username'];
 $usertype = $_SESSION['usertype'];
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-light shadow p-2 mb-5" id="nav_header">
+<nav class="navbar navbar-expand-lg navbar-light shadow p-2 mb-4" id="nav_header">
         <div class="container-fluid">
           <div class="title">
             <a class="navbar-brand"><?php echo($sitename); ?></a>
