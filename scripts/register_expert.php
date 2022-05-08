@@ -1,10 +1,9 @@
 <?php
 global $connection;
 require_once('../includes/open_connection.php');
-if (!isset($_POST['update_password_submit'])) {
+if (!isset($_POST['register_submit'])) {
     header ('Location: ../me.php');
 }
-
 
 $username = $_POST['expert_username'];
 $password = $_POST['expert_password'];
