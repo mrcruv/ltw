@@ -27,28 +27,48 @@ if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'ente') {
     <?php require_once('includes/header.php'); ?>
 
     <?php
-    require_once('scripts/show_expert.php');
-    echo('<table>');
-    echo('<tr><th>USERNAME</th><th>NOME</th><th>COGNOME</th><th>CITTA DI NASCITA</th><th>DATA DI NASCITA</th></tr>');
-    $array = show_all_experts();
-    $n = count($array);
-    if (!is_array($array) or $n <= 0) {
-        echo('<tr><td colspan="4">NON CI SONO TITOLI DI STUDIO AL MOMENTO</td></tr>');
-    }
-    else {
-        for ($i = 0; $i < $n; $i += 1) {
-            echo('<tr>');
-            echo('<td>' . $array[$i]['username'] . '</td>');
-            echo('<td>' . $array[$i]['name'] . '</td>');
-            echo('<td>' . $array[$i]['surname'] . '</td>');
-            echo('<td>' . $array[$i]['city'] . '</td>');
-            echo('<td>' . $array[$i]['date'] . '</td>');
-            echo('</tr>');
-        }
-    }
-    echo('</table>');
-    ?>
+    require_once('scripts/show_expert.php'); ?>
 
+    <div class="container-fluid">
+
+        <h5>Lista di Esperti</h5>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Cognome</th>
+                    <th scope="col">Città di Nascita</th>
+                    <th scope="col">Data di Nascita</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php $array = show_all_experts();
+            $n = count($array);
+            if (!is_array($array) or $n <= 0) { ?>
+                <tr><td colspan="6"><h6>Non ci sono Esperti al momento</h6></td></tr>
+            <?php
+            }
+            else {
+                for ($i = 0; $i < $n; $i += 1) { ?>
+                <tr>
+                    <th scope="row"><?php echo $i+1?></th>
+                    <td><?php echo $array[$i]['username']?></td>
+                    <td><?php echo $array[$i]['name']?></td>
+                    <td><?php echo $array[$i]['surname']?></td>
+                    <td><?php echo $array[$i]['city']?></td>
+                    <td><?php echo $array[$i]['date']?></td>
+                </tr>
+                <?php
+                }
+            }  ?> 
+            </tbody>
+        </table>
+        
+    </div>
+    
     <?php require_once('includes/footer.php'); ?>
 </body>
 </html>
