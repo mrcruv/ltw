@@ -35,7 +35,7 @@ if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'esperto') {
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3 offset-md-4 text-center align-middle">
+            <div class="col-4 offset-4 text-center align-middle mb-2">
                 <h5>Aggiungi Titolo di Studio</h5>
                 <a class="btn btn-primary rounded-circle" id="add_button">+</a>
 
