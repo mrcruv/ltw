@@ -1,4 +1,4 @@
-jQuery.validator.addMethod("username_regex", function(value, element) {   
+jQuery.validator.addMethod("username_regex", function(value, element) {
         return /^[a-zA-Z0-9]{1,30}$/.test(value);   
         });
 
@@ -11,7 +11,7 @@ jQuery.validator.addMethod("cf_regex", function(value, element) {
         });
 
 jQuery.validator.addMethod("password_regex", function(value, element) {   
-        return /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8})$/.test(value);   
+        return /^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/.test(value);
         });
 
 jQuery.validator.addMethod("piva_regex", function(value, element) {   
@@ -28,7 +28,7 @@ jQuery.validator.addMethod("password_regex", function(value, element) {
 
 jQuery.validator.addMethod("name_regex", function(value, element) {   
         return /^[a-zA-Z]{1,30}$/.test(value);   
-        }); 
+        });
 
 
 
@@ -91,7 +91,12 @@ $().ready(function() {
                 },
                 entity_password : {
                     required: "Inserire password",
-                    password_regex: "La password deve essere lunga almeno 8 caratteri. <br> Inserire:<br>- Almeno un carattere alfanumerico minuscolo<br>- Almeno un carattere alfanumerico maiuscolo<br>- Almeno un carattere numerico<br>- Almeno un carattere speciale"
+                    password_regex: "La password deve essere lunga almeno 8 caratteri.<br>" +
+                        "Inserire:<br>" +
+                        "- Almeno un carattere alfanumerico minuscolo<br>" +
+                        "- Almeno un carattere alfanumerico maiuscolo<br>" +
+                        "- Almeno un carattere numerico<br>" +
+                        "- Almeno un carattere speciale"
                 },
                 type: {
                     required: "Inserire il tipo di ente"
