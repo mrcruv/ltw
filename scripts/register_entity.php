@@ -21,6 +21,10 @@ $password = trim($_POST['entity_password']);
 $cf = strtoupper(trim($_POST['entity_cf']));
 $pec = strtolower(trim($_POST['entity_pec']));
 $piva = trim($_POST['entity_piva']);
+$website = strtolower(trim($_POST['entity_website']));
+$company_name = trim($_POST['entity_name']);
+$type = strtolower(trim($_POST['type']));
+$accept_conditions = isset($_POST['entity_term']) ? $_POST['entity_term'] : 'no';
 
 !empty($username) or die('username non inserito');
 preg_match($username_regex, $username) or die('username non corretto');
@@ -43,6 +47,16 @@ preg_match($pec_regex, $pec) or die('pec non corretta');
 !empty($piva) or die('p. iva non inserita');
 preg_match($piva_regex, $piva) or die('p. iva non corretta');
 
+!empty($website) or die('sito web non inserito');
+preg_match($website_regex, $website) or die('sito web non corretto');
+
+!empty($company_name) or die('denominazione non inserita');
+preg_match($name_regex, $company_name) or die('denominazione non corretta');
+
+($type == 'pubblico' OR $type == 'privato') or die('tipo non corretto');
+
+($accept_conditions == 'yes') or die('condizioni non accettate');
+
 $query = 'SELECT * FROM utenti WHERE username=? OR pec=? OR cf=? OR piva=?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
 mysqli_stmt_bind_param($statement, 'ssss', $username, $pec, $cf, $piva) or die(mysqli_error($connection));
@@ -54,14 +68,6 @@ if (mysqli_stmt_fetch($statement)) {
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
-$website = strtolower(trim($_POST['entity_website']));
-$accept_conditions = isset($_POST['entity_term']) ? $_POST['entity_term'] : 'no';
-
-!empty($website) or die('sito web non inserito');
-preg_match($website_regex, $website) or die('sito web non corretto');
-
-($accept_conditions == 'yes') or die('condizioni non accettate');
-
 $hash = password_hash($password, PASSWORD_BCRYPT);
 
 $query = 'INSERT INTO utenti(username, password, pec, cf, piva, sito_web)
@@ -70,14 +76,6 @@ $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection
 mysqli_stmt_bind_param($statement, 'ssssss', $username, $hash, $pec, $cf, $piva, $website) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
-
-$company_name = trim($_POST['entity_name']);
-$type = strtolower(trim($_POST['type']));
-
-!empty($company_name) or die('denominazione non inserita');
-preg_match($name_regex, $company_name) or die('denominazione non corretta');
-
-($type == 'pubblico' OR $type == 'privato') or die('tipo non corretto');
 
 $query = 'INSERT INTO enti(username, denominazione, tipo)
                 VALUES (?, ?, ?)';
