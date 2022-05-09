@@ -134,8 +134,8 @@ if (isset($_SESSION['username'])) {
                             <div class="row mb-4">
                                 <div class="col-md d-flex justify-content-center">
                                     <div class="form-check mb-2 mb-md-0">
-                                        <input class="form-check-input" type="checkbox" value="yes" id="termCheck_entity" name="entity_term"/>
-                                        <label class="form-check-label mb-2" for="termCheck">Accetta Termini & Condizioni</label>
+                                        <input class="form-check-input" type="checkbox" value="yes" id="term_check_entity" name="entity_term"/>
+                                        <label class="form-check-label mb-2" for="term_check_entity">Accetta Termini & Condizioni</label>
                                     </div>
                                 </div>
 
@@ -189,8 +189,8 @@ if (isset($_SESSION['username'])) {
                             <div class="row mb-4">
                                 <div class="col-md d-flex justify-content-center">
                                     <div class="form-check mb-2 mb-md-0">
-                                        <input class="form-check-input" type="checkbox" value="" id="termCheck_expert" name="expert_term"/>
-                                        <label class="form-check-label mb-2" for="termCheck">Accetta Termini & Condizioni</label>
+                                        <input class="form-check-input" type="checkbox" value="yes" id="term_check_expert" name="expert_term"/>
+                                        <label class="form-check-label mb-2" for="term_check_expert">Accetta Termini & Condizioni</label>
                                     </div>
                                 </div>
 
