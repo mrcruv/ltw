@@ -11,7 +11,7 @@ jQuery.validator.addMethod("cf_regex", function(value, element) {
         });
 
 jQuery.validator.addMethod("password_regex", function(value, element) {   
-        return /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8})$/.test(value);   
+        return /^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/.test(value);
         });
 
 jQuery.validator.addMethod("piva_regex", function(value, element) {   
