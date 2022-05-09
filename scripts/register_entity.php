@@ -5,8 +5,11 @@ if (!isset($_POST['register_submit'])) {
     header ('Location: ../me.php');
 }
 
+$contains_lowercase = '/[a-z]/';
+$contains_uppercase = '/[A-Z]/';
+$contains_special = '/[!@#$%^&*-]/';
+$contains_digit = '/[0-9]/';
 $username_regex = '/^[a-zA-Z0-9]{1,30}$/';
-$password_regex = '/^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8}$/';
 $cf_regex = '/[A-Za-z]{6}[0-9lmnpqrstuvLMNPQRSTUV]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9lmnpqrstuvLMNPQRSTUV]{2}[A-Za-z]{1}[0-9lmnpqrstuvLMNPQRSTUV]{3}[A-Za-z]{1}/';
 $pec_regex = '/(?:\w*.?pec(?:.?\w+)*)/';
 $piva_regex = '/^[0-9]{11}$/';
@@ -21,12 +24,22 @@ $piva = trim($_POST['entity_piva']);
 
 !empty($username) or die('username non inserito');
 preg_match($username_regex, $username) or die('username non corretto');
+
 !empty($password) or die('password non inserita');
-//preg_match($password_regex, $password) or die('password non corretta');
+$msg = '';
+strlen($password) >= 8 or $msg = $msg . 'lunghezza minima non raggiunta ';
+preg_match($contains_lowercase, $password) or $msg = $msg . 'lowercase non incluso ';
+preg_match($contains_special, $password) or $msg = $msg . 'special non incluso';
+preg_match($contains_uppercase, $password) or $msg = $msg . 'uppercase non incluso ';
+preg_match($contains_digit, $password) or $msg = $msg . 'digit non inclusa';
+$msg == '' or die($msg);
+
 !empty($cf) or die('c.f. non inserito');
 preg_match($cf_regex, $cf) or die('cf non corretto');
+
 !empty($pec) or die('pec non inserita');
 preg_match($pec_regex, $pec) or die('pec non corretta');
+
 !empty($piva) or die('p. iva non inserita');
 preg_match($piva_regex, $piva) or die('p. iva non corretta');
 
@@ -46,6 +59,7 @@ $accept_conditions = isset($_POST['entity_term']) ? $_POST['entity_term'] : 'no'
 
 !empty($website) or die('sito web non inserito');
 preg_match($website_regex, $website) or die('sito web non corretto');
+
 ($accept_conditions == 'yes') or die('condizioni non accettate');
 
 $hash = password_hash($password, PASSWORD_BCRYPT);
@@ -62,6 +76,7 @@ $type = strtolower(trim($_POST['type']));
 
 !empty($company_name) or die('denominazione non inserita');
 preg_match($name_regex, $company_name) or die('denominazione non corretta');
+
 ($type == 'pubblico' OR $type == 'privato') or die('tipo non corretto');
 
 $query = 'INSERT INTO enti(username, denominazione, tipo)
