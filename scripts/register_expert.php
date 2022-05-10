@@ -73,7 +73,7 @@ mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 if (mysqli_stmt_fetch($statement)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     echo('utente già esistente');
-    header('Location: ../index.php');
+    header('Location: ../index.php?err=utente+gia+esistente');
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
@@ -96,4 +96,4 @@ mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
 
 //require_once('../includes/close_connection.php');
-header('Location: ../index.php');
+header('Location: ../index.php?msg=utente+registrato+con+successo');

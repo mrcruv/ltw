@@ -46,7 +46,7 @@ mysqli_stmt_bind_param($statement, 'ss', $username, $name) or die(mysqli_error($
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 if (mysqli_stmt_fetch($statement)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
-    header('Location: ../titoli.php');
+    header('Location: ../titoli.php?err=titolo+gia+inserito');
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
@@ -58,4 +58,4 @@ mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
 //require_once("../includes/close_connection.php");
-header('Location: ../titoli.php');
+header('Location: ../titoli.php?msg=titolo+inserito+con+successo');

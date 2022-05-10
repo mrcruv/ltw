@@ -42,7 +42,7 @@ mysqli_stmt_bind_param($statement, 's', $name) or die(mysqli_error($connection))
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 if (mysqli_stmt_fetch($statement)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
-    header('Location: ../competenze.php');
+    header('Location: ../competenze.php?err=competenza+gia+inserita');
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
@@ -53,4 +53,4 @@ mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
 //require_once('../includes/close_connection.php');
-header('Location: ../competenze.php');
+header('Location: ../competenze.php?msg=competenza+inserita+con+successo');

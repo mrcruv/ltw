@@ -41,7 +41,7 @@ else if (password_verify($password, $result_password)){
     mysqli_stmt_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
-    header('Location: ../me.php');
+    header('Location: ../me.php?msg=login+effettuato+con+successo+,+bentornato+!');
 }
 else {
     mysqli_stmt_free_result($statement);

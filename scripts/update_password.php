@@ -37,7 +37,7 @@ if (!mysqli_stmt_fetch($statement)) {
     mysqli_stmt_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     echo('error');
-    header('Location: ../me.php');
+    header('Location: ../me.php?err=utente+non+esistente');
 }
 else if (password_verify($old_password, $result_hash)) {
     mysqli_stmt_free_result($statement);
@@ -47,12 +47,12 @@ else if (password_verify($old_password, $result_hash)) {
     mysqli_stmt_bind_param($statement, 'ss', $new_hash, $username) or die(mysqli_error($connection));
     mysqli_stmt_execute($statement) or die(mysqli_error($connection));
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
-    header('Location: logout.php');
+    header('Location: logout.php?msg=password+aggiornata+con+successo');
 }
 else {
     mysqli_stmt_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     echo('password attuale incorretta');
-    header('Location: ../me.php');
+    header('Location: ../me.php?err=password+attuale+incorretta');
 }
 
