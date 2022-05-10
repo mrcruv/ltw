@@ -36,9 +36,9 @@ if (!mysqli_stmt_fetch($statement)) {
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
-$query = 'SELECT * FROM competenze_esperti WHERE competenza=?';
+$query = 'SELECT * FROM competenze_esperti WHERE competenza=? AND esperto=?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
-mysqli_stmt_bind_param($statement, 's', $name) or die(mysqli_error($connection));
+mysqli_stmt_bind_param($statement, 'ss', $name, $username) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 if (mysqli_stmt_fetch($statement)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
