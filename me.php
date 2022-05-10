@@ -46,7 +46,7 @@ $usertype = $_SESSION['usertype'];
     $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
     mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
     mysqli_stmt_execute($statement) or die(mysqli_error($connection));
-    mysqli_stmt_bind_result($statement, $piva, $cf, $website, $pec);
+    mysqli_stmt_bind_result($statement, $piva, $cf, $website, $pec) or die(mysqli_error($connection));
     if (mysqli_stmt_fetch($statement)) {?>
     <div class="row container-fluid">
         <div class="col-md-4 offset-md-1 text-center">
@@ -59,14 +59,14 @@ $usertype = $_SESSION['usertype'];
         <?php
         }
         else echo('error');
-        mysqli_stmt_close($statement);
+        mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
         if ($usertype == 'ente') {
             $query = "SELECT denominazione, tipo FROM enti WHERE username=?";
             $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
             mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
             mysqli_stmt_execute($statement) or die(mysqli_error($connection));
-            mysqli_stmt_bind_result($statement, $name, $type);
+            mysqli_stmt_bind_result($statement, $name, $type) or die(mysqli_error($connection));
             if (mysqli_stmt_fetch($statement)) { ?>
                 <li class="list-group-item"><small class="text-muted">Denominazione</small><h6><?php echo $name ?></h6></li>
                 <li class="list-group-item"><small class="text-muted">Tipo</small><h6><?php echo $type ?></h6></li>
@@ -81,7 +81,7 @@ $usertype = $_SESSION['usertype'];
             $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
             mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
             mysqli_stmt_execute($statement) or die(mysqli_error($connection));
-            mysqli_stmt_bind_result($statement, $name, $surname, $city, $date);
+            mysqli_stmt_bind_result($statement, $name, $surname, $city, $date) or die(mysqli_error($connection));
             if (mysqli_stmt_fetch($statement)) {?>
                 <li class="list-group-item"><small class="text-muted">Nome e Cognome</small><h6><?php echo $name . ' ' . $surname ?></h6></li>
                 <li class="list-group-item"><small class="text-muted">Città e Data di Nascita</small><h6><?php echo $city . ', ' . $date ?></h6></li>
@@ -90,7 +90,7 @@ $usertype = $_SESSION['usertype'];
             }
             else echo('error');
         }
-        mysqli_stmt_close($statement);
+        mysqli_stmt_close($statement) or die(mysqli_error($connection));
         ?>
         </div>
         <div class="col-md-2 offset-md-4 text-center align-middle">
