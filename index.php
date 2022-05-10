@@ -30,6 +30,7 @@ if (isset($_SESSION['username'])) {
     <script src="scripts/validate_register_expert.js"></script>
     <script src="scripts/error.js"></script>
     <script src="scripts/message.js"></script>
+    <script src="scripts/toggle_psw.js"></script>
 
     <title><?php echo($sitename); ?></title>
 </head>
