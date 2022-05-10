@@ -47,8 +47,7 @@ preg_match($pec_regex, $pec) or die('pec non corretta');
 !empty($piva) or die('p. iva non inserita');
 preg_match($piva_regex, $piva) or die('p. iva non corretta');
 
-!empty($website) or die('sito web non inserito');
-preg_match($website_regex, $website) or die('sito web non corretto');
+if (!empty($website)) preg_match($website_regex, $website) or die('sito web non corretto');
 
 !empty($company_name) or die('denominazione non inserita');
 preg_match($name_regex, $company_name) or die('denominazione non corretta');

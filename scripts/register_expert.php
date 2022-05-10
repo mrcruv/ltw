@@ -58,8 +58,7 @@ preg_match($name_regex, $name) or die('nome non corretta');
 !empty($surname) or die('cognome non inserito');
 preg_match($name_regex, $surname) or die('cognome non corretto');
 
-!empty($website) or die('sito web non inserito');
-preg_match($website_regex, $website) or die('sito web non corretto');
+if (!empty($website)) preg_match($website_regex, $website) or die('sito web non corretto');
 
 !empty($city) or die('città non inserita');
 preg_match($name_regex, $city) or die('città non corretta');

@@ -6,10 +6,22 @@ if (!isset($_POST['add_competence_submit'])) {
     header ('Location: ../competenze.php');
 }
 
+$name_regex = '/^[a-zA-Z0-9]{1,255}$/';
+$area_regex = '/^[a-zA-Z0-9 ]{1,255}$/';
+$description_regex = '/^[a-zA-Z0-9 .,;]{1,255}$/';
+
 $username = $_SESSION['username'];
-$name = $_POST['name'];
-$area = $_POST['area'];
-$description = $_POST['description'];
+$name = trim($_POST['name']);
+$area = trim($_POST['area']);
+$description = trim($_POST['description']);
+
+!empty($name) or die('nome non inserito');
+preg_match($name_regex, $name) or die('nome non corretto');
+
+!empty($area) or die('area non inserita');
+preg_match($area_regex, $area) or die('area non corretta');
+
+if (!empty($description)) preg_match($description_regex, $description) or die('descrizione non corretta');
 
 $query = 'SELECT * FROM competenze WHERE nome=?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));

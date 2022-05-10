@@ -12,31 +12,34 @@ jQuery.validator.addMethod("description_regex", function(value, element) {
 
 $().ready(function() {
     $("#add_process_form").validate({
-        rules : {
-            name : {
+        rules: {
+            name: {
                 required: true,
                 name_regex: true
             },
-            type : {
+            type: {
+                required: true,
                 type_regex: true
             },
             description: {
+                required: true,
                 description_regex: true
             }
         },
         messages: {
-            name : {
+            name: {
                 required: "Inserire nome processo",
                 name_regex: "Inserire nome nel formato corretto"
             },
             type: {
+                required: "Inserire tipo",
                 type_regex: "Inserire tipo nel formato corretto"
             },
             description: {
+                required: "Inserire descrizione",
                 description_regex: "Inserire descrizione nel formato corretto"
             }
         },
-        // Settiamo il submit handler per la form
         submitHandler: function(form) {
             form.submit();
         }

@@ -34,27 +34,27 @@ jQuery.validator.addMethod("name_regex", function(value, element) {
 
 $().ready(function() {
         $("#register_expert_form").validate({
-                rules : {
-                    expert_username : {
+                rules: {
+                    expert_username: {
                         required: true,  
                         username_regex: true
                     },
-                    expert_pec : {
-                        required : true,
+                    expert_pec: {
+                        required: true,
                         pec_regex: true
                     },
-                    expert_cf : {
-                        required : true,
+                    expert_cf: {
+                        required: true,
                         cf_regex: true
                     },
-                    expert_piva : {
-                        required : true,
+                    expert_piva: {
+                        required: true,
                         piva_regex: true
                     },
-                    expert_website : {
+                    expert_website: {
                         website_regex: true
                     },
-                    expert_password : {
+                    expert_password: {
                         required: true,
                         password_regex: true
                     },
@@ -91,14 +91,14 @@ $().ready(function() {
                         required: "Inserire Codice Fiscale",  
                         pec_regex: "Inserire Codice Fiscale nel formato corretto"
                     },
-                    expert_piva : {
-                        required : "Inserire Partita IVA",
+                    expert_piva: {
+                        required: "Inserire Partita IVA",
                         piva_regex: "Inserire Partita IVA nel formato corretto"
                     },
-                    expert_website : {
+                    expert_website: {
                         website_regex: "Inserire il sito web nel formato corretto"
                     },
-                    expert_password : {
+                    expert_password: {
                         required: "Inserire password",
                         password_regex: "La password deve essere lunga almeno 8 caratteri. <br> Inserire:<br>- Almeno un carattere alfanumerico minuscolo<br>- Almeno un carattere alfanumerico maiuscolo<br>- Almeno un carattere numerico<br>- Almeno un carattere speciale"
                     },
@@ -117,9 +117,10 @@ $().ready(function() {
                     date:{
                         required: "Inserisci la data di nascita"
                     },
-                    expert_term: "<br>Accettare Termini & Condizioni"
+                    expert_term: {
+                        required: "<br>Accettare Termini & Condizioni"
+                    }
                 },
-                // Settiamo il submit handler per la form
                 submitHandler: function(form) {
                     form.submit();
                 }

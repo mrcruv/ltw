@@ -17,6 +17,8 @@ $old_hash = password_hash($old_password, PASSWORD_BCRYPT);
 $new_password = trim($_POST['new_password']);
 $new_hash = password_hash($new_password, PASSWORD_BCRYPT);
 
+!empty($old_password) or die('password attuale non inserita');
+
 !empty($new_password) or die('nuova password non inserita');
 $msg = '';
 strlen($new_password) >= 8 or $msg = $msg . 'lunghezza minima non raggiunta ';

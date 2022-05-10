@@ -6,11 +6,26 @@ if (!isset($_POST['add_title_submit'])) {
     header ('Location: ../titoli.php');
 }
 
+$name_regex = '/^[a-zA-Z0-9]{1,255}$/';
+$notes_regex = '/^[a-zA-Z0-9 .,;]{1,255}$/';
+//$date_regex = '';
+$grade_regex = '^[0-9]{1,3}$';
+
 $username = $_SESSION['username'];
-$name = $_POST['name'];
+$name = trim($_POST['name']);
 $date = $_POST['date'];
-$notes = $_POST['notes'];
+$notes = trim($_POST['notes']);
 $grade = $_POST['grade'];
+
+!empty($name) or die('nome non inserito');
+preg_match($name_regex, $name) or die('nome non corretto');
+
+//if (!empty($date)) preg_match($date_regex, $date) or die('data non corretta');
+
+if (!empty($notes)) preg_match($notes_regex, $notes) or die('note non corrette');
+
+if (!empty($grade)) preg_match($grade_regex, $grade) or die('voto non corretto');
+
 
 $query = 'SELECT * FROM titoli WHERE denominazione=?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));

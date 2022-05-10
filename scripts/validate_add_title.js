@@ -16,37 +16,36 @@ jQuery.validator.addMethod("grade_regex", function(value, element) {
 
 $().ready(function() {
     $("#add_title_form").validate({
-        rules : {
-            name : {
+        rules: {
+            name: {
                 required: true,
                 name_regex: true
             },
-            // date : {
+            // date: {
             //     date_regex: true
             // },
-            notes : {
+            notes: {
                 notes_regex: true
             },
-            grade : {
+            grade: {
                 grade_regex: true
             }
         },
         messages: {
-            name : {
+            name: {
                 required: "Inserire nome titolo",
                 name_regex: "Inserire nome nel formato corretto"
             },
-            // date : {
+            // date: {
             //     date_regex: "Inserire data nel formato corretto"
             // },
-            notes : {
+            notes: {
                 notes_regex: "Inserire note nel formato corretto"
             },
-            grade : {
+            grade: {
                 grade_regex: "Inserire voto nel formato corretto"
             }
         },
-        // Settiamo il submit handler per la form
         submitHandler: function(form) {
             form.submit();
         }

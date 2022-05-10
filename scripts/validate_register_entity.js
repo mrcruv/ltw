@@ -34,27 +34,27 @@ jQuery.validator.addMethod("name_regex", function(value, element) {
 
 $().ready(function() {
         $("#register_entity_form").validate({
-            rules : {
-                entity_username : {
+            rules: {
+                entity_username: {
                     required: true,  
                     username_regex: true
                 },
-                entity_pec : {
-                    required : true,
+                entity_pec: {
+                    required: true,
                     pec_regex: true
                 },
-                entity_cf : {
-                    required : true,
+                entity_cf: {
+                    required: true,
                     cf_regex: true
                 },
-                entity_piva : {
+                entity_piva: {
                     required : true,
                     piva_regex: true
                 },
-                entity_website : {
+                entity_website: {
                     website_regex: true
                 },
-                entity_password : {
+                entity_password: {
                     required: true,
                     password_regex: true
                 },
@@ -82,14 +82,14 @@ $().ready(function() {
                     required: "Inserire Codice Fiscale",  
                     cf_regex: "Inserire Codice Fiscale nel formato corretto"
                 },
-                entity_piva : {
-                    required : "Inserire Partita IVA",
+                entity_piva: {
+                    required: "Inserire Partita IVA",
                     piva_regex: "Inserire Partita IVA nel formato corretto"
                 },
-                entity_website : {
+                entity_website: {
                     website_regex: "Inserire il sito web nel formato corretto"
                 },
-                entity_password : {
+                entity_password: {
                     required: "Inserire password",
                     password_regex: "La password deve essere lunga almeno 8 caratteri.<br>" +
                         "Inserire:<br>" +
@@ -105,9 +105,10 @@ $().ready(function() {
                     required: "Inserire nome ente",
                     username_regex: "Inserire caratteri alfanumerici"
                 },
-                entity_term: "<br>Accettare Termini & Condizioni"
+                entity_term: {
+                    required: "<br>Accettare Termini & Condizioni"
+                }
             },
-            // Settiamo il submit handler per la form
             submitHandler: function(form) {
                 form.submit();
             }

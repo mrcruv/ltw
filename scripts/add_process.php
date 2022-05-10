@@ -6,10 +6,23 @@ if (!isset($_POST['add_process_submit'])) {
     header ('Location: ../processi.php');
 }
 
+$name_regex = '/^[a-zA-Z0-9]{1,255}$/';
+$type_regex = '/^[a-zA-Z0-9 ]{1,255}$/';
+$description_regex = '/^[a-zA-Z0-9 .,;]{1,255}$/';
+
 $username = $_SESSION['username'];
-$name = $_POST['name'];
-$type = $_POST['type'];
-$description = $_POST['description'];
+$name = trim($_POST['name']);
+$type = trim($_POST['type']);
+$description = trim($_POST['description']);
+
+!empty($name) or die('nome non inserito');
+preg_match($name_regex, $name) or die('nome non corretto');
+
+!empty($type) or die('tipo non inserito');
+preg_match($type_regex, $type) or die('tipo non corretto');
+
+!empty($description) or die('descrizione non inserita');
+preg_match($description_regex, $description) or die('descrizione non corretta');
 
 $query = 'SELECT * FROM processi WHERE nome=?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));

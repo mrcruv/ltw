@@ -12,12 +12,13 @@ jQuery.validator.addMethod("description_regex", function(value, element) {
 
 $().ready(function() {
     $("#add_competence_form").validate({
-        rules : {
-            name : {
+        rules: {
+            name: {
                 required: true,
                 name_regex: true
             },
-            area : {
+            area: {
+                required: true,
                 area_regex: true
             },
             description: {
@@ -25,18 +26,18 @@ $().ready(function() {
             }
         },
         messages: {
-            name : {
+            name: {
                 required: "Inserire nome competenza",
                 name_regex: "Inserire nome nel formato corretto"
             },
             area: {
+                required: "Inserire area",
                 area_regex: "Inserire area nel formato corretto"
             },
             description: {
                 description_regex: "Inserire descrizione nel formato corretto"
             }
         },
-        // Settiamo il submit handler per la form
         submitHandler: function(form) {
             form.submit();
         }
