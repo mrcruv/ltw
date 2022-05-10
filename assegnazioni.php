@@ -17,6 +17,8 @@ $usertype = $_SESSION['usertype'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="scripts/error.js"></script>
+    <script src="scripts/message.js"></script>
 
     <title><?php echo($sitename); ?></title>
 </head>
@@ -24,6 +26,16 @@ $usertype = $_SESSION['usertype'];
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="scripts/add_form.js"></script>
 
+    <?php
+    require_once('includes/error.php');
+    require_once('includes/message.php');
+    if (isset($_GET['err'])):
+        echo('<script>error();</script>');
+    endif;
+    if (isset($_GET['msg'])):
+        echo('<script>message();</script>');
+    endif;
+    ?>
 
     <?php require_once('includes/header.php'); ?>
 

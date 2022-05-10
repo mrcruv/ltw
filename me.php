@@ -20,11 +20,24 @@ $usertype = $_SESSION['usertype'];
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script src="scripts/validate_update_password.js"></script>
+    <script src="scripts/error.js"></script>
+    <script src="scripts/message.js"></script>
 
     <title><?php echo($sitename . ' - ' . $username); ?></title>
 </head>
 <body class="d-flex flex-column min-vh-100">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <?php
+    require_once('includes/error.php');
+    require_once('includes/message.php');
+    if (isset($_GET['err'])):
+        echo('<script>error();</script>');
+    endif;
+    if (isset($_GET['msg'])):
+        echo('<script>message();</script>');
+    endif;
+    ?>
 
     <?php require_once('includes/header.php'); ?>
 
