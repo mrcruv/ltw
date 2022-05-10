@@ -28,7 +28,15 @@ jQuery.validator.addMethod("password_regex", function(value, element) {
 
 jQuery.validator.addMethod("name_regex", function(value, element) {   
         return /^[a-zA-Z]{1,30}$/.test(value);   
-        }); 
+        });
+
+jQuery.validator.addMethod("surname_regex", function(value, element) {
+    return /^[a-zA-Z]{1,30}$/.test(value);
+});
+
+jQuery.validator.addMethod("city_regex", function(value, element) {
+    return /^[a-zA-Z]{1,30}$/.test(value);
+});
 
 
 
@@ -64,11 +72,11 @@ $().ready(function() {
                     },
                     surname: {
                         required: true,
-                        name_regex: true
+                        surname_regex: true
                     },
                     city: {
                         required: true,
-                        name_regex: true
+                        city_regex: true
                     },
                     date:{
                         required: true
@@ -108,13 +116,13 @@ $().ready(function() {
                     },
                     surname: {
                         required: "Inserire cognome",
-                        name_regex: "Inserire caratteri alfabetici"
+                        surname_regex: "Inserire caratteri alfabetici"
                     },
                     city: {
                         required: "Inserisci la città di nascita",
-                        name_regex: "Inserisci caratteri alfabetici"
+                        city_regex: "Inserisci caratteri alfabetici"
                     },
-                    date:{
+                    date: {
                         required: "Inserisci la data di nascita"
                     },
                     expert_term: {

@@ -63,7 +63,7 @@ if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'ente') {
             <?php else: ?>
                 <?php for ($i = 0; $i < $n; $i += 1) { ?>
                     <tr>
-                        <th scope="row"><?php echo $i+1?></th>
+                        <th scope="row"><?php echo($i+1); ?></th>
                         <td><?php echo($array[$i]['title']); ?></td>
                         <td><?php echo($array[$i]['date']); ?></td>
                         <td><?php echo($array[$i]['notes']); ?></td>
@@ -75,32 +75,32 @@ if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'ente') {
         </table>
     </div>
 
-        <div class="container-fluid">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Competenza</th>
-                    <th scope="col">Descrizione</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php $array = show_expert_competence($_GET['username']);
-                $n = count($array);
-                if (!is_array($array) or $n <= 0): ?>
-                    <tr><td colspan="6"><h6>L'esperto selezionato non ha inserito competenze al momento</h6></td></tr>
-                <?php else: ?>
-                    <?php for ($i = 0; $i < $n; $i += 1) { ?>
-                        <tr>
-                            <th scope="row"><?php echo $i+1?></th>
-                            <td><?php echo($array[$i]['competence']); ?></td>
-                            <td><?php echo($array[$i]['description']); ?></td>
-                        </tr>
-                    <?php } ?>
-                <?php endif; ?>
-                </tbody>
-            </table>
-        </div>
+    <div class="container-fluid">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Competenza</th>
+                <th scope="col">Descrizione</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php $array = show_expert_competence($_GET['username']);
+            $n = count($array);
+            if (!is_array($array) or $n <= 0): ?>
+                <tr><td colspan="6"><h6>L'esperto selezionato non ha inserito competenze al momento</h6></td></tr>
+            <?php else: ?>
+                <?php for ($i = 0; $i < $n; $i += 1) { ?>
+                    <tr>
+                        <th scope="row"><?php echo($i+1); ?></th>
+                        <td><?php echo($array[$i]['competence']); ?></td>
+                        <td><?php echo($array[$i]['description']); ?></td>
+                    </tr>
+                <?php } ?>
+            <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
     <?php endif; ?>
 
     <div class="container-fluid">
