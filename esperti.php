@@ -26,8 +26,45 @@ if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'ente') {
 
     <?php require_once('includes/header.php'); ?>
 
-    <?php
-    require_once('scripts/show_expert.php'); ?>
+    <?php require_once('scripts/show_expert.php'); ?>
+
+    <?php if (isset($_GET['username'])): ?>
+    <div class="container-fluid">
+        <h5>Esperto selezionato: <?php echo($_GET['username']); ?></h5>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Titolo</th>
+                <th scope="col">Data conseguimento</th>
+                <th scope="col">Note</th>
+                <th scope="col">Voto</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php $array = show_expert_title($_GET['username']);
+            $n = count($array);
+            if (!is_array($array) or $n <= 0) { ?>
+                <tr><td colspan="6"><h6>L'esperto selezionato non ha inserito titoli di studio al momento</h6></td></tr>
+                <?php
+            }
+            else {
+                for ($i = 0; $i < $n; $i += 1) { ?>
+                    <tr>
+                        <th scope="row"><?php echo $i+1?></th>
+                        <td><?php echo $array[$i]['title']?></td>
+                        <td><?php echo $array[$i]['date']?></td>
+                        <td><?php echo $array[$i]['notes']?></td>
+                        <td><?php echo $array[$i]['grade']?></td>
+                    </tr>
+                    <?php
+                }
+            }  ?>
+            </tbody>
+        </table>
+    </div>
+    <?php endif ?>
 
     <div class="container-fluid">
 
@@ -55,7 +92,7 @@ if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'ente') {
                 for ($i = 0; $i < $n; $i += 1) { ?>
                 <tr>
                     <th scope="row"><?php echo $i+1?></th>
-                    <td><?php echo $array[$i]['username']?></td>
+                    <td><a href="esperti.php?username=<?php echo($array[$i]['username']); ?>"><?php echo $array[$i]['username']?></a></td>
                     <td><?php echo $array[$i]['name']?></td>
                     <td><?php echo $array[$i]['surname']?></td>
                     <td><?php echo $array[$i]['city']?></td>
