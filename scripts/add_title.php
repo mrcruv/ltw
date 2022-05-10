@@ -9,7 +9,7 @@ if (!isset($_POST['add_title_submit'])) {
 $name_regex = '/^[a-zA-Z0-9]{1,255}$/';
 $notes_regex = '/^[a-zA-Z0-9 .,;]{1,255}$/';
 //$date_regex = '';
-$grade_regex = '^[0-9]{1,3}$';
+$grade_regex = '/^[0-9]{1,3}$/';
 
 $username = $_SESSION['username'];
 $name = trim($_POST['name']);
