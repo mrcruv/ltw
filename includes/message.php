@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="CHIUDI"></button>
             </div>
             <div class="modal-body">
-                <p><?php echo strtoupper($_GET['msg']); ?></p>
+                <p><?php echo(strtoupper(trim($_GET['msg']))); ?></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CHIUDI</button>
