@@ -23,9 +23,9 @@ preg_match($area_regex, $area) or die('area non corretta');
 
 if (!empty($description)) preg_match($description_regex, $description) or die('descrizione non corretta');
 
-$query = 'SELECT * FROM competenze WHERE nome=?';
+$query = 'SELECT * FROM competenze WHERE nome=? AND settore=?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
-mysqli_stmt_bind_param($statement, 's', $name) or die(mysqli_error($connection));
+mysqli_stmt_bind_param($statement, 'ss', $name, $area) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 if (!mysqli_stmt_fetch($statement)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
@@ -36,9 +36,9 @@ if (!mysqli_stmt_fetch($statement)) {
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
-$query = 'SELECT * FROM competenze_esperti WHERE competenza=? AND esperto=?';
+$query = 'SELECT * FROM competenze_esperti WHERE competenza=? AND esperto=? AND settore=?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
-mysqli_stmt_bind_param($statement, 'ss', $name, $username) or die(mysqli_error($connection));
+mysqli_stmt_bind_param($statement, 'sss', $name, $username, $area) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 if (mysqli_stmt_fetch($statement)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
@@ -46,11 +46,12 @@ if (mysqli_stmt_fetch($statement)) {
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
-$query = 'INSERT INTO competenze_esperti(esperto, competenza, descrizione) VALUES (?, ?, ?);';
+$query = 'INSERT INTO competenze_esperti(esperto, competenza, settore, descrizione) VALUES (?, ?, ?, ?);';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
-mysqli_stmt_bind_param($statement, 'sss', $username, $name, $description) or die(mysqli_error($connection));
+mysqli_stmt_bind_param($statement, 'ssss', $username, $name, $area, $description) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
+
 
 //require_once('../includes/close_connection.php');
 header('Location: ../competenze.php?msg=competenza+inserita+con+successo');
