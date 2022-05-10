@@ -27,7 +27,7 @@ if (isset($_SESSION['username'])) {
     <script src="scripts/form_switch.js"></script>
     <script src="scripts/validate_register_entity.js"></script>
     <script src="scripts/validate_register_expert.js"></script>
-    <script src="scripts/error_login.js"></script>
+    <script src="scripts/error.js"></script>
 
     <title><?php echo($sitename); ?></title>
 </head>
@@ -35,27 +35,12 @@ if (isset($_SESSION['username'])) {
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
+<?php require_once('includes/error.php'); ?>
 <?php
-    if (isset($_GET['err'])) {?>
-            <script>error();</script>
-<?php } ?>
-
-    <div class="modal fade" id="errorModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Errore</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p><?php echo strtoupper($_GET['err']); ?></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    if (isset($_GET['err'])):
+            echo('<script>error();</script>');
+    endif
+?>
 
 <div class="content">
     <div class="container">
