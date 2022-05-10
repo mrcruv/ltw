@@ -26,7 +26,7 @@ function show_expert_title($username)
     $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
     mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
     mysqli_stmt_execute($statement) or die(mysqli_error($connection));
-    mysqli_stmt_bind_result($statement, $username, $title, $date, $notes, $grade);
+    mysqli_stmt_bind_result($statement, $username, $title, $date, $notes, $grade) or die(mysqli_error($connection));
     $num_rows = mysqli_stmt_num_rows($statement);
     $i = 0;
     $rows = array();

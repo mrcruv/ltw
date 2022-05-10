@@ -9,7 +9,7 @@ function show_all_availabilities_from_expert($expert_username)
     $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
     mysqli_stmt_bind_param($statement, 's', $expert_username) or die(mysqli_error($connection));
     mysqli_stmt_execute($statement) or die(mysqli_error($connection));
-    mysqli_stmt_bind_result($statement, $process, $entity, $request_date, $allocation_date, $rejection_date);
+    mysqli_stmt_bind_result($statement, $process, $entity, $request_date, $allocation_date, $rejection_date) or die(mysqli_error($connection));
     $num_rows = mysqli_stmt_num_rows($statement);
     $i = 0;
     $rows = array();
@@ -31,7 +31,7 @@ function show_all_availabilities_from_entity($entity_username)
     $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
     mysqli_stmt_bind_param($statement, 's', $entity_username) or die(mysqli_error($connection));
     mysqli_stmt_execute($statement) or die(mysqli_error($connection));
-    mysqli_stmt_bind_result($statement, $process, $expert, $request_date, $allocation_date, $rejection_date);
+    mysqli_stmt_bind_result($statement, $process, $expert, $request_date, $allocation_date, $rejection_date) or die(mysqli_error($connection));
     $num_rows = mysqli_stmt_num_rows($statement);
     $i = 0;
     $rows = array();
