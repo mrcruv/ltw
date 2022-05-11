@@ -39,3 +39,63 @@ textarea{
   z-index: 2;
 }
 
+.gradient-custom-2 {
+  /* fallback for old browsers */
+  background: #fccb90;
+  
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #abadff, #a0a2f8, #999bff, #8688ff);
+  
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #abadff, #a0a2f8, #999bff, #8688ff);
+  }
+  
+  @media (min-width: 768px) {
+  .gradient-form {
+  height: 100vh !important;
+  }
+  }
+  @media (min-width: 769px) {
+  .gradient-custom-2 {
+  border-top-right-radius: .3rem;
+  border-bottom-right-radius: .3rem;
+  }
+}
+
+.animation {
+  animation-duration: 0.5s;
+  animation-name: slidein;
+  animation-direction: alternate;
+}
+
+@keyframes slidein {
+  from {
+      margin-left: 25%;
+      width: 100%;
+      opacity: 0;
+  }
+
+  to {
+      margin-left: 0%;
+      width: 100%;
+      opacity: 1;
+  }
+}
+
+.tab {
+  animation-duration: 1s;
+  animation-name: fadein;
+  animation-direction: alternate;
+}
+
+@keyframes fadein {
+  from {
+      width: 100%;
+      opacity: 0;
+  }
+
+  to {
+      width: 100%;
+      opacity: 1;
+  }
+}
