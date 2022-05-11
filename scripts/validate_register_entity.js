@@ -1,5 +1,5 @@
 jQuery.validator.addMethod("username_regex", function(value, element) {
-        return /^[a-zA-Z0-9]{1,30}$/.test(value);   
+        return /^[a-zA-Z0-9_]{1,30}$/.test(value);
         });
 
 jQuery.validator.addMethod("pec_regex", function(value, element) {   
@@ -7,7 +7,7 @@ jQuery.validator.addMethod("pec_regex", function(value, element) {
         });
     
 jQuery.validator.addMethod("cf_regex", function(value, element) {   
-        return /[A-Za-z]{6}[0-9lmnpqrstuvLMNPQRSTUV]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9lmnpqrstuvLMNPQRSTUV]{2}[A-Za-z]{1}[0-9lmnpqrstuvLMNPQRSTUV]{3}[A-Za-z]{1}/.test(value);   
+        return /[A-Za-z]{6}[0-9lmnpqrstuvLMNPQRSTUV]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9lmnpqrstuvLMNPQRSTUV]{2}[A-Za-z]{1}[0-9lmnpqrstuvLMNPQRSTUV]{3}[A-Za-z]{1}/.test(value);
         });
 
 jQuery.validator.addMethod("password_regex", function(value, element) {   

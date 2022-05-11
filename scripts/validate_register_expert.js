@@ -1,5 +1,5 @@
 jQuery.validator.addMethod("username_regex", function(value, element) {   
-        return /^[a-zA-Z0-9]{1,30}$/.test(value);   
+        return /^[a-zA-Z0-9_]{1,30}$/.test(value);
         });
 
 jQuery.validator.addMethod("pec_regex", function(value, element) {   
