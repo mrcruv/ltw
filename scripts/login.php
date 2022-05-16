@@ -9,6 +9,9 @@ $username = trim($_POST['username']);
 $password = trim($_POST['password']);
 $hash = password_hash($password, PASSWORD_BCRYPT);
 
+!empty($username) or header('Location: ../index.php?err=username+non+inserito');
+!empty($password) or header('Location: ../index.php?err=password+non+inserita');
+
 $query = 'SELECT password FROM utenti WHERE username=?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
 mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
