@@ -35,7 +35,7 @@ if (isset($_SESSION['username'])) {
 
     <title><?php echo($sitename); ?></title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
@@ -73,7 +73,7 @@ if (isset($_SESSION['username'])) {
 
                         <div class="tab-content">
                         <div class="tab active" data-tab="pills-login">
-                            <form id="login_form" action="<?php echo('scripts/login.php'); ?>" method="post">
+                            <form id="login_form" action="scripts/login.php" method="post">
                                 <div class="form-outline mt-4 mb-4">
                                 <input type="text" id="login_username" class="form-control" placeholder="Username" name="username"/>
                                 </div>
@@ -111,7 +111,7 @@ if (isset($_SESSION['username'])) {
 
                             <h3 id="text_entity">Ente</h3>
                             <h3 id="text_expert">Esperto</h3>
-                            <form id="register_entity_form" action="<?php echo('scripts/register_entity.php'); ?>" method="post">
+                            <form id="register_entity_form" action="scripts/register_entity.php" method="post">
                                 <div class="step1">
                                 <div class="form-card">
             
@@ -181,7 +181,7 @@ if (isset($_SESSION['username'])) {
                                     </div>
                                 </form>
                                 
-                            <form id="register_expert_form" action="<?php echo('scripts/register_expert.php'); ?>" method="post">
+                            <form id="register_expert_form" action="scripts/register_expert.php" method="post">
                                 <div class="step1">
                                     <div class="form-card">
                 
@@ -276,10 +276,11 @@ if (isset($_SESSION['username'])) {
             </div>
             <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
                 <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                  <h4 class="mb-4">We are more than just a company</h4>
-                  <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  <h4 class="mb-4">Piattaforma per l'esternalizzazione dei processi aziendali</h4>
+                  <p class="small mb-0">Mettiamo in comunicazione enti pubblici e privati con i migliori esperti
+                      in tutti i settori del business, della tecnologia e della finanza. Se non sei già registrato,
+                      iscriviti subito per metterti a disposizione, se sei un esperto, o per proporre i tuoi progetti,
+                      se sei un ente.</p>
                 </div>
               </div>
           </div>
