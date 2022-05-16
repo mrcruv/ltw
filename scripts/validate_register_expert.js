@@ -38,6 +38,32 @@ jQuery.validator.addMethod("city_regex", function(value, element) {
     return /^[a-zA-Z]{1,30}$/.test(value);
 });
 
+jQuery.validator.addMethod("adult_date", function(value, element) {
+    var currentDate = new Date();
+
+    var currentYear = currentDate.getFullYear(); 
+    var currentMonth = currentDate.getMonth(); 
+    var currentDay = currentDate.getDate();
+ 
+    var birthDate = new Date(value);
+
+    var birthYear = birthDate.getFullYear();
+    var birthMonth = birthDate.getMonth();
+    var birthDay = birthDate.getDate();
+
+    var calculatedAge = currentYear - birthYear;
+    
+    if (currentMonth < birthMonth) {
+    	calculatedAge--; 
+    } 
+    if (birthMonth == currentMonth && currentDay < birthDay) { 
+    	calculatedAge--; 
+    } 
+
+    if(calculatedAge >= 18) return true;
+    else return false;
+});
+
 
 
 $().ready(function() {
@@ -80,7 +106,8 @@ $().ready(function() {
                         city_regex: true
                     },
                     date:{
-                        required: true
+                        required: true,
+                        adult_date: true
                     },
                     expert_term: {
                         required: true
@@ -124,7 +151,8 @@ $().ready(function() {
                         city_regex: "Inserisci caratteri alfabetici"
                     },
                     date: {
-                        required: "Inserisci la data di nascita"
+                        required: "Inserisci la data di nascita corretta",
+                        adult_date: "L'esperto deve essere maggiorenne"
                     },
                     expert_term: {
                         required: "<br>Accettare Termini & Condizioni"
