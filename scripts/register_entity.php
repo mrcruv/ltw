@@ -1,7 +1,7 @@
 <?php
 global $connection;
 require_once('../includes/open_connection.php');
-if (!isset($_POST['register_submit'])) {
+if (!isset($_POST['register_entity_submit'])) {
     header ('Location: ../me.php');
 }
 

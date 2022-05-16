@@ -57,11 +57,9 @@ if (isset($_SESSION['username'])) {
           <div class="row d-flex justify-content-center h-100 shadow rounded-2"  style="background-color: rgb(255, 255, 255);">
             <div class="col-lg-6 h-75">
                 <div class="text-center">
-                    <img src="img/prova_logo.png"
-                      style="width: 185px;" alt="logo">
-                    <h4 class="mb-5 mt-1 pb-1">Digital Outsourcing</h4>
+                    <img src="img/prova_logo.png" style="width: 185px;" alt="logo">
+                    <h4 class="mb-5 mt-1 pb-1"><?php echo($sitename); ?></h4>
                 </div>
-
                 <div class="row">
                     <div class="col-8 offset-2">
                         <ul class="nav nav-pills nav-justified mb-3" id="login_register_nav" role="tablist">
@@ -72,19 +70,16 @@ if (isset($_SESSION['username'])) {
                             <a class="nav-link" id="tab-register" data-target="pills-register" href="#">Register</a>
                         </li>
                         </ul>
-
                         <div class="tab-content">
                         <div class="tab active" data-tab="pills-login">
                             <form id="login_form" action="scripts/login.php" method="post" class="login">
                                 <div class="form-outline mt-4 mb-4">
                                 <input type="text" id="login_username" class="form-control" placeholder="Username" name="username"/>
                                 </div>
-
                                 <div class="form-outline mb-3">
                                     <input type="password" id="login_password" class="form-control" placeholder="Password" name="password" aria-describedby="password_help"/>
                                     <span toggle="#login_password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                 </div>
-
                                 <div class="row mb-4">
                                     <div class="col-md-6 d-flex justify-content-center">
                                         <div class="form-check mb-2 mb-md-0">
@@ -92,56 +87,44 @@ if (isset($_SESSION['username'])) {
                                             <label class="form-check-label" for="remember_me_login"> Remember me </label>
                                         </div>
                                     </div>
-
                                     <div class="col-md-6 d-flex justify-content-center mb-5">
                                         <a href="#">Forgot password?</a>
                                     </div>
-
-                                    <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+                                    <button type="submit" class="btn btn-primary btn-block mb-4" name="login_submit">Sign in</button>
                                 </div>
                             </form>
                         </div>
                         </div>
-
                         <div class="tab-content">
                         <div class="tab" data-tab="pills-register">
                             <ul class="nav nav-pills nav-justified border rounded mt-4 mb-1" id="entity_expert_name" role="tablist">
                                 <li><button class="btn switch" type="button" id="entity_button">Ente</button></li>
                                 <li><button class="btn switch" type="button" id="expert_button">Esperto</button></li>
                             </ul>
-
                             <h3 id="text_entity">Ente</h3>
                             <h3 id="text_expert">Esperto</h3>
                             <form id="register_entity_form" action="scripts/register_entity.php"  class="register" method="post">
                                 <div class="step1">
                                 <div class="form-card">
-            
                                     <div class="form-outline mb-2">
                                         <input type="text" id="register_entity_username" class="form-control" placeholder="Username" name="entity_username"/>
                                     </div>
-        
                                     <div class="form-outline mb-2">
                                         <input type="email" id="register_entity_pec" class="form-control" placeholder="PEC" name="entity_pec"/>
                                     </div>
-        
                                     <div class="form-outline mb-5">
                                         <input type="text" id="register_entity_cf" class="form-control" placeholder="Codice Fiscale" name="entity_cf"/>
                                     </div>
-            
                                 </div>
                                 </div>
-            
                                     <div class="step2">
                                         <div class="form-card">
-                    
                                             <div class="form-outline mb-2">
                                                 <input type="text" id="register_entity_piva" class="form-control" placeholder="Partita IVA" name="entity_piva"/>
                                             </div>
-                
                                             <div class="form-outline mb-2">
                                                 <input type="text" id="register_entity_website" class="form-control" placeholder="Sito Web" name="entity_website"/>
                                             </div>
-
                                             <div class="form-outline mb-5">
                                                 <select class="form-select" id="register_entity_type" name="type">
                                                     <option selected disabled>Scegli il tipo di Ente</option>
@@ -149,22 +132,17 @@ if (isset($_SESSION['username'])) {
                                                     <option value="privato">Ente privato</option>
                                                 </select>
                                             </div>
-
                                         </div>
                                     </div>
-                    
                                     <div class="step3">
                                         <div class="form-card">
-                    
                                             <div class="form-outline mb-2">
                                                 <input type="text" id="register_entity_name" class="form-control" placeholder="Denominazione" name="entity_name"/>
                                             </div>
-
                                             <div class="form-outline mb-2">
                                                 <input type="password" aria-describedby="password_help" id="register_entity_password" class="form-control" placeholder="Password" name="entity_password"/>
                                                 <span toggle="#register_entity_password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                             </div>
-
                                             <div class="row mb-2">
                                                 <div class="col-md d-flex justify-content-center">
                                                     <div class="form-check mb-md-0">
@@ -173,73 +151,54 @@ if (isset($_SESSION['username'])) {
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
-
                                     <div class="row mb-3">
-                                        <button type="submit" class="btn btn-block btn-primary register_button">Register</button>
+                                        <button type="submit" class="btn btn-block btn-primary register_button" name="register_entity_submit">Register</button>
                                     </div>
                                 </form>
-                                
                             <form id="register_expert_form" action="scripts/register_expert.php" class="register" method="post">
                                 <div class="step1">
                                     <div class="form-card">
-                
                                         <div class="form-outline mb-2">
                                             <input type="text" id="register_expert_username" class="form-control" placeholder="Username" name="expert_username"/>
                                         </div>
-        
                                         <div class="form-outline mb-2">
                                             <input type="email" id="register_expert_pec" class="form-control" placeholder="PEC" name="expert_pec"/>
                                         </div>
-        
                                         <div class="form-outline mb-2">
                                             <input type="text" id="register_expert_cf" class="form-control" placeholder="Codice Fiscale" name="expert_cf"/>
                                         </div>
-        
                                         <div class="form-outline mb-3">
                                             <input type="text" id="register_expert_piva" class="form-control" placeholder="Partita IVA" name="expert_piva"/>
                                         </div>
-                
                                     </div>
                                 </div>
-                
                                 <div class="step2">
                                     <div class="form-card">
-                
                                         <div class="form-outline mb-2">
                                             <input type="text" id="register_expert_website" class="form-control" placeholder="Sito Web" name="expert_website"/>
                                         </div>
-
                                         <div class="form-outline mb-2">
                                             <input type="text" id="register_expert_name" class="form-control" placeholder="Nome" name="name"/>
                                         </div>
-    
                                         <div class="form-outline mb-2">
                                             <input type="text" id="register_expert_surname" class="form-control" placeholder="Cognome" name="surname"/>
                                         </div>
-
                                         <div class="form-outline mb-3">
                                             <input type="text" id="register_expert_city" class="form-control" placeholder="Città di Nascita" name="city"/>
                                         </div>
-
                                     </div>
                                 </div>
-                
                                 <div class="step3">
                                     <div class="form-card">
-
                                         <div class="form-outline mb-2">
                                             <input type="text" id="register_expert_date" class="form-control" placeholder="Data di Nascita" onfocus="(this.type='date')" name="date"/>
                                         </div>
-
                                         <div class="form-outline mb-2">
                                             <input type="password" aria-describedby="password_help" id="register_entity_password" class="form-control" placeholder="Password" name="expert_password"/>
                                             <span toggle="#register_expert_password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                         </div>
-
-
                                         <div class="row mb-4">
                                             <div class="col-md d-flex justify-content-center">
                                                 <div class="form-check mb-md-0">
@@ -248,16 +207,12 @@ if (isset($_SESSION['username'])) {
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
-
                                 <div class="row mb-4">
-                                    <button type="submit" class="btn btn-block btn-primary register_button">Register</button>
+                                    <button type="submit" class="btn btn-block btn-primary register_button" name="register_expert_submit">Register</button>
                                 </div>
-
                             </form>
-
                             <div class="d-flex justify-content-between">
                                 <div>
                                     <button type="button" id="prev" class="btn btn-secondary btn-sm">
