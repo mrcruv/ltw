@@ -34,6 +34,7 @@ jQuery.validator.addMethod("name_regex", function(value, element) {
 
 $().ready(function() {
         $("#register_entity_form").validate({
+            ignore: [],
             rules: {
                 entity_username: {
                     required: true,  
