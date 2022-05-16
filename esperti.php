@@ -2,6 +2,7 @@
 global $sitename;
 require_once('includes/info.php');
 require_once('includes/session.php');
+require_once('scripts/show_expert.php');
 if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'ente') {
     header ('Location: me.php');
 }
@@ -37,10 +38,7 @@ if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'ente') {
     endif;
     ?>
 
-    <?php
-    require_once('includes/header.php');
-    require_once('scripts/show_expert.php');
-    ?>
+    <?php require_once('includes/header.php'); ?>
 
     <?php if (isset($_GET['username'])): ?>
     <div class="container-fluid">
@@ -57,7 +55,8 @@ if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'ente') {
             </tr>
             </thead>
             <tbody>
-            <?php $array = show_expert_title($_GET['username']);
+            <?php
+            $array = show_expert_title($_GET['username']);
             $n = count($array);
             if (!is_array($array) or $n <= 0): ?>
                 <tr><td colspan="6"><h6>L'esperto selezionato non ha inserito titoli di studio al momento</h6></td></tr>
