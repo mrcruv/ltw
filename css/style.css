@@ -1,5 +1,5 @@
 body{
-  background-color: #99caff2f;
+  background-color: #ebebeb2f;
 }
 
 .content {
@@ -21,16 +21,14 @@ body{
   display: block;
 }
 
-.switch:hover{
-
-  border-bottom: 1px solid;
-
-}
-
 textarea{
   resize: none;
 }
 
+
+
+/*INDEX*/
+/*-----------------------------------*/
 .field-icon {
   float: right;
   margin-left: -25px;
@@ -61,7 +59,10 @@ textarea{
   border-bottom-right-radius: .3rem;
   }
 }
+/*-----------------------------------*/
 
+/*ANIMAZIONI*/
+/*-----------------------------------*/
 .animation {
   animation-duration: 0.5s;
   animation-name: slidein;
@@ -99,3 +100,26 @@ textarea{
       opacity: 1;
   }
 }
+/*-----------------------------------*/
+
+/*VALIDATE*/
+/*-----------------------------------*/
+.register input.error {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ff002b;
+}
+
+.register label.error {
+  color: #a94442;
+}
+
+.login input.error {
+  background-color: #a0a2f86c;
+  border-color: #000000ce;
+}
+
+.login label.error {
+  color: #353535;
+}
+/*-----------------------------------*/
