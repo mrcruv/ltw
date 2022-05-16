@@ -51,7 +51,7 @@ if (isset($_SESSION['username'])) {
     ?>
 
     <section class="h-100 gradient-form" style="background-color: rgb(233, 221, 221);">
-        <div class="container py-5 h-100">
+        <div class="container py-3 h-100">
           <div class="row d-flex justify-content-center h-100 shadow rounded-2"  style="background-color: rgb(255, 255, 255);">
             <div class="col-lg-6 text-center h-75">
                 <div>
@@ -177,7 +177,7 @@ if (isset($_SESSION['username'])) {
                                     </div>
 
                                     <div class="row mb-3">
-                                        <button class="btn btn-block btn-primary register_button">Register</button>
+                                        <button type="submit" class="btn btn-block btn-primary register_button">Register</button>
                                     </div>
                                 </form>
                                 
@@ -252,7 +252,7 @@ if (isset($_SESSION['username'])) {
                                 </div>
 
                                 <div class="row mb-4">
-                                    <button class="btn btn-block btn-primary register_button">Register</button>
+                                    <button type="submit" class="btn btn-block btn-primary register_button">Register</button>
                                 </div>
 
                             </form>
