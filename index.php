@@ -26,6 +26,7 @@ if (isset($_SESSION['username'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 
     <script src="scripts/form_switch.js"></script>
+    <script src="scripts/validate_login.js"></script>
     <script src="scripts/validate_register_entity.js"></script>
     <script src="scripts/validate_register_expert.js"></script>
     <script src="scripts/error.js"></script>
@@ -34,6 +35,7 @@ if (isset($_SESSION['username'])) {
     <script src="scripts/register_slide.js"></script>
 
     <title><?php echo($sitename); ?></title>
+    <link rel="icon" type="image/x-icon" href="img/prova_logo.ico">
 </head>
 <body class="d-flex flex-column min-vh-100">
 
@@ -50,14 +52,14 @@ if (isset($_SESSION['username'])) {
         endif;
     ?>
 
-    <section class="h-100 gradient-form" style="background-color: rgb(233, 221, 221);">
+    <section class="h-100 gradient-form">
         <div class="container py-3 h-100">
           <div class="row d-flex justify-content-center h-100 shadow rounded-2"  style="background-color: rgb(255, 255, 255);">
-            <div class="col-lg-6 text-center h-75">
-                <div>
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+            <div class="col-lg-6 h-75">
+                <div class="text-center">
+                    <img src="img/prova_logo.png"
                       style="width: 185px;" alt="logo">
-                    <h4 class="mb-5 pb-1">Digital Outsourcing</h4>
+                    <h4 class="mb-5 mt-1 pb-1">Digital Outsourcing</h4>
                 </div>
 
                 <div class="row">
@@ -73,7 +75,7 @@ if (isset($_SESSION['username'])) {
 
                         <div class="tab-content">
                         <div class="tab active" data-tab="pills-login">
-                            <form id="login_form" action="scripts/login.php" method="post">
+                            <form id="login_form" action="scripts/login.php" method="post" class="login">
                                 <div class="form-outline mt-4 mb-4">
                                 <input type="text" id="login_username" class="form-control" placeholder="Username" name="username"/>
                                 </div>
@@ -95,7 +97,7 @@ if (isset($_SESSION['username'])) {
                                         <a href="#">Forgot password?</a>
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary btn-block mb-4" name="login_submit">Sign in</button>
+                                    <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
                                 </div>
                             </form>
                         </div>
@@ -106,12 +108,11 @@ if (isset($_SESSION['username'])) {
                             <ul class="nav nav-pills nav-justified border rounded mt-4 mb-1" id="entity_expert_name" role="tablist">
                                 <li><button class="btn switch" type="button" id="entity_button">Ente</button></li>
                                 <li><button class="btn switch" type="button" id="expert_button">Esperto</button></li>
-                                <!--<input type="checkbox" id="register_user_type" name="user_type">-->
                             </ul>
 
                             <h3 id="text_entity">Ente</h3>
                             <h3 id="text_expert">Esperto</h3>
-                            <form id="register_entity_form" action="scripts/register_entity.php" method="post">
+                            <form id="register_entity_form" action="scripts/register_entity.php"  class="register" method="post">
                                 <div class="step1">
                                 <div class="form-card">
             
@@ -181,7 +182,7 @@ if (isset($_SESSION['username'])) {
                                     </div>
                                 </form>
                                 
-                            <form id="register_expert_form" action="scripts/register_expert.php" method="post">
+                            <form id="register_expert_form" action="scripts/register_expert.php" class="register" method="post">
                                 <div class="step1">
                                     <div class="form-card">
                 
@@ -230,7 +231,7 @@ if (isset($_SESSION['username'])) {
                                     <div class="form-card">
 
                                         <div class="form-outline mb-2">
-                                            <input type="date" id="register_expert_date" class="form-control" placeholder="Data di Nascita" name="date"/>
+                                            <input type="text" id="register_expert_date" class="form-control" placeholder="Data di Nascita" onfocus="(this.type='date')" name="date"/>
                                         </div>
 
                                         <div class="form-outline mb-2">
