@@ -158,7 +158,7 @@ $usertype = $_SESSION['usertype'];
                     <th scope="col">Esperto</th>
                     <th scope="col">Data della Richiesta</th>
                     <th scope="col">Data della Assegnazione</th>
-                    <th scope="col">Data della Rifiuto</th>
+                    <th scope="col">Data del Rifiuto</th>
                     <th scope="col">Stato</th>
                 </tr>
             </thead>
@@ -178,31 +178,25 @@ $usertype = $_SESSION['usertype'];
                     <td><?php echo $array[$i]['request_date']?></td>
                     <td><?php echo $array[$i]['allocation_date']?></td>
                     <td><?php echo $array[$i]['rejection_date']?></td>
-                    <?php 
+                    <?php
+                    $disabled = '';
                     if (is_null($array[$i]['allocation_date'])) {
                         if (is_null($array[$i]['rejection_date'])) {
                             echo('<td>' . 'assegnazione pendente' . '</td>');
-                            echo('<td><a href="scripts/accept_reject.php?action=accept&process=' . $array[$i]['process'] . '">');
-                            echo('<button type="button">accetta</button></a>');
-                            echo('<a href="scripts/accept_reject.php?action=reject&process=' . $array[$i]['process'] . '">');
-                            echo('<button type="button">rifiuta</button></a>' . '</td>');
                         }
                         else {
+                            $disabled = 'disabled';
                             echo('<td>' . 'assegnazione rifiutata' . '</td>');
-                            echo('<td><a href="scripts/accept_reject.php?action=accept&process=' . $array[$i]['process'] . '">');
-                            echo('<button type="button" disabled>accetta</button></a>');
-                            echo('<a href="scripts/accept_reject.php?action=reject&process=' . $array[$i]['process'] . '">');
-                            echo('<button type="button" disabled>rifiuta</button></a>' . '</td>');
                         }
                     }
                     else {
+                        $disabled = 'disabled';
                         echo('<td>' . 'assegnazione accettata' . '</td>');
-                        echo('<td><a href="scripts/accept_reject.php?action=accept&process=' . $array[$i]['process'] . '">');
-                        echo('<button type="button" disabled>accetta</button></a>');
-                        echo('<a href="scripts/accept_reject.php?action=reject&process=' . $array[$i]['process'] . '">');
-                        echo('<button type="button" disabled>rifiuta</button></a>' . '</td>');
                     }
-
+                    echo('<td><a href="scripts/accept_reject.php?action=accept&process=' . $array[$i]['process'] . '">');
+                    echo('<button type="button"' . $disabled . '>' . 'accetta' . '</button></a>');
+                    echo('<a href="scripts/accept_reject.php?action=reject&process=' . $array[$i]['process'] . '">');
+                    echo('<button type="button"' . $disabled . '>' . 'rifiuta' . '</button></a>');
                     ?>
                 </tr>
                 <?php
