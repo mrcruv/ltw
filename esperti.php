@@ -6,6 +6,10 @@ require_once('scripts/show_expert.php');
 if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'ente') {
     header ('Location: me.php');
 }
+if (isset($_GET['username']) and !expert_exists($_GET['username'])) {
+    header('Location: esperti.php?err=esperto+non+esistente');
+    die('esperto non esistente');
+}
 ?>
 
 <!DOCTYPE html>
