@@ -1,5 +1,5 @@
 jQuery.validator.addMethod("name_regex", function(value, element) {
-    return /^[a-zA-Z0-9]{1,255}$/.test(value);
+    return /^[a-z A-Z ]{1,255}$/.test(value);
 });
 
 // jQuery.validator.addMethod("date_regex", function(value, element) {

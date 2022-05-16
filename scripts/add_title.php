@@ -6,7 +6,7 @@ if (!isset($_POST['add_title_submit'])) {
     header ('Location: ../titoli.php');
 }
 
-$name_regex = '/^[a-zA-Z0-9]{1,255}$/';
+$name_regex = '/^[a-zA-Z ]{1,255}$/';
 $notes_regex = '/^[a-zA-Z0-9 .,;]{1,255}$/';
 //$date_regex = '';
 $grade_regex = '/^[0-9]{1,3}$/';
