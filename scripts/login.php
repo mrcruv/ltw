@@ -5,12 +5,18 @@ if (!isset($_POST['login_submit'])) {
     header ('Location: ../index.php');
 }
 
-$username = trim($_POST['username']);
-$password = trim($_POST['password']);
+$username = isset($_POST['username']) ? trim($_POST['username']) : false;
+$password = isset($_POST['password']) ? trim($_POST['password']) : false;
 $hash = password_hash($password, PASSWORD_BCRYPT);
 
-!empty($username) or header('Location: ../index.php?err=username+non+inserito');
-!empty($password) or header('Location: ../index.php?err=password+non+inserita');
+if (empty($username)) {
+    header('Location: ../index.php?err=username+non+inserito');
+    die('username non inserito');
+}
+if (empty($password)) {
+    header('Location: ../index.php?err=password+non+inserita');
+    die('password non inserita');
+}
 
 $query = 'SELECT password FROM utenti WHERE username=?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
@@ -20,8 +26,8 @@ mysqli_stmt_bind_result($statement, $result_password) or die(mysqli_error($conne
 if (!mysqli_stmt_fetch($statement)) {
     mysqli_stmt_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
-    echo('utente non esistente');
     header('Location: ../index.php?err=utente+non+esistente');
+    die('utente non esistente');
 }
 else if (password_verify($password, $result_password)){
     mysqli_stmt_free_result($statement);
@@ -49,8 +55,8 @@ else if (password_verify($password, $result_password)){
 else {
     mysqli_stmt_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
-    echo('password errata');
     header('Location: ../index.php?err=password+errata');
+    die('password errata');
 }
 
 //require_once('../includes/close_connection.php');

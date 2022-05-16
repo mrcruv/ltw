@@ -17,16 +17,25 @@ $old_hash = password_hash($old_password, PASSWORD_BCRYPT);
 $new_password = trim($_POST['new_password']);
 $new_hash = password_hash($new_password, PASSWORD_BCRYPT);
 
-!empty($old_password) or die('password attuale non inserita');
+if (empty($old_password)) {
+    header('Location: ../me.php?err=password+attuale+non+inserita');
+    die('password attuale non inserita');
+}
 
-!empty($new_password) or die('nuova password non inserita');
+if (empty($new_password)) {
+    header('Location: ../me.php?err=nuova+password+non+inserita');
+    die('nuova+password non inserita');
+}
 $msg = '';
-strlen($new_password) >= 8 or $msg = $msg . 'lunghezza minima non raggiunta ';
-preg_match($contains_lowercase, $new_password) or $msg = $msg . 'lowercase non incluso ';
-preg_match($contains_special, $new_password) or $msg = $msg . 'special non incluso';
-preg_match($contains_uppercase, $new_password) or $msg = $msg . 'uppercase non incluso ';
-preg_match($contains_digit, $new_password) or $msg = $msg . 'digit non inclusa';
-$msg == '' or die($msg);
+strlen($new_password) >= 8 or $msg .= 'lunghezza+minima+non+raggiunta';
+preg_match($contains_lowercase, $new_password) or $msg .= 'lowercase+non+incluso';
+preg_match($contains_special, $new_password) or $msg .= 'special+non+incluso';
+preg_match($contains_uppercase, $new_password) or $msg .= 'uppercase+non+incluso';
+preg_match($contains_digit, $new_password) or $msg .= 'digit+non+inclusa';
+if ($msg != '') {
+    header('Location: ../me.php?err=' . $msg);
+    die(str_replace('+', ' ', $msg));
+}
 
 $query = 'SELECT password FROM utenti WHERE username=?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
@@ -36,8 +45,8 @@ mysqli_stmt_bind_result($statement, $result_hash) or die(mysqli_error($connectio
 if (!mysqli_stmt_fetch($statement)) {
     mysqli_stmt_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
-    echo('error');
     header('Location: ../me.php?err=utente+non+esistente');
+    die('utente non esistente');
 }
 else if (password_verify($old_password, $result_hash)) {
     mysqli_stmt_free_result($statement);
@@ -52,7 +61,7 @@ else if (password_verify($old_password, $result_hash)) {
 else {
     mysqli_stmt_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
-    echo('password attuale incorretta');
     header('Location: ../me.php?err=password+attuale+incorretta');
+    die('password attuale incorretta');
 }
 

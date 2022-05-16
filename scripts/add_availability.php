@@ -7,14 +7,14 @@ if (!isset($_POST['add_availability_submit'])) {
 }
 
 $username = $_SESSION['username'];
-$expert = trim($_POST['expert']);
-$process = trim($_POST['process']);
+$expert = isset($_POST['expert']) ? trim($_POST['expert']) : false;
+$process = isset($_POST['process']) ? trim($_POST['process']) : false;
 
-if ($process == 'empty') {
+if (empty($process)) {
     header ('Location: ../assegnazioni.php?err=selezionare+processo');
     die("selezionare processo");
 }
-if ($expert == 'empty') {
+if (empty($expert)) {
     header ('Location: ../assegnazioni.php?err=selezionare+esperto');
     die("selezionare esperto");
 }
@@ -26,6 +26,7 @@ mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 if (!mysqli_stmt_fetch($statement)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header ('Location: ../assegnazioni.php?err=esperto+non+esistente');
+    die('esperto non esistente');
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
@@ -36,6 +37,7 @@ mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 if (!mysqli_stmt_fetch($statement)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header ('Location: ../assegnazioni.php?err=processo+non+esistente');
+    die('processo non esistente');
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
@@ -46,6 +48,7 @@ mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 if (mysqli_stmt_fetch($statement)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header ('Location: ../assegnazioni.php?err=assegnazione+gia+inserita');
+    die('assegnazione gia inserita');
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
 

@@ -12,19 +12,34 @@ $notes_regex = '/^[a-zA-Z0-9 .,;]{1,255}$/';
 $grade_regex = '/^[0-9]{1,3}$/';
 
 $username = $_SESSION['username'];
-$name = trim($_POST['name']);
-$date = $_POST['date'];
-$notes = trim($_POST['notes']);
-$grade = $_POST['grade'];
+$name = isset($_POST['name']) ? trim($_POST['name']) : false;
+$date = isset($_POST['date']) ? trim($_POST['date']) : false;
+$notes = isset($_POST['notes']) ? trim($_POST['notes']) : false;
+$grade = isset($_POST['grade']) ? trim($_POST['grade']) : false;
 
-!empty($name) or die('nome non inserito');
-preg_match($name_regex, $name) or die('nome non corretto');
+if (empty($name)){
+    header('Location: ../titoli.php?err=nome+non+inserito');
+    die('nome non inserito');
+}
+if (!preg_match($name_regex, $name)) {
+    header('Location: ../titoli.php?err=nome+non+corretto');
+    die('nome non corretto');
+}
 
-//if (!empty($date)) preg_match($date_regex, $date) or die('data non corretta');
+//if (!empty($date) and !preg_match($date_regex, $date) {
+//    header('Location: ../titoli.php?err=data+non+corretta');
+//    die('data non corretta');
+//}
 
-if (!empty($notes)) preg_match($notes_regex, $notes) or die('note non corrette');
+if (!empty($notes) and !preg_match($notes_regex, $notes)) {
+    header('Location: ../titoli.php?err=note+non+corrette');
+    die('note non corrette');
+}
 
-if (!empty($grade)) preg_match($grade_regex, $grade) or die('voto non corretto');
+if (!empty($grade) and !preg_match($grade_regex, $grade)) {
+    header('Location: ../titoli.php?err=voto+non+corretto');
+    die('voto non corretto');
+}
 
 
 $query = 'SELECT * FROM titoli WHERE denominazione=?';
@@ -47,6 +62,7 @@ mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 if (mysqli_stmt_fetch($statement)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../titoli.php?err=titolo+gia+inserito');
+    die('titolo gia inserito');
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
 

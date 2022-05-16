@@ -11,17 +11,32 @@ $area_regex = '/^[a-zA-Z0-9 ]{1,255}$/';
 $description_regex = '/^[a-zA-Z0-9 .,;]{1,255}$/';
 
 $username = $_SESSION['username'];
-$name = trim($_POST['name']);
-$area = trim($_POST['area']);
-$description = trim($_POST['description']);
+$name = isset($_POST['name']) ? trim($_POST['name']) : false;
+$area = isset($_POST['area']) ? trim($_POST['area']) : false;
+$description = isset($_POST['description']) ? trim($_POST['description']) : false;
 
-!empty($name) or die('nome non inserito');
-preg_match($name_regex, $name) or die('nome non corretto');
+if (empty($name)){
+    header('Location: ../competenze.php?err=nome+non+inserito');
+    die('nome non inserito');
+}
+if (!preg_match($name_regex, $name)) {
+    header('Location: ../competenze.php?err=nome+non+corretto');
+    die('nome non corretto');
+}
 
-!empty($area) or die('area non inserita');
-preg_match($area_regex, $area) or die('area non corretta');
+if (empty($area)){
+    header('Location: ../competenze.php?err=area+non+inserita');
+    die('area non inserita');
+}
+if (!preg_match($area_regex, $area)) {
+    header('Location: ../competenze.php?err=area+non+corretta');
+    die('area non corretta');
+}
 
-if (!empty($description)) preg_match($description_regex, $description) or die('descrizione non corretta');
+if (!empty($description) and !preg_match($description_regex, $description)) {
+    header('Location: ../competenze.php?err=descrizione+non+corretta');
+    die('descrizione non corretta');
+}
 
 $query = 'SELECT * FROM competenze WHERE nome=? AND settore=?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
@@ -43,6 +58,7 @@ mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 if (mysqli_stmt_fetch($statement)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../competenze.php?err=competenza+gia+inserita');
+    die('competenza gia inserita');
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
@@ -51,7 +67,6 @@ $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection
 mysqli_stmt_bind_param($statement, 'ssss', $username, $name, $area, $description) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
-
 
 //require_once('../includes/close_connection.php');
 header('Location: ../competenze.php?msg=competenza+inserita+con+successo');
