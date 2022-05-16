@@ -37,9 +37,10 @@ if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'ente') {
     endif;
     ?>
 
-    <?php require_once('includes/header.php'); ?>
-
-    <?php require_once('scripts/show_expert.php'); ?>
+    <?php
+    require_once('includes/header.php');
+    require_once('scripts/show_expert.php');
+    ?>
 
     <?php if (isset($_GET['username'])): ?>
     <div class="container-fluid">

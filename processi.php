@@ -40,7 +40,10 @@ if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'ente') {
     endif;
     ?>
 
-    <?php require_once('includes/header.php'); ?>
+    <?php
+    require_once('includes/header.php');
+    require_once('scripts/show_process.php');
+    ?>
 
     <div class="container-fluid">
 
@@ -64,9 +67,6 @@ if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'ente') {
                 </form>
             </div>
         </div>
-        
-        <?php
-        require_once('scripts/show_process.php'); ?>
 
         <table class="table table-striped">
             <thead>

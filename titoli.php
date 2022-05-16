@@ -40,8 +40,8 @@ if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'esperto') {
     endif;
     ?>
 
-    <?php require_once('includes/header.php'); 
-
+    <?php
+    require_once('includes/header.php');
     require_once('scripts/show_title.php');
     ?>
 

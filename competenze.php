@@ -42,8 +42,8 @@ $usertype = $_SESSION['usertype'];
     endif;
     ?>
 
-    <?php require_once('includes/header.php');
-
+    <?php
+    require_once('includes/header.php');
     require_once('scripts/show_competence.php');
     ?>
 
