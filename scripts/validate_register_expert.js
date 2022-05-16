@@ -42,6 +42,7 @@ jQuery.validator.addMethod("city_regex", function(value, element) {
 
 $().ready(function() {
         $("#register_expert_form").validate({
+                ignore: [],
                 rules: {
                     expert_username: {
                         required: true,  
