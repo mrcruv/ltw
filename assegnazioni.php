@@ -52,7 +52,7 @@ $usertype = $_SESSION['usertype'];
                     <div>
                         <div>
                             <select id="availability_process" class="form-select mt-4 mb-3" name="process">
-                                <option selected>Scegli il Processo</option>
+                                <option selected value="empty">Scegli il Processo</option>
                                 <?php
                                 require_once('scripts/show_process.php');
                                 $array = show_all_processes($_SESSION['username']);
@@ -72,7 +72,7 @@ $usertype = $_SESSION['usertype'];
                     <div>
                         <div>
                             <select id="availability_expert" class="form-select mb-3" name="expert">
-                                <option selected>Scegli l'esperto</option>
+                                <option selected value="empty">Scegli l'esperto</option>
                                 <?php
                                 require_once('scripts/show_expert.php');
                                 $array = show_all_experts();
