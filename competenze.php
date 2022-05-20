@@ -75,6 +75,7 @@ $usertype = $_SESSION['usertype'];
                     <th scope="col">Competenza</th>
                     <th scope="col">Settore</th>
                     <th scope="col">Descrizione</th>
+                    <th scope="col">X</th>
                 </tr>
             </thead>
             <tbody>
@@ -89,6 +90,10 @@ $usertype = $_SESSION['usertype'];
                     <td><?php echo($array[$i]['name']); ?></td>
                     <td><?php echo($array[$i]['area']); ?></td>
                     <td><?php echo($array[$i]['description']); ?></td>
+                    <?php
+                    echo('<td><a href="scripts/delete_competence.php?name=' . $array[$i]['name'] . '&area=' . $array[$i]['area'] . '">');
+                    echo('<button type="button">' . 'X' . '</button></a>');
+                    ?>
                 </tr>
                 <?php } ?>
             <?php endif; ?>

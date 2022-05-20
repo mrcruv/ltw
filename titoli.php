@@ -77,6 +77,7 @@ if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'esperto') {
                     <th scope="col">Data di Conseguimento</th>
                     <th scope="col">Note</th>
                     <th scope="col">Voto</th>
+                    <th scope="col">X</th>
                 </tr>
             </thead>
             <tbody>
@@ -94,6 +95,10 @@ if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'esperto') {
                     <td><?php if ($array[$i]['date'] != '0000-00-00') echo($array[$i]['date']); else echo('N.D.'); ?></td>
                     <td><?php echo($array[$i]['notes']); ?></td>
                     <td><?php echo($array[$i]['grade']); ?></td>
+                    <?php
+                    echo('<td><a href="scripts/delete_title.php?name=' . $array[$i]['name'] . '">');
+                    echo('<button type="button">' . 'X' . '</button></a>');
+                    ?>
                 </tr>
                 <?php
                 }
