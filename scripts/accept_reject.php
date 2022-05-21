@@ -51,6 +51,30 @@ if (!mysqli_stmt_fetch($statement)) {
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
+$query = 'SELECT data_assegnazione, data_rifiuto FROM disponibilita WHERE processo=? AND esperto=?';
+$statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
+mysqli_stmt_bind_param($statement, 'ss', $process, $username) or die(mysqli_error($connection));
+mysqli_stmt_execute($statement) or die(mysqli_error($connection));
+mysqli_stmt_bind_result($statement, $allocation_date, $rejection_date) or die(mysqli_error($connection));
+
+if (!mysqli_stmt_fetch($statement)) {
+    mysqli_stmt_close($statement) or die(mysqli_error($connection));
+    header('Location: ../assegnazioni.php?err=assegnazione+non+esistente');
+    die('assegnazione non esistente');
+}
+else {
+    if (!is_null($allocation_date)) {
+        header('Location: ../assegnazioni.php?err=assegnazione+gia+accettata+in+data+' . $allocation_date);
+        die('assegnazione gia accettata in data ' . $allocation_date);
+    }
+    if (!is_null($rejection_date)) {
+        header('Location: ../assegnazioni.php?err=assegnazione+gia+rifiutata+in+data+' . $rejection_date);
+        die('assegnazione gia rifiutata in data ' . $rejection_date);
+    }
+    mysqli_stmt_free_result($statement);
+    mysqli_stmt_close($statement) or die(mysqli_error($connection));
+}
+
 if (empty($action)) {
     header('Location: ../assegnazioni.php?err=operazione+non+inserita');
     die('azione non inserita');
