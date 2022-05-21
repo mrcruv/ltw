@@ -92,7 +92,7 @@ $usertype = $_SESSION['usertype'];
                     <?php else:
                         for ($i = 0; $i < $n; $i += 1) { ?>
                         <tr>
-                            <th scope="row"><?php echo($i+1); ?></th>
+                            <td><?php echo($i+1); ?></th>
                             <td><?php echo($array[$i]['name']); ?></td>
                             <td><?php echo($array[$i]['area']); ?></td>
                             <td><?php echo($array[$i]['description']); ?></td>

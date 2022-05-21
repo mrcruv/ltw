@@ -49,7 +49,7 @@ $usertype = $_SESSION['usertype'];
                 <h5>Aggiungi assegnazione</h5>
                 <a class="btn btn-primary rounded-circle" id="add_button">+</a>
 
-                <form id="add_availability_form" class="add_form" action="<?php echo('scripts/add_availability.php'); ?>" method="post">
+                <form id="add_availability_form" class="add_form" action="scripts/add_availability.php" method="post">
                     <div>
                         <div>
                             <select id="availability_process" class="form-select mt-4 mb-3" name="process">
@@ -59,9 +59,9 @@ $usertype = $_SESSION['usertype'];
                                 $array = show_all_processes($_SESSION['username']);
                                 $n = count($array);
                                 for ($i = 0; $i < $n; $i += 1) {
-                                    echo('<option value=');
+                                    echo('<option value="');
                                     echo($array[$i]['name']);
-                                    echo('>');
+                                    echo('">');
                                     echo($array[$i]['name']);
                                     echo('</option>');
                                 }
@@ -79,9 +79,9 @@ $usertype = $_SESSION['usertype'];
                                 $array = show_all_experts();
                                 $n = count($array);
                                 for ($i = 0; $i < $n; $i += 1) {
-                                    echo('<option value=');
+                                    echo('<option value="');
                                     echo($array[$i]['username']);
-                                    echo('>');
+                                    echo('">');
                                     echo($array[$i]['username']);
                                     echo('</option>');
                                 }
@@ -120,11 +120,11 @@ $usertype = $_SESSION['usertype'];
                 for ($i = 0; $i < $n; $i += 1) { ?>
                 <tr>
                     <th scope="row"><?php echo $i+1?></th>
-                    <td><?php echo $array[$i]['process']?></td>
-                    <td><?php echo $array[$i]['expert']?></td>
-                    <td><?php echo $array[$i]['request_date']?></td>
-                    <td><?php echo $array[$i]['allocation_date']?></td>
-                    <td><?php echo $array[$i]['rejection_date']?></td>
+                    <td><?php echo($array[$i]['process']); ?></td>
+                    <td><?php echo($array[$i]['expert']); ?></td>
+                    <td><?php echo($array[$i]['request_date']); ?></td>
+                    <td><?php echo($array[$i]['allocation_date']); ?></td>
+                    <td><?php echo($array[$i]['rejection_date']); ?></td>
                     <?php 
                     if (is_null($array[$i]['allocation_date'])) {
                         if (is_null($array[$i]['rejection_date'])) {
@@ -173,12 +173,12 @@ $usertype = $_SESSION['usertype'];
             else {
                 for ($i = 0; $i < $n; $i += 1) { ?>
                 <tr>
-                    <th scope="row"><?php echo $i+1?></th>
-                    <td><?php echo $array[$i]['process']?></td>
-                    <td><?php echo $array[$i]['entity']?></td>
-                    <td><?php echo $array[$i]['request_date']?></td>
-                    <td><?php echo $array[$i]['allocation_date']?></td>
-                    <td><?php echo $array[$i]['rejection_date']?></td>
+                    <th scope="row"><?php echo($i+1); ?></th>
+                    <td><?php echo($array[$i]['process']); ?></td>
+                    <td><?php echo($array[$i]['entity']); ?></td>
+                    <td><?php echo($array[$i]['request_date']); ?></td>
+                    <td><?php echo($array[$i]['allocation_date']); ?></td>
+                    <td><?php echo($array[$i]['rejection_date']); ?></td>
                     <?php
                     $disabled = '';
                     if (is_null($array[$i]['allocation_date'])) {

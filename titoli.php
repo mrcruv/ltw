@@ -75,7 +75,7 @@ if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'esperto') {
                     else {
                         for ($i = 0; $i < $n; $i += 1) { ?>
                         <tr>
-                            <td scope="row"><?php echo $i+1?></td>
+                            <td><?php echo($i+1); ?></td>
                             <td><?php echo($array[$i]['name']); ?></td>
                             <td><?php if ($array[$i]['date'] != '0000-00-00') echo($array[$i]['date']); else echo('N.D.'); ?></td>
                             <td><?php echo($array[$i]['notes']); ?></td>

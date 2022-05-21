@@ -87,7 +87,7 @@ if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'ente') {
             else: ?>
                 <?php for ($i = 0; $i < $n; $i += 1) { ?>
                 <tr>
-                    <th scope="row"><?php echo $i+1?></th>
+                    <th scope="row"><?php echo($i+1); ?></th>
                     <td><?php echo($array[$i]['name']); ?></td>
                     <td><?php echo($array[$i]['type']); ?></td>
                     <td><?php echo($array[$i]['description']); ?></td>

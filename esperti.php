@@ -52,11 +52,11 @@ if (isset($_GET['username']) and !expert_exists($_GET['username'])) {
 
         <?php 
         if (isset($_GET['username'])){
-            echo '<script type="text/javascript">
+            echo('<script type="text/javascript">
 			$(document).ready(function(){
 				$("#exampleModalToggle").modal("show");
 			});
-		</script>';
+		    </script>');
         }
         ?>
 
@@ -117,6 +117,7 @@ if (isset($_GET['username']) and !expert_exists($_GET['username'])) {
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Competenza</th>
+                                <th scope="col">Settore</th>
                                 <th scope="col">Descrizione</th>
                             </tr>
                             </thead>
@@ -130,6 +131,7 @@ if (isset($_GET['username']) and !expert_exists($_GET['username'])) {
                                     <tr>
                                         <th scope="row"><?php echo($i+1); ?></th>
                                         <td><?php echo($array[$i]['competence']); ?></td>
+                                        <td><?php echo($array[$i]['area']); ?></td>
                                         <td><?php echo($array[$i]['description']); ?></td>
                                     </tr>
                                 <?php } ?>
@@ -154,7 +156,7 @@ if (isset($_GET['username']) and !expert_exists($_GET['username'])) {
                 <h6>Non ci sono Esperti al momento</h6>
             <?php else: ?>
             <?php for ($i = 0; $i < $n; $i += 1) { ?>
-            <div class="col-md-<?php echo $bootstrapColWidth; ?>">
+            <div class="col-md-<?php echo($bootstrapColWidth); ?>">
                 <div class="card radius-15 shadow">
                     <div class="card-body text-center">
                         <div class="p-4 border radius-15">
@@ -171,7 +173,7 @@ if (isset($_GET['username']) and !expert_exists($_GET['username'])) {
             </div>
             <?php
             $rowCount++;
-            if($rowCount % $numOfCols == 0) echo '</div><div class="row">'; ?>
+            if($rowCount % $numOfCols == 0) echo('</div><div class="row">'); ?>
             <?php } ?>
         </div>
         <?php endif; ?>
