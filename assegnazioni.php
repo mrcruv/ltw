@@ -15,6 +15,8 @@ $usertype = $_SESSION['usertype'];
     <meta name="author" content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="scripts/error.js"></script>
@@ -41,13 +43,16 @@ $usertype = $_SESSION['usertype'];
     <?php require_once('includes/header.php'); ?>
 
     <div class="container-fluid">
+        <div class="row border-bottom border-3 mb-5">
+            <h2>Assegnazioni - <?php echo $_SESSION['username'] ?> </h2>
+        </div>
 
         <?php if ($_SESSION['usertype'] == 'ente'): ?>
         
         <div class="row">
             <div class="col-4 offset-4 text-center align-middle mb-2">
                 <h5>Aggiungi assegnazione</h5>
-                <a class="btn btn-primary rounded-circle" id="add_button">+</a>
+                <a type="button" class="btn btn-info rounded-circle" id="add_button"><i class="fa fa-plus"></i></a>
 
                 <form id="add_availability_form" class="add_form" action="scripts/add_availability.php" method="post">
                     <div>
@@ -97,114 +102,137 @@ $usertype = $_SESSION['usertype'];
         <?php
         require_once('scripts/show_availability.php'); ?>
 
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Processo</th>
-                    <th scope="col">Esperto</th>
-                    <th scope="col">Data della Richiesta</th>
-                    <th scope="col">Data della Assegnazione</th>
-                    <th scope="col">Data della Rifiuto</th>
-                    <th scope="col">Stato</th>
-                </tr>
-            </thead>
-            <tbody>
+        <div class="row mt-3">
             <?php $array = show_all_availabilities_from_entity($_SESSION['username']);
             $n = count($array);
+            $numOfCols = 4;
+            $rowCount = 0;
+            $bootstrapColWidth = 12 / $numOfCols;
             if (!is_array($array) or $n <= 0) { ?>
-                <tr><td colspan="7"><h6>Non ci sono Assegnazioni al momento</h6></td></tr>
+                <h6>Non ci sono Assegnazioni al momento</h6>
             <?php
             }
             else {
                 for ($i = 0; $i < $n; $i += 1) { ?>
-                <tr>
-                    <th scope="row"><?php echo $i+1?></th>
-                    <td><?php echo($array[$i]['process']); ?></td>
-                    <td><?php echo($array[$i]['expert']); ?></td>
-                    <td><?php echo($array[$i]['request_date']); ?></td>
-                    <td><?php echo($array[$i]['allocation_date']); ?></td>
-                    <td><?php echo($array[$i]['rejection_date']); ?></td>
-                    <?php 
-                    if (is_null($array[$i]['allocation_date'])) {
-                        if (is_null($array[$i]['rejection_date'])) {
-                            echo('<td>' . 'assegnazione pendente' . '</td>');
-                        }
-                        else {
-                            echo('<td>' . 'assegnazione rifiutata' . '</td>');
-                        }
-                    }
-                    else {
-                        echo('<td>' . 'assegnazione accettata' . '</td>');
-                    }
+                <div class="col-md-<?php echo($bootstrapColWidth); ?>">
+                    <div class="card p-3 mb-2 shadow">
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex flex-row align-items-center">
+                                <div class="ms-2 c-details">
+                                    <h6 class="mb-0">Data della richiesta</h6> <span><?php echo($array[$i]['request_date']); ?></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-5">
+                            <h3 class="heading"><?php echo($array[$i]['process']); ?></h3>
+                            <h4><?php echo($array[$i]['expert']); ?></h4>
+                            <div class="mt-5">
+                            <?php 
+                                if (is_null($array[$i]['allocation_date'])) {
+                                    if (is_null($array[$i]['rejection_date'])) {?>
 
-                    ?>
-                </tr>
+                                        <div class="mt-2"> <span class="text1"><span class="text2">Richiesta pendente</span></span> </div>
+                                        <div class="progress mt-1">
+                                            <div class="progress-bar" role="progressbar" style="width: 50%; background-color: blue;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    <?php
+                                    }
+                                    else {?>
+                                        <div class="mt-2"> <span class="text1">Assegnazione rifiutata:<span class="text2"></span> <?php echo $array[$i]['rejection_date'] ?></span> </div>
+                                        <div class="progress mt-1">
+                                            <div class="progress-bar" role="progressbar" style="width: 100%; background-color: red;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    <?php
+                                    }
+                                }
+                                else {?>
+                                        <div class="mt-2"> <span class="text1">Assegnazione accettata:<span class="text2"></span> <?php echo $array[$i]['allocation_date'] ?></span> </div>
+                                        <div class="progress mt-1">
+                                            <div class="progress-bar" role="progressbar" style="width: 100%; background-color: green;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    <?php
+                                }
+
+                            ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <?php
+                $rowCount++;
+                if($rowCount % $numOfCols == 0) echo('</div><div class="row">');
                 }
             }  ?> 
-            </tbody>
-        </table>
-
+        </div>
         <?php else: ?>
 
         <?php
         require_once('scripts/show_availability.php'); ?>
 
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Processo</th>
-                    <th scope="col">Ente</th>
-                    <th scope="col">Data della Richiesta</th>
-                    <th scope="col">Data della Assegnazione</th>
-                    <th scope="col">Data del Rifiuto</th>
-                    <th scope="col">Stato</th>
-                </tr>
-            </thead>
-            <tbody>
+        <div class="row mt-5">
+
             <?php $array = show_all_availabilities_from_expert($_SESSION['username']);
             $n = count($array);
+            $numOfCols = 4;
+            $rowCount = 0;
+            $bootstrapColWidth = 12 / $numOfCols;
             if (!is_array($array) or $n <= 0) { ?>
-                <tr><td colspan="7"><h6>Non ci sono Assegnazioni al momento</h6></td></tr>
+            <h6>Non ci sono Assegnazioni al momento</h6>
             <?php
             }
             else {
                 for ($i = 0; $i < $n; $i += 1) { ?>
-                <tr>
-                    <th scope="row"><?php echo($i+1); ?></th>
-                    <td><?php echo($array[$i]['process']); ?></td>
-                    <td><?php echo($array[$i]['entity']); ?></td>
-                    <td><?php echo($array[$i]['request_date']); ?></td>
-                    <td><?php echo($array[$i]['allocation_date']); ?></td>
-                    <td><?php echo($array[$i]['rejection_date']); ?></td>
-                    <?php
-                    $disabled = '';
-                    if (is_null($array[$i]['allocation_date'])) {
-                        if (is_null($array[$i]['rejection_date'])) {
-                            echo('<td>' . 'assegnazione pendente' . '</td>');
-                        }
-                        else {
-                            $disabled = 'disabled';
-                            echo('<td>' . 'assegnazione rifiutata' . '</td>');
-                        }
-                    }
-                    else {
-                        $disabled = 'disabled';
-                        echo('<td>' . 'assegnazione accettata' . '</td>');
-                    }
-                    echo('<td><a href="scripts/accept_reject.php?action=accept&process=' . $array[$i]['process'] . '">');
-                    echo('<button type="button"' . $disabled . '>' . 'accetta' . '</button></a>');
-                    echo('<a href="scripts/accept_reject.php?action=reject&process=' . $array[$i]['process'] . '">');
-                    echo('<button type="button"' . $disabled . '>' . 'rifiuta' . '</button></a>');
-                    ?>
-                </tr>
+                <div class="col-md-<?php echo($bootstrapColWidth); ?>">
+                    <div class="card p-3 mb-2 shadow">
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex flex-row align-items-center">
+                                <div class="ms-2 c-details">
+                                    <h6 class="mb-0">Data della richiesta</h6> <span><?php echo($array[$i]['request_date']); ?></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-5">
+                            <h3 class="heading"><?php echo($array[$i]['process']); ?></h3>
+                            <h4><?php echo($array[$i]['entity']); ?></h4>
+                            <div class="mt-5">
+                            <?php 
+                                $disabled = '';
+                                if (is_null($array[$i]['allocation_date'])) {
+                                    if (is_null($array[$i]['rejection_date'])) {?>
+                                        <div class="mt-2 text-center">
+                                            <a class="align-left" href="scripts/accept_reject.php?action=accept&process=<?php echo($array[$i]['process']); ?>" ><button class="btn btn-success" type="button" <?php echo($disabled); ?>>Accetta</button></a>
+                                            <a class="align-right" href="scripts/accept_reject.php?action=reject&process=<?php echo($array[$i]['process']); ?>" ><button class="btn btn-danger" type="button" <?php echo($disabled); ?>>Rifiuta</button></a>
+                                        </div>
+                                    <?php
+                                    }
+                                    else {?>
+                                        <div class="mt-2"> <span class="text1">Assegnazione rifiutata:<span class="text2"></span> <?php echo $array[$i]['rejection_date'] ?></span> </div>
+                                        <div class="progress mt-1">
+                                            <div class="progress-bar" role="progressbar" style="width: 100%; background-color: red;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    <?php
+                                    }
+                                }
+                                else {?>
+                                        <div class="mt-2"> <span class="text1">Assegnazione accettata:<span class="text2"></span> <?php echo $array[$i]['allocation_date'] ?></span> </div>
+                                        <div class="progress mt-1">
+                                            <div class="progress-bar" role="progressbar" style="width: 100%; background-color: green;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    <?php
+                                }
+
+                            ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <?php
+                $rowCount++;
+                if($rowCount % $numOfCols == 0) echo('</div><div class="row">');
                 }
-            }  ?> 
-            </tbody>
-        </table>
+            }
+            ?>
+            </div>
         
         <?php endif ?>
     
