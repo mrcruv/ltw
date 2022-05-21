@@ -45,106 +45,139 @@ if (isset($_GET['username']) and !expert_exists($_GET['username'])) {
 
     <?php require_once('includes/header.php'); ?>
 
-    <?php if (isset($_GET['username'])): ?>
     <div class="container-fluid">
-        <h5>Esperto selezionato: <?php echo($_GET['username']); ?></h5>
+        <div class="row border-bottom border-3 mb-5">
+                <h2>Esperti</h2>
+        </div>
 
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Titolo</th>
-                <th scope="col">Data conseguimento</th>
-                <th scope="col">Note</th>
-                <th scope="col">Voto</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php
-            $array = show_expert_title($_GET['username']);
-            $n = count($array);
-            if (!is_array($array) or $n <= 0): ?>
-                <tr><td colspan="6"><h6>L'esperto selezionato non ha inserito titoli di studio al momento</h6></td></tr>
-            <?php else: ?>
-                <?php for ($i = 0; $i < $n; $i += 1) { ?>
-                    <tr>
-                        <th scope="row"><?php echo($i+1); ?></th>
-                        <td><?php echo($array[$i]['title']); ?></td>
-                        <td><?php echo($array[$i]['date']); ?></td>
-                        <td><?php echo($array[$i]['notes']); ?></td>
-                        <td><?php echo($array[$i]['grade']); ?></td>
-                    </tr>
-                <?php } ?>
-            <?php endif; ?>
-            </tbody>
-        </table>
-    </div>
+        <?php 
+        if (isset($_GET['username'])){
+            echo '<script type="text/javascript">
+			$(document).ready(function(){
+				$("#exampleModalToggle").modal("show");
+			});
+		</script>';
+        }
+        ?>
 
-    <div class="container-fluid">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Competenza</th>
-                <th scope="col">Descrizione</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php $array = show_expert_competence($_GET['username']);
-            $n = count($array);
-            if (!is_array($array) or $n <= 0): ?>
-                <tr><td colspan="6"><h6>L'esperto selezionato non ha inserito competenze al momento</h6></td></tr>
-            <?php else: ?>
-                <?php for ($i = 0; $i < $n; $i += 1) { ?>
-                    <tr>
-                        <th scope="row"><?php echo($i+1); ?></th>
-                        <td><?php echo($array[$i]['competence']); ?></td>
-                        <td><?php echo($array[$i]['description']); ?></td>
-                    </tr>
-                <?php } ?>
-            <?php endif; ?>
-            </tbody>
-        </table>
-    </div>
-    <?php endif; ?>
+        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalToggleLabel">Titoli Di Studio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Titolo</th>
+                                <th scope="col">Data conseguimento</th>
+                                <th scope="col">Note</th>
+                                <th scope="col">Voto</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            $array = show_expert_title($_GET['username']);
+                            $n = count($array);
+                            if (!is_array($array) or $n <= 0): ?>
+                                <tr><td colspan="6"><h6>L'esperto selezionato non ha inserito titoli di studio al momento</h6></td></tr>
+                            <?php else: ?>
+                                <?php for ($i = 0; $i < $n; $i += 1) { ?>
+                                    <tr>
+                                        <th scope="row"><?php echo($i+1); ?></th>
+                                        <td><?php echo($array[$i]['title']); ?></td>
+                                        <td><?php echo($array[$i]['date']); ?></td>
+                                        <td><?php echo($array[$i]['notes']); ?></td>
+                                        <td><?php echo($array[$i]['grade']); ?></td>
+                                    </tr>
+                                <?php } ?>
+                            <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                    <button class="btn btn-outline-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Passa alle Competenze</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalToggleLabel2">Competenze</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Competenza</th>
+                                <th scope="col">Descrizione</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php $array = show_expert_competence($_GET['username']);
+                            $n = count($array);
+                            if (!is_array($array) or $n <= 0): ?>
+                                <tr><td colspan="6"><h6>L'esperto selezionato non ha inserito competenze al momento</h6></td></tr>
+                            <?php else: ?>
+                                <?php for ($i = 0; $i < $n; $i += 1) { ?>
+                                    <tr>
+                                        <th scope="row"><?php echo($i+1); ?></th>
+                                        <td><?php echo($array[$i]['competence']); ?></td>
+                                        <td><?php echo($array[$i]['description']); ?></td>
+                                    </tr>
+                                <?php } ?>
+                            <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Torna ai Titoli Di Studio</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <div class="container-fluid">
-
-        <h5>Lista di Esperti</h5>
-
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Cognome</th>
-                    <th scope="col">Città di Nascita</th>
-                    <th scope="col">Data di Nascita</th>
-                </tr>
-            </thead>
-            <tbody>
+        <div class="row">
             <?php $array = show_all_experts();
             $n = count($array);
+            $numOfCols = 6;
+            $rowCount = 0;
+            $bootstrapColWidth = 12 / $numOfCols;
             if (!is_array($array) or $n <= 0): ?>
-                <tr><td colspan="6"><h6>Non ci sono Esperti al momento</h6></td></tr>
+                <h6>Non ci sono Esperti al momento</h6>
             <?php else: ?>
-                <?php for ($i = 0; $i < $n; $i += 1) { ?>
-                <tr>
-                    <th scope="row"><?php echo($i+1); ?></th>
-                    <td><a href="esperti.php?username=<?php echo($array[$i]['username']); ?>"><?php echo($array[$i]['username']); ?></a></td>
-                    <td><?php echo($array[$i]['name']); ?></td>
-                    <td><?php echo($array[$i]['surname']); ?></td>
-                    <td><?php echo($array[$i]['city']); ?></td>
-                    <td><?php echo($array[$i]['date']); ?></td>
-                </tr>
-                <?php } ?>
-            <?php endif; ?>
-            </tbody>
-        </table>
-        
+            <?php for ($i = 0; $i < $n; $i += 1) { ?>
+            <div class="col-md-<?php echo $bootstrapColWidth; ?>">
+                <div class="card radius-15 shadow">
+                    <div class="card-body text-center">
+                        <div class="p-4 border radius-15">
+                            <img src="img/logo_esperto.png"  class="rounded-circle shadow" alt="">
+                            <h5 class="mb-0 mt-2"><?php echo($array[$i]['username']); ?></h5>
+                            <p class="mb-1"><?php echo($array[$i]['name'] . " " . $array[$i]['surname']); ?> </p>
+                            <p class="mb-1"><?php echo($array[$i]['city']); ?></p>
+                            <p class="mb-3"><?php echo($array[$i]['date']); ?></p>
+                            
+                            <a class="btn btn-outline-primary" href="esperti.php?username=<?php echo($array[$i]['username']); ?>" role="button">Altro</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+            $rowCount++;
+            if($rowCount % $numOfCols == 0) echo '</div><div class="row">'; ?>
+            <?php } ?>
+        </div>
+        <?php endif; ?>
     </div>
     
     <?php require_once('includes/footer.php'); ?>
 </body>
 </html>
+
