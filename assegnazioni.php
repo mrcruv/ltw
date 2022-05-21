@@ -156,7 +156,7 @@ $usertype = $_SESSION['usertype'];
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Processo</th>
-                    <th scope="col">Esperto</th>
+                    <th scope="col">Ente</th>
                     <th scope="col">Data della Richiesta</th>
                     <th scope="col">Data della Assegnazione</th>
                     <th scope="col">Data del Rifiuto</th>
