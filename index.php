@@ -5,7 +5,8 @@ if (!isset($_SESSION)) {
     session_start();
 }
 if (isset($_SESSION['username'])) {
-    header('Location: me.php');
+    header('Location: me.php?err=sessione+utente+gia+attiva');
+    die('sessione utente gia attiva');
 }
 ?>
 
@@ -34,7 +35,7 @@ if (isset($_SESSION['username'])) {
     <script src="scripts/toggle_psw.js"></script>
     <script src="scripts/register_slide.js"></script>
 
-    <title><?php echo($sitename); ?></title>
+    <title><?php echo($sitename . ': index'); ?></title>
     <link rel="icon" type="image/x-icon" href="img/prova_logo.ico">
 </head>
 <body class="d-flex flex-column min-vh-100">

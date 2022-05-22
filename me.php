@@ -1,5 +1,5 @@
 <?php
-global $sitename, $connection;
+global $sitename_brief, $connection;
 require_once('includes/info.php');
 require_once('includes/open_connection.php');
 require_once('includes/session.php');
@@ -23,7 +23,7 @@ $usertype = $_SESSION['usertype'];
     <script src="scripts/error.js"></script>
     <script src="scripts/message.js"></script>
 
-    <title><?php echo($sitename . ' - ' . $username); ?></title>
+    <title><?php echo($sitename_brief . ': dashboard - ' . $usertype . ' ' . $username); ?></title>
     <link rel="icon" type="image/x-icon" href="img/prova_logo.ico">
 </head>
 <body class="d-flex flex-column min-vh-100">

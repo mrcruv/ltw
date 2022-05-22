@@ -1,10 +1,13 @@
 <?php
-global $sitename;
+global $sitename_brief;
 require_once('includes/info.php');
 require_once('includes/session.php');
 if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'esperto') {
-    header ('Location: me.php');
+    header ('Location: me.php?err=sessione+utente+esperto+non+attiva');
+    die("sessione utente esperto non attiva");
 }
+$username = $_SESSION['username'];
+$usertype = $_SESSION['usertype'];
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +28,7 @@ if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'esperto') {
     <script src="scripts/error.js"></script>
     <script src="scripts/message.js"></script>
 
-    <title><?php echo($sitename); ?></title>
+    <title><?php echo($sitename_brief . ': titoli - ' . $usertype . ' ' . $username); ?></title>
     <link rel="icon" type="image/x-icon" href="img/prova_logo.ico">
 </head>
 <body class="d-flex flex-column min-vh-100">

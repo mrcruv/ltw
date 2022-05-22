@@ -1,15 +1,18 @@
 <?php
-global $sitename;
+global $sitename_brief;
 require_once('includes/info.php');
 require_once('includes/session.php');
 require_once('scripts/show_expert.php');
 if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'ente') {
-    header ('Location: me.php');
+    header ('Location: me.php?err=sessione+utente+ente+non+attiva');
+    die('sessione utente ente non attiva');
 }
 if (isset($_GET['username']) and !expert_exists($_GET['username'])) {
     header('Location: esperti.php?err=esperto+non+esistente');
     die('esperto non esistente');
 }
+$username = $_SESSION['username'];
+$usertype = $_SESSION['usertype'];
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +29,7 @@ if (isset($_GET['username']) and !expert_exists($_GET['username'])) {
     <script src="scripts/error.js"></script>
     <script src="scripts/message.js"></script>
 
-    <title><?php echo($sitename); ?></title>
+    <title><?php echo($sitename_brief . ': esperti - ' . $usertype . ' ' . $username); ?></title>
     <link rel="icon" type="image/x-icon" href="img/prova_logo.ico">
 </head>
 <body class="d-flex flex-column min-vh-100">

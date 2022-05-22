@@ -1,5 +1,5 @@
 <?php
-global $sitename;
+global $sitename_brief;
 require_once('includes/info.php');
 require_once('includes/session.php');
 $username = $_SESSION['username'];
@@ -22,7 +22,7 @@ $usertype = $_SESSION['usertype'];
     <script src="scripts/error.js"></script>
     <script src="scripts/message.js"></script>
 
-    <title><?php echo($sitename); ?></title>
+    <title><?php echo($sitename_brief . ': assegnazioni - ' . $usertype . ' ' . $username); ?></title>
     <link rel="icon" type="image/x-icon" href="img/prova_logo.ico">
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -44,10 +44,10 @@ $usertype = $_SESSION['usertype'];
 
     <div class="container-fluid">
         <div class="row border-bottom border-3 mb-5">
-            <h2>Assegnazioni - <?php echo($_SESSION['username']); ?> </h2>
+            <h2>Assegnazioni - <?php echo($username); ?> </h2>
         </div>
 
-        <?php if ($_SESSION['usertype'] == 'ente'): ?>
+        <?php if ($usertype == 'ente'): ?>
         
         <div class="row">
             <div class="col-4 offset-4 text-center align-middle mb-2">
