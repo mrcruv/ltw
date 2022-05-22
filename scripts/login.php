@@ -2,7 +2,8 @@
 global $connection;
 require_once('../includes/open_connection.php');
 if (!isset($_POST['login_submit'])) {
-    header ('Location: ../index.php');
+    header ('Location: ../index.php?err=errore+login+submit');
+    die('errore login submit');
 }
 
 $username = isset($_POST['username']) ? trim($_POST['username']) : false;

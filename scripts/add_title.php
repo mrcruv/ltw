@@ -3,7 +3,8 @@ global $connection;
 require_once('../includes/open_connection.php');
 require_once('../includes/session.php');
 if (!isset($_POST['add_title_submit'])) {
-    header ('Location: ../titoli.php');
+    header ('Location: ../titoli.php?err=errore+add+title+submit');
+    die('errore add title submit');
 }
 
 $name_regex = '/^[a-zA-Z ]{1,255}$/';

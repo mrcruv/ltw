@@ -3,7 +3,8 @@ global $connection;
 require_once('../includes/open_connection.php');
 require_once('../includes/session.php');
 if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'esperto') {
-    header ('Location: ../assegnazioni.php');
+    header ('Location: ../assegnazioni.php?err=sessione+utente+esperto+non+attiva');
+    die('sessione utente esperto non attiva');
 }
 
 function accept_reject($query, $process, $username)

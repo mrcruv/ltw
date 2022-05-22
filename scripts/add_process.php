@@ -3,7 +3,8 @@ global $connection;
 require_once('../includes/open_connection.php');
 require_once('../includes/session.php');
 if (!isset($_POST['add_process_submit'])) {
-    header ('Location: ../processi.php');
+    header ('Location: ../processi.php?err=errore+add+process+submit');
+    die('errore add process submit');
 }
 
 $name_regex = '/^[a-zA-Z0-9]{1,255}$/';

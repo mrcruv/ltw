@@ -2,7 +2,8 @@
 global $connection;
 require_once('../includes/open_connection.php');
 if (!isset($_POST['register_entity_submit'])) {
-    header ('Location: ../me.php');
+    header ('Location: ../me.php?err=errore+register+entity+submit');
+    die('errore register entity submit');
 }
 
 $contains_lowercase = '/[a-z]/';

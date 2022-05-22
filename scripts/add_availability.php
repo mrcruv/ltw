@@ -3,7 +3,8 @@ global $connection;
 require_once('../includes/open_connection.php');
 require_once('../includes/session.php');
 if (!isset($_POST['add_availability_submit'])) {
-    header ('Location: ../assegnazioni.php');
+    header ('Location: ../assegnazioni.php?err=errore+add+availability+submit');
+    die('errore add availability submit');
 }
 
 $username = $_SESSION['username'];
@@ -12,11 +13,11 @@ $process = isset($_POST['process']) ? trim($_POST['process']) : false;
 
 if (empty($process)) {
     header ('Location: ../assegnazioni.php?err=selezionare+processo');
-    die("selezionare processo");
+    die('selezionare processo');
 }
 if (empty($expert)) {
     header ('Location: ../assegnazioni.php?err=selezionare+esperto');
-    die("selezionare esperto");
+    die('selezionare esperto');
 }
 
 $query = 'SELECT * FROM esperti WHERE username=?';

@@ -3,7 +3,8 @@ global $connection;
 require_once('../includes/open_connection.php');
 require_once('../includes/session.php');
 if (!isset($_POST['update_password_submit'])) {
-    header ('Location: ../index.php');
+    header ('Location: ../index.php?err=errore+update+password+submit');
+    die('errore update password submit');
 }
 
 $contains_lowercase = '/[a-z]/';

@@ -3,7 +3,8 @@ global $connection;
 require_once('../includes/open_connection.php');
 require_once('../includes/session.php');
 if (!isset($_POST['add_competence_submit'])) {
-    header ('Location: ../competenze.php');
+    header ('Location: ../competenze.php?err=errore+add+competence+submit');
+    die('errore add competence submit');
 }
 
 $name_regex = '/^[a-zA-Z0-9]{1,255}$/';
