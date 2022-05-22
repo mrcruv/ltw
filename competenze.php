@@ -52,30 +52,13 @@ $usertype = $_SESSION['usertype'];
     ?>
 
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-4 offset-4 text-center align-middle mb-2">
-                <h5>Aggiungi competenza</h5>
-                <a type="button" class="btn btn-info rounded-circle" id="add_button"><i class="fa fa-plus"></i></a>
-
-                <form id="add_competence_form" class="add_form" action="scripts/add_competence.php" method="post">
-                    <div class="form-group mb-3 mt-4">
-                        <input type="text" id="competence_name" class="form-control" placeholder="Nome competenza" name="name">
-                    </div>
-                    <div class="form-group mb-3">
-                        <input type="text" id="competence_area" class="form-control" placeholder="Settore" name="area">
-                    </div>
-                    <div class="form-group mb-3">
-                        <textarea class="form-control" id="competence_description" placeholder="Descrizione" name="description" rows="3"></textarea>
-                    </div class="form-group mb-3">
-                    <button type="submit" class="btn btn-primary" name="add_competence_submit">Aggiungi</button>
-                </form>
-            </div>
+        <div class="row border-bottom border-3 mb-5">
+            <h2>Competenze</h2>
         </div>
+        <div class="row">
+            <div class="col-7">
 
-        <div class="row mt-2">
-            <div class="col-6 offset-3">
-
-                <table class="table table-striped rounded-3 shadow">
+                <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -108,6 +91,24 @@ $usertype = $_SESSION['usertype'];
                     <?php endif; ?>
                     </tbody>
                 </table>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-4 text-center mb-2">
+                <h5>Aggiungi competenza</h5>
+                <a type="button" class="btn btn-info rounded-circle" id="add_button"><i class="fa fa-plus"></i></a>
+
+                <form id="add_competence_form" class="add_form" action="scripts/add_competence.php" method="post">
+                    <div class="form-group mb-3 mt-4">
+                        <input type="text" id="competence_name" class="form-control" placeholder="Nome competenza" name="name">
+                    </div>
+                    <div class="form-group mb-3">
+                        <input type="text" id="competence_area" class="form-control" placeholder="Settore" name="area">
+                    </div>
+                    <div class="form-group mb-3">
+                        <textarea class="form-control" id="competence_description" placeholder="Descrizione" name="description" rows="3"></textarea>
+                    </div class="form-group mb-3">
+                    <button type="submit" class="btn btn-primary" name="add_competence_submit">Aggiungi</button>
+                </form>
             </div>
         </div>
     </div>
