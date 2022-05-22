@@ -44,7 +44,7 @@ $usertype = $_SESSION['usertype'];
 
     <div class="container-fluid">
         <div class="row border-bottom border-3 mb-5">
-            <h2>Assegnazioni - <?php echo $_SESSION['username'] ?> </h2>
+            <h2>Assegnazioni - <?php echo($_SESSION['username']); ?> </h2>
         </div>
 
         <?php if ($_SESSION['usertype'] == 'ente'): ?>
@@ -125,6 +125,7 @@ $usertype = $_SESSION['usertype'];
                         </div>
                         <div class="mt-5">
                             <h3 class="heading"><?php echo($array[$i]['process']); ?></h3>
+                            <h5><?php echo($array[$i]['description']); ?></h5>
                             <h4><?php echo($array[$i]['expert']); ?></h4>
                             <div class="mt-5">
                             <?php 
@@ -138,7 +139,7 @@ $usertype = $_SESSION['usertype'];
                                     <?php
                                     }
                                     else {?>
-                                        <div class="mt-2"> <span class="text1">Assegnazione rifiutata:<span class="text2"></span> <?php echo $array[$i]['rejection_date'] ?></span> </div>
+                                        <div class="mt-2"> <span class="text1">Assegnazione rifiutata:<span class="text2"></span> <?php echo($array[$i]['rejection_date']); ?></span> </div>
                                         <div class="progress mt-1">
                                             <div class="progress-bar" role="progressbar" style="width: 100%; background-color: red;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
@@ -146,7 +147,7 @@ $usertype = $_SESSION['usertype'];
                                     }
                                 }
                                 else {?>
-                                        <div class="mt-2"> <span class="text1">Assegnazione accettata:<span class="text2"></span> <?php echo $array[$i]['allocation_date'] ?></span> </div>
+                                        <div class="mt-2"> <span class="text1">Assegnazione accettata:<span class="text2"></span> <?php echo($array[$i]['allocation_date']); ?></span> </div>
                                         <div class="progress mt-1">
                                             <div class="progress-bar" role="progressbar" style="width: 100%; background-color: green;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
@@ -193,6 +194,7 @@ $usertype = $_SESSION['usertype'];
                         </div>
                         <div class="mt-5">
                             <h3 class="heading"><?php echo($array[$i]['process']); ?></h3>
+                            <h5><?php echo($array[$i]['description']); ?></h5>
                             <h4><?php echo($array[$i]['entity']); ?></h4>
                             <div class="mt-5">
                             <?php 
@@ -206,7 +208,7 @@ $usertype = $_SESSION['usertype'];
                                     <?php
                                     }
                                     else {?>
-                                        <div class="mt-2"> <span class="text1">Assegnazione rifiutata:<span class="text2"></span> <?php echo $array[$i]['rejection_date'] ?></span> </div>
+                                        <div class="mt-2"> <span class="text1">Assegnazione rifiutata:<span class="text2"></span> <?php echo($array[$i]['rejection_date']); ?></span> </div>
                                         <div class="progress mt-1">
                                             <div class="progress-bar" role="progressbar" style="width: 100%; background-color: red;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
@@ -214,7 +216,7 @@ $usertype = $_SESSION['usertype'];
                                     }
                                 }
                                 else {?>
-                                        <div class="mt-2"> <span class="text1">Assegnazione accettata:<span class="text2"></span> <?php echo $array[$i]['allocation_date'] ?></span> </div>
+                                        <div class="mt-2"> <span class="text1">Assegnazione accettata:<span class="text2"></span> <?php echo($array[$i]['allocation_date']); ?></span> </div>
                                         <div class="progress mt-1">
                                             <div class="progress-bar" role="progressbar" style="width: 100%; background-color: green;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
