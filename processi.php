@@ -50,11 +50,44 @@ $usertype = $_SESSION['usertype'];
     ?>
 
     <div class="container-fluid">
-
+        <div class="row border-bottom border-3 mb-5">
+            <h2>Processi</h2>
+        </div>
         <div class="row">
-            <div class="col-4 offset-4 text-center align-middle mb-2">
+            <div class="col-7">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Tipologia</th>
+                            <th scope="col">Descrizione</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php $array = show_all_processes($_SESSION['username']);
+                    $n = count($array);
+                    if (!is_array($array) or $n <= 0): ?>
+                        <tr><td colspan="4"><h6>Non ci sono Processi al momento</h6></td></tr>
+                    <?php
+                    else: ?>
+                        <?php for ($i = 0; $i < $n; $i += 1) { ?>
+                        <tr>
+                            <th scope="row"><?php echo($i+1); ?></th>
+                            <td><?php echo($array[$i]['name']); ?></td>
+                            <td><?php echo($array[$i]['type']); ?></td>
+                            <td><?php echo($array[$i]['description']); ?></td>
+                            </td>
+                        </tr>
+                        <?php } ?>
+                    <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-4 text-center mb-2">
                 <h5>Aggiungi Processo</h5>
-                <a class="btn btn-primary rounded-circle" id="add_button">+</a>
+                <a type="button" class="btn btn-info rounded-circle" id="add_button"><i class="fa fa-plus"></i></a>
 
                 <form id="add_process_form" class="add_form" action="scripts/add_process.php" method="post">
                     <div class="form-group mb-3 mt-4">
@@ -71,35 +104,6 @@ $usertype = $_SESSION['usertype'];
                 </form>
             </div>
         </div>
-
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Tipologia</th>
-                    <th scope="col">Descrizione</th>
-                </tr>
-            </thead>
-            <tbody>
-            <?php $array = show_all_processes($_SESSION['username']);
-            $n = count($array);
-            if (!is_array($array) or $n <= 0): ?>
-                <tr><td colspan="4"><h6>Non ci sono Processi al momento</h6></td></tr>
-            <?php
-            else: ?>
-                <?php for ($i = 0; $i < $n; $i += 1) { ?>
-                <tr>
-                    <th scope="row"><?php echo($i+1); ?></th>
-                    <td><?php echo($array[$i]['name']); ?></td>
-                    <td><?php echo($array[$i]['type']); ?></td>
-                    <td><?php echo($array[$i]['description']); ?></td>
-                </tr>
-                <?php } ?>
-            <?php endif; ?>
-            </tbody>
-        </table>
-
     </div>
 
     <?php require_once('includes/footer.php'); ?>
