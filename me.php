@@ -94,7 +94,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                         <input type="text" class="hiddenborder text-center" id="text_cf" name="new_cf"
                                value="<?php echo($cf); ?>" disabled>
                     </div>
-                    <a class="edit" title="Edit" data-toggle="tooltip" id="cf_e"><i class="material-icons">&#xE254;</i></a>
+                    <a class="edit pointer" title="Edit" data-toggle="tooltip" id="cf_e"><i class="material-icons">&#xE254;</i></a>
                     <i class="material-icons save">
                         <button type="submit" class="btn btn-block"
                                 name="update_cf_submit">
@@ -112,7 +112,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                                name="new_piva"
                                value="<?php echo($piva); ?>" disabled/>
                     </div>
-                    <a class="edit" title="Edit" data-toggle="tooltip" id="piva_e"><i
+                    <a class="edit pointer" title="Edit" data-toggle="tooltip" id="piva_e"><i
                                 class="material-icons">&#xE254;</i></a>
                     <i class="material-icons save">
                         <button type="submit" class="btn btn-block"
@@ -130,7 +130,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                                name="new_website"
                                value="<?php echo($website); ?>" disabled>
                     </div>
-                    <a class="edit" title="Edit" data-toggle="tooltip" id="website_e"><i
+                    <a class="edit pointer" title="Edit" data-toggle="tooltip" id="website_e"><i
                                 class="material-icons">&#xE254;</i></a>
                     <i class="material-icons save">
                         <button type="submit" class="btn btn-block"
@@ -148,7 +148,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                         <input type="text" class="hiddenborder text-center" id="text_pec" name="new_pec"
                                value="<?php echo($pec); ?>" disabled>
                     </div>
-                    <a class="edit" title="Edit" data-toggle="tooltip" id="pec_e"><i class="material-icons">&#xE254;</i></a>
+                    <a class="edit pointer" title="Edit" data-toggle="tooltip" id="pec_e"><i class="material-icons">&#xE254;</i></a>
                     <i class="material-icons save">
                         <button type="submit" class="btn btn-block"
                                 name="update_pec_submit">
@@ -176,7 +176,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                                name="new_entity_name"
                                value="<?php echo($name); ?>" disabled>
                     </div>
-                    <a class="edit" title="Edit" data-toggle="tooltip" id="entityName_e">
+                    <a class="edit pointer" title="Edit" data-toggle="tooltip" id="entityName_e">
                         <i class="material-icons">&#xE254;
                         </i></a>
                     <i class="material-icons save">
@@ -195,7 +195,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                                name="new_entity_type"
                                value="<?php echo($type); ?>" disabled>
                     </div>
-                    <a class="edit" title="Edit" data-toggle="tooltip" id="entityType_e"><i
+                    <a class="edit pointer" title="Edit" data-toggle="tooltip" id="entityType_e"><i
                                 class="material-icons">&#xE254;</i></a>
                     <i class="material-icons save">
                         <button type="submit" class="btn btn-block"
