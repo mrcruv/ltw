@@ -34,7 +34,10 @@ label.hiddenlabel {
 }
 
 input.hiddenborder {
-    border: hidden;
+    background-color: transparent;
+    border: 0px solid;
+    font-weight: bold; 
+    color: black;
     color: black;
 }
 
