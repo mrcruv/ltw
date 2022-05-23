@@ -2,6 +2,7 @@
 global $sitename_brief;
 require_once('includes/info.php');
 require_once('includes/session.php');
+require_once('scripts/show_title.php');
 if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'esperto') {
     header ('Location: me.php?err=sessione+utente+esperto+non+attiva');
     die("sessione utente esperto non attiva");
@@ -46,10 +47,7 @@ $usertype = $_SESSION['usertype'];
     endif;
     ?>
 
-    <?php
-    require_once('includes/header.php');
-    require_once('scripts/show_title.php');
-    ?>
+    <?php require_once('includes/header.php'); ?>
 
     <div class="container-fluid">
         <div class="row border-bottom border-3 mb-5">
@@ -69,7 +67,7 @@ $usertype = $_SESSION['usertype'];
                         </tr>
                     </thead>
                     <tbody>
-                    <?php $array = show_all_titles($_SESSION["username"]);
+                    <?php $array = show_all_titles($username);
                     $n = count($array);
                     if (!is_array($array) or $n <= 0) { ?>
                         <tr><td colspan="6"><h6>Non ci sono Titoli di studio al momento</h6></td></tr>

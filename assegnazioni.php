@@ -2,6 +2,9 @@
 global $sitename_brief;
 require_once('includes/info.php');
 require_once('includes/session.php');
+require_once('scripts/show_process.php');
+require_once('scripts/show_expert.php');
+require_once('scripts/show_availability.php');
 
 $username = $_SESSION['username'];
 $usertype = $_SESSION['usertype'];
@@ -45,7 +48,7 @@ $usertype = $_SESSION['usertype'];
 
     <div class="container-fluid">
         <div class="row border-bottom border-3 mb-5">
-            <h2>Assegnazioni - <?php echo($username); ?> </h2>
+            <h2>Assegnazioni - <?php echo($username); ?></h2>
         </div>
 
         <?php 
@@ -87,8 +90,7 @@ $usertype = $_SESSION['usertype'];
                             <select id="availability_process" class="form-select mt-4 mb-3" name="process">
                                 <option selected disabled value="">Scegli il Processo</option>
                                 <?php
-                                require_once('scripts/show_process.php');
-                                $array = show_all_processes($_SESSION['username']);
+                                $array = show_all_processes($username);
                                 $n = count($array);
                                 for ($i = 0; $i < $n; $i += 1) {
                                     echo('<option value="');
@@ -107,7 +109,6 @@ $usertype = $_SESSION['usertype'];
                             <select id="availability_expert" class="form-select mb-3" name="expert">
                                 <option selected disabled value="">Scegli l'esperto</option>
                                 <?php
-                                require_once('scripts/show_expert.php');
                                 $array = show_all_experts();
                                 $n = count($array);
                                 for ($i = 0; $i < $n; $i += 1) {
@@ -130,7 +131,7 @@ $usertype = $_SESSION['usertype'];
         require_once('scripts/show_availability.php'); ?>
 
         <div class="row mt-3">
-            <?php $array = show_all_availabilities_from_entity($_SESSION['username']);
+            <?php $array = show_all_availabilities_from_entity($username);
             $n = count($array);
             $numOfCols = 4;
             $rowCount = 0;
@@ -202,12 +203,9 @@ $usertype = $_SESSION['usertype'];
         </div>
         <?php else: ?>
 
-        <?php
-        require_once('scripts/show_availability.php'); ?>
-
         <div class="row mt-5">
 
-            <?php $array = show_all_availabilities_from_expert($_SESSION['username']);
+            <?php $array = show_all_availabilities_from_expert($username);
             $n = count($array);
             $numOfCols = 4;
             $rowCount = 0;

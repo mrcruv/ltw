@@ -88,7 +88,8 @@ $usertype = $_SESSION['usertype'];
                             if (!is_array($array) or $n <= 0): ?>
                                 <tr><td colspan="6"><h6>L'esperto selezionato non ha inserito titoli di studio al momento</h6></td></tr>
                             <?php else: ?>
-                                <?php for ($i = 0; $i < $n; $i += 1) { ?>
+                                <?php
+                                for ($i = 0; $i < $n; $i += 1) { ?>
                                     <tr>
                                         <th scope="row"><?php echo($i+1); ?></th>
                                         <td><?php echo($array[$i]['title']); ?></td>
@@ -125,7 +126,8 @@ $usertype = $_SESSION['usertype'];
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $array = show_expert_competence($_GET['username']);
+                            <?php
+                            $array = show_expert_competence($_GET['username']);
                             $n = count($array);
                             if (!is_array($array) or $n <= 0): ?>
                                 <tr><td colspan="6"><h6>L'esperto selezionato non ha inserito competenze al momento</h6></td></tr>
@@ -150,7 +152,8 @@ $usertype = $_SESSION['usertype'];
         </div>
 
         <div class="row">
-            <?php $array = show_all_experts();
+            <?php
+            $array = show_all_experts();
             $n = count($array);
             $numOfCols = 6;
             $rowCount = 0;

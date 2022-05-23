@@ -2,6 +2,7 @@
 global $sitename_brief;
 require_once('includes/info.php');
 require_once('includes/session.php');
+require_once('scripts/show_competence.php');
 if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'esperto') {
     header ('Location: me.php?err=sessione+utente+esperto+non+attiva');
     die('sessione utente esperto non attiva');
@@ -48,7 +49,6 @@ $usertype = $_SESSION['usertype'];
 
     <?php
     require_once('includes/header.php');
-    require_once('scripts/show_competence.php');
     ?>
 
     <div class="container-fluid">
@@ -69,7 +69,7 @@ $usertype = $_SESSION['usertype'];
                         </tr>
                     </thead>
                     <tbody>
-                    <?php $array = show_all_competences($_SESSION['username']);
+                    <?php $array = show_all_competences($username);
                     $n = count($array);
                     if (!is_array($array) or $n <= 0): ?>
                         <tr><td colspan="5"><h6>Non ci sono Competenze al momento</h6></td></tr>

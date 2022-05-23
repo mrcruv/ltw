@@ -2,6 +2,7 @@
 global $sitename_brief, $connection;
 require_once('includes/info.php');
 require_once('includes/session.php');
+require_once('scripts/show_process.php');
 if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'ente') {
     header ('Location: me.php?err=sessione+utente+ente+non+attiva');
     die("sessione utente ente non attiva");
@@ -46,14 +47,11 @@ $usertype = $_SESSION['usertype'];
     endif;
     ?>
 
-    <?php
-    require_once('includes/header.php');
-    require_once('scripts/show_process.php');
-    ?>
+    <?php require_once('includes/header.php'); ?>
 
     <div class="container-fluid">
         <div class="row border-bottom border-3 mb-5">
-            <h2>Processi</h2>
+            <h2>Processi - <?php echo($username); ?></h2>
         </div>
         <div class="row">
             <div class="col-7">
@@ -67,13 +65,15 @@ $usertype = $_SESSION['usertype'];
                         </tr>
                     </thead>
                     <tbody>
-                    <?php $array = show_all_processes($_SESSION['username']);
+                    <?php
+                    $array = show_all_processes($username);
                     $n = count($array);
                     if (!is_array($array) or $n <= 0): ?>
                         <tr><td colspan="4"><h6>Non ci sono Processi al momento</h6></td></tr>
                     <?php
                     else: ?>
-                        <?php for ($i = 0; $i < $n; $i += 1) { ?>
+                        <?php
+                        for ($i = 0; $i < $n; $i += 1) { ?>
                         <tr>
                             <th scope="row"><?php echo($i+1); ?></th>
                             <td><?php echo($array[$i]['name']); ?></td>
