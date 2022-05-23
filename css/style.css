@@ -38,6 +38,10 @@ i.icon-red:hover{
   color: #ac381e;
 }
 
+.add{
+  display: none;
+}
+
 /*TABLES*/
 /*-----------------------------------*/
 .radius-15 {
