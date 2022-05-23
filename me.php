@@ -36,14 +36,16 @@ $usertype = $_SESSION['usertype'];
         $('.edit').click(function(){
             var id = $(this).attr('id');
             var array = id.split("_");
-            $('#text_'+array[0]).html('<input type="text" id="input_'+array[0]+'" class="form-control" value="' + $('#text_'+array[0]).text() + '">');
+            $('#text_'+array[0]).prop('disabled', false);
+            $('#text_'+array[0]).removeClass("notEditable");
             $(this).parents("li").find(".edit, .add").toggle();
         });
 
         $('.add').click(function(){
             var id = $(this).attr('id');
             var array = id.split("_");
-            $('#text_'+array[0]).html('<h6 id="text_'+array[0]+'">' + $('#input_'+array[0]).val() + '</h6>');
+            $('#text_'+array[0]).prop('disabled', true);
+            $('#text_'+array[0]).addClass("notEditable");
             $(this).parents("li").find(".edit, .add").toggle();
         });
         
@@ -89,30 +91,42 @@ $usertype = $_SESSION['usertype'];
         <div class="col-md-4 offset-md-1 text-center">
             <h3>Info</h3>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><small class="text-muted">Codice fiscale</small><h6 id="text_cf"><?php echo($cf); ?></h6>
-                <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="cf_e"><i class="material-icons">&#xE254;</i></a>
-                <a class="add" title="Add" data-toggle="tooltip" href="#" id="cf_a"><i class="material-icons">&#xE161;</i></a>
-                </li>
-                <li class="list-group-item"><small class="text-muted">Partita IVA</small><h6 id="text_piva"><?php echo($piva); ?></h6>
-                <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="piva_e"><i class="material-icons">&#xE254;</i></a>
-                <a class="add" title="Add" data-toggle="tooltip" href="#" id="piva_a"><i class="material-icons">&#xE161;</i></a>    
-                </li>
-                <li class="list-group-item"><small class="text-muted">Sito web</small>
-                    <h6 id="text_website">
-                        <?php if (!is_null($website)): ?>
-                            <a href="<?php echo($website) ?>"><?php echo($website); ?></a>
-                        <?php else:
-                            echo('N.D.');
-                        endif;
-                        ?>
-                    </h6>
-                    <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="website_e"><i class="material-icons">&#xE254;</i></a>
-                    <a class="add" title="Add" data-toggle="tooltip" href="#" id="website_a"><i class="material-icons">&#xE161;</i></a>
-                </li>
-                <li class="list-group-item"><small class="text-muted">PEC</small><h6 id="text_pec"><?php echo($pec); ?></h6>
-                <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="pec_e"><i class="material-icons">&#xE254;</i></a>
-                <a class="add" title="Add" data-toggle="tooltip" href="#" id="pec_a"><i class="material-icons">&#xE161;</i></a>
-                </li>
+                <form method="post" action="script/update_cf.php">
+                    <li class="list-group-item"><small class="text-muted">Codice fiscale</small>
+                    <div>
+                    <input type="text" class="notEditable text-center" id="text_cf" name="cf" value="<?php echo($cf); ?>" disabled>
+                    </div>
+                    <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="cf_e"><i class="material-icons">&#xE254;</i></a>
+                    <a class="add" type="submit" title="Add" data-toggle="tooltip" href="#" id="cf_a"><i class="material-icons">&#xE161;</i></a>
+                    </li>
+                </form>
+                <form method="post" action="script/update_piva.php">
+                    <li class="list-group-item"><small class="text-muted">Partita IVA</small>
+                    <div>
+                    <input type="text" class="notEditable text-center" id="text_piva" name="piva" value="<?php echo($piva); ?>" disabled>
+                    </div>
+                    <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="piva_e"><i class="material-icons">&#xE254;</i></a>
+                    <a class="add" type="submit" title="Add" data-toggle="tooltip" href="#" id="piva_a"><i class="material-icons">&#xE161;</i></a>    
+                    </li>
+                </form>
+                <form method="post" action="script/update_website.php">
+                    <li class="list-group-item"><small class="text-muted">Sito web</small>
+                            <div>
+                                <input type="text" class="notEditable text-center" id="text_website" name="website" value="<?php echo($website); ?>" disabled>
+                            </div>
+                        <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="website_e"><i class="material-icons">&#xE254;</i></a>
+                        <a class="add" type="submit" title="Add" data-toggle="tooltip" href="#" id="website_a"><i class="material-icons">&#xE161;</i></a>
+                    </li>
+                </form>
+                <form method="post" action="script/update_pec.php">
+                    <li class="list-group-item"><small class="text-muted">PEC</small>
+                    <div>
+                    <input type="text" class="notEditable text-center" id="text_pec" name="pec" value="<?php echo($pec); ?>" disabled>
+                    </div>
+                    <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="pec_e"><i class="material-icons">&#xE254;</i></a>
+                    <a class="add" type="submit" title="Add" data-toggle="tooltip" href="#" id="pec_a"><i class="material-icons">&#xE161;</i></a>
+                    </li>
+                </form>
     <?php
     }
     else die('error');
@@ -125,14 +139,24 @@ $usertype = $_SESSION['usertype'];
         mysqli_stmt_execute($statement) or die(mysqli_error($connection));
         mysqli_stmt_bind_result($statement, $name, $type) or die(mysqli_error($connection));
         if (mysqli_stmt_fetch($statement)) { ?>
-            <li class="list-group-item"><small class="text-muted">Denominazione</small><h6 id="text_entityName"><?php echo($name); ?></h6>
-            <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="entityName_e"><i class="material-icons">&#xE254;</i></a>
-            <a class="add" title="Add" data-toggle="tooltip" href="#" id="entityName_a"><i class="material-icons">&#xE161;</i></a>
-            </li>
-            <li class="list-group-item"><small class="text-muted">Tipo</small><h6 id="text_entityType"><?php echo($type); ?></h6>
-            <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="entityType_e"><i class="material-icons">&#xE254;</i></a>
-            <a class="add" title="Add" data-toggle="tooltip" href="#" id="entityType_a"><i class="material-icons">&#xE161;</i></a>
-            </li>
+            <form method="post" action="script/update_entity_name.php">
+                <li class="list-group-item"><small class="text-muted">Denominazione</small>
+                <div>
+                    <input type="text" class="notEditable text-center" id="text_entityName" name="name" value="<?php echo($name); ?>" disabled>
+                </div>
+                <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="entityName_e"><i class="material-icons">&#xE254;</i></a>
+                <a class="add" type="submit" title="Add" data-toggle="tooltip" href="#" id="entityName_a"><i class="material-icons">&#xE161;</i></a>
+                </li>
+            </form>
+            <form method="post" action="script/update_entity_type.php">
+                <li class="list-group-item"><small class="text-muted">Tipo</small>
+                <div>
+                    <input type="text" class="notEditable text-center" id="text_entityType" name="type" value="<?php echo($type); ?>" disabled>
+                </div>
+                <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="entityType_e"><i class="material-icons">&#xE254;</i></a>
+                <a class="add" type="submit" title="Add" data-toggle="tooltip" href="#" id="entityType_a"><i class="material-icons">&#xE161;</i></a>
+                </li>
+            </form>
         </ul>
 
         <?php
