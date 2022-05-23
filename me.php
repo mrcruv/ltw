@@ -233,13 +233,13 @@ if (mysqli_stmt_fetch($statement)) { ?>
             <h3>Statistiche esperto</h3>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><small class="text-muted"># Titoli di Studio</small>
-                    <h6><?php echo(n_title($username)); ?></h6>
+                    <h6><a href="titoli.php"><?php echo(n_title($username)); ?></a></h6>
                 </li>
                 <li class="list-group-item"><small class="text-muted"># Competenze</small>
-                    <h6><?php echo(n_competence($username)); ?></h6>
+                    <h6><a href="competenze.php"><?php echo(n_competence($username)); ?></a></h6>
                 </li>
                 <li class="list-group-item"><small class="text-muted"># Assegnazioni</small>
-                    <h6><?php echo(n_availability_from_expert($username)); ?></h6>
+                    <h6><a href="assegnazioni.php"><?php echo(n_availability_from_expert($username)); ?></a></h6>
                 </li>
                 <li class="list-group-item"><small class="text-muted"># Assegnazioni pendenti</small>
                     <h6><?php echo(n_dangling_from_expert($username)); ?></h6>
@@ -255,10 +255,10 @@ if (mysqli_stmt_fetch($statement)) { ?>
             <h3>Statistiche ente</h3>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><small class="text-muted"># Processi</small>
-                    <h6><?php echo(n_process($username)); ?></h6>
+                    <h6><a href="processi.php"><?php echo(n_process($username)); ?></a></h6>
                 </li>
                 <li class="list-group-item"><small class="text-muted"># Assegnazioni</small>
-                    <h6><?php echo(n_availability_from_entity($username)); ?></h6>
+                    <h6><a href="assegnazioni.php"><?php echo(n_availability_from_entity($username)); ?></a></h6>
                 </li>
                 <li class="list-group-item"><small class="text-muted"># Assegnazioni pendenti</small>
                     <h6><?php echo(n_dangling_from_entity($username)); ?></h6>
