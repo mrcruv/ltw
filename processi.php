@@ -79,7 +79,6 @@ $usertype = $_SESSION['usertype'];
                             <td><?php echo($array[$i]['name']); ?></td>
                             <td><?php echo($array[$i]['type']); ?></td>
                             <td><?php echo($array[$i]['description']); ?></td>
-                            </td>
                         </tr>
                         <?php } ?>
                     <?php endif; ?>

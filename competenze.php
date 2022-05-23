@@ -76,14 +76,14 @@ $usertype = $_SESSION['usertype'];
                     <?php else:
                         for ($i = 0; $i < $n; $i += 1) { ?>
                         <tr>
-                            <td><?php echo($i+1); ?></th>
+                            <td><?php echo($i+1); ?></td>
                             <td><?php echo($array[$i]['name']); ?></td>
                             <td><?php echo($array[$i]['area']); ?></td>
                             <td><?php echo($array[$i]['description']); ?></td>
                             <td class="text-center">
                             <?php
                             echo('<a class="delete" title="Delete" data-toggle="tooltip" href="scripts/delete_competence.php?name=' . $array[$i]['name'] . '&area=' . $array[$i]['area'] . '">');
-                            echo('<i class="material-icons icon-red">&#xE872;</i></a>');;
+                            echo('<i class="material-icons icon-red">&#xE872;</i></a>');
                             ?>
                             </td>
                         </tr>
