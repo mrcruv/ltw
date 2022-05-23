@@ -5,7 +5,7 @@ require_once('includes/open_connection.php');
 function show_all_competences($username)
 {
     global $connection;
-    $query = 'SELECT competenza, settore, descrizione FROM competenze_esperti WHERE esperto=?';
+    $query = 'SELECT competenza, settore, descrizione FROM competenze_esperti WHERE esperto = ?';
     $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
     mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
     mysqli_stmt_execute($statement) or die(mysqli_error($connection));
