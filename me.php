@@ -16,6 +16,8 @@ $usertype = $_SESSION['usertype'];
     <meta name="author" content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
@@ -28,6 +30,40 @@ $usertype = $_SESSION['usertype'];
 </head>
 <body class="d-flex flex-column min-vh-100">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+        var actions = $("ul li a").html();
+        // Append table with add row form on add new button click
+        $(document).on("click", ".add", function(){
+            var empty = false;
+            var input = $(this).parents("ul").find('input[type="text"]');
+            input.each(function(){
+                if(!$(this).val()){
+                    $(this).addClass("error");
+                    empty = true;
+                } else{
+                    $(this).removeClass("error");
+                }
+            });
+            $(this).parents("ul").find(".error").first().focus();
+            if(!empty){
+                input.each(function(){
+                    $(this).parent("li").html($(this).val());
+                });			
+                $(this).parents("li").find(".edit, .add").toggle();
+            }		
+        });
+        // Edit row on edit button click
+        $(document).on("click", ".edit", function(){		
+            $(this).parents("ul").find("li h6").each(function(){
+                $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+            });		
+            $(this).parents("li").find(".edit, .add").toggle();
+        });
+    });
+    </script>
 
     <?php
     require_once('includes/error.php');
@@ -68,7 +104,10 @@ $usertype = $_SESSION['usertype'];
         <div class="col-md-4 offset-md-1 text-center">
             <h3>Info</h3>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><small class="text-muted">Codice fiscale</small><h6><?php echo($cf); ?></h6></li>
+                <li class="list-group-item"><small class="text-muted">Codice fiscale</small><h6><?php echo($cf); ?></h6>
+                <a class="edit" title="Edit" data-toggle="tooltip" href="#"><i class="material-icons">&#xE254;</i></a>
+                <a class="add" title="Add" data-toggle="tooltip" href="scripts/update_user.php?field=cf&new_value=<?php echo($cf); ?>"><i class="material-icons">&#xE03B;</i></a>
+                </li>
                 <li class="list-group-item"><small class="text-muted">Partita IVA</small><h6><?php echo($piva); ?></h6></li>
                 <li class="list-group-item"><small class="text-muted">Sito web</small>
                     <h6>
