@@ -85,32 +85,42 @@ if (mysqli_stmt_fetch($statement)) { ?>
     <div class="col-md-4 offset-md-1 text-center">
         <h3>Info</h3>
         <ul class="list-group list-group-flush">
-            <form method="post" action="script/update_cf.php">
-                <li class="list-group-item"><small class="text-muted">Codice fiscale</small>
+            <li class="list-group-item"><small class="text-muted">Codice fiscale</small>
+                <form id="update_cf_form" method="post" action="scripts/update_cf.php">
                     <div>
                         <label class="hiddenlabel" for="text_cf"></label>
                         <input type="text" class="notEditable text-center" id="text_cf" name="new_cf"
                                value="<?php echo($cf); ?>" disabled>
                     </div>
                     <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="cf_e"><i class="material-icons">&#xE254;</i></a>
-                    <a class="save" type="submit" title="Save" data-toggle="tooltip" href="#" id="cf_a"><i
-                                class="material-icons">&#xE161;</i></a>
-                </li>
-            </form>
-            <form method="post" action="script/update_piva.php">
-                <li class="list-group-item"><small class="text-muted">Partita IVA</small>
+                    <i class="material-icons save">
+                        <button type="submit" class="btn btn-block btn-primary register_button"
+                                name="update_cf_submit">
+                            &#xE161;
+                        </button>
+                    </i>
+                </form>
+            </li>
+
+            <li class="list-group-item"><small class="text-muted">Partita IVA</small>
+                <form id="update_piva_form" method="post" action="scripts/update_piva.php">
                     <div>
                         <label class="hiddenlabel" for="text_piva"></label>
-                        <input type="text" class="notEditable text-center" id="text_piva" name="new_piva"
-                               value="<?php echo($piva); ?>" disabled>
+                        <input type="text" class="notEditable text-center" id="text_piva" id="new_piva" name="new_piva"
+                               value="<?php echo($piva); ?>" disabled/>
                     </div>
-                    <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="piva_e"><i class="material-icons">&#xE254;</i></a>
-                    <a class="save" type="submit" title="Save" data-toggle="tooltip" href="#" id="piva_a"><i
-                                class="material-icons">&#xE161;</i></a>
-                </li>
-            </form>
-            <form method="post" action="script/update_website.php">
-                <li class="list-group-item"><small class="text-muted">Sito web</small>
+                    <a class="edit" title="Edit" data-toggle="tooltip" id="piva_e"><i
+                                class="material-icons">&#xE254;</i></a>
+                    <i class="material-icons save">
+                        <button type="submit" class="btn btn-block btn-primary register_button"
+                                name="update_piva_submit">
+                            &#xE161;
+                        </button>
+                    </i>
+                </form>
+            </li>
+            <li class="list-group-item"><small class="text-muted">Sito web</small>
+                <form method="post" action="scripts/update_website.php">
                     <div>
                         <label class="hiddenlabel" for="text_website"></label>
                         <input type="text" class="notEditable text-center" id="text_website" name="new_website"
@@ -118,22 +128,31 @@ if (mysqli_stmt_fetch($statement)) { ?>
                     </div>
                     <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="website_e"><i
                                 class="material-icons">&#xE254;</i></a>
-                    <a class="save" type="submit" title="Save" data-toggle="tooltip" href="#" id="website_a"><i
-                                class="material-icons">&#xE161;</i></a>
-                </li>
-            </form>
-            <form method="post" action="script/update_pec.php">
-                <li class="list-group-item"><small class="text-muted">PEC</small>
+                    <i class="material-icons save">
+                        <button type="submit" class="btn btn-block btn-primary register_button"
+                                name="update_website_submit">
+                            &#xE161;
+                        </button>
+                    </i>
+                </form>
+            </li>
+            <li class="list-group-item"><small class="text-muted">PEC</small>
+                <form method="post" action="scripts/update_pec.php">
+
                     <div>
                         <label class="hiddenlabel" for="text_pec"></label>
                         <input type="text" class="notEditable text-center" id="text_pec" name="new_pec"
                                value="<?php echo($pec); ?>" disabled>
                     </div>
                     <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="pec_e"><i class="material-icons">&#xE254;</i></a>
-                    <a class="save" type="submit" title="Save" data-toggle="tooltip" href="#" id="pec_a"><i
-                                class="material-icons">&#xE161;</i></a>
-                </li>
-            </form>
+                    <i class="material-icons save">
+                        <button type="submit" class="btn btn-block btn-primary register_button"
+                                name="update_pec_submit">
+                            &#xE161;
+                        </button>
+                    </i>
+                </form>
+            </li>
             <?php
             }
             else die('error');
@@ -145,8 +164,8 @@ if (mysqli_stmt_fetch($statement)) { ?>
             mysqli_stmt_execute($statement) or die(mysqli_error($connection));
             mysqli_stmt_bind_result($statement, $name, $type) or die(mysqli_error($connection));
             if (mysqli_stmt_fetch($statement)) { ?>
-            <form method="post" action="script/update_entity_name.php">
-                <li class="list-group-item"><small class="text-muted">Denominazione</small>
+            <li class="list-group-item"><small class="text-muted">Denominazione</small>
+                <form method="post" action="scripts/update_entity_name.php">
                     <div>
                         <label class="hiddenlabel" for="text_entityName"></label>
                         <input type="text" class="notEditable text-center" id="text_entityName" name="new_entity_name"
@@ -154,12 +173,16 @@ if (mysqli_stmt_fetch($statement)) { ?>
                     </div>
                     <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="entityName_e"><i
                                 class="material-icons">&#xE254;</i></a>
-                    <a class="save" type="submit" title="Save" data-toggle="tooltip" href="#" id="entityName_a"><i
-                                class="material-icons">&#xE161;</i></a>
-                </li>
-            </form>
-            <form method="post" action="script/update_entity_type.php">
-                <li class="list-group-item"><small class="text-muted">Tipo</small>
+                    <i class="material-icons save">
+                        <button type="submit" class="btn btn-block btn-primary register_button"
+                                name="update_entity_name_submit">
+                            &#xE161;
+                        </button>
+                    </i>
+                </form>
+            </li>
+            <li class="list-group-item"><small class="text-muted">Tipo</small>
+                <form method="post" action="scripts/update_entity_type.php">
                     <div>
                         <label class="hiddenlabel" for="text_entityType"></label>
                         <input type="text" class="notEditable text-center" id="text_entityType" name="new_entity_type"
@@ -167,10 +190,14 @@ if (mysqli_stmt_fetch($statement)) { ?>
                     </div>
                     <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="entityType_e"><i
                                 class="material-icons">&#xE254;</i></a>
-                    <a class="save" type="submit" title="Save" data-toggle="tooltip" href="#" id="entityType_a"><i
-                                class="material-icons">&#xE161;</i></a>
-                </li>
-            </form>
+                    <i class="material-icons save">
+                        <button type="submit" class="btn btn-block btn-primary register_button"
+                                name="update_entity_type_submit">
+                            &#xE161;
+                        </button>
+                    </i>
+                </form>
+            </li>
         </ul>
         <?php
         }
