@@ -14,7 +14,7 @@ $usertype = $_SESSION['usertype'];
 
 $cf_regex = $usertype == 'ente' ? $entity_cf_regex : $expert_cf_regex;
 
-$new_cf = isset($_GET['new_cf']) ? trim($_GET['new_cf']) : false;
+$new_cf = isset($_POST['new_cf']) ? trim($_POST['new_cf']) : false;
 
 $query = 'SELECT * FROM utenti WHERE username = ?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));

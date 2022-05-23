@@ -14,7 +14,7 @@ $usertype = $_SESSION['usertype'];
 
 $piva_regex = $usertype == 'ente' ? $entity_piva_regex : $expert_piva_regex;
 
-$new_piva = isset($_GET['new_piva']) ? trim($_GET['new_piva']) : false;
+$new_piva = isset($_POST['new_piva']) ? trim($_POST['new_piva']) : false;
 
 $query = 'SELECT * FROM utenti WHERE username = ?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));

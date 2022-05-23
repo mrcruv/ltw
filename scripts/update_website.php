@@ -14,7 +14,7 @@ $usertype = $_SESSION['usertype'];
 
 $website_regex = $usertype == 'ente' ? $entity_website_regex : $expert_website_regex;
 
-$new_website = isset($_GET['new_website']) ? trim($_GET['new_website']) : false;
+$new_website = isset($_POST['new_website']) ? trim($_POST['new_website']) : false;
 
 $query = 'SELECT * FROM utenti WHERE username = ?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));

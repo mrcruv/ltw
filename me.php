@@ -89,7 +89,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                 <li class="list-group-item"><small class="text-muted">Codice fiscale</small>
                     <div>
                         <label class="hiddenlabel" for="text_cf"></label>
-                        <input type="text" class="notEditable text-center" id="text_cf" name="cf"
+                        <input type="text" class="notEditable text-center" id="text_cf" name="new_cf"
                                value="<?php echo($cf); ?>" disabled>
                     </div>
                     <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="cf_e"><i class="material-icons">&#xE254;</i></a>
@@ -101,7 +101,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                 <li class="list-group-item"><small class="text-muted">Partita IVA</small>
                     <div>
                         <label class="hiddenlabel" for="text_piva"></label>
-                        <input type="text" class="notEditable text-center" id="text_piva" name="piva"
+                        <input type="text" class="notEditable text-center" id="text_piva" name="new_piva"
                                value="<?php echo($piva); ?>" disabled>
                     </div>
                     <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="piva_e"><i class="material-icons">&#xE254;</i></a>
@@ -113,7 +113,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                 <li class="list-group-item"><small class="text-muted">Sito web</small>
                     <div>
                         <label class="hiddenlabel" for="text_website"></label>
-                        <input type="text" class="notEditable text-center" id="text_website" name="website"
+                        <input type="text" class="notEditable text-center" id="text_website" name="new_website"
                                value="<?php echo($website); ?>" disabled>
                     </div>
                     <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="website_e"><i
@@ -126,7 +126,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                 <li class="list-group-item"><small class="text-muted">PEC</small>
                     <div>
                         <label class="hiddenlabel" for="text_pec"></label>
-                        <input type="text" class="notEditable text-center" id="text_pec" name="pec"
+                        <input type="text" class="notEditable text-center" id="text_pec" name="new_pec"
                                value="<?php echo($pec); ?>" disabled>
                     </div>
                     <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="pec_e"><i class="material-icons">&#xE254;</i></a>
@@ -149,7 +149,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                 <li class="list-group-item"><small class="text-muted">Denominazione</small>
                     <div>
                         <label class="hiddenlabel" for="text_entityName"></label>
-                        <input type="text" class="notEditable text-center" id="text_entityName" name="name"
+                        <input type="text" class="notEditable text-center" id="text_entityName" name="new_entity_name"
                                value="<?php echo($name); ?>" disabled>
                     </div>
                     <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="entityName_e"><i
@@ -162,7 +162,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                 <li class="list-group-item"><small class="text-muted">Tipo</small>
                     <div>
                         <label class="hiddenlabel" for="text_entityType"></label>
-                        <input type="text" class="notEditable text-center" id="text_entityType" name="type"
+                        <input type="text" class="notEditable text-center" id="text_entityType" name="new_entity_type"
                                value="<?php echo($type); ?>" disabled>
                     </div>
                     <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="entityType_e"><i

@@ -16,7 +16,7 @@ if (!isset($_POST['update_entity_name_submit'])) {
 $username = $_SESSION['username'];
 $usertype = $_SESSION['usertype'];
 
-$new_entity_name = isset($_GET['new_entity_name']) ? trim($_GET['new_entity_name']) : false;
+$new_entity_name = isset($_POST['new_entity_name']) ? trim($_POST['new_entity_name']) : false;
 
 $query = 'SELECT * FROM utenti WHERE username = ?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
