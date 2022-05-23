@@ -3,6 +3,8 @@ global $sitename_brief, $authors, $connection;
 require_once('includes/info.php');
 require_once('includes/open_connection.php');
 require_once('includes/session.php');
+require_once('scripts/entity_stats.php');
+require_once('scripts/expert_stats.php');
 $username = $_SESSION['username'];
 $usertype = $_SESSION['usertype'];
 ?>
@@ -76,7 +78,7 @@ endif;
     </div>
 </header>
 <?php
-$query = 'SELECT piva, cf, sito_web, pec FROM utenti WHERE username=?';
+$query = 'SELECT piva, cf, sito_web, pec FROM utenti WHERE username = ?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
 mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
@@ -161,7 +163,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
             else die('error');
             mysqli_stmt_close($statement) or die(mysqli_error($connection));
             if ($usertype == 'ente') {
-            $query = "SELECT denominazione, tipo FROM enti WHERE username=?";
+            $query = "SELECT denominazione, tipo FROM enti WHERE username = ?";
             $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
             mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
             mysqli_stmt_execute($statement) or die(mysqli_error($connection));
@@ -175,7 +177,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                                name="new_entity_name"
                                value="<?php echo($name); ?>" disabled>
                     </div>
-                    <a class="edit" title="Edit" data-toggle="tooltip"id="entityName_e">
+                    <a class="edit" title="Edit" data-toggle="tooltip" id="entityName_e">
                         <i class="material-icons">&#xE254;
                         </i></a>
                     <i class="material-icons save">
@@ -194,7 +196,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                                name="new_entity_type"
                                value="<?php echo($type); ?>" disabled>
                     </div>
-                    <a class="edit" title="Edit" data-toggle="tooltip"id="entityType_e"><i
+                    <a class="edit" title="Edit" data-toggle="tooltip" id="entityType_e"><i
                                 class="material-icons">&#xE254;</i></a>
                     <i class="material-icons save">
                         <button type="submit" class="btn btn-block"
@@ -210,7 +212,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
         else die('error');
         }
         else {
-            $query = 'SELECT nome, cognome, citta_nascita, data_nascita FROM esperti WHERE username=?';
+            $query = 'SELECT nome, cognome, citta_nascita, data_nascita FROM esperti WHERE username = ?';
             $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
             mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
             mysqli_stmt_execute($statement) or die(mysqli_error($connection));
@@ -244,6 +246,52 @@ if (mysqli_stmt_fetch($statement)) { ?>
         </form>
     </div>
 </div>
+<?php if ($usertype == 'esperto') { ?>
+    <div>
+        <h3>Statistiche esperto</h3>
+        <ul>
+            <li>
+                # titoli di studio: <?php echo(n_title($username)); ?>
+            </li>
+            <li>
+                # competenze: <?php echo(n_competence($username)); ?>
+            </li>
+            <li>
+                # assegnazioni: <?php echo(n_availability_from_expert($username)); ?>
+            </li>
+            <li>
+                # assegnazioni pendenti: <?php echo(n_dangling_from_expert($username)); ?>
+            </li>
+            <li>
+                # assegnazioni accettate: <?php echo(n_accepted_from_expert($username)); ?>
+            </li>
+            <li>
+                # assegnazioni rifiutate: <?php echo(n_rejected_from_expert($username)); ?>
+            </li>
+        </ul>
+    </div>
+<?php } else { ?>
+    <div>
+        <h3>Statistiche ente</h3>
+        <ul>
+            <li>
+                # processi: <?php echo(n_process($username)); ?>
+            </li>
+            <li>
+                # assegnazioni: <?php echo(n_availability_from_entity($username)); ?>
+            </li>
+            <li>
+                # assegnazioni pendenti: <?php echo(n_dangling_from_entity($username)); ?>
+            </li>
+            <li>
+                # assegnazioni accettate: <?php echo(n_accepted_from_entity($username)); ?>
+            </li>
+            <li>
+                # assegnazioni rifiutate: <?php echo(n_rejected_from_entity($username)); ?>
+            </li>
+        </ul>
+    </div>
+<?php } ?>
 <?php require_once('includes/footer.php'); ?>
 </body>
 </html>
