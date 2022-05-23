@@ -40,7 +40,6 @@ $usertype = $_SESSION['usertype'];
             var id = $(this).attr('id');
             var array = id.split("_");
             $('#text_' + array[0]).prop('disabled', false);
-            $('#text_' + array[0]).removeClass("notEditable");
             $('#text_' + array[0]).removeClass("hiddenborder");
             $(this).parents("li").find(".edit, .save").toggle();
         });
@@ -49,7 +48,7 @@ $usertype = $_SESSION['usertype'];
             var id = $(this).attr('id');
             var array = id.split("_");
             $('#text_' + array[0]).prop('disabled', true);
-            $('#text_' + array[0]).addClass("notEditable");
+            $('#text_' + array[0]).addClass("hiddenborder");
             $(this).parents("li").find(".edit, .save").toggle();
         });
     });
@@ -85,14 +84,14 @@ mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 mysqli_stmt_bind_result($statement, $piva, $cf, $website, $pec) or die(mysqli_error($connection));
 if (mysqli_stmt_fetch($statement)) { ?>
 <div class="row container-fluid">
-    <div class="col-md-4 offset-md-1 text-center">
+    <div class="col-md-3 offset-md-1 text-center">
         <h3>Info</h3>
         <ul class="list-group list-group-flush">
             <li class="list-group-item"><small class="text-muted">Codice fiscale</small>
                 <form id="update_cf_form" method="post" action="scripts/update_cf.php">
                     <div>
                         <label class="hiddenlabel" for="text_cf"></label>
-                        <input type="text" class="hiddenborder notEditable text-center" id="text_cf" name="new_cf"
+                        <input type="text" class="hiddenborder text-center" id="text_cf" name="new_cf"
                                value="<?php echo($cf); ?>" disabled>
                     </div>
                     <a class="edit" title="Edit" data-toggle="tooltip" id="cf_e"><i class="material-icons">&#xE254;</i></a>
@@ -109,7 +108,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                 <form id="update_piva_form" method="post" action="scripts/update_piva.php">
                     <div>
                         <label class="hiddenlabel" for="text_piva"></label>
-                        <input type="text" class="hiddenborder notEditable text-center" id="text_piva" id="new_piva"
+                        <input type="text" class="hiddenborder text-center" id="text_piva" id="new_piva"
                                name="new_piva"
                                value="<?php echo($piva); ?>" disabled/>
                     </div>
@@ -127,7 +126,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                 <form method="post" action="scripts/update_website.php">
                     <div>
                         <label class="hiddenlabel" for="text_website"></label>
-                        <input type="text" class="hiddenborder notEditable text-center" id="text_website"
+                        <input type="text" class="hiddenborder text-center" id="text_website"
                                name="new_website"
                                value="<?php echo($website); ?>" disabled>
                     </div>
@@ -146,7 +145,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
 
                     <div>
                         <label class="hiddenlabel" for="text_pec"></label>
-                        <input type="text" class="hiddenborder notEditable text-center" id="text_pec" name="new_pec"
+                        <input type="text" class="hiddenborder text-center" id="text_pec" name="new_pec"
                                value="<?php echo($pec); ?>" disabled>
                     </div>
                     <a class="edit" title="Edit" data-toggle="tooltip" id="pec_e"><i class="material-icons">&#xE254;</i></a>
@@ -173,7 +172,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                 <form method="post" action="scripts/update_entity_name.php">
                     <div>
                         <label class="hiddenlabel" for="text_entityName"></label>
-                        <input type="text" class="hiddenborder notEditable text-center" id="text_entityName"
+                        <input type="text" class="hiddenborder text-center" id="text_entityName"
                                name="new_entity_name"
                                value="<?php echo($name); ?>" disabled>
                     </div>
@@ -192,7 +191,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                 <form method="post" action="scripts/update_entity_type.php">
                     <div>
                         <label class="hiddenlabel" for="text_entityType"></label>
-                        <input type="text" class="hiddenborder notEditable text-center" id="text_entityType"
+                        <input type="text" class="hiddenborder text-center" id="text_entityType"
                                name="new_entity_type"
                                value="<?php echo($type); ?>" disabled>
                     </div>
@@ -229,7 +228,51 @@ if (mysqli_stmt_fetch($statement)) { ?>
         mysqli_stmt_close($statement) or die(mysqli_error($connection));
         ?>
     </div>
-    <div class="col-md-2 offset-md-4 text-center align-middle">
+    <div class="col-md-3 offset-md-1 align-items-center text-center">
+    <?php if ($usertype == 'esperto') { ?>
+            <h3>Statistiche esperto</h3>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><small class="text-muted"># Titoli di Studio</small>
+                    <h6><?php echo(n_title($username)); ?></h6>
+                </li>
+                <li class="list-group-item"><small class="text-muted"># Competenze</small>
+                    <h6><?php echo(n_competence($username)); ?></h6>
+                </li>
+                <li class="list-group-item"><small class="text-muted"># Assegnazioni</small>
+                    <h6><?php echo(n_availability_from_expert($username)); ?></h6>
+                </li>
+                <li class="list-group-item"><small class="text-muted"># Assegnazioni pendenti</small>
+                    <h6><?php echo(n_dangling_from_expert($username)); ?></h6>
+                </li>
+                <li class="list-group-item"><small class="text-muted"># Assegnazioni accettate</small>
+                    <h6><?php echo(n_accepted_from_expert($username)); ?></h6>
+                </li>
+                <li class="list-group-item"><small class="text-muted"># Assegnazioni rifiutate</small>
+                    <h6><?php echo(n_rejected_from_expert($username)); ?></h6>
+                </li>
+            </ul>
+    <?php } else { ?>
+            <h3>Statistiche ente</h3>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><small class="text-muted"># Processi</small>
+                    <h6><?php echo(n_process($username)); ?></h6>
+                </li>
+                <li class="list-group-item"><small class="text-muted"># Assegnazioni</small>
+                    <h6><?php echo(n_availability_from_entity($username)); ?></h6>
+                </li>
+                <li class="list-group-item"><small class="text-muted"># Assegnazioni pendenti</small>
+                    <h6><?php echo(n_dangling_from_entity($username)); ?></h6>
+                </li>
+                <li class="list-group-item"><small class="text-muted"># Assegnazioni accettate</small>
+                    <h6><?php echo(n_accepted_from_entity($username)); ?></h6>
+                </li>
+                <li class="list-group-item"><small class="text-muted"># Assegnazioni rifiutate</small>
+                    <h6><?php echo(n_rejected_from_entity($username)); ?></h6>
+                </li>
+            </ul>
+    <?php } ?>
+    </div>
+    <div class="col-md-2 offset-md-2 text-center align-middle">
         <h3>Cambia Password</h3>
         <form id="update_password_form" action="scripts/update_password.php" method="post">
             <div class="form-group mb-3 mt-4">
@@ -246,52 +289,6 @@ if (mysqli_stmt_fetch($statement)) { ?>
         </form>
     </div>
 </div>
-<?php if ($usertype == 'esperto') { ?>
-    <div>
-        <h3>Statistiche esperto</h3>
-        <ul>
-            <li>
-                # titoli di studio: <?php echo(n_title($username)); ?>
-            </li>
-            <li>
-                # competenze: <?php echo(n_competence($username)); ?>
-            </li>
-            <li>
-                # assegnazioni: <?php echo(n_availability_from_expert($username)); ?>
-            </li>
-            <li>
-                # assegnazioni pendenti: <?php echo(n_dangling_from_expert($username)); ?>
-            </li>
-            <li>
-                # assegnazioni accettate: <?php echo(n_accepted_from_expert($username)); ?>
-            </li>
-            <li>
-                # assegnazioni rifiutate: <?php echo(n_rejected_from_expert($username)); ?>
-            </li>
-        </ul>
-    </div>
-<?php } else { ?>
-    <div>
-        <h3>Statistiche ente</h3>
-        <ul>
-            <li>
-                # processi: <?php echo(n_process($username)); ?>
-            </li>
-            <li>
-                # assegnazioni: <?php echo(n_availability_from_entity($username)); ?>
-            </li>
-            <li>
-                # assegnazioni pendenti: <?php echo(n_dangling_from_entity($username)); ?>
-            </li>
-            <li>
-                # assegnazioni accettate: <?php echo(n_accepted_from_entity($username)); ?>
-            </li>
-            <li>
-                # assegnazioni rifiutate: <?php echo(n_rejected_from_entity($username)); ?>
-            </li>
-        </ul>
-    </div>
-<?php } ?>
 <?php require_once('includes/footer.php'); ?>
 </body>
 </html>
