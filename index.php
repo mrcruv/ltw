@@ -233,11 +233,23 @@ if (isset($_SESSION['username'])) {
             </div>
             <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
                 <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                  <h4 class="mb-4">Piattaforma per l'esternalizzazione dei processi aziendali</h4>
-                  <p class="small mb-0">Mettiamo in comunicazione enti pubblici e privati con i migliori esperti
-                      in tutti i settori del business, della tecnologia e della finanza. Se non sei già registrato,
-                      iscriviti subito per metterti a disposizione, se sei un esperto, o per proporre i tuoi progetti,
-                      se sei un ente.</p>
+                    <h4 class="mb-1 mt-3">Piattaforma per l'esternalizzazione dei processi aziendali</h4>
+                    <span class="small mb-0">Mettiamo in comunicazione enti pubblici e privati con i migliori esperti
+                        in tutti i settori del business, della tecnologia e della finanza. Se non sei già registrato,
+                        iscriviti subito per metterti a disposizione, se sei un esperto, o per proporre i tuoi progetti,
+                        se sei un ente.
+                    </span>
+                    <h4 class="mb-1 mt-3">Registrazione rapida ed intuitiva, bastano 5 minuti!</h4>
+                    <span class="small mb-0">
+                        Avrai bisogno di una partita IVA e di un indirizzo di posta elettronica certificata (PEC) per registrarti;
+                        ricordati anche di avere a portata di mano il tuo codice fiscale!
+                    </span>
+                    <h4 class="mb-1 mt-3">Applicazione web sicura ed in continuo aggiornamento</h4>
+                    <span class="small mb-0">
+                        Abbiamo a cuore la protezione dei tuoi dati personali e delle informazioni sensibili: è per questo che adottiamo
+                        politiche di sicurezza informatica che scongiurano attacchi come SQL injection, XSS e brute-force password attacks.
+                        Segui le indicazioni in fase di registrazione e scegli una password robusta, la sicurezza informatica parte dagli utenti!
+                    </span>
                 </div>
               </div>
           </div>
