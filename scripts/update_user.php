@@ -26,90 +26,83 @@ $new_entity_name = isset($_GET['new_entity_name']) ? trim($_GET['new_entity_name
 $new_entity_type = isset($_GET['new_entity_type']) ? trim($_GET['new_entity_type']) : false;
 
 
-$query = 'SELECT ? FROM utenti WHERE username=?';
-$result =  mysqli_query($connection, $query) or die(mysqli_error($connection));
-$num_rows = mysqli_num_rows($result);
-if ($num_rows <= 0) {
-    header('Location: ../me.php?err=utente+non+esistente');
-    die('utente non esistente');
+
+$msg = 'informazioni aggiornate con successo: ';
+if (!empty($new_cf)) {
+    if (!preg_match($cf_regex, $new_cf)) {
+        header('Location: ../me.php?err=c.f.+non+corretto');
+        die('c.f. non corretto');
+    }
+    $query = 'UPDATE utenti SET cf = ? WHERE username = ?';
+    $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
+    mysqli_stmt_bind_param($statement, 'ss', $new_cf, $username) or die(mysqli_error($connection));
+    mysqli_stmt_execute($statement) or die(mysqli_error($connection));
+    mysqli_stmt_close($statement) or die(mysqli_error($connection));
+    $msg . 'cf, ';
 }
-else {
-    $msg = 'informazioni aggiornate con successo: ';
-    if (!empty($new_cf)) {
-        if (!preg_match($cf_regex, $new_cf)) {
-            header('Location: ../me.php?err=c.f.+non+corretto');
-            die('c.f. non corretto');
+if (!empty($new_piva)) {
+    if (!preg_match($piva_regex, $new_piva)) {
+        header('Location: ../me.php?err=p.+iva+non+corretta');
+        die('p. iva non corretta');
+    }
+    $query = 'UPDATE utenti SET piva = ? WHERE username = ?';
+    $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
+    mysqli_stmt_bind_param($statement, 'ss', $new_piva, $username) or die(mysqli_error($connection));
+    mysqli_stmt_execute($statement) or die(mysqli_error($connection));
+    mysqli_stmt_close($statement) or die(mysqli_error($connection));
+    $msg . 'piva, ';
+}
+if (!empty($new_website))
+    if (!preg_match($website_regex, $new_website)) {
+        header('Location: ../me.php?err=sito+web+non+corretto');
+        die('sito web non corretto');
+    }{
+    $query = 'UPDATE utenti SET sito_web = ? WHERE username = ?';
+    $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
+    mysqli_stmt_bind_param($statement, 'ss', $new_website, $username) or die(mysqli_error($connection));
+    mysqli_stmt_execute($statement) or die(mysqli_error($connection));
+    mysqli_stmt_close($statement) or die(mysqli_error($connection));
+    $msg . 'sito web, ';
+}
+if (!empty($new_pec)) {
+    if (!preg_match($pec_regex, $new_pec)) {
+        header('Location: ../me.php?err=pec+non+corretta');
+        die('pec non corretta');
+    }
+    $query = 'UPDATE utenti SET pec = ? WHERE username = ?';
+    $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
+    mysqli_stmt_bind_param($statement, 'ss', $new_pec, $username) or die(mysqli_error($connection));
+    mysqli_stmt_execute($statement) or die(mysqli_error($connection));
+    mysqli_stmt_close($statement) or die(mysqli_error($connection));
+    $msg . 'pec, ';
+}
+if($usertype == 'ente') {
+    if (!empty($new_entity_name)) {
+        if (!preg_match($name_regex, $new_entity_name)) {
+            header('Location: ../me.php?err=denominazione+non+corretta');
+            die('denominazione non corretta');
         }
-        $query = 'UPDATE utenti SET cf = ? WHERE username = ?';
+        $query = 'UPDATE enti SET denominazione = ? WHERE username = ?';
         $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
         mysqli_stmt_bind_param($statement, 'ss', $new_cf, $username) or die(mysqli_error($connection));
         mysqli_stmt_execute($statement) or die(mysqli_error($connection));
         mysqli_stmt_close($statement) or die(mysqli_error($connection));
-        $msg . 'cf, ';
+        $msg . 'denominazione, ';
     }
-    if (!empty($new_piva)) {
-        if (!preg_match($piva_regex, $new_piva)) {
-            header('Location: ../me.php?err=p.+iva+non+corretta');
-            die('p. iva non corretta');
+    if (!empty($new_entity_type)) {
+        if (!preg_match($type_regex, $new_entity_type)) {
+            header('Location: ../me.php?err=tipo+ente+non+corretto');
+            die('tipo ente non corretto');
         }
-        $query = 'UPDATE utenti SET piva = ? WHERE username = ?';
+        $query = 'UPDATE enti SET tipo = ? WHERE username = ?';
         $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
-        mysqli_stmt_bind_param($statement, 'ss', $new_piva, $username) or die(mysqli_error($connection));
+        mysqli_stmt_bind_param($statement, 'ss', $new_entity_type, $username) or die(mysqli_error($connection));
         mysqli_stmt_execute($statement) or die(mysqli_error($connection));
         mysqli_stmt_close($statement) or die(mysqli_error($connection));
-        $msg . 'piva, ';
+        $msg . 'tipo ente, ';
     }
-    if (!empty($new_website))
-        if (!preg_match($website_regex, $new_website)) {
-            header('Location: ../me.php?err=sito+web+non+corretto');
-            die('sito web non corretto');
-        }{
-        $query = 'UPDATE utenti SET sito_web = ? WHERE username = ?';
-        $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
-        mysqli_stmt_bind_param($statement, 'ss', $new_website, $username) or die(mysqli_error($connection));
-        mysqli_stmt_execute($statement) or die(mysqli_error($connection));
-        mysqli_stmt_close($statement) or die(mysqli_error($connection));
-        $msg . 'sito web, ';
-    }
-    if (!empty($new_pec)) {
-        if (!preg_match($pec_regex, $new_pec)) {
-            header('Location: ../me.php?err=pec+non+corretta');
-            die('pec non corretta');
-        }
-        $query = 'UPDATE utenti SET pec = ? WHERE username = ?';
-        $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
-        mysqli_stmt_bind_param($statement, 'ss', $new_pec, $username) or die(mysqli_error($connection));
-        mysqli_stmt_execute($statement) or die(mysqli_error($connection));
-        mysqli_stmt_close($statement) or die(mysqli_error($connection));
-        $msg . 'pec, ';
-    }
-    if($usertype == 'ente') {
-        if (!empty($new_entity_name)) {
-            if (!preg_match($name_regex, $new_entity_name)) {
-                header('Location: ../me.php?err=denominazione+non+corretta');
-                die('denominazione non corretta');
-            }
-            $query = 'UPDATE enti SET denominazione = ? WHERE username = ?';
-            $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
-            mysqli_stmt_bind_param($statement, 'ss', $new_cf, $username) or die(mysqli_error($connection));
-            mysqli_stmt_execute($statement) or die(mysqli_error($connection));
-            mysqli_stmt_close($statement) or die(mysqli_error($connection));
-            $msg . 'denominazione, ';
-        }
-        if (!empty($new_entity_type)) {
-            if (!preg_match($type_regex, $new_entity_type)) {
-                header('Location: ../me.php?err=tipo+ente+non+corretto');
-                die('tipo ente non corretto');
-            }
-            $query = 'UPDATE enti SET denominazione = ? WHERE username = ?';
-            $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
-            mysqli_stmt_bind_param($statement, 'ss', $new_entity_type, $username) or die(mysqli_error($connection));
-            mysqli_stmt_execute($statement) or die(mysqli_error($connection));
-            mysqli_stmt_close($statement) or die(mysqli_error($connection));
-            $msg . 'tipo ente, ';
-        }
-    }
-    $msg = substr($msg, 0, -2);
-    $msg .= '.';
-    header('Location: ../me.php?msg='. $msg);
 }
+$msg = substr($msg, 0, -2);
+$msg .= '.';
+header('Location: ../me.php?msg='. $msg);
+
