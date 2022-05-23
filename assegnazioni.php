@@ -152,7 +152,7 @@ $usertype = $_SESSION['usertype'];
                         </div>
                         <div class="mt-5">
                             <h3 class="heading"><?php echo($array[$i]['process']); ?></h3>
-                            <a class="btn btn-outline-primary" href="assegnazioni.php?description=<?php echo($array[$i]['description']); ?>" role="button">Mostra Descrizione</a>
+                            <a class="btn btn-outline-primary mb-3" href="assegnazioni.php?description=<?php echo($array[$i]['description']); ?>" role="button">Mostra Descrizione</a>
                             <h4>
                                 <?php if (!is_null($array[$i]['website'])): ?>
                                 <a href="<?php echo($array[$i]['website']) ?>"><?php echo($array[$i]['expert']); ?></a>
