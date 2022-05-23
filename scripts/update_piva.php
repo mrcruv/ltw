@@ -16,17 +16,24 @@ $piva_regex = $usertype == 'ente' ? $entity_piva_regex : $expert_piva_regex;
 
 $new_piva = isset($_POST['new_piva']) ? trim($_POST['new_piva']) : false;
 
-$query = 'SELECT * FROM utenti WHERE username = ?';
+$query = 'SELECT piva FROM utenti WHERE username = ?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
 mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
+mysqli_stmt_bind_result($statement, $old_piva) or die(mysqli_error($connection));
+
 if (!mysqli_stmt_fetch($statement)) {
+    mysqli_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../me.php?err=utente+non+esistente');
     die('utente non esistente');
 }
 else if (!empty($new_piva)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
+    if ($new_piva == $old_piva) {
+        header('Location: ../me.php?err=la+nuova+p.iva+deve+essere+diversa+da+quella+attuale:+p.iva+non+modificata');
+        die('la nuova p.iva deve essere diversa da quella attuale: p.iva non modificata');
+    }
     if (!preg_match($piva_regex, $new_piva)) {
         header('Location: ../me.php?err=p.iva+non+corretta');
         die('p.iva non corretta');

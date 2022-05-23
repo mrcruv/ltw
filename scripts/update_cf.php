@@ -16,17 +16,23 @@ $cf_regex = $usertype == 'ente' ? $entity_cf_regex : $expert_cf_regex;
 
 $new_cf = isset($_POST['new_cf']) ? trim($_POST['new_cf']) : false;
 
-$query = 'SELECT * FROM utenti WHERE username = ?';
+$query = 'SELECT cf FROM utenti WHERE username = ?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
 mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
+mysqli_stmt_bind_result($statement, $old_cf) or die(mysqli_error($connection));
 if (!mysqli_stmt_fetch($statement)) {
+    mysqli_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../me.php?err=utente+non+esistente');
     die('utente non esistente');
 }
 else if (!empty($new_cf)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
+    if ($new_cf == $old_cf) {
+        header('Location: ../me.php?err=il+nuovo+c.f.+deve+essere+diverso+da+quello+attuale:+c.f.+non+modificato');
+        die('il nuovo c.f. deve essere diverso da quello attuale: c.f. non modificato');
+    }
     if (!preg_match($cf_regex, $new_cf)) {
         header('Location: ../me.php?err=c.f.+non+corretto');
         die('c.f. non corretto');

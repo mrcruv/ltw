@@ -18,17 +18,23 @@ $usertype = $_SESSION['usertype'];
 
 $new_entity_name = isset($_POST['new_entity_name']) ? trim($_POST['new_entity_name']) : false;
 
-$query = 'SELECT * FROM utenti WHERE username = ?';
+$query = 'SELECT denominazione FROM enti WHERE username = ?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
 mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
+mysqli_stmt_bind_result($statement, $old_entity_name) or die(mysqli_error($connection));
 if (!mysqli_stmt_fetch($statement)) {
+    mysqli_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../me.php?err=utente+non+esistente');
     die('utente non esistente');
 }
 else if (!empty($new_entity_name)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
+    if ($new_entity_name == $old_entity_name) {
+        header('Location: ../me.php?err=la+nuova+denominazione+deve+essere+diversa+da+quella+attuale:+denominazione+non+modificata');
+        die('la nuova denominazione deve essere diversa da quella attuale: denominazione non modificata');
+    }
     if (!preg_match($entity_name_regex, $new_entity_name)) {
         header('Location: ../me.php?err=denominazione+non+corretta');
         die('denominazione non corretta');
