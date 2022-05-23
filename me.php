@@ -91,11 +91,11 @@ $usertype = $_SESSION['usertype'];
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><small class="text-muted">Codice fiscale</small><h6 id="text_cf"><?php echo($cf); ?></h6>
                 <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="cf_e"><i class="material-icons">&#xE254;</i></a>
-                <a class="add" title="Add" data-toggle="tooltip" href="#" id="cf_a"><i class="material-icons">&#xE03B;</i></a>
+                <a class="add" title="Add" data-toggle="tooltip" href="#" id="cf_a"><i class="material-icons">&#xE161;</i></a>
                 </li>
                 <li class="list-group-item"><small class="text-muted">Partita IVA</small><h6 id="text_piva"><?php echo($piva); ?></h6>
                 <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="piva_e"><i class="material-icons">&#xE254;</i></a>
-                <a class="add" title="Add" data-toggle="tooltip" href="#" id="piva_a"><i class="material-icons">&#xE03B;</i></a>    
+                <a class="add" title="Add" data-toggle="tooltip" href="#" id="piva_a"><i class="material-icons">&#xE161;</i></a>    
                 </li>
                 <li class="list-group-item"><small class="text-muted">Sito web</small>
                     <h6 id="text_website">
@@ -107,11 +107,11 @@ $usertype = $_SESSION['usertype'];
                         ?>
                     </h6>
                     <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="website_e"><i class="material-icons">&#xE254;</i></a>
-                    <a class="add" title="Add" data-toggle="tooltip" href="#" id="website_a"><i class="material-icons">&#xE03B;</i></a>
+                    <a class="add" title="Add" data-toggle="tooltip" href="#" id="website_a"><i class="material-icons">&#xE161;</i></a>
                 </li>
                 <li class="list-group-item"><small class="text-muted">PEC</small><h6 id="text_pec"><?php echo($pec); ?></h6>
                 <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="pec_e"><i class="material-icons">&#xE254;</i></a>
-                <a class="add" title="Add" data-toggle="tooltip" href="#" id="pec_a"><i class="material-icons">&#xE03B;</i></a>
+                <a class="add" title="Add" data-toggle="tooltip" href="#" id="pec_a"><i class="material-icons">&#xE161;</i></a>
                 </li>
     <?php
     }
@@ -127,11 +127,11 @@ $usertype = $_SESSION['usertype'];
         if (mysqli_stmt_fetch($statement)) { ?>
             <li class="list-group-item"><small class="text-muted">Denominazione</small><h6 id="text_entityName"><?php echo($name); ?></h6>
             <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="entityName_e"><i class="material-icons">&#xE254;</i></a>
-            <a class="add" title="Add" data-toggle="tooltip" href="#" id="entityName_a"><i class="material-icons">&#xE03B;</i></a>
+            <a class="add" title="Add" data-toggle="tooltip" href="#" id="entityName_a"><i class="material-icons">&#xE161;</i></a>
             </li>
             <li class="list-group-item"><small class="text-muted">Tipo</small><h6 id="text_entityType"><?php echo($type); ?></h6>
             <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="entityType_e"><i class="material-icons">&#xE254;</i></a>
-            <a class="add" title="Add" data-toggle="tooltip" href="#" id="entityType_a"><i class="material-icons">&#xE03B;</i></a>
+            <a class="add" title="Add" data-toggle="tooltip" href="#" id="entityType_a"><i class="material-icons">&#xE161;</i></a>
             </li>
         </ul>
 
