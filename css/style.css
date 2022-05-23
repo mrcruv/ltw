@@ -56,6 +56,10 @@ i.icon-red:hover {
     display: none;
 }
 
+.pointer:hover{
+    cursor: pointer;
+}
+
 /*TABLES*/
 /*-----------------------------------*/
 .radius-15 {
