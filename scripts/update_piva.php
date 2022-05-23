@@ -5,7 +5,7 @@ require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
 require_once('../includes/session.php');
 if (!isset($_POST['update_piva_submit'])) {
-    header ('Location: ../index.php?err=errore+update+piva+submit');
+    header ('Location: ../me.php?err=errore+update+piva+submit');
     die('errore update piva submit');
 }
 
@@ -26,17 +26,19 @@ if (!mysqli_stmt_fetch($statement)) {
     die('utente non esistente');
 }
 else if (!empty($new_piva)) {
+    mysqli_stmt_close($statement) or die(mysqli_error($connection));
     if (!preg_match($piva_regex, $new_piva)) {
         header('Location: ../me.php?err=p.iva+non+corretta');
         die('p.iva non corretta');
     }
-    $query = 'UPDATE utenti SET cf = ? WHERE username = ?';
+    $query = 'UPDATE utenti SET piva = ? WHERE username = ?';
     $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
     mysqli_stmt_bind_param($statement, 'ss', $new_piva, $username) or die(mysqli_error($connection));
     mysqli_stmt_execute($statement) or die(mysqli_error($connection));
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
 }
 else {
+    mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../me.php?err=piva+non+inserita');
     die('p.iva non inserita');
 }

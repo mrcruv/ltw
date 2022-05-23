@@ -9,7 +9,7 @@ if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'ente') {
     die('sessione utente ente non attiva');
 }
 if (!isset($_POST['update_entity_type_submit'])) {
-    header ('Location: ../index.php?err=errore+update+entity+type+submit');
+    header ('Location: ../me.php?err=errore+update+entity+type+submit');
     die('errore update entity type submit');
 }
 
@@ -28,6 +28,7 @@ if (!mysqli_stmt_fetch($statement)) {
     die('utente non esistente');
 }
 else if (!empty($new_entity_type)) {
+    mysqli_stmt_close($statement) or die(mysqli_error($connection));
         if (!preg_match($entity_type_regex, $new_entity_type)) {
             header('Location: ../me.php?err=tipo+ente+non+corretto');
             die('tipo ente non corretto');
@@ -39,6 +40,7 @@ else if (!empty($new_entity_type)) {
         mysqli_stmt_close($statement) or die(mysqli_error($connection));
     }
 else {
+    mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../me.php?err=tipo+non+inserito');
     die('tipo non inserito');
 }

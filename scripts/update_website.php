@@ -5,7 +5,7 @@ require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
 require_once('../includes/session.php');
 if (!isset($_POST['update_website_submit'])) {
-    header ('Location: ../index.php?err=errore+update+website+submit');
+    header ('Location: ../me.php?err=errore+update+website+submit');
     die('errore update website submit');
 }
 
@@ -26,6 +26,7 @@ if (!mysqli_stmt_fetch($statement)) {
     die('utente non esistente');
 }
 else if (!empty($new_website)) {
+    mysqli_stmt_close($statement) or die(mysqli_error($connection));
     if (!preg_match($website_regex, $new_website)) {
         header('Location: ../me.php?err=c.f.+non+corretto');
         die('c.f. non corretto');
@@ -37,6 +38,7 @@ else if (!empty($new_website)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
 }
 else {
+    mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../me.php?err=sito+web+non+inserito');
     die('sito web non inserito');
 }
