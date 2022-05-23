@@ -2,6 +2,7 @@
 global $sitename_brief;
 require_once('includes/info.php');
 require_once('includes/session.php');
+
 $username = $_SESSION['username'];
 $usertype = $_SESSION['usertype'];
 ?>
@@ -45,6 +46,32 @@ $usertype = $_SESSION['usertype'];
     <div class="container-fluid">
         <div class="row border-bottom border-3 mb-5">
             <h2>Assegnazioni - <?php echo($username); ?> </h2>
+        </div>
+
+        <?php 
+        if (isset($_GET['description'])){
+            echo('<script type="text/javascript">
+			$(document).ready(function(){
+				$("#exampleModalToggle").modal("show");
+			});
+		    </script>');
+        }
+        ?>
+
+        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalToggleLabel">Descrizione</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h5><?php echo($_GET['description']); ?></h5>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
         </div>
 
         <?php if ($usertype == 'ente'): ?>
@@ -125,7 +152,7 @@ $usertype = $_SESSION['usertype'];
                         </div>
                         <div class="mt-5">
                             <h3 class="heading"><?php echo($array[$i]['process']); ?></h3>
-                            <h5><?php echo($array[$i]['description']); ?></h5>
+                            <a class="btn btn-outline-primary" href="assegnazioni.php?description=<?php echo($array[$i]['description']); ?>" role="button">Mostra Descrizione</a>
                             <h4>
                                 <?php if (!is_null($array[$i]['website'])): ?>
                                 <a href="<?php echo($array[$i]['website']) ?>"><?php echo($array[$i]['expert']); ?></a>
@@ -202,7 +229,7 @@ $usertype = $_SESSION['usertype'];
                         </div>
                         <div class="mt-5">
                             <h3 class="heading"><?php echo($array[$i]['process']); ?></h3>
-                            <h5><?php echo($array[$i]['description']); ?></h5>
+                            <a class="btn btn-outline-primary mb-3" href="assegnazioni.php?description=<?php echo($array[$i]['description']); ?>" role="button">Mostra Descrizione</a>
                             <h4>
                                 <?php if (!is_null($array[$i]['website'])): ?>
                                     <a href="<?php echo($array[$i]['website']) ?>"><?php echo($array[$i]['entity']); ?></a>
