@@ -39,6 +39,7 @@ $usertype = $_SESSION['usertype'];
             var array = id.split("_");
             $('#text_' + array[0]).prop('disabled', false);
             $('#text_' + array[0]).removeClass("notEditable");
+            $('#text_' + array[0]).removeClass("hiddenborder");
             $(this).parents("li").find(".edit, .save").toggle();
         });
 
@@ -89,12 +90,12 @@ if (mysqli_stmt_fetch($statement)) { ?>
                 <form id="update_cf_form" method="post" action="scripts/update_cf.php">
                     <div>
                         <label class="hiddenlabel" for="text_cf"></label>
-                        <input type="text" class="notEditable text-center" id="text_cf" name="new_cf"
+                        <input type="text" class="hiddenborder notEditable text-center" id="text_cf" name="new_cf"
                                value="<?php echo($cf); ?>" disabled>
                     </div>
-                    <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="cf_e"><i class="material-icons">&#xE254;</i></a>
+                    <a class="edit" title="Edit" data-toggle="tooltip" id="cf_e"><i class="material-icons">&#xE254;</i></a>
                     <i class="material-icons save">
-                        <button type="submit" class="btn btn-block btn-primary register_button"
+                        <button type="submit" class="btn btn-block"
                                 name="update_cf_submit">
                             &#xE161;
                         </button>
@@ -106,13 +107,14 @@ if (mysqli_stmt_fetch($statement)) { ?>
                 <form id="update_piva_form" method="post" action="scripts/update_piva.php">
                     <div>
                         <label class="hiddenlabel" for="text_piva"></label>
-                        <input type="text" class="notEditable text-center" id="text_piva" id="new_piva" name="new_piva"
+                        <input type="text" class="hiddenborder notEditable text-center" id="text_piva" id="new_piva"
+                               name="new_piva"
                                value="<?php echo($piva); ?>" disabled/>
                     </div>
                     <a class="edit" title="Edit" data-toggle="tooltip" id="piva_e"><i
                                 class="material-icons">&#xE254;</i></a>
                     <i class="material-icons save">
-                        <button type="submit" class="btn btn-block btn-primary register_button"
+                        <button type="submit" class="btn btn-block"
                                 name="update_piva_submit">
                             &#xE161;
                         </button>
@@ -123,13 +125,14 @@ if (mysqli_stmt_fetch($statement)) { ?>
                 <form method="post" action="scripts/update_website.php">
                     <div>
                         <label class="hiddenlabel" for="text_website"></label>
-                        <input type="text" class="notEditable text-center" id="text_website" name="new_website"
+                        <input type="text" class="hiddenborder notEditable text-center" id="text_website"
+                               name="new_website"
                                value="<?php echo($website); ?>" disabled>
                     </div>
-                    <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="website_e"><i
+                    <a class="edit" title="Edit" data-toggle="tooltip" id="website_e"><i
                                 class="material-icons">&#xE254;</i></a>
                     <i class="material-icons save">
-                        <button type="submit" class="btn btn-block btn-primary register_button"
+                        <button type="submit" class="btn btn-block"
                                 name="update_website_submit">
                             &#xE161;
                         </button>
@@ -141,12 +144,12 @@ if (mysqli_stmt_fetch($statement)) { ?>
 
                     <div>
                         <label class="hiddenlabel" for="text_pec"></label>
-                        <input type="text" class="notEditable text-center" id="text_pec" name="new_pec"
+                        <input type="text" class="hiddenborder notEditable text-center" id="text_pec" name="new_pec"
                                value="<?php echo($pec); ?>" disabled>
                     </div>
-                    <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="pec_e"><i class="material-icons">&#xE254;</i></a>
+                    <a class="edit" title="Edit" data-toggle="tooltip" id="pec_e"><i class="material-icons">&#xE254;</i></a>
                     <i class="material-icons save">
-                        <button type="submit" class="btn btn-block btn-primary register_button"
+                        <button type="submit" class="btn btn-block"
                                 name="update_pec_submit">
                             &#xE161;
                         </button>
@@ -168,13 +171,15 @@ if (mysqli_stmt_fetch($statement)) { ?>
                 <form method="post" action="scripts/update_entity_name.php">
                     <div>
                         <label class="hiddenlabel" for="text_entityName"></label>
-                        <input type="text" class="notEditable text-center" id="text_entityName" name="new_entity_name"
+                        <input type="text" class="hiddenborder notEditable text-center" id="text_entityName"
+                               name="new_entity_name"
                                value="<?php echo($name); ?>" disabled>
                     </div>
-                    <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="entityName_e"><i
-                                class="material-icons">&#xE254;</i></a>
+                    <a class="edit" title="Edit" data-toggle="tooltip"id="entityName_e">
+                        <i class="material-icons">&#xE254;
+                        </i></a>
                     <i class="material-icons save">
-                        <button type="submit" class="btn btn-block btn-primary register_button"
+                        <button type="submit" class="btn btn-block"
                                 name="update_entity_name_submit">
                             &#xE161;
                         </button>
@@ -185,13 +190,14 @@ if (mysqli_stmt_fetch($statement)) { ?>
                 <form method="post" action="scripts/update_entity_type.php">
                     <div>
                         <label class="hiddenlabel" for="text_entityType"></label>
-                        <input type="text" class="notEditable text-center" id="text_entityType" name="new_entity_type"
+                        <input type="text" class="hiddenborder notEditable text-center" id="text_entityType"
+                               name="new_entity_type"
                                value="<?php echo($type); ?>" disabled>
                     </div>
-                    <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="entityType_e"><i
+                    <a class="edit" title="Edit" data-toggle="tooltip"id="entityType_e"><i
                                 class="material-icons">&#xE254;</i></a>
                     <i class="material-icons save">
-                        <button type="submit" class="btn btn-block btn-primary register_button"
+                        <button type="submit" class="btn btn-block"
                                 name="update_entity_type_submit">
                             &#xE161;
                         </button>

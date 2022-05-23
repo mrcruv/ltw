@@ -33,6 +33,11 @@ label.hiddenlabel {
     height: 0;
 }
 
+input.hiddenborder {
+    border: hidden;
+    color: black;
+}
+
 th {
     color: #000000;
 }
