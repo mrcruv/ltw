@@ -50,7 +50,7 @@ endif;
 <?php require_once('includes/header.php'); ?>
 <div class="container-fluid">
     <div class="row border-bottom border-3 mb-5">
-        <h2>Titoli di Studio</h2>
+        <h2>Titoli di studio</h2>
     </div>
     <div class="row">
         <div class="col-7">

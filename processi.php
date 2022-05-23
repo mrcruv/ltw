@@ -88,7 +88,7 @@ endif;
         </div>
         <div class="col-1"></div>
         <div class="col-4 text-center mb-2">
-            <h5>Aggiungi Processo</h5>
+            <h5>Aggiungi processo</h5>
             <a type="button" class="btn btn-info rounded-circle" id="add_button"><i class="fa fa-plus"></i></a>
             <form id="add_process_form" class="add_form" action="scripts/add_process.php" method="post">
                 <div class="form-group mb-3 mt-4">
