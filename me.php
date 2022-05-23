@@ -33,35 +33,20 @@ $usertype = $_SESSION['usertype'];
 
     <script>
     $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();
-        var actions = $("ul li a").html();
-        // Append table with add row form on add new button click
-        $(document).on("click", ".add", function(){
-            var empty = false;
-            var input = $(this).parents("ul").find('input[type="text"]');
-            input.each(function(){
-                if(!$(this).val()){
-                    $(this).addClass("error");
-                    empty = true;
-                } else{
-                    $(this).removeClass("error");
-                }
-            });
-            $(this).parents("ul").find(".error").first().focus();
-            if(!empty){
-                input.each(function(){
-                    $(this).parent("li").html($(this).val());
-                });			
-                $(this).parents("li").find(".edit, .add").toggle();
-            }		
-        });
-        // Edit row on edit button click
-        $(document).on("click", ".edit", function(){		
-            $(this).parents("ul").find("li h6").each(function(){
-                $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
-            });		
+        $('.edit').click(function(){
+            var id = $(this).attr('id');
+            var array = id.split("_");
+            $('#text_'+array[0]).html('<input type="text" id="input_'+array[0]+'" class="form-control" value="' + $('#text_'+array[0]).text() + '">');
             $(this).parents("li").find(".edit, .add").toggle();
         });
+
+        $('.add').click(function(){
+            var id = $(this).attr('id');
+            var array = id.split("_");
+            $('#text_'+array[0]).html('<h6 id="text_'+array[0]+'">' + $('#input_'+array[0]).val() + '</h6>');
+            $(this).parents("li").find(".edit, .add").toggle();
+        });
+        
     });
     </script>
 
@@ -104,13 +89,16 @@ $usertype = $_SESSION['usertype'];
         <div class="col-md-4 offset-md-1 text-center">
             <h3>Info</h3>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><small class="text-muted">Codice fiscale</small><h6><?php echo($cf); ?></h6>
-                <a class="edit" title="Edit" data-toggle="tooltip" href="#"><i class="material-icons">&#xE254;</i></a>
-                <a class="add" title="Add" data-toggle="tooltip" href="scripts/update_user.php?field=cf&new_value=<?php echo($cf); ?>"><i class="material-icons">&#xE03B;</i></a>
+                <li class="list-group-item"><small class="text-muted">Codice fiscale</small><h6 id="text_cf"><?php echo($cf); ?></h6>
+                <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="cf_e"><i class="material-icons">&#xE254;</i></a>
+                <a class="add" title="Add" data-toggle="tooltip" href="#" id="cf_a"><i class="material-icons">&#xE03B;</i></a>
                 </li>
-                <li class="list-group-item"><small class="text-muted">Partita IVA</small><h6><?php echo($piva); ?></h6></li>
+                <li class="list-group-item"><small class="text-muted">Partita IVA</small><h6 id="text_piva"><?php echo($piva); ?></h6>
+                <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="piva_e"><i class="material-icons">&#xE254;</i></a>
+                <a class="add" title="Add" data-toggle="tooltip" href="#" id="piva_a"><i class="material-icons">&#xE03B;</i></a>    
+                </li>
                 <li class="list-group-item"><small class="text-muted">Sito web</small>
-                    <h6>
+                    <h6 id="text_website">
                         <?php if (!is_null($website)): ?>
                             <a href="<?php echo($website) ?>"><?php echo($website); ?></a>
                         <?php else:
@@ -118,8 +106,13 @@ $usertype = $_SESSION['usertype'];
                         endif;
                         ?>
                     </h6>
+                    <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="website_e"><i class="material-icons">&#xE254;</i></a>
+                    <a class="add" title="Add" data-toggle="tooltip" href="#" id="website_a"><i class="material-icons">&#xE03B;</i></a>
                 </li>
-                <li class="list-group-item"><small class="text-muted">PEC</small><h6><?php echo($pec); ?></h6></li>
+                <li class="list-group-item"><small class="text-muted">PEC</small><h6 id="text_pec"><?php echo($pec); ?></h6>
+                <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="pec_e"><i class="material-icons">&#xE254;</i></a>
+                <a class="add" title="Add" data-toggle="tooltip" href="#" id="pec_a"><i class="material-icons">&#xE03B;</i></a>
+                </li>
     <?php
     }
     else die('error');
@@ -132,8 +125,14 @@ $usertype = $_SESSION['usertype'];
         mysqli_stmt_execute($statement) or die(mysqli_error($connection));
         mysqli_stmt_bind_result($statement, $name, $type) or die(mysqli_error($connection));
         if (mysqli_stmt_fetch($statement)) { ?>
-            <li class="list-group-item"><small class="text-muted">Denominazione</small><h6><?php echo($name); ?></h6></li>
-            <li class="list-group-item"><small class="text-muted">Tipo</small><h6><?php echo($type); ?></h6></li>
+            <li class="list-group-item"><small class="text-muted">Denominazione</small><h6 id="text_entityName"><?php echo($name); ?></h6>
+            <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="entityName_e"><i class="material-icons">&#xE254;</i></a>
+            <a class="add" title="Add" data-toggle="tooltip" href="#" id="entityName_a"><i class="material-icons">&#xE03B;</i></a>
+            </li>
+            <li class="list-group-item"><small class="text-muted">Tipo</small><h6 id="text_entityType"><?php echo($type); ?></h6>
+            <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="entityType_e"><i class="material-icons">&#xE254;</i></a>
+            <a class="add" title="Add" data-toggle="tooltip" href="#" id="entityType_a"><i class="material-icons">&#xE03B;</i></a>
+            </li>
         </ul>
 
         <?php
