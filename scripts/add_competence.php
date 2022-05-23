@@ -39,19 +39,6 @@ if (!empty($description) and !preg_match($description_regex, $description)) {
     die('descrizione non corretta');
 }
 
-$query = 'SELECT * FROM competenze WHERE nome=? AND settore=?';
-$statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
-mysqli_stmt_bind_param($statement, 'ss', $name, $area) or die(mysqli_error($connection));
-mysqli_stmt_execute($statement) or die(mysqli_error($connection));
-if (!mysqli_stmt_fetch($statement)) {
-    mysqli_stmt_close($statement) or die(mysqli_error($connection));
-    $query = 'INSERT INTO competenze(nome, settore) VALUES (?, ?);';
-    $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
-    mysqli_stmt_bind_param($statement, 'ss', $name, $area) or die(mysqli_error($connection));
-    mysqli_stmt_execute($statement) or die(mysqli_error($connection));
-}
-mysqli_stmt_close($statement) or die(mysqli_error($connection));
-
 $query = 'SELECT * FROM competenze_esperti WHERE competenza=? AND esperto=? AND settore=?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
 mysqli_stmt_bind_param($statement, 'sss', $name, $username, $area) or die(mysqli_error($connection));

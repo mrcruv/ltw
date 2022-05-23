@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 10, 2022 alle 22:50
+-- Creato il: Mag 23, 2022 alle 11:46
 -- Versione del server: 10.4.24-MariaDB
 -- Versione PHP: 7.4.28
 
@@ -20,17 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `test`
 --
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `competenze`
---
-
-CREATE OR REPLACE TABLE `competenze` (
-                              `nome` varchar(255) NOT NULL,
-                              `settore` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -83,6 +72,10 @@ CREATE OR REPLACE TABLE `enti` (
                         `tipo` enum('pubblico','privato') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dump dei dati per la tabella `enti`
+--
+
 -- --------------------------------------------------------
 
 --
@@ -126,16 +119,6 @@ CREATE OR REPLACE TABLE `processi` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `titoli`
---
-
-CREATE OR REPLACE TABLE `titoli` (
-    `denominazione` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Struttura della tabella `titoli_esperti`
 --
 
@@ -146,8 +129,6 @@ CREATE OR REPLACE TABLE `titoli_esperti` (
                                   `note` text DEFAULT NULL,
                                   `voto` smallint(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
 
 --
 -- Struttura della tabella `utenti`
@@ -167,17 +148,10 @@ CREATE OR REPLACE TABLE `utenti` (
 --
 
 --
--- Indici per le tabelle `competenze`
---
-ALTER TABLE `competenze`
-    ADD PRIMARY KEY (`nome`,`settore`) USING BTREE;
-
---
 -- Indici per le tabelle `competenze_esperti`
 --
 ALTER TABLE `competenze_esperti`
     ADD PRIMARY KEY (`esperto`,`competenza`,`settore`) USING BTREE,
-    ADD KEY `competenza` (`competenza`,`settore`) USING BTREE,
     ADD KEY `esperto` (`esperto`);
 
 --
@@ -191,20 +165,23 @@ ALTER TABLE `diplomi`
 --
 ALTER TABLE `disponibilita`
     ADD PRIMARY KEY (`processo`,`ente`,`esperto`),
-    ADD KEY `esperto` (`esperto`);
+    ADD KEY `esperto` (`esperto`),
+    ADD KEY `processo` (`processo`,`ente`);
 
 --
 -- Indici per le tabelle `enti`
 --
 ALTER TABLE `enti`
     ADD PRIMARY KEY (`username`),
-    ADD UNIQUE KEY `denominazione` (`denominazione`);
+    ADD UNIQUE KEY `denominazione` (`denominazione`),
+    ADD KEY `username` (`username`);
 
 --
 -- Indici per le tabelle `esperti`
 --
 ALTER TABLE `esperti`
-    ADD PRIMARY KEY (`username`);
+    ADD PRIMARY KEY (`username`),
+    ADD KEY `username` (`username`);
 
 --
 -- Indici per le tabelle `lauree`
@@ -220,17 +197,11 @@ ALTER TABLE `processi`
     ADD KEY `ente` (`ente`);
 
 --
--- Indici per le tabelle `titoli`
---
-ALTER TABLE `titoli`
-    ADD PRIMARY KEY (`denominazione`);
-
---
 -- Indici per le tabelle `titoli_esperti`
 --
 ALTER TABLE `titoli_esperti`
     ADD PRIMARY KEY (`esperto`,`titolo`),
-    ADD KEY `titolo` (`titolo`);
+    ADD KEY `esperto` (`esperto`);
 
 --
 -- Indici per le tabelle `utenti`
@@ -249,14 +220,7 @@ ALTER TABLE `utenti`
 -- Limiti per la tabella `competenze_esperti`
 --
 ALTER TABLE `competenze_esperti`
-    ADD CONSTRAINT `competenze_esperti_ibfk_1` FOREIGN KEY (`esperto`) REFERENCES `esperti` (`username`),
-    ADD CONSTRAINT `competenze_esperti_ibfk_2` FOREIGN KEY (`competenza`,`settore`) REFERENCES `competenze` (`nome`, `settore`);
-
---
--- Limiti per la tabella `diplomi`
---
-ALTER TABLE `diplomi`
-    ADD CONSTRAINT `diplomi_ibfk_1` FOREIGN KEY (`titolo`) REFERENCES `titoli` (`denominazione`);
+    ADD CONSTRAINT `competenze_esperti_ibfk_1` FOREIGN KEY (`esperto`) REFERENCES `esperti` (`username`);
 
 --
 -- Limiti per la tabella `disponibilita`
@@ -278,12 +242,6 @@ ALTER TABLE `esperti`
     ADD CONSTRAINT `esperti_ibfk_1` FOREIGN KEY (`username`) REFERENCES `utenti` (`username`);
 
 --
--- Limiti per la tabella `lauree`
---
-ALTER TABLE `lauree`
-    ADD CONSTRAINT `lauree_ibfk_1` FOREIGN KEY (`titolo`) REFERENCES `titoli` (`denominazione`);
-
---
 -- Limiti per la tabella `processi`
 --
 ALTER TABLE `processi`
@@ -293,11 +251,9 @@ ALTER TABLE `processi`
 -- Limiti per la tabella `titoli_esperti`
 --
 ALTER TABLE `titoli_esperti`
-    ADD CONSTRAINT `titoli_esperti_ibfk_1` FOREIGN KEY (`esperto`) REFERENCES `esperti` (`username`),
-    ADD CONSTRAINT `titoli_esperti_ibfk_2` FOREIGN KEY (`titolo`) REFERENCES `titoli` (`denominazione`);
+    ADD CONSTRAINT `titoli_esperti_ibfk_1` FOREIGN KEY (`esperto`) REFERENCES `esperti` (`username`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-);
