@@ -19,7 +19,7 @@ jQuery.validator.addMethod("piva_regex", function(value, element) {
         });
 
 jQuery.validator.addMethod("website_regex", function(value, element) {   
-        return /^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/.test(value);   
+        return /^((https?|ftp|smtp):\/\/)(www.)[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/.test(value);
         });
         
 jQuery.validator.addMethod("password_regex", function(value, element) {   
