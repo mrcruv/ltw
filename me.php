@@ -39,15 +39,15 @@ $usertype = $_SESSION['usertype'];
             var array = id.split("_");
             $('#text_' + array[0]).prop('disabled', false);
             $('#text_' + array[0]).removeClass("notEditable");
-            $(this).parents("li").find(".edit, .add").toggle();
+            $(this).parents("li").find(".edit, .save").toggle();
         });
 
-        $('.add').click(function () {
+        $('.save').click(function () {
             var id = $(this).attr('id');
             var array = id.split("_");
             $('#text_' + array[0]).prop('disabled', true);
             $('#text_' + array[0]).addClass("notEditable");
-            $(this).parents("li").find(".edit, .add").toggle();
+            $(this).parents("li").find(".edit, .save").toggle();
         });
     });
 </script>
@@ -93,7 +93,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                                value="<?php echo($cf); ?>" disabled>
                     </div>
                     <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="cf_e"><i class="material-icons">&#xE254;</i></a>
-                    <a class="add" type="submit" title="Add" data-toggle="tooltip" href="#" id="cf_a"><i
+                    <a class="save" type="submit" title="Save" data-toggle="tooltip" href="#" id="cf_a"><i
                                 class="material-icons">&#xE161;</i></a>
                 </li>
             </form>
@@ -105,7 +105,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                                value="<?php echo($piva); ?>" disabled>
                     </div>
                     <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="piva_e"><i class="material-icons">&#xE254;</i></a>
-                    <a class="add" type="submit" title="Add" data-toggle="tooltip" href="#" id="piva_a"><i
+                    <a class="save" type="submit" title="Save" data-toggle="tooltip" href="#" id="piva_a"><i
                                 class="material-icons">&#xE161;</i></a>
                 </li>
             </form>
@@ -118,7 +118,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                     </div>
                     <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="website_e"><i
                                 class="material-icons">&#xE254;</i></a>
-                    <a class="add" type="submit" title="Add" data-toggle="tooltip" href="#" id="website_a"><i
+                    <a class="save" type="submit" title="Save" data-toggle="tooltip" href="#" id="website_a"><i
                                 class="material-icons">&#xE161;</i></a>
                 </li>
             </form>
@@ -130,7 +130,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                                value="<?php echo($pec); ?>" disabled>
                     </div>
                     <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="pec_e"><i class="material-icons">&#xE254;</i></a>
-                    <a class="add" type="submit" title="Add" data-toggle="tooltip" href="#" id="pec_a"><i
+                    <a class="save" type="submit" title="Save" data-toggle="tooltip" href="#" id="pec_a"><i
                                 class="material-icons">&#xE161;</i></a>
                 </li>
             </form>
@@ -154,7 +154,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                     </div>
                     <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="entityName_e"><i
                                 class="material-icons">&#xE254;</i></a>
-                    <a class="add" type="submit" title="Add" data-toggle="tooltip" href="#" id="entityName_a"><i
+                    <a class="save" type="submit" title="Save" data-toggle="tooltip" href="#" id="entityName_a"><i
                                 class="material-icons">&#xE161;</i></a>
                 </li>
             </form>
@@ -167,7 +167,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                     </div>
                     <a class="edit" title="Edit" data-toggle="tooltip" href="#" id="entityType_e"><i
                                 class="material-icons">&#xE254;</i></a>
-                    <a class="add" type="submit" title="Add" data-toggle="tooltip" href="#" id="entityType_a"><i
+                    <a class="save" type="submit" title="Save" data-toggle="tooltip" href="#" id="entityType_a"><i
                                 class="material-icons">&#xE161;</i></a>
                 </li>
             </form>
