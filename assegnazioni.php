@@ -146,7 +146,7 @@ $usertype = $_SESSION['usertype'];
                         <div class="d-flex justify-content-between">
                             <div class="d-flex flex-row align-items-center">
                                 <div class="ms-2 c-details">
-                                    <h6 class="mb-0">Data della richiesta</h6> <span><?php echo($array[$i]['request_date']); ?></span>
+                                    <h6 class="mb-0">Data della richiesta</h6><span><?php echo($array[$i]['request_date']); ?></span>
                                 </div>
                             </div>
                         </div>
@@ -223,7 +223,7 @@ $usertype = $_SESSION['usertype'];
                         <div class="d-flex justify-content-between">
                             <div class="d-flex flex-row align-items-center">
                                 <div class="ms-2 c-details">
-                                    <h6 class="mb-0">Data della richiesta</h6> <span><?php echo($array[$i]['request_date']); ?></span>
+                                    <h6 class="mb-0">Data della richiesta</h6><span><?php echo($array[$i]['request_date']); ?></span>
                                 </div>
                             </div>
                         </div>
