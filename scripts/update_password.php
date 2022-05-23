@@ -35,7 +35,7 @@ if ($msg != '') {
     die(str_replace('+', ' ', $msg));
 }
 
-$query = 'SELECT password FROM utenti WHERE username=?';
+$query = 'SELECT password FROM utenti WHERE username = ?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
 mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
@@ -49,7 +49,7 @@ if (!mysqli_stmt_fetch($statement)) {
 else if (password_verify($old_password, $result_hash)) {
     mysqli_stmt_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
-    $query = 'UPDATE utenti SET password=? WHERE username=?';
+    $query = 'UPDATE utenti SET password = ? WHERE username = ?';
     $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
     mysqli_stmt_bind_param($statement, 'ss', $new_hash, $username) or die(mysqli_error($connection));
     mysqli_stmt_execute($statement) or die(mysqli_error($connection));
