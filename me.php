@@ -217,9 +217,9 @@ if (mysqli_stmt_fetch($statement)) { ?>
             mysqli_stmt_execute($statement) or die(mysqli_error($connection));
             mysqli_stmt_bind_result($statement, $name, $surname, $city, $date) or die(mysqli_error($connection));
             if (mysqli_stmt_fetch($statement)) { ?>
-                <li class="list-group-item"><small class="text-muted">Nome e Cognome</small>
+                <li class="list-group-item"><small class="text-muted">Nome e cognome</small>
                     <h6><?php echo($name . ' ' . $surname); ?></h6></li>
-                <li class="list-group-item"><small class="text-muted">Città e Data di Nascita</small>
+                <li class="list-group-item"><small class="text-muted">Città e data di dascita</small>
                     <h6><?php echo($city . ', ' . $date); ?></h6></li>
                 </ul>
                 <?php
@@ -229,10 +229,10 @@ if (mysqli_stmt_fetch($statement)) { ?>
         ?>
     </div>
     <div class="col-md-3 offset-md-1 align-items-center text-center">
-    <?php if ($usertype == 'esperto') { ?>
+        <?php if ($usertype == 'esperto') { ?>
             <h3>Statistiche esperto</h3>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><small class="text-muted"># Titoli di Studio</small>
+                <li class="list-group-item"><small class="text-muted"># Titoli di studio</small>
                     <h6><a href="titoli.php"><?php echo(n_title($username)); ?></a></h6>
                 </li>
                 <li class="list-group-item"><small class="text-muted"># Competenze</small>
@@ -251,7 +251,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                     <h6><?php echo(n_rejected_from_expert($username)); ?></h6>
                 </li>
             </ul>
-    <?php } else { ?>
+        <?php } else { ?>
             <h3>Statistiche ente</h3>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><small class="text-muted"># Processi</small>
@@ -270,10 +270,10 @@ if (mysqli_stmt_fetch($statement)) { ?>
                     <h6><?php echo(n_rejected_from_entity($username)); ?></h6>
                 </li>
             </ul>
-    <?php } ?>
+        <?php } ?>
     </div>
     <div class="col-md-2 offset-md-2 text-center align-middle">
-        <h3>Cambia Password</h3>
+        <h3>Cambia password</h3>
         <form id="update_password_form" action="scripts/update_password.php" method="post">
             <div class="form-group mb-3 mt-4">
                 <label class="hiddenlabel" for="old_password"></label>
