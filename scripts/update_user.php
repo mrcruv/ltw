@@ -1,28 +1,23 @@
 <?php
 global $connection;
+global $entity_cf_regex, $entity_pec_regex, $entity_piva_regex,
+                          $entity_website_regex, $entity_name_regex, $entity_type_regex;
+global $expert_cf_regex, $expert_pec_regex, $expert_piva_regex,
+      $expert_website_regex;
 require_once('../includes/open_connection.php');
+require_once('../includes/regex.php');
 require_once('../includes/session.php');
-
-$cf_regex = '/[A-Za-z]{6}[0-9lmnpqrstuvLMNPQRSTUV]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9lmnpqrstuvLMNPQRSTUV]{2}[A-Za-z]{1}[0-9lmnpqrstuvLMNPQRSTUV]{3}[A-Za-z]{1}/';
-$pec_regex = '/(?:\w*.?pec(?:.?\w+)*)/';
-$piva_regex = '/^[0-9]{11}$/';
-$website_regex = '/^((https?|ftp|smtp):\/\/)(www.)[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/';
-$name_regex = '/^[a-zA-Z0-9]{1,30}$/';
-$type_regex = '/^(pubblico|privato)$/';
-
-$username = isset($_POST['entity_username']) ? trim($_POST['entity_username']) : false;
-$password = isset($_POST['entity_password']) ? trim($_POST['entity_password']) : false;
-$cf = isset($_POST['entity_cf']) ? strtoupper(trim($_POST['entity_cf'])) : false;
-$pec = isset($_POST['entity_pec']) ? strtolower(trim($_POST['entity_pec'])) : false;
-$piva = isset($_POST['entity_piva']) ? trim($_POST['entity_piva']) : false;
-$website = isset($_POST['entity_website']) ? strtolower(trim($_POST['entity_website'])) : false;
-$company_name = isset($_POST['entity_name']) ? trim($_POST['entity_name']) : false;
-$type = isset($_POST['type']) ? strtolower(trim($_POST['type'])) : false;
-$accept_conditions = isset($_POST['entity_term']) ? strtolower(trim($_POST['entity_term'])) : false;
-
 
 $username = $_SESSION['username'];
 $usertype = $_SESSION['usertype'];
+
+$cf_regex = $usertype == 'ente' ? $entity_cf_regex : $expert_cf_regex;
+$pec_regex = $usertype == 'ente' ? $entity_pec_regex : $expert_pec_regex;
+$piva_regex = $usertype == 'ente' ? $entity_piva_regex : $expert_piva_regex;
+$website_regex = $usertype == 'ente' ? $entity_website_regex : $expert_website_regex;
+$name_regex = $usertype == 'ente' ? $entity_name_regex : null;
+$type_regex = $usertype == 'ente' ? $entity_type_regex : null;
+
 $new_cf = isset($_GET['new_cf']) ? trim($_GET['new_cf']) : false;
 $new_piva = isset($_GET['new_piva']) ? trim($_GET['new_piva']) : false;
 $new_website = isset($_GET['new_website']) ? trim($_GET['new_website']) : false;

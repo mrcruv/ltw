@@ -1,23 +1,15 @@
 <?php
 global $connection;
+global $contains_lowercase, $contains_uppercase, $contains_special, $contains_digit,
+       $expert_username_regex, $expert_cf_regex, $expert_pec_regex, $expert_piva_regex,
+       $expert_website_regex, $expert_name_regex, $expert_surname_regex, $expert_city_regex, $accept_conditions_regex;
+//global $expert_date_regex = '';
 require_once('../includes/open_connection.php');
+require_once('../includes/regex.php');
 if (!isset($_POST['register_expert_submit'])) {
     header ('Location: ../me.php?err=errore+register+expert+submit');
     die('errore register expert submit');
 }
-
-$contains_lowercase = '/[a-z]/';
-$contains_uppercase = '/[A-Z]/';
-$contains_special = '/[!@#$%^&*-]/';
-$contains_digit = '/[0-9]/';
-$username_regex = '/^[a-zA-Z0-9_]{1,30}$/';
-$cf_regex = '/[A-Za-z]{6}[0-9lmnpqrstuvLMNPQRSTUV]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9lmnpqrstuvLMNPQRSTUV]{2}[A-Za-z]{1}[0-9lmnpqrstuvLMNPQRSTUV]{3}[A-Za-z]{1}/';
-$pec_regex = '/(?:\w*.?pec(?:.?\w+)*)/';
-$piva_regex = '/^[0-9]{11}$/';
-$website_regex = '/^((https?|ftp|smtp):\/\/)(www.)[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/';
-$name_regex = '/^[a-zA-Z0-9]{1,30}$/';
-$surname_regex = $name_regex;
-//$date_regex = '';
 
 $username = isset($_POST['expert_username']) ? trim($_POST['expert_username']) : false;
 $password = isset($_POST['expert_password']) ? trim($_POST['expert_password']) : false;
@@ -35,7 +27,7 @@ if (empty($username)) {
     header('Location: ../index.php?err=username+non+inserito');
     die('username non inserito');
 }
-if (!preg_match($username_regex, $username)) {
+if (!preg_match($expert_username_regex, $username)) {
     header('Location: ../index.php?err=username+non+corretto');
     die('username non corretto');
 }
@@ -59,7 +51,7 @@ if (empty($cf)) {
     header('Location: ../index.php?err=c.f.+non+inserito');
     die('c.f. non inserito');
 }
-if (!preg_match($cf_regex, $cf)) {
+if (!preg_match($expert_cf_regex, $cf)) {
     header('Location: ../index.php?err=c.f.+non+corretto');
     die('c.f. non corretto');
 }
@@ -68,7 +60,7 @@ if (empty($pec)) {
     header('Location: ../index.php?err=pec+non+inserita');
     die('pec non inserita');
 }
-if (!preg_match($pec_regex, $pec)) {
+if (!preg_match($expert_pec_regex, $pec)) {
     header('Location: ../index.php?err=pec+non+corretta');
     die('pec non corretta');
 }
@@ -77,12 +69,12 @@ if (empty($piva)) {
     header('Location: ../index.php?err=p.+iva+non+inserita');
     die('p. iva non inserita');
 }
-if (!preg_match($piva_regex, $piva)) {
+if (!preg_match($expert_piva_regex, $piva)) {
     header('Location: ../index.php?err=p.+iva+non+corretta');
     die('p. iva non corretta');
 }
 
-if (!empty($website) and !preg_match($website_regex, $website)) {
+if (!empty($website) and !preg_match($expert_website_regex, $website)) {
     header('Location: ../index.php?err=sito+web+non+corretto');
     die('sito web non corretto');
 }
@@ -91,7 +83,7 @@ if (empty($name)){
     header('Location: ../index.php?err=nome+non+inserito');
     die('nome non inserito');
 }
-if (!preg_match($name_regex, $name)){
+if (!preg_match($expert_name_regex, $name)){
     header('Location: ../index.php?err=nome+non+corretto');
     die('nome non corretto');
 }
@@ -100,7 +92,7 @@ if (empty($surname)){
     header('Location: ../index.php?err=cognome+non+inserito');
     die('cognome non inserito');
 }
-if (!preg_match($surname_regex, $surname)){
+if (!preg_match($expert_surname_regex, $surname)){
     header('Location: ../index.php?err=cognome+non+corretto');
     die('cognome non corretto');
 }
@@ -109,7 +101,7 @@ if (empty($city)){
     header('Location: ../index.php?err=città+non+inserita');
     die('città non inserita');
 }
-if (!preg_match($name_regex, $city)){
+if (!preg_match($expert_city_regex, $city)){
     header('Location: ../index.php?err=città+non+corretta');
     die('città non corretta');
 }
@@ -118,12 +110,12 @@ if (!preg_match($name_regex, $city)){
 //    header('Location: ../index.php?err=data+non+inserita');
 //    die('data non inserita');
 //}
-//if (!preg_match($date_regex, $date)){
+//if (!preg_match($expert_date_regex, $date)){
 //    header('Location: ../index.php?err=data+non+corretta');
 //    die('data non corretta');
 //}
 
-if (empty($accept_conditions) or ($accept_conditions != 'true')){
+if (empty($accept_conditions) or !preg_match($accept_conditions_regex, $accept_conditions)){
     header('Location: ../index.php?err=condizioni+non+accettate');
     die('condizioni non accettate');
 }

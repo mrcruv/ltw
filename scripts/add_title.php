@@ -1,16 +1,14 @@
 <?php
 global $connection;
+global $title_name_regex, $title_grade_regex, $title_notes_regex;
+// global $title_date_regex;
 require_once('../includes/open_connection.php');
+require_once('../includes/regex.php');
 require_once('../includes/session.php');
 if (!isset($_POST['add_title_submit'])) {
     header ('Location: ../titoli.php?err=errore+add+title+submit');
     die('errore add title submit');
 }
-
-$name_regex = '/^[a-zA-Z ]{1,255}$/';
-$notes_regex = '/^[a-zA-Z0-9 .,;]{1,255}$/';
-//$date_regex = '';
-$grade_regex = '/^[0-9]{1,3}$/';
 
 $username = $_SESSION['username'];
 $name = isset($_POST['name']) ? trim($_POST['name']) : false;
@@ -22,22 +20,22 @@ if (empty($name)){
     header('Location: ../titoli.php?err=nome+non+inserito');
     die('nome non inserito');
 }
-if (!preg_match($name_regex, $name)) {
+if (!preg_match($title_name_regex, $name)) {
     header('Location: ../titoli.php?err=nome+non+corretto');
     die('nome non corretto');
 }
 
-//if (!empty($date) and !preg_match($date_regex, $date) {
+//if (!empty($date) and !preg_match($title_date_regex, $date) {
 //    header('Location: ../titoli.php?err=data+non+corretta');
 //    die('data non corretta');
 //}
 
-if (!empty($notes) and !preg_match($notes_regex, $notes)) {
+if (!empty($notes) and !preg_match($title_notes_regex, $notes)) {
     header('Location: ../titoli.php?err=note+non+corrette');
     die('note non corrette');
 }
 
-if (!empty($grade) and !preg_match($grade_regex, $grade)) {
+if (!empty($grade) and !preg_match($title_grade_regex, $grade)) {
     header('Location: ../titoli.php?err=voto+non+corretto');
     die('voto non corretto');
 }

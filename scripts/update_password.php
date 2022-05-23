@@ -1,16 +1,13 @@
 <?php
 global $connection;
+global $contains_lowercase, $contains_uppercase, $contains_special, $contains_digit;
 require_once('../includes/open_connection.php');
+require_once('../includes/regex.php');
 require_once('../includes/session.php');
 if (!isset($_POST['update_password_submit'])) {
     header ('Location: ../index.php?err=errore+update+password+submit');
     die('errore update password submit');
 }
-
-$contains_lowercase = '/[a-z]/';
-$contains_uppercase = '/[A-Z]/';
-$contains_special = '/[!@#$%^&*-]/';
-$contains_digit = '/[0-9]/';
 
 $username = $_SESSION['username'];
 $old_password = trim($_POST['old_password']);

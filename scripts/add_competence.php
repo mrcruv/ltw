@@ -1,15 +1,13 @@
 <?php
 global $connection;
+global $competence_name_regex, $competence_area_regex, $competence_description_regex;
 require_once('../includes/open_connection.php');
+require_once('../includes/regex.php');
 require_once('../includes/session.php');
 if (!isset($_POST['add_competence_submit'])) {
     header ('Location: ../competenze.php?err=errore+add+competence+submit');
     die('errore add competence submit');
 }
-
-$name_regex = '/^[a-zA-Z0-9]{1,255}$/';
-$area_regex = '/^[a-zA-Z0-9 ]{1,255}$/';
-$description_regex = '/^[a-zA-Z0-9 .,;]{1,255}$/';
 
 $username = $_SESSION['username'];
 $name = isset($_POST['name']) ? trim($_POST['name']) : false;
@@ -20,7 +18,7 @@ if (empty($name)){
     header('Location: ../competenze.php?err=nome+non+inserito');
     die('nome non inserito');
 }
-if (!preg_match($name_regex, $name)) {
+if (!preg_match($competence_name_regex, $name)) {
     header('Location: ../competenze.php?err=nome+non+corretto');
     die('nome non corretto');
 }
@@ -29,12 +27,12 @@ if (empty($area)){
     header('Location: ../competenze.php?err=area+non+inserita');
     die('area non inserita');
 }
-if (!preg_match($area_regex, $area)) {
+if (!preg_match($competence_area_regex, $area)) {
     header('Location: ../competenze.php?err=area+non+corretta');
     die('area non corretta');
 }
 
-if (!empty($description) and !preg_match($description_regex, $description)) {
+if (!empty($description) and !preg_match($competence_description_regex, $description)) {
     header('Location: ../competenze.php?err=descrizione+non+corretta');
     die('descrizione non corretta');
 }
