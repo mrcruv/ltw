@@ -51,7 +51,7 @@ $usertype = $_SESSION['usertype'];
             else { ?>
                 <img class="img-fluid rounded-circle mb-4" src="img/logo_esperto.png" alt="..." />
             <?php } ?>
-            <h1 class="text-black fs-3 fw-bolder"> <?php echo($username); ?></h1>
+            <h1 class="text-black fs-3 fw-bolder"><?php echo($username); ?></h1>
             <p class="text-black-50 mb-0 text-uppercase"><?php echo($usertype); ?></p>
         </div>
     </header>
@@ -70,7 +70,16 @@ $usertype = $_SESSION['usertype'];
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><small class="text-muted">Codice fiscale</small><h6><?php echo($cf); ?></h6></li>
                 <li class="list-group-item"><small class="text-muted">Partita IVA</small><h6><?php echo($piva); ?></h6></li>
-                <li class="list-group-item"><small class="text-muted">Sito web</small><h6><?php echo($website); ?></h6></li>
+                <li class="list-group-item"><small class="text-muted">Sito web</small>
+                    <h6>
+                        <?php if (!is_null($website)): ?>
+                            <a href="<?php echo($website) ?>"><?php echo($website); ?></a>
+                        <?php else:
+                            echo('N.D.');
+                        endif;
+                        ?>
+                    </h6>
+                </li>
                 <li class="list-group-item"><small class="text-muted">PEC</small><h6><?php echo($pec); ?></h6></li>
     <?php
     }
