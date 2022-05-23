@@ -149,7 +149,7 @@ endif;
                                             <div class="form-outline mb-5">
                                                 <label class="hiddenlabel" for="register_entity_type"></label>
                                                 <select class="form-select" id="register_entity_type" name="type">
-                                                    <option selected disabled>Scegli il tipo di Ente</option>
+                                                    <option selected disabled>Scegli il tipo di ente</option>
                                                     <option value="pubblico">Ente pubblico</option>
                                                     <option value="privato">Ente privato</option>
                                                 </select>
@@ -176,8 +176,11 @@ endif;
                                                     <div class="form-check mb-md-0">
                                                         <input class="form-check-input" type="checkbox" value="true"
                                                                id="term_check_expert" name="entity_term" checked/>
-                                                        <label class="form-check-label mb-2" for="term_check_expert">Accetta
-                                                            termini e condizioni</label>
+                                                        <label class="form-check-label mb-2" for="term_check_expert">
+                                                            <a href="includes/terms.html" download="terms.html">
+                                                                Accetta termini e condizioni
+                                                            </a>
+                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -259,8 +262,11 @@ endif;
                                                     <div class="form-check mb-md-0">
                                                         <input class="form-check-input" type="checkbox" value="true"
                                                                id="term_check_expert" name="expert_term" checked/>
-                                                        <label class="form-check-label mb-2" for="term_check_expert">Accetta
-                                                            termini e condizioni</label>
+                                                        <label class="form-check-label mb-2" for="term_check_expert">
+                                                            <a href="includes/terms.html" download="terms.html">
+                                                                Accetta termini e condizioni
+                                                            </a>
+                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
