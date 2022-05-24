@@ -1,6 +1,6 @@
 <?php
 global $connection;
-global $ewebsite_regex;
+global $website_regex;
 require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
 require_once('../includes/session.php');
