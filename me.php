@@ -28,6 +28,12 @@ $usertype = $_SESSION['usertype'];
     <script src="scripts/validate_update_password.js"></script>
     <script src="scripts/error.js"></script>
     <script src="scripts/message.js"></script>
+    <script src="scripts/validate_update_cf.js"></script>
+    <script src="scripts/validate_update_pec.js"></script>
+    <script src="scripts/validate_update_piva.js"></script>
+    <script src="scripts/validate_update_website.js"></script>
+    <script src="scripts/validate_update_entity_name.js"></script>
+    <script src="scripts/validate_update_entity_type.js"></script>
     <title><?php echo($sitename_brief . ': dashboard - ' . $usertype . ' ' . $username); ?></title>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -108,8 +114,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                 <form id="update_piva_form" method="post" action="scripts/update_piva.php">
                     <div>
                         <label class="hiddenlabel" for="text_piva"></label>
-                        <input type="text" class="hiddenborder text-center" id="text_piva" id="new_piva"
-                               name="new_piva"
+                        <input type="text" class="hiddenborder text-center" id="text_piva" name="new_piva"
                                value="<?php echo($piva); ?>" disabled/>
                     </div>
                     <a class="edit pointer" title="Edit" data-toggle="tooltip" id="piva_e"><i
@@ -123,7 +128,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                 </form>
             </li>
             <li class="list-group-item"><small class="text-muted">Sito web</small>
-                <form method="post" action="scripts/update_website.php">
+                <form id="update_website_form" method="post" action="scripts/update_website.php">
                     <div>
                         <label class="hiddenlabel" for="text_website"></label>
                         <input type="text" class="hiddenborder text-center" id="text_website"
@@ -141,8 +146,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                 </form>
             </li>
             <li class="list-group-item"><small class="text-muted">PEC</small>
-                <form method="post" action="scripts/update_pec.php">
-
+                <form id="update_pec_form" method="post" action="scripts/update_pec.php">
                     <div>
                         <label class="hiddenlabel" for="text_pec"></label>
                         <input type="text" class="hiddenborder text-center" id="text_pec" name="new_pec"
@@ -169,7 +173,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
             mysqli_stmt_bind_result($statement, $name, $type) or die(mysqli_error($connection));
             if (mysqli_stmt_fetch($statement)) { ?>
             <li class="list-group-item"><small class="text-muted">Denominazione</small>
-                <form method="post" action="scripts/update_entity_name.php">
+                <form id="update_entity_name_form" method="post" action="scripts/update_entity_name.php">
                     <div>
                         <label class="hiddenlabel" for="text_entityName"></label>
                         <input type="text" class="hiddenborder text-center" id="text_entityName"
@@ -188,7 +192,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                 </form>
             </li>
             <li class="list-group-item"><small class="text-muted">Tipo</small>
-                <form method="post" action="scripts/update_entity_type.php">
+                <form id="update_entity_type_form" method="post" action="scripts/update_entity_type.php">
                     <div>
                         <label class="hiddenlabel" for="text_entityType"></label>
                         <input type="text" class="hiddenborder text-center" id="text_entityType"
