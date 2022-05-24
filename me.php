@@ -289,7 +289,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
     </div>
     <div class="col-md-2 offset-md-2 text-center align-middle">
         <h3>Cambia password</h3>
-        <form id="update_password_form" action="scripts/update_password.php" method="post">
+        <form id="update_password_form" action="scripts/update_password.php" method="post" class="update">
             <div class="form-group mb-3 mt-4">
                 <label class="hiddenlabel" for="old_password"></label>
                 <input type="password" class="form-control" id="old_password" placeholder="Password attuale"
