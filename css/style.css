@@ -56,16 +56,17 @@ i.icon-red:hover {
     display: none;
 }
 
-.pointer:hover{
+.pointer:hover {
     cursor: pointer;
 }
 
-.myButton{
+.myButton {
     background-color: transparent;
     border: 0px solid;
     color: rgb(61, 81, 255);
 }
-.myButton:hover{
+
+.myButton:hover {
     color: blue;
 }
 

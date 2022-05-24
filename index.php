@@ -84,15 +84,6 @@ endif;
                                               class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                     </div>
                                     <div class="row mb-4">
-                                        <!--                                    <div class="col-md-6 d-flex justify-content-center">-->
-                                        <!--                                        <div class="form-check mb-2 mb-md-0">-->
-                                        <!--                                            <input class="form-check-input" type="checkbox" id="remember_me_login" name="remember"/>-->
-                                        <!--                                            <label class="form-check-label" for="remember_me_login"> Remember me </label>-->
-                                        <!--                                        </div>-->
-                                        <!--                                    </div>-->
-                                        <!--                                    <div class="col-md-6 d-flex justify-content-center mb-5">-->
-                                        <!--                                        <a href="#">Forgot password?</a>-->
-                                        <!--                                    </div>-->
                                         <button type="submit" class="btn btn-primary btn-block mb-4"
                                                 name="login_submit">Sign in
                                         </button>

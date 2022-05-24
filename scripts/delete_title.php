@@ -3,14 +3,14 @@ global $connection;
 require_once('../includes/open_connection.php');
 require_once('../includes/session.php');
 if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'esperto') {
-    header ('Location: ../titoli.php?err=sessione+utente+esperto+non+attiva');
+    header('Location: ../titoli.php?err=sessione+utente+esperto+non+attiva');
     die('sessione utente esperto non attiva');
 }
 
 $username = $_SESSION['username'];
 $name = isset($_GET['name']) ? trim($_GET['name']) : false;
 
-if (empty($name)){
+if (empty($name)) {
     header('Location: ../titoli.php?err=titolo+non+selezionato');
     die('titolo non selezionato');
 }

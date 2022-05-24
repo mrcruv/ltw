@@ -5,7 +5,7 @@ require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
 require_once('../includes/session.php');
 if (!isset($_POST['update_piva_submit'])) {
-    header ('Location: ../me.php?err=errore+update+piva+submit');
+    header('Location: ../me.php?err=errore+update+piva+submit');
     die('errore update piva submit');
 }
 
@@ -25,8 +25,7 @@ if (!mysqli_stmt_fetch($statement)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../me.php?err=utente+non+esistente');
     die('utente non esistente');
-}
-else if (!empty($new_piva)) {
+} else if (!empty($new_piva)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     if ($new_piva == $old_piva) {
         header('Location: ../me.php?err=la+nuova+p.iva+deve+essere+diversa+da+quella+attuale:+p.iva+non+modificata');
@@ -41,8 +40,7 @@ else if (!empty($new_piva)) {
     mysqli_stmt_bind_param($statement, 'ss', $new_piva, $username) or die(mysqli_error($connection));
     mysqli_stmt_execute($statement) or die(mysqli_error($connection));
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
-}
-else {
+} else {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../me.php?err=piva+non+inserita');
     die('p.iva non inserita');

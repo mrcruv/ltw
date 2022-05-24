@@ -5,7 +5,7 @@ require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
 require_once('../includes/session.php');
 if (!isset($_POST['update_cf_submit'])) {
-    header ('Location: ../me.php?err=errore+update+cf+submit');
+    header('Location: ../me.php?err=errore+update+cf+submit');
     die('errore update cf submit');
 }
 
@@ -24,8 +24,7 @@ if (!mysqli_stmt_fetch($statement)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../me.php?err=utente+non+esistente');
     die('utente non esistente');
-}
-else if (!empty($new_cf)) {
+} else if (!empty($new_cf)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     if ($new_cf == $old_cf) {
         header('Location: ../me.php?err=il+nuovo+c.f.+deve+essere+diverso+da+quello+attuale:+c.f.+non+modificato');
@@ -40,8 +39,7 @@ else if (!empty($new_cf)) {
     mysqli_stmt_bind_param($statement, 'ss', $new_cf, $username) or die(mysqli_error($connection));
     mysqli_stmt_execute($statement) or die(mysqli_error($connection));
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
-}
-else {
+} else {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../me.php?err=c.f.+non+inserito');
     die('c.f. non inserito');

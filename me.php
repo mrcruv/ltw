@@ -25,7 +25,6 @@ $usertype = $_SESSION['usertype'];
     <link rel="icon" type="image/x-icon" href="img/prova_logo.ico">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-    <script src="scripts/validate_update_password.js"></script>
     <script src="scripts/error.js"></script>
     <script src="scripts/message.js"></script>
     <script src="scripts/update_info.js"></script>
@@ -33,16 +32,15 @@ $usertype = $_SESSION['usertype'];
     <script src="scripts/validate_update_pec.js"></script>
     <script src="scripts/validate_update_piva.js"></script>
     <script src="scripts/validate_update_website.js"></script>
+    <script src="scripts/validate_update_password.js"></script>
     <script src="scripts/validate_update_entity_name.js"></script>
     <script src="scripts/validate_update_entity_type.js"></script>
-
     <title><?php echo($sitename_brief . ': dashboard - ' . $usertype . ' ' . $username); ?></title>
 </head>
 <body class="d-flex flex-column min-vh-100">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-
 <?php
 require_once('includes/error.php');
 require_once('includes/message.php');
@@ -82,12 +80,17 @@ if (mysqli_stmt_fetch($statement)) { ?>
                     <div class="row">
                         <div class="col-8 offset-2">
                             <label class="hiddenlabel" for="text_cf"></label>
-                            <input type="text" class="hiddenborder text-center" id="text_cf" name="new_cf" value="<?php echo($cf); ?>" disabled>
+                            <input type="text" class="hiddenborder text-center" id="text_cf" name="new_cf"
+                                   value="<?php echo($cf); ?>" disabled>
                         </div>
                         <div class="col-2 d-flex justify-content-center">
                             <a class="edit pointer" id="cf_e"><i class="material-icons">&#xE254;</i></a>
                             <a class="cancel pointer" id="cf_c"><i class="material-icons">close</i></a>
-                            <i class="material-icons save"><button type="submit" class="mdc-icon-button myButton" name="update_cf_submit">&#xE161;</button></i>
+                            <i class="material-icons save">
+                                <button type="submit" class="mdc-icon-button myButton" name="update_cf_submit">
+                                    &#xE161;
+                                </button>
+                            </i>
                         </div>
                     </div>
                 </form>
@@ -99,12 +102,18 @@ if (mysqli_stmt_fetch($statement)) { ?>
                         <div class="col-8 offset-2">
                             <label class="hiddenlabel" for="text_piva"></label>
                             <input type="text" class="hiddenborder text-center" id="text_piva" name="new_piva"
-                               value="<?php echo($piva); ?>" disabled/>
+                                   value="<?php echo($piva); ?>" disabled/>
                         </div>
                         <div class="col-2 d-flex justify-content-center">
-                            <a class="edit pointer" title="Edit" data-toggle="tooltip" id="piva_e"><i class="material-icons">&#xE254;</i></a>
-                            <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="piva_c"><i class="material-icons">close</i></a>
-                            <i class="material-icons save"><button type="submit" class="mdc-icon-button myButton" name="update_piva_submit">&#xE161;</button></i>
+                            <a class="edit pointer" title="Edit" data-toggle="tooltip" id="piva_e"><i
+                                        class="material-icons">&#xE254;</i></a>
+                            <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="piva_c"><i
+                                        class="material-icons">close</i></a>
+                            <i class="material-icons save">
+                                <button type="submit" class="mdc-icon-button myButton" name="update_piva_submit">
+                                    &#xE161;
+                                </button>
+                            </i>
                         </div>
                     </div>
                 </form>
@@ -113,15 +122,21 @@ if (mysqli_stmt_fetch($statement)) { ?>
                 <form id="update_website_form" method="post" action="scripts/update_website.php">
                     <div class="row">
                         <div class="col-8 offset-2">
-                        <label class="hiddenlabel" for="text_website"></label>
-                        <input type="text" class="hiddenborder text-center" id="text_website"
-                               name="new_website"
-                               value="<?php echo($website); ?>" disabled>
+                            <label class="hiddenlabel" for="text_website"></label>
+                            <input type="text" class="hiddenborder text-center" id="text_website"
+                                   name="new_website"
+                                   value="<?php echo($website); ?>" disabled>
                         </div>
                         <div class="col-2 d-flex justify-content-center">
-                            <a class="edit pointer" title="Edit" data-toggle="tooltip" id="website_e"><i class="material-icons">&#xE254;</i></a>
-                            <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="website_c"><i class="material-icons">close</i></a>
-                            <i class="material-icons save"><button type="submit" class="mdc-icon-button myButton" name="update_website_submit">&#xE161;</button></i>
+                            <a class="edit pointer" title="Edit" data-toggle="tooltip" id="website_e"><i
+                                        class="material-icons">&#xE254;</i></a>
+                            <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="website_c"><i
+                                        class="material-icons">close</i></a>
+                            <i class="material-icons save">
+                                <button type="submit" class="mdc-icon-button myButton" name="update_website_submit">
+                                    &#xE161;
+                                </button>
+                            </i>
                         </div>
                     </div>
                 </form>
@@ -132,12 +147,18 @@ if (mysqli_stmt_fetch($statement)) { ?>
                         <div class="col-8 offset-2">
                             <label class="hiddenlabel" for="text_pec"></label>
                             <input type="text" class="hiddenborder text-center" id="text_pec" name="new_pec"
-                                value="<?php echo($pec); ?>" disabled>
+                                   value="<?php echo($pec); ?>" disabled>
                         </div>
                         <div class="col-2 d-flex justify-content-center">
-                            <a class="edit pointer" title="Edit" data-toggle="tooltip" id="pec_e"><i class="material-icons">&#xE254;</i></a>
-                            <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="pec_c"><i class="material-icons">close</i></a>
-                            <i class="material-icons save"><button type="submit" class="mdc-icon-button myButton" name="update_pec_submit">&#xE161;</button></i>
+                            <a class="edit pointer" title="Edit" data-toggle="tooltip" id="pec_e"><i
+                                        class="material-icons">&#xE254;</i></a>
+                            <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="pec_c"><i
+                                        class="material-icons">close</i></a>
+                            <i class="material-icons save">
+                                <button type="submit" class="mdc-icon-button myButton" name="update_pec_submit">
+                                    &#xE161;
+                                </button>
+                            </i>
                         </div>
                     </div>
                 </form>
@@ -159,30 +180,42 @@ if (mysqli_stmt_fetch($statement)) { ?>
                         <div class="col-8 offset-2">
                             <label class="hiddenlabel" for="text_entityName"></label>
                             <input type="text" class="hiddenborder text-center" id="text_entityName"
-                                name="new_entity_name"
-                                value="<?php echo($name); ?>" disabled>
+                                   name="new_entity_name"
+                                   value="<?php echo($name); ?>" disabled>
                         </div>
                         <div class="col-2 d-flex justify-content-center">
-                            <a class="edit pointer" title="Edit" data-toggle="tooltip" id="entityName_e"><i class="material-icons">&#xE254;</i></a>
-                            <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="entityName_c"><i class="material-icons">close</i></a>
-                            <i class="material-icons save"><button type="submit" class="mdc-icon-button myButton" name="update_entity_name_submit">&#xE161;</button></i>
+                            <a class="edit pointer" title="Edit" data-toggle="tooltip" id="entityName_e"><i
+                                        class="material-icons">&#xE254;</i></a>
+                            <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="entityName_c"><i
+                                        class="material-icons">close</i></a>
+                            <i class="material-icons save">
+                                <button type="submit" class="mdc-icon-button myButton" name="update_entity_name_submit">
+                                    &#xE161;
+                                </button>
+                            </i>
                         </div>
                     </div>
                 </form>
             </li>
             <li class="list-group-item"><small class="text-muted">Tipo</small>
                 <form id="update_entity_type_form" method="post" action="scripts/update_entity_type.php">
-                <div class="row">
+                    <div class="row">
                         <div class="col-8 offset-2">
                             <label class="hiddenlabel" for="text_entityType"></label>
                             <input type="text" class="hiddenborder text-center" id="text_entityType"
-                                name="new_entity_type"
-                                value="<?php echo($type); ?>" disabled>
+                                   name="new_entity_type"
+                                   value="<?php echo($type); ?>" disabled>
                         </div>
                         <div class="col-2 d-flex justify-content-center">
-                            <a class="edit pointer" title="Edit" data-toggle="tooltip" id="entityType_e"><i class="material-icons">&#xE254;</i></a>
-                            <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="entityType_c"><i class="material-icons">close</i></a>
-                            <i class="material-icons save"><button type="submit" class="mdc-icon-button myButton" name="update_entity_type_submit">&#xE161;</button></i>
+                            <a class="edit pointer" title="Edit" data-toggle="tooltip" id="entityType_e"><i
+                                        class="material-icons">&#xE254;</i></a>
+                            <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="entityType_c"><i
+                                        class="material-icons">close</i></a>
+                            <i class="material-icons save">
+                                <button type="submit" class="mdc-icon-button myButton" name="update_entity_type_submit">
+                                    &#xE161;
+                                </button>
+                            </i>
                         </div>
                     </div>
                 </form>

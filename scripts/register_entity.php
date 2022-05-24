@@ -6,7 +6,7 @@ global $contains_lowercase, $contains_uppercase, $contains_special, $contains_di
 require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
 if (!isset($_POST['register_entity_submit'])) {
-    header ('Location: ../me.php?err=errore+register+entity+submit');
+    header('Location: ../me.php?err=errore+register+entity+submit');
     die('errore register entity submit');
 }
 
@@ -94,7 +94,7 @@ if (!preg_match($entity_type_regex, $type)) {
     die('tipo non corretto');
 }
 
-if (empty($accept_conditions) or !preg_match($accept_conditions_regex, $accept_conditions)){
+if (empty($accept_conditions) or !preg_match($accept_conditions_regex, $accept_conditions)) {
     header('Location: ../index.php?err=condizioni+non+accettate');
     die('condizioni non accettate');
 }
@@ -104,9 +104,9 @@ $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection
 mysqli_stmt_bind_param($statement, 'ssss', $username, $pec, $cf, $piva) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 if (mysqli_stmt_fetch($statement)) {
-        mysqli_stmt_close($statement) or die(mysqli_error($connection));
-        header('Location: ../index.php?err=utente+gia+esistente');
-        die('utente già esistente');
+    mysqli_stmt_close($statement) or die(mysqli_error($connection));
+    header('Location: ../index.php?err=utente+gia+esistente');
+    die('utente già esistente');
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
 

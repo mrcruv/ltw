@@ -5,7 +5,7 @@ require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
 require_once('../includes/session.php');
 if (!isset($_POST['add_competence_submit'])) {
-    header ('Location: ../competenze.php?err=errore+add+competence+submit');
+    header('Location: ../competenze.php?err=errore+add+competence+submit');
     die('errore add competence submit');
 }
 
@@ -14,7 +14,7 @@ $name = isset($_POST['name']) ? trim($_POST['name']) : false;
 $area = isset($_POST['area']) ? trim($_POST['area']) : false;
 $description = isset($_POST['description']) ? trim($_POST['description']) : false;
 
-if (empty($name)){
+if (empty($name)) {
     header('Location: ../competenze.php?err=nome+non+inserito');
     die('nome non inserito');
 }
@@ -23,7 +23,7 @@ if (!preg_match($competence_name_regex, $name)) {
     die('nome non corretto');
 }
 
-if (empty($area)){
+if (empty($area)) {
     header('Location: ../competenze.php?err=area+non+inserita');
     die('area non inserita');
 }

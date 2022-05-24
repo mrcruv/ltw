@@ -177,14 +177,15 @@ endif;
                             <img src="img/logo_esperto.png" class="rounded-circle shadow img-fluid" alt="">
                             <h5 class="mb-0 mt-2">
                                 <?php if (!is_null($array[$i]['website'])): ?>
-                                    <a target="_blank" href="<?php echo($array[$i]['website']) ?>"><?php echo($array[$i]['username']); ?></a>
+                                    <a target="_blank"
+                                       href="<?php echo($array[$i]['website']) ?>"><?php echo($array[$i]['username']); ?></a>
                                 <?php else:
                                     echo($array[$i]['username']);
                                 endif;
                                 ?>
                             </h5>
-                            <p class="mb-1 mt-1 fw-bold"><?php echo($array[$i]['name']);?></p>
-                            <p class="fw-bold"><?php echo($array[$i]['surname']);?></p>
+                            <p class="mb-1 mt-1 fw-bold"><?php echo($array[$i]['name']); ?></p>
+                            <p class="fw-bold"><?php echo($array[$i]['surname']); ?></p>
                             <p class="mb-1"><?php echo($array[$i]['pec']); ?></p>
                             <p class="mb-1"><?php echo($array[$i]['city']); ?></p>
                             <p class="mb-3"><?php echo($array[$i]['date']); ?></p>

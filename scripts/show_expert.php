@@ -6,7 +6,7 @@ function show_all_experts()
 {
     global $connection;
     $query = 'SELECT username, nome, cognome, citta_nascita, data_nascita, sito_web, pec FROM esperti NATURAL JOIN utenti';
-    $result =  mysqli_query($connection, $query) or die(mysqli_error($connection));
+    $result = mysqli_query($connection, $query) or die(mysqli_error($connection));
     $rows = array();
     $num_rows = mysqli_num_rows($result);
     $i = 0;

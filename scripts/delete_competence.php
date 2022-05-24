@@ -3,7 +3,7 @@ global $connection;
 require_once('../includes/open_connection.php');
 require_once('../includes/session.php');
 if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'esperto') {
-    header ('Location: ../competenze.php?err=sessione+utente+esperto+non+attiva');
+    header('Location: ../competenze.php?err=sessione+utente+esperto+non+attiva');
     die('sessione utente esperto non attiva');
 }
 
@@ -11,11 +11,11 @@ $username = $_SESSION['username'];
 $name = isset($_GET['name']) ? trim($_GET['name']) : false;
 $area = isset($_GET['area']) ? trim($_GET['area']) : false;
 
-if (empty($name)){
+if (empty($name)) {
     header('Location: ../competenze.php?err=nome+competenza+non+selezionato');
     die('nome competenza non selezionato');
 }
-if (empty($area)){
+if (empty($area)) {
     header('Location: ../competenze.php?err=area+competenza+non+selezionata');
     die('area competenza non selezionata');
 }

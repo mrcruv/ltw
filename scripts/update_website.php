@@ -5,7 +5,7 @@ require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
 require_once('../includes/session.php');
 if (!isset($_POST['update_website_submit'])) {
-    header ('Location: ../me.php?err=errore+update+website+submit');
+    header('Location: ../me.php?err=errore+update+website+submit');
     die('errore update website submit');
 }
 
@@ -24,8 +24,7 @@ if (!mysqli_stmt_fetch($statement)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../me.php?err=utente+non+esistente');
     die('utente non esistente');
-}
-else if (!empty($new_website)) {
+} else if (!empty($new_website)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     if ($new_website == $old_website) {
         header('Location: ../me.php?err=il+nuovo+sito+web+deve+essere+diverso+da+quello+attuale:+sito+web+non+modificato');
@@ -40,8 +39,7 @@ else if (!empty($new_website)) {
     mysqli_stmt_bind_param($statement, 'ss', $new_website, $username) or die(mysqli_error($connection));
     mysqli_stmt_execute($statement) or die(mysqli_error($connection));
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
-}
-else {
+} else {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../me.php?err=sito+web+non+inserito');
     die('sito web non inserito');

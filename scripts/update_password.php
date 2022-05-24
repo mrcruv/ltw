@@ -5,7 +5,7 @@ require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
 require_once('../includes/session.php');
 if (!isset($_POST['update_password_submit'])) {
-    header ('Location: ../me.php?err=errore+update+password+submit');
+    header('Location: ../me.php?err=errore+update+password+submit');
     die('errore update password submit');
 }
 
@@ -45,8 +45,7 @@ if (!mysqli_stmt_fetch($statement)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../me.php?err=utente+non+esistente');
     die('utente non esistente');
-}
-else if (password_verify($old_password, $result_hash)) {
+} else if (password_verify($old_password, $result_hash)) {
     mysqli_stmt_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     $query = 'UPDATE utenti SET password = ? WHERE username = ?';
@@ -55,8 +54,7 @@ else if (password_verify($old_password, $result_hash)) {
     mysqli_stmt_execute($statement) or die(mysqli_error($connection));
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: logout.php?msg=password+aggiornata+con+successo');
-}
-else {
+} else {
     mysqli_stmt_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../me.php?err=password+attuale+incorretta');

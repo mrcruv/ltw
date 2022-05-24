@@ -12,9 +12,9 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT = @@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS = @@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION = @@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
 --
@@ -27,7 +27,9 @@ SET time_zone = "+00:00";
 -- Struttura della tabella `competenze_esperti`
 --
 
-CREATE OR REPLACE TABLE `competenze_esperti` (
+CREATE
+OR
+REPLACE TABLE `competenze_esperti` (
                                       `esperto` varchar(30) NOT NULL,
                                       `competenza` varchar(255) NOT NULL,
                                       `settore` varchar(255) NOT NULL,
@@ -40,7 +42,9 @@ CREATE OR REPLACE TABLE `competenze_esperti` (
 -- Struttura della tabella `diplomi`
 --
 
-CREATE OR REPLACE TABLE `diplomi` (
+CREATE
+OR
+REPLACE TABLE `diplomi` (
                            `titolo` varchar(255) NOT NULL,
                            `tipo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -51,7 +55,9 @@ CREATE OR REPLACE TABLE `diplomi` (
 -- Struttura della tabella `disponibilita`
 --
 
-CREATE OR REPLACE TABLE `disponibilita` (
+CREATE
+OR
+REPLACE TABLE `disponibilita` (
                                  `processo` varchar(255) NOT NULL,
                                  `ente` varchar(30) NOT NULL,
                                  `esperto` varchar(30) NOT NULL,
@@ -66,7 +72,9 @@ CREATE OR REPLACE TABLE `disponibilita` (
 -- Struttura della tabella `enti`
 --
 
-CREATE OR REPLACE TABLE `enti` (
+CREATE
+OR
+REPLACE TABLE `enti` (
                         `username` varchar(30) NOT NULL,
                         `denominazione` varchar(50) NOT NULL,
                         `tipo` enum('pubblico','privato') NOT NULL
@@ -82,7 +90,9 @@ CREATE OR REPLACE TABLE `enti` (
 -- Struttura della tabella `esperti`
 --
 
-CREATE OR REPLACE TABLE `esperti` (
+CREATE
+OR
+REPLACE TABLE `esperti` (
                            `username` varchar(30) NOT NULL,
                            `nome` varchar(255) NOT NULL,
                            `cognome` varchar(255) NOT NULL,
@@ -96,7 +106,9 @@ CREATE OR REPLACE TABLE `esperti` (
 -- Struttura della tabella `lauree`
 --
 
-CREATE OR REPLACE TABLE `lauree` (
+CREATE
+OR
+REPLACE TABLE `lauree` (
                           `titolo` varchar(255) NOT NULL,
                           `tipo` enum('triennale','magistrale','a ciclo unico') NOT NULL,
                           `classe` varchar(7) NOT NULL
@@ -108,7 +120,9 @@ CREATE OR REPLACE TABLE `lauree` (
 -- Struttura della tabella `processi`
 --
 
-CREATE OR REPLACE TABLE `processi` (
+CREATE
+OR
+REPLACE TABLE `processi` (
                             `nome` varchar(255) NOT NULL,
                             `ente` varchar(30) NOT NULL,
                             `data_conclusione` date DEFAULT NULL,
@@ -122,7 +136,9 @@ CREATE OR REPLACE TABLE `processi` (
 -- Struttura della tabella `titoli_esperti`
 --
 
-CREATE OR REPLACE TABLE `titoli_esperti` (
+CREATE
+OR
+REPLACE TABLE `titoli_esperti` (
                                   `esperto` varchar(30) NOT NULL,
                                   `titolo` varchar(255) NOT NULL,
                                   `data_conseguimento` date DEFAULT NULL,
@@ -134,7 +150,9 @@ CREATE OR REPLACE TABLE `titoli_esperti` (
 -- Struttura della tabella `utenti`
 --
 
-CREATE OR REPLACE TABLE `utenti` (
+CREATE
+OR
+REPLACE TABLE `utenti` (
                           `username` varchar(30) NOT NULL,
                           `password` varchar(60) NOT NULL,
                           `piva` char(11) NOT NULL,
@@ -151,7 +169,7 @@ CREATE OR REPLACE TABLE `utenti` (
 -- Indici per le tabelle `competenze_esperti`
 --
 ALTER TABLE `competenze_esperti`
-    ADD PRIMARY KEY (`esperto`,`competenza`,`settore`) USING BTREE,
+    ADD PRIMARY KEY (`esperto`, `competenza`, `settore`) USING BTREE,
     ADD KEY `esperto` (`esperto`);
 
 --
@@ -164,9 +182,9 @@ ALTER TABLE `diplomi`
 -- Indici per le tabelle `disponibilita`
 --
 ALTER TABLE `disponibilita`
-    ADD PRIMARY KEY (`processo`,`ente`,`esperto`),
+    ADD PRIMARY KEY (`processo`, `ente`, `esperto`),
     ADD KEY `esperto` (`esperto`),
-    ADD KEY `processo` (`processo`,`ente`);
+    ADD KEY `processo` (`processo`, `ente`);
 
 --
 -- Indici per le tabelle `enti`
@@ -193,14 +211,14 @@ ALTER TABLE `lauree`
 -- Indici per le tabelle `processi`
 --
 ALTER TABLE `processi`
-    ADD PRIMARY KEY (`nome`,`ente`),
+    ADD PRIMARY KEY (`nome`, `ente`),
     ADD KEY `ente` (`ente`);
 
 --
 -- Indici per le tabelle `titoli_esperti`
 --
 ALTER TABLE `titoli_esperti`
-    ADD PRIMARY KEY (`esperto`,`titolo`),
+    ADD PRIMARY KEY (`esperto`, `titolo`),
     ADD KEY `esperto` (`esperto`);
 
 --
@@ -226,7 +244,7 @@ ALTER TABLE `competenze_esperti`
 -- Limiti per la tabella `disponibilita`
 --
 ALTER TABLE `disponibilita`
-    ADD CONSTRAINT `disponibilita_ibfk_1` FOREIGN KEY (`processo`,`ente`) REFERENCES `processi` (`nome`, `ente`),
+    ADD CONSTRAINT `disponibilita_ibfk_1` FOREIGN KEY (`processo`, `ente`) REFERENCES `processi` (`nome`, `ente`),
     ADD CONSTRAINT `disponibilita_ibfk_2` FOREIGN KEY (`esperto`) REFERENCES `esperti` (`username`);
 
 --
@@ -254,6 +272,6 @@ ALTER TABLE `titoli_esperti`
     ADD CONSTRAINT `titoli_esperti_ibfk_1` FOREIGN KEY (`esperto`) REFERENCES `esperti` (`username`);
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET CHARACTER_SET_CLIENT = @OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS = @OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION = @OLD_COLLATION_CONNECTION */;

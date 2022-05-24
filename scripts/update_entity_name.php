@@ -5,11 +5,11 @@ require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
 require_once('../includes/session.php');
 if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'ente') {
-    header ('Location: ../me.php?err=sessione+utente+ente+non+attiva');
+    header('Location: ../me.php?err=sessione+utente+ente+non+attiva');
     die('sessione utente ente non attiva');
 }
 if (!isset($_POST['update_entity_name_submit'])) {
-    header ('Location: ../me.php?err=errore+update+entity+name+submit');
+    header('Location: ../me.php?err=errore+update+entity+name+submit');
     die('errore update entity name submit');
 }
 
@@ -28,8 +28,7 @@ if (!mysqli_stmt_fetch($statement)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../me.php?err=utente+non+esistente');
     die('utente non esistente');
-}
-else if (!empty($new_entity_name)) {
+} else if (!empty($new_entity_name)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     if ($new_entity_name == $old_entity_name) {
         header('Location: ../me.php?err=la+nuova+denominazione+deve+essere+diversa+da+quella+attuale:+denominazione+non+modificata');
@@ -44,12 +43,11 @@ else if (!empty($new_entity_name)) {
     mysqli_stmt_bind_param($statement, 'ss', $new_entity_name, $username) or die(mysqli_error($connection));
     mysqli_stmt_execute($statement) or die(mysqli_error($connection));
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
-}
-else {
+} else {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../me.php?err=denominazione+non+inserita');
     die('denominazione non inserita');
-        }
+}
 
 //require_once('../includes/close_connection.php');
 header('Location: ../me.php?msg=denominazione+aggiornata+con+successo');

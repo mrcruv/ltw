@@ -2,7 +2,7 @@
 global $connection;
 require_once('../includes/open_connection.php');
 if (!isset($_POST['login_submit'])) {
-    header ('Location: ../index.php?err=errore+login+submit');
+    header('Location: ../index.php?err=errore+login+submit');
     die('errore login submit');
 }
 
@@ -29,8 +29,7 @@ if (!mysqli_stmt_fetch($statement)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../index.php?err=utente+non+esistente');
     die('utente non esistente');
-}
-else if (password_verify($password, $result_password)){
+} else if (password_verify($password, $result_password)) {
     mysqli_stmt_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     session_start();
@@ -44,16 +43,14 @@ else if (password_verify($password, $result_password)){
     mysqli_stmt_bind_result($statement, $result_password) or die(mysqli_error($connection));
     if (!mysqli_stmt_fetch($statement)) {
         $_SESSION['usertype'] = 'esperto';
-    }
-    else {
-        $_SESSION['usertype'] = 'ente'; 
+    } else {
+        $_SESSION['usertype'] = 'ente';
     }
     mysqli_stmt_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
     header('Location: ../me.php?msg=login+effettuato+con+successo,+bentornato+' . $username . '!');
-}
-else {
+} else {
     mysqli_stmt_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../index.php?err=password+errata');

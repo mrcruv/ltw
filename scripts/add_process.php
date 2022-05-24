@@ -5,7 +5,7 @@ require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
 require_once('../includes/session.php');
 if (!isset($_POST['add_process_submit'])) {
-    header ('Location: ../processi.php?err=errore+add+process+submit');
+    header('Location: ../processi.php?err=errore+add+process+submit');
     die('errore add process submit');
 }
 
@@ -14,7 +14,7 @@ $name = isset($_POST['name']) ? trim($_POST['name']) : false;
 $type = isset($_POST['type']) ? trim($_POST['type']) : false;
 $description = isset($_POST['description']) ? trim($_POST['description']) : false;
 
-if (empty($name)){
+if (empty($name)) {
     header('Location: ../processi.php?err=nome+non+inserito');
     die('nome non inserito');
 }
@@ -23,7 +23,7 @@ if (!preg_match($process_name_regex, $name)) {
     die('nome non corretto');
 }
 
-if (empty($type)){
+if (empty($type)) {
     header('Location: ../processi.php?err=tipo+non+inserito');
     die('tipo non inserito');
 }
@@ -32,7 +32,7 @@ if (!preg_match($process_type_regex, $type)) {
     die('tipo non corretto');
 }
 
-if (empty($description)){
+if (empty($description)) {
     header('Location: ../processi.php?err=descrizione+non+inserita');
     die('descrizione non inserita');
 }

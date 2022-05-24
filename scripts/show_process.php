@@ -2,7 +2,8 @@
 require_once('includes/open_connection.php');
 require_once('includes/session.php');
 
-function show_all_processes($username) {
+function show_all_processes($username)
+{
     global $connection;
     $query = 'SELECT nome, tipologia, descrizione FROM processi WHERE ente=?';
     $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));

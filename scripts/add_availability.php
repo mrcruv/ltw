@@ -3,7 +3,7 @@ global $connection;
 require_once('../includes/open_connection.php');
 require_once('../includes/session.php');
 if (!isset($_POST['add_availability_submit'])) {
-    header ('Location: ../assegnazioni.php?err=errore+add+availability+submit');
+    header('Location: ../assegnazioni.php?err=errore+add+availability+submit');
     die('errore add availability submit');
 }
 
@@ -12,11 +12,11 @@ $expert = isset($_POST['expert']) ? trim($_POST['expert']) : false;
 $process = isset($_POST['process']) ? trim($_POST['process']) : false;
 
 if (empty($process)) {
-    header ('Location: ../assegnazioni.php?err=selezionare+processo');
+    header('Location: ../assegnazioni.php?err=selezionare+processo');
     die('selezionare processo');
 }
 if (empty($expert)) {
-    header ('Location: ../assegnazioni.php?err=selezionare+esperto');
+    header('Location: ../assegnazioni.php?err=selezionare+esperto');
     die('selezionare esperto');
 }
 
@@ -26,7 +26,7 @@ mysqli_stmt_bind_param($statement, 's', $expert) or die(mysqli_error($connection
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 if (!mysqli_stmt_fetch($statement)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
-    header ('Location: ../assegnazioni.php?err=esperto+non+esistente');
+    header('Location: ../assegnazioni.php?err=esperto+non+esistente');
     die('esperto non esistente');
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
@@ -37,7 +37,7 @@ mysqli_stmt_bind_param($statement, 's', $process) or die(mysqli_error($connectio
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 if (!mysqli_stmt_fetch($statement)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
-    header ('Location: ../assegnazioni.php?err=processo+non+esistente');
+    header('Location: ../assegnazioni.php?err=processo+non+esistente');
     die('processo non esistente');
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
@@ -48,7 +48,7 @@ mysqli_stmt_bind_param($statement, 'ss', $process, $expert) or die(mysqli_error(
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 if (mysqli_stmt_fetch($statement)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
-    header ('Location: ../assegnazioni.php?err=assegnazione+gia+inserita');
+    header('Location: ../assegnazioni.php?err=assegnazione+gia+inserita');
     die('assegnazione gia inserita');
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
