@@ -1,8 +1,5 @@
-$.getScript("regex.js", function () {
-});
-
 jQuery.validator.addMethod("pec_regex", function (value, element) {
-    return /pec_regex/.test(value);
+    return /(?:\w*.?pec(?:.?\w+)*)/.test(value);
 });
 
 $().ready(function () {
