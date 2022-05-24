@@ -85,7 +85,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                         </div>
                         <div class="col-2 d-flex justify-content-center">
                             <a class="edit pointer" id="cf_e"><i class="material-icons">&#xE254;</i></a>
-                            <a class="cancel pointer" id="cf_c"><i class="material-icons">close</i></a>
+                            <a class="cancel pointer" id="cf_c"><i class="material-icons icon-red">close</i></a>
                             <i class="material-icons save">
                                 <button type="submit" class="mdc-icon-button myButton" name="update_cf_submit">
                                     &#xE161;
@@ -108,7 +108,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                             <a class="edit pointer" title="Edit" data-toggle="tooltip" id="piva_e"><i
                                         class="material-icons">&#xE254;</i></a>
                             <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="piva_c"><i
-                                        class="material-icons">close</i></a>
+                                        class="material-icons icon-red">close</i></a>
                             <i class="material-icons save">
                                 <button type="submit" class="mdc-icon-button myButton" name="update_piva_submit">
                                     &#xE161;
@@ -131,7 +131,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                             <a class="edit pointer" title="Edit" data-toggle="tooltip" id="website_e"><i
                                         class="material-icons">&#xE254;</i></a>
                             <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="website_c"><i
-                                        class="material-icons">close</i></a>
+                                        class="material-icons icon-red">close</i></a>
                             <i class="material-icons save">
                                 <button type="submit" class="mdc-icon-button myButton" name="update_website_submit">
                                     &#xE161;
@@ -153,7 +153,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                             <a class="edit pointer" title="Edit" data-toggle="tooltip" id="pec_e"><i
                                         class="material-icons">&#xE254;</i></a>
                             <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="pec_c"><i
-                                        class="material-icons">close</i></a>
+                                        class="material-icons icon-red">close</i></a>
                             <i class="material-icons save">
                                 <button type="submit" class="mdc-icon-button myButton" name="update_pec_submit">
                                     &#xE161;
@@ -187,7 +187,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                             <a class="edit pointer" title="Edit" data-toggle="tooltip" id="entityName_e"><i
                                         class="material-icons">&#xE254;</i></a>
                             <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="entityName_c"><i
-                                        class="material-icons">close</i></a>
+                                        class="material-icons icon-red">close</i></a>
                             <i class="material-icons save">
                                 <button type="submit" class="mdc-icon-button myButton" name="update_entity_name_submit">
                                     &#xE161;
@@ -210,7 +210,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                             <a class="edit pointer" title="Edit" data-toggle="tooltip" id="entityType_e"><i
                                         class="material-icons">&#xE254;</i></a>
                             <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="entityType_c"><i
-                                        class="material-icons">close</i></a>
+                                        class="material-icons icon-red">close</i></a>
                             <i class="material-icons save">
                                 <button type="submit" class="mdc-icon-button myButton" name="update_entity_type_submit">
                                     &#xE161;
