@@ -1,8 +1,5 @@
-$.getScript("regex.js", function () {
-});
-
 jQuery.validator.addMethod("entity_name_regex", function (value, element) {
-    return /entity_name_regex/.test(value);
+    return /^[a-zA-Z0-9]{1,30}$/.test(value);
 });
 
 $().ready(function () {
