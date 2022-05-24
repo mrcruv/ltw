@@ -1,5 +1,7 @@
+const entity_type_regex = /^(pubblico|privato)$/;
+
 jQuery.validator.addMethod("entity_type_regex", function (value, element) {
-    return /^(pubblico|privato)$/.test(value);
+    return entity_type_regex.test(value);
 });
 
 $().ready(function () {

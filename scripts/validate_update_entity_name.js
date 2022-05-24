@@ -1,5 +1,7 @@
+const entity_name_regex = /^[a-zA-Z0-9]{1,30}$/;
+
 jQuery.validator.addMethod("entity_name_regex", function (value, element) {
-    return /^[a-zA-Z0-9]{1,30}$/.test(value);
+    return entity_name_regex.test(value);
 });
 
 $().ready(function () {

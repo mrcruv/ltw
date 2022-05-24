@@ -1,5 +1,7 @@
+const piva_regex = /^[0-9]{11}$/;
+
 jQuery.validator.addMethod("piva_regex", function (value, element) {
-    return /^[0-9]{11}$/.test(value);
+    return piva_regex.test(value);
 });
 
 $().ready(function () {

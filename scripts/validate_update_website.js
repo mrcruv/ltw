@@ -1,5 +1,7 @@
+const website_regex = /^((https?|ftp|smtp):\/\/)(www.)[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/;
+
 jQuery.validator.addMethod("website_regex", function (value, element) {
-    return /^((https?|ftp|smtp):\/\/)(www.)[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/.test(value);
+    return website_regex.test(value);
 });
 
 $().ready(function () {
