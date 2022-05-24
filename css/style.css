@@ -60,6 +60,15 @@ i.icon-red:hover {
     cursor: pointer;
 }
 
+.myButton{
+    background-color: transparent;
+    border: 0px solid;
+    color: rgb(61, 81, 255);
+}
+.myButton:hover{
+    color: blue;
+}
+
 /*TABLES*/
 /*-----------------------------------*/
 .radius-15 {
