@@ -11,47 +11,47 @@ const accept_conditions_regex = /^true$/;
 const password_regex = /^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/;
 
 jQuery.validator.addMethod("username_regex", function (value, element) {
-    return /username_regex/.test(value);
+    return username_regex.test(value);
 });
 
 jQuery.validator.addMethod("pec_regex", function (value, element) {
-    return /pec_regex/.test(value);
+    return pec_regex.test(value);
 });
 
 jQuery.validator.addMethod("cf_regex", function (value, element) {
-    return /cf_regex/.test(value);
+    return cf_regex.test(value);
 });
 
 jQuery.validator.addMethod("piva_regex", function (value, element) {
-    return /piva_regex/.test(value);
+    return piva_regex.test(value);
 });
 
 jQuery.validator.addMethod("website_regex", function (value, element) {
-    return /website_regex/.test(value);
+    return website_regex.test(value);
 });
 
 jQuery.validator.addMethod("password_regex", function (value, element) {
-    return /password_regex/.test(value);
+    return password_regex.test(value);
 });
 
 jQuery.validator.addMethod("expert_name_regex", function (value, element) {
-    return /expert_name_regex/.test(value);
+    return expert_name_regex.test(value);
 });
 
 jQuery.validator.addMethod("expert_surname_regex", function (value, element) {
-    return /expert_surname_regex/.test(value);
+    return expert_surname_regex.test(value);
 });
 
 jQuery.validator.addMethod("expert_city_regex", function (value, element) {
-    return /expert_city_regex/.test(value);
+    return expert_city_regex.test(value);
 });
 
-jQuery.validator.addMethod("expert_date_regex", function (value, element) {
-    return /expert_date_regex/.test(value);
-});
+// jQuery.validator.addMethod("expert_date_regex", function (value, element) {
+//     return expert_date_regex.test(value);
+// });
 
 jQuery.validator.addMethod("accept_conditions_regex", function (value, element) {
-    return /accept_conditions_regex/.test(value);
+    return accept_conditions_regex.test(value);
 });
 
 jQuery.validator.addMethod("adult_date", function (value, element) {
