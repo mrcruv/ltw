@@ -177,7 +177,7 @@ endif;
                             <img src="img/logo_esperto.png" class="rounded-circle shadow" alt="">
                             <h5 class="mb-0 mt-2">
                                 <?php if (!is_null($array[$i]['website'])): ?>
-                                    <a href="<?php echo($array[$i]['website']) ?>"><?php echo($array[$i]['username']); ?></a>
+                                    <a target="_blank" href="<?php echo($array[$i]['website']) ?>"><?php echo($array[$i]['username']); ?></a>
                                 <?php else:
                                     echo($array[$i]['username']);
                                 endif;

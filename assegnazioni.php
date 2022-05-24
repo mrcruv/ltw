@@ -149,7 +149,7 @@ endif;
                                    role="button">Mostra descrizione</a>
                                 <h4>
                                     <?php if (!is_null($array[$i]['website'])): ?>
-                                        <a href="<?php echo($array[$i]['website']) ?>"><?php echo($array[$i]['expert']); ?></a>
+                                        <a target="_blank" href="<?php echo($array[$i]['website']); ?>"><?php echo($array[$i]['expert']); ?></a>
                                     <?php else:
                                         echo($array[$i]['expert']);
                                     endif;
@@ -171,7 +171,7 @@ endif;
                                             <?php
                                         } else { ?>
                                             <div class="mt-2"><span class="text1">Assegnazione rifiutata:<span
-                                                            class="text2"></span> <?php echo($array[$i]['rejection_date']); ?></span>
+                                                            class="text2"></span><?php echo($array[$i]['rejection_date']); ?></span>
                                             </div>
                                             <div class="progress mt-1">
                                                 <div class="progress-bar" role="progressbar"
@@ -231,7 +231,7 @@ endif;
                                    role="button">Mostra descrizione</a>
                                 <h4>
                                     <?php if (!is_null($array[$i]['website'])): ?>
-                                        <a href="<?php echo($array[$i]['website']) ?>"><?php echo($array[$i]['entity']); ?></a>
+                                        <a target="_blank" href="<?php echo($array[$i]['website']); ?>"><?php echo($array[$i]['entity']); ?></a>
                                     <?php else:
                                         echo($array[$i]['entity']);
                                     endif;
