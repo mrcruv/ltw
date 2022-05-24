@@ -1,6 +1,6 @@
 <?php
 global $connection;
-global $entity_website_regex, $expert_website_regex;
+global $ewebsite_regex;
 require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
 require_once('../includes/session.php');
@@ -11,8 +11,6 @@ if (!isset($_POST['update_website_submit'])) {
 
 $username = $_SESSION['username'];
 $usertype = $_SESSION['usertype'];
-
-$website_regex = $usertype == 'ente' ? $entity_website_regex : $expert_website_regex;
 
 $new_website = isset($_POST['new_website']) ? trim($_POST['new_website']) : false;
 

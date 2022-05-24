@@ -1,8 +1,8 @@
 <?php
 global $connection;
 global $contains_lowercase, $contains_uppercase, $contains_special, $contains_digit,
-       $entity_username_regex, $entity_cf_regex, $entity_pec_regex, $entity_piva_regex,
-       $entity_website_regex, $entity_name_regex, $entity_type_regex, $accept_conditions_regex;
+       $username_regex, $cf_regex, $pec_regex, $piva_regex, $website_regex,
+       $entity_name_regex, $entity_type_regex, $accept_conditions_regex;
 require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
 if (!isset($_POST['register_entity_submit'])) {
@@ -24,7 +24,7 @@ if (empty($username)) {
     header('Location: ../index.php?err=username+non+inserito');
     die('username non inserito');
 }
-if (!preg_match($entity_username_regex, $username)) {
+if (!preg_match($username_regex, $username)) {
     header('Location: ../index.php?err=username+non+corretto');
     die('username non corretto');
 }
@@ -48,7 +48,7 @@ if (empty($cf)) {
     header('Location: ../index.php?err=c.f.+non+inserito');
     die('c.f. non inserito');
 }
-if (!preg_match($entity_cf_regex, $cf)) {
+if (!preg_match($cf_regex, $cf)) {
     header('Location: ../index.php?err=c.f.+non+corretto');
     die('c.f. non corretto');
 }
@@ -57,7 +57,7 @@ if (empty($pec)) {
     header('Location: ../index.php?err=pec+non+inserita');
     die('pec non inserita');
 }
-if (!preg_match($entity_pec_regex, $pec)) {
+if (!preg_match($pec_regex, $pec)) {
     header('Location: ../index.php?err=pec+non+corretta');
     die('pec non corretta');
 }
@@ -66,12 +66,12 @@ if (empty($piva)) {
     header('Location: ../index.php?err=p.+iva+non+inserita');
     die('p. iva non inserita');
 }
-if (!preg_match($entity_piva_regex, $piva)) {
+if (!preg_match($piva_regex, $piva)) {
     header('Location: ../index.php?err=p.+iva+non+corretta');
     die('p. iva non corretta');
 }
 
-if (!empty($website) and !preg_match($entity_website_regex, $website)) {
+if (!empty($website) and !preg_match($website_regex, $website)) {
     header('Location: ../index.php?err=sito+web+non+corretto');
     die('sito web non corretto');
 }
