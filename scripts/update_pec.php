@@ -1,6 +1,6 @@
 <?php
 global $connection;
-global $entity_pec_regex, $expert_pec_regex;
+global $pec_regex;
 require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
 require_once('../includes/session.php');
@@ -11,8 +11,6 @@ if (!isset($_POST['update_pec_submit'])) {
 
 $username = $_SESSION['username'];
 $usertype = $_SESSION['usertype'];
-
-$pec_regex = $usertype == 'ente' ? $entity_pec_regex : $expert_pec_regex;
 
 $new_pec = isset($_POST['new_pec']) ? trim($_POST['new_pec']) : false;
 

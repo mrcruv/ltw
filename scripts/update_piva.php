@@ -1,6 +1,6 @@
 <?php
 global $connection;
-global $entity_piva_regex, $expert_piva_regex;
+global $piva_regex;
 require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
 require_once('../includes/session.php');
@@ -11,8 +11,6 @@ if (!isset($_POST['update_piva_submit'])) {
 
 $username = $_SESSION['username'];
 $usertype = $_SESSION['usertype'];
-
-$piva_regex = $usertype == 'ente' ? $entity_piva_regex : $expert_piva_regex;
 
 $new_piva = isset($_POST['new_piva']) ? trim($_POST['new_piva']) : false;
 

@@ -1,6 +1,6 @@
 <?php
 global $connection;
-global $entity_cf_regex, $expert_cf_regex;
+global $cf_regex;
 require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
 require_once('../includes/session.php');
@@ -11,8 +11,6 @@ if (!isset($_POST['update_cf_submit'])) {
 
 $username = $_SESSION['username'];
 $usertype = $_SESSION['usertype'];
-
-$cf_regex = $usertype == 'ente' ? $entity_cf_regex : $expert_cf_regex;
 
 $new_cf = isset($_POST['new_cf']) ? trim($_POST['new_cf']) : false;
 
