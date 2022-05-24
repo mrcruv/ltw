@@ -1,8 +1,5 @@
-$.getScript("regex.js", function () {
-});
-
 jQuery.validator.addMethod("cf_regex", function(value, element) {
-    return /cf_regex/.test(value);
+    return /[A-Za-z]{6}[0-9lmnpqrstuvLMNPQRSTUV]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9lmnpqrstuvLMNPQRSTUV]{2}[A-Za-z]{1}[0-9lmnpqrstuvLMNPQRSTUV]{3}[A-Za-z]{1}/.test(value);
 });
 
 $().ready(function() {
@@ -24,3 +21,4 @@ $().ready(function() {
         }
     });
 });
+
