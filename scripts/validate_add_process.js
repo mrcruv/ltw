@@ -1,46 +1,50 @@
-jQuery.validator.addMethod("name_regex", function(value, element) {
-    return /^[a-zA-Z0-9]{1,255}$/.test(value);
+const process_name_regex = /^[a-zA-Z0-9]{1,255}$/;
+const process_type_regex = /^[a-zA-Z0-9 ]{1,255}$/;
+const process_description_regex = /^[a-zA-Z0-9 .,;]{1,255}$/;
+
+jQuery.validator.addMethod("process_name_regex", function (value, element) {
+    return process_name_regex.test(value);
 });
 
-jQuery.validator.addMethod("type_regex", function(value, element) {
-    return /^[a-zA-Z0-9 ]{1,255}$/.test(value);
+jQuery.validator.addMethod("process_type_regex", function (value, element) {
+    return process_type_regex.test(value);
 });
 
-jQuery.validator.addMethod("description_regex", function(value, element) {
-    return /^[a-zA-Z0-9 .,;]{1,255}$/.test(value);
+jQuery.validator.addMethod("process_description_regex", function (value, element) {
+    return process_description_regex.test(value);
 });
 
-$().ready(function() {
+$().ready(function () {
     $("#add_process_form").validate({
         rules: {
             name: {
                 required: true,
-                name_regex: true
+                process_name_regex: true
             },
             type: {
                 required: true,
-                type_regex: true
+                process_type_regex: true
             },
             description: {
                 required: true,
-                description_regex: true
+                process_description_regex: true
             }
         },
         messages: {
             name: {
                 required: "Inserire nome processo",
-                name_regex: "Inserire nome nel formato corretto"
+                process_name_regex: "Inserire nome nel formato corretto"
             },
             type: {
                 required: "Inserire tipo",
-                type_regex: "Inserire tipo nel formato corretto"
+                process_type_regex: "Inserire tipo nel formato corretto"
             },
             description: {
                 required: "Inserire descrizione",
-                description_regex: "Inserire descrizione nel formato corretto"
+                process_description_regex: "Inserire descrizione nel formato corretto"
             }
         },
-        submitHandler: function(form) {
+        submitHandler: function (form) {
             form.submit();
         }
     });

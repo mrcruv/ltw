@@ -1,8 +1,10 @@
-jQuery.validator.addMethod("password_regex", function(value, element) {
-    return /^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/.test(value);
+const password_regex = /^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/;
+
+jQuery.validator.addMethod("password_regex", function (value, element) {
+    return password_regex.test(value);
 });
 
-$().ready(function() {
+$().ready(function () {
     $("#update_password_form").validate({
         rules: {
             old_password: {
@@ -22,7 +24,7 @@ $().ready(function() {
                 required: "Inserire la password attuale"
             }
         },
-        submitHandler: function(form) {
+        submitHandler: function (form) {
             form.submit();
         }
     });
