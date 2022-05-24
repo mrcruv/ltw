@@ -163,18 +163,18 @@ endif;
         <?php
         $array = show_all_experts();
         $n = count($array);
-        $numOfCols = 6;
+        $numOfCols = 4;
         $rowCount = 0;
         $bootstrapColWidth = 12 / $numOfCols;
         if (!is_array($array) or $n <= 0): ?>
             <h6>Non ci sono esperti al momento</h6>
         <?php else: ?>
         <?php for ($i = 0; $i < $n; $i += 1) { ?>
-            <div class="col-md-<?php echo($bootstrapColWidth); ?>">
+            <div class="col-lg-<?php echo($bootstrapColWidth); ?>">
                 <div class="card radius-15 shadow">
                     <div class="card-body text-center">
                         <div class="p-4 border radius-15">
-                            <img src="img/logo_esperto.png" class="rounded-circle shadow" alt="">
+                            <img src="img/logo_esperto.png" class="rounded-circle shadow img-fluid" alt="">
                             <h5 class="mb-0 mt-2">
                                 <?php if (!is_null($array[$i]['website'])): ?>
                                     <a target="_blank" href="<?php echo($array[$i]['website']) ?>"><?php echo($array[$i]['username']); ?></a>
@@ -183,7 +183,8 @@ endif;
                                 endif;
                                 ?>
                             </h5>
-                            <p class="mb-1"><?php echo($array[$i]['name'] . " " . $array[$i]['surname']); ?> </p>
+                            <p class="mb-1 mt-1 fw-bold"><?php echo($array[$i]['name']);?></p>
+                            <p class="fw-bold"><?php echo($array[$i]['surname']);?></p>
                             <p class="mb-1"><?php echo($array[$i]['pec']); ?></p>
                             <p class="mb-1"><?php echo($array[$i]['city']); ?></p>
                             <p class="mb-3"><?php echo($array[$i]['date']); ?></p>
