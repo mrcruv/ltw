@@ -1,8 +1,5 @@
-$.getScript("regex.js", function () {
-});
-
 jQuery.validator.addMethod("piva_regex", function (value, element) {
-    return /piva_regex/.test(value);
+    return /^[0-9]{11}$/.test(value);
 });
 
 $().ready(function () {
