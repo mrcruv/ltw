@@ -28,37 +28,21 @@ $usertype = $_SESSION['usertype'];
     <script src="scripts/validate_update_password.js"></script>
     <script src="scripts/error.js"></script>
     <script src="scripts/message.js"></script>
+    <script src="scripts/update_info.js"></script>
     <script src="scripts/validate_update_cf.js"></script>
     <script src="scripts/validate_update_pec.js"></script>
     <script src="scripts/validate_update_piva.js"></script>
     <script src="scripts/validate_update_website.js"></script>
     <script src="scripts/validate_update_entity_name.js"></script>
     <script src="scripts/validate_update_entity_type.js"></script>
+
     <title><?php echo($sitename_brief . ': dashboard - ' . $usertype . ' ' . $username); ?></title>
 </head>
 <body class="d-flex flex-column min-vh-100">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-<script>
-    $(document).ready(function () {
-        $('.edit').click(function () {
-            var id = $(this).attr('id');
-            var array = id.split("_");
-            $('#text_' + array[0]).prop('disabled', false);
-            $('#text_' + array[0]).removeClass("hiddenborder");
-            $(this).parents("li").find(".edit, .save").toggle();
-        });
 
-        $('.save').click(function () {
-            var id = $(this).attr('id');
-            var array = id.split("_");
-            $('#text_' + array[0]).prop('disabled', true);
-            $('#text_' + array[0]).addClass("hiddenborder");
-            $(this).parents("li").find(".edit, .save").toggle();
-        });
-    });
-</script>
 <?php
 require_once('includes/error.php');
 require_once('includes/message.php');
@@ -95,70 +79,67 @@ if (mysqli_stmt_fetch($statement)) { ?>
         <ul class="list-group list-group-flush">
             <li class="list-group-item"><small class="text-muted">Codice fiscale</small>
                 <form id="update_cf_form" method="post" action="scripts/update_cf.php">
-                    <div>
-                        <label class="hiddenlabel" for="text_cf"></label>
-                        <input type="text" class="hiddenborder text-center" id="text_cf" name="new_cf"
-                               value="<?php echo($cf); ?>" disabled>
+                    <div class="row">
+                        <div class="col-8 offset-2">
+                            <label class="hiddenlabel" for="text_cf"></label>
+                            <input type="text" class="hiddenborder text-center" id="text_cf" name="new_cf" value="<?php echo($cf); ?>" disabled>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center">
+                            <a class="edit pointer" id="cf_e"><i class="material-icons">&#xE254;</i></a>
+                            <a class="cancel pointer" id="cf_c"><i class="material-icons">close</i></a>
+                            <i class="material-icons save"><button type="submit" class="mdc-icon-button myButton" name="update_cf_submit">&#xE161;</button></i>
+                        </div>
                     </div>
-                    <a class="edit pointer" title="Edit" data-toggle="tooltip" id="cf_e"><i class="material-icons">&#xE254;</i></a>
-                    <i class="material-icons save">
-                        <button type="submit" class="btn btn-block"
-                                name="update_cf_submit">
-                            &#xE161;
-                        </button>
-                    </i>
                 </form>
             </li>
 
             <li class="list-group-item"><small class="text-muted">Partita IVA</small>
                 <form id="update_piva_form" method="post" action="scripts/update_piva.php">
-                    <div>
-                        <label class="hiddenlabel" for="text_piva"></label>
-                        <input type="text" class="hiddenborder text-center" id="text_piva" name="new_piva"
+                    <div class="row">
+                        <div class="col-8 offset-2">
+                            <label class="hiddenlabel" for="text_piva"></label>
+                            <input type="text" class="hiddenborder text-center" id="text_piva" name="new_piva"
                                value="<?php echo($piva); ?>" disabled/>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center">
+                            <a class="edit pointer" title="Edit" data-toggle="tooltip" id="piva_e"><i class="material-icons">&#xE254;</i></a>
+                            <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="piva_c"><i class="material-icons">close</i></a>
+                            <i class="material-icons save"><button type="submit" class="mdc-icon-button myButton" name="update_piva_submit">&#xE161;</button></i>
+                        </div>
                     </div>
-                    <a class="edit pointer" title="Edit" data-toggle="tooltip" id="piva_e"><i
-                                class="material-icons">&#xE254;</i></a>
-                    <i class="material-icons save">
-                        <button type="submit" class="btn btn-block"
-                                name="update_piva_submit">
-                            &#xE161;
-                        </button>
-                    </i>
                 </form>
             </li>
             <li class="list-group-item"><small class="text-muted">Sito web</small>
                 <form id="update_website_form" method="post" action="scripts/update_website.php">
-                    <div>
+                    <div class="row">
+                        <div class="col-8 offset-2">
                         <label class="hiddenlabel" for="text_website"></label>
                         <input type="text" class="hiddenborder text-center" id="text_website"
                                name="new_website"
                                value="<?php echo($website); ?>" disabled>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center">
+                            <a class="edit pointer" title="Edit" data-toggle="tooltip" id="website_e"><i class="material-icons">&#xE254;</i></a>
+                            <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="website_c"><i class="material-icons">close</i></a>
+                            <i class="material-icons save"><button type="submit" class="mdc-icon-button myButton" name="update_website_submit">&#xE161;</button></i>
+                        </div>
                     </div>
-                    <a class="edit pointer" title="Edit" data-toggle="tooltip" id="website_e"><i
-                                class="material-icons">&#xE254;</i></a>
-                    <i class="material-icons save">
-                        <button type="submit" class="btn btn-block"
-                                name="update_website_submit">
-                            &#xE161;
-                        </button>
-                    </i>
                 </form>
             </li>
             <li class="list-group-item"><small class="text-muted">PEC</small>
                 <form id="update_pec_form" method="post" action="scripts/update_pec.php">
-                    <div>
-                        <label class="hiddenlabel" for="text_pec"></label>
-                        <input type="text" class="hiddenborder text-center" id="text_pec" name="new_pec"
-                               value="<?php echo($pec); ?>" disabled>
+                    <div class="row">
+                        <div class="col-8 offset-2">
+                            <label class="hiddenlabel" for="text_pec"></label>
+                            <input type="text" class="hiddenborder text-center" id="text_pec" name="new_pec"
+                                value="<?php echo($pec); ?>" disabled>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center">
+                            <a class="edit pointer" title="Edit" data-toggle="tooltip" id="pec_e"><i class="material-icons">&#xE254;</i></a>
+                            <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="pec_c"><i class="material-icons">close</i></a>
+                            <i class="material-icons save"><button type="submit" class="mdc-icon-button myButton" name="update_pec_submit">&#xE161;</button></i>
+                        </div>
                     </div>
-                    <a class="edit pointer" title="Edit" data-toggle="tooltip" id="pec_e"><i class="material-icons">&#xE254;</i></a>
-                    <i class="material-icons save">
-                        <button type="submit" class="btn btn-block"
-                                name="update_pec_submit">
-                            &#xE161;
-                        </button>
-                    </i>
                 </form>
             </li>
             <?php
@@ -174,39 +155,36 @@ if (mysqli_stmt_fetch($statement)) { ?>
             if (mysqli_stmt_fetch($statement)) { ?>
             <li class="list-group-item"><small class="text-muted">Denominazione</small>
                 <form id="update_entity_name_form" method="post" action="scripts/update_entity_name.php">
-                    <div>
-                        <label class="hiddenlabel" for="text_entityName"></label>
-                        <input type="text" class="hiddenborder text-center" id="text_entityName"
-                               name="new_entity_name"
-                               value="<?php echo($name); ?>" disabled>
+                    <div class="row">
+                        <div class="col-8 offset-2">
+                            <label class="hiddenlabel" for="text_entityName"></label>
+                            <input type="text" class="hiddenborder text-center" id="text_entityName"
+                                name="new_entity_name"
+                                value="<?php echo($name); ?>" disabled>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center">
+                            <a class="edit pointer" title="Edit" data-toggle="tooltip" id="entityName_e"><i class="material-icons">&#xE254;</i></a>
+                            <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="entityName_c"><i class="material-icons">close</i></a>
+                            <i class="material-icons save"><button type="submit" class="mdc-icon-button myButton" name="update_entity_name_submit">&#xE161;</button></i>
+                        </div>
                     </div>
-                    <a class="edit pointer" title="Edit" data-toggle="tooltip" id="entityName_e">
-                        <i class="material-icons">&#xE254;
-                        </i></a>
-                    <i class="material-icons save">
-                        <button type="submit" class="btn btn-block"
-                                name="update_entity_name_submit">
-                            &#xE161;
-                        </button>
-                    </i>
                 </form>
             </li>
             <li class="list-group-item"><small class="text-muted">Tipo</small>
                 <form id="update_entity_type_form" method="post" action="scripts/update_entity_type.php">
-                    <div>
-                        <label class="hiddenlabel" for="text_entityType"></label>
-                        <input type="text" class="hiddenborder text-center" id="text_entityType"
-                               name="new_entity_type"
-                               value="<?php echo($type); ?>" disabled>
+                <div class="row">
+                        <div class="col-8 offset-2">
+                            <label class="hiddenlabel" for="text_entityType"></label>
+                            <input type="text" class="hiddenborder text-center" id="text_entityType"
+                                name="new_entity_type"
+                                value="<?php echo($type); ?>" disabled>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center">
+                            <a class="edit pointer" title="Edit" data-toggle="tooltip" id="entityType_e"><i class="material-icons">&#xE254;</i></a>
+                            <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="entityType_c"><i class="material-icons">close</i></a>
+                            <i class="material-icons save"><button type="submit" class="mdc-icon-button myButton" name="update_entity_type_submit">&#xE161;</button></i>
+                        </div>
                     </div>
-                    <a class="edit pointer" title="Edit" data-toggle="tooltip" id="entityType_e"><i
-                                class="material-icons">&#xE254;</i></a>
-                    <i class="material-icons save">
-                        <button type="submit" class="btn btn-block"
-                                name="update_entity_type_submit">
-                            &#xE161;
-                        </button>
-                    </i>
                 </form>
             </li>
         </ul>
@@ -296,3 +274,4 @@ if (mysqli_stmt_fetch($statement)) { ?>
 <?php require_once('includes/footer.php'); ?>
 </body>
 </html>
+
