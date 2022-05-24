@@ -1,8 +1,5 @@
-$.getScript("regex.js", function () {
-});
-
 jQuery.validator.addMethod("website_regex", function (value, element) {
-    return /website_regex/.test(value);
+    return /^((https?|ftp|smtp):\/\/)(www.)[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/.test(value);
 });
 
 $().ready(function () {
