@@ -185,13 +185,25 @@ i.icon-red:hover {
     color: #a94442;
 }
 
+.update input.error {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ff002b70;
+    border-radius: 5px;
+}
+
+.update label.error {
+    color: #a94442;
+}
+
 .login input.error {
-    background-color: #a0a2f86c;
-    border-color: #000000ce;
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ff002b;
 }
 
 .login label.error {
-    color: #353535;
+    color: #a94442;
 }
 
 /*-----------------------------------*/

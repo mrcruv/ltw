@@ -75,13 +75,13 @@ endif;
     </div>
     <?php if ($usertype == 'ente'): ?>
         <div class="row">
-            <div class="col-4 offset-4 text-center align-middle mb-2">
+            <div class="col-12 text-center align-middle mb-2">
                 <h5>Aggiungi assegnazione</h5>
                 <a type="button" class="btn btn-info rounded-circle" id="add_button"><i class="fa fa-plus"></i></a>
                 <form id="add_availability_form" class="add_form" action="scripts/add_availability.php" method="post">
-                    <div>
+                    <div class="mx-5">
                         <div>
-                            <label class="hidenn" for="availability_process"></label>
+			    <label class="hidenn" for="availability_process"></label>
                             <select id="availability_process" class="form-select mt-4 mb-3" name="process">
                                 <option selected disabled value="">Scegli il processo</option>
                                 <?php
@@ -97,8 +97,6 @@ endif;
                                 ?>
                             </select>
                         </div>
-                    </div>
-                    <div>
                         <div>
                             <label class="hiddenlabel" for="availability_expert"></label>
                             <select id="availability_expert" class="form-select mb-3" name="expert">

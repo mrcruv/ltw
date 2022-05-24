@@ -76,7 +76,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
         <h3>Info</h3>
         <ul class="list-group list-group-flush">
             <li class="list-group-item"><small class="text-muted">Codice fiscale</small>
-                <form id="update_cf_form" method="post" action="scripts/update_cf.php">
+                <form id="update_cf_form" method="post" action="scripts/update_cf.php" class="update">
                     <div class="row">
                         <div class="col-8 offset-2">
                             <label class="hiddenlabel" for="text_cf"></label>
@@ -97,7 +97,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
             </li>
 
             <li class="list-group-item"><small class="text-muted">Partita IVA</small>
-                <form id="update_piva_form" method="post" action="scripts/update_piva.php">
+                <form id="update_piva_form" method="post" action="scripts/update_piva.php" class="update">
                     <div class="row">
                         <div class="col-8 offset-2">
                             <label class="hiddenlabel" for="text_piva"></label>
@@ -119,7 +119,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                 </form>
             </li>
             <li class="list-group-item"><small class="text-muted">Sito web</small>
-                <form id="update_website_form" method="post" action="scripts/update_website.php">
+                <form id="update_website_form" method="post" action="scripts/update_website.php" class="update">
                     <div class="row">
                         <div class="col-8 offset-2">
                             <label class="hiddenlabel" for="text_website"></label>
@@ -142,7 +142,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                 </form>
             </li>
             <li class="list-group-item"><small class="text-muted">PEC</small>
-                <form id="update_pec_form" method="post" action="scripts/update_pec.php">
+                <form id="update_pec_form" method="post" action="scripts/update_pec.php" class="update">
                     <div class="row">
                         <div class="col-8 offset-2">
                             <label class="hiddenlabel" for="text_pec"></label>
@@ -175,7 +175,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
             mysqli_stmt_bind_result($statement, $name, $type) or die(mysqli_error($connection));
             if (mysqli_stmt_fetch($statement)) { ?>
             <li class="list-group-item"><small class="text-muted">Denominazione</small>
-                <form id="update_entity_name_form" method="post" action="scripts/update_entity_name.php">
+                <form id="update_entity_name_form" method="post" action="scripts/update_entity_name.php" class="update">
                     <div class="row">
                         <div class="col-8 offset-2">
                             <label class="hiddenlabel" for="text_entityName"></label>
@@ -198,7 +198,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                 </form>
             </li>
             <li class="list-group-item"><small class="text-muted">Tipo</small>
-                <form id="update_entity_type_form" method="post" action="scripts/update_entity_type.php">
+                <form id="update_entity_type_form" method="post" action="scripts/update_entity_type.php" class="update">
                     <div class="row">
                         <div class="col-8 offset-2">
                             <label class="hiddenlabel" for="text_entityType"></label>
