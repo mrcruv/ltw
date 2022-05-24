@@ -1,5 +1,5 @@
-function message(){
-    $(document).ready(function() {
+function message() {
+    $(document).ready(function () {
         $('#messageModal').modal('show');
     });
 }

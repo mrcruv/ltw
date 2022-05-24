@@ -1,5 +1,5 @@
-function error(){
-    $(document).ready(function() {
+function error() {
+    $(document).ready(function () {
         $('#errorModal').modal('show');
     });
 }
