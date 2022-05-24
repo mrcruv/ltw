@@ -243,7 +243,7 @@ endif;
                                             </div>
                                             <div class="form-outline mb-2">
                                                 <input type="password" aria-describedby="password_help"
-                                                       id="register_entity_password" class="form-control"
+                                                       id="register_expert_password" class="form-control"
                                                        placeholder="Password" name="expert_password"/>
                                                 <span toggle="#register_expert_password"
                                                       class="fa fa-fw fa-eye field-icon toggle-password"></span>
