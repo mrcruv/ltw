@@ -106,6 +106,13 @@ if (!preg_match($expert_city_regex, $city)){
     die('città non corretta');
 }
 
+$current_date = date('Y-m-d');
+$calculated_age = floor((abs(strtotime($current_date) - strtotime($date)) / 86400) / 365);
+if ($calculated_age < 18) {
+    header('Location: ../index.php?err=l\'+esperto+deve+essere+maggiorenne');
+    die('l\'esperto deve essere maggiorenne');
+}
+
 //if (empty($date)) {
 //    header('Location: ../index.php?err=data+non+inserita');
 //    die('data non inserita');
