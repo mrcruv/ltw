@@ -1,8 +1,8 @@
-$().ready(function() {
+$().ready(function () {
     $("#login_form").validate({
         rules: {
             username: {
-                required: true  
+                required: true
             },
             password: {
                 required: true
@@ -10,13 +10,13 @@ $().ready(function() {
         },
         messages: {
             username: {
-                required: "Inserire username",  
+                required: "Inserire username",
             },
             password: {
-                required: "Inserire Password",  
+                required: "Inserire Password",
             }
         },
-        submitHandler: function(form) {
+        submitHandler: function (form) {
             form.submit();
         }
     });
