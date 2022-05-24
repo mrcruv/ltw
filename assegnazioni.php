@@ -132,7 +132,7 @@ endif;
                 <?php
             } else {
                 for ($i = 0; $i < $n; $i += 1) { ?>
-                    <div class="col-md-<?php echo($bootstrapColWidth); ?>">
+                    <div class="col-lg-<?php echo($bootstrapColWidth); ?>">
                         <div class="card p-3 mb-2 shadow">
                             <div class="d-flex justify-content-between">
                                 <div class="d-flex flex-row align-items-center">
@@ -214,7 +214,7 @@ endif;
                 <?php
             } else {
                 for ($i = 0; $i < $n; $i += 1) { ?>
-                    <div class="col-md-<?php echo($bootstrapColWidth); ?>">
+                    <div class="col-lg-<?php echo($bootstrapColWidth); ?>">
                         <div class="card p-3 mb-2 shadow">
                             <div class="d-flex justify-content-between">
                                 <div class="d-flex flex-row align-items-center">
