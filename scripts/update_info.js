@@ -19,7 +19,10 @@ $(document).ready(function () {
         }
         $('#text_' + array[0]).removeClass("hiddenborder");
         $(this).parents("li").find(".edit, .save, .cancel").toggle();
-        $(".delete").hide();
+        if(array[0] == 'website'){
+            $(".delete").hide();
+        }
+
     });
 
     $('.save').click(function () {
@@ -37,12 +40,15 @@ $(document).ready(function () {
         $('#text_' + array[0]).prop('disabled', true);
         $('#text_' + array[0]).addClass("hiddenborder");
         $(this).parents("li").find(".edit, .cancel, .save").toggle();
-        if($("#text_website").val() == 'N.D.'){
-            $(".delete").hide();
+        if(array[0] == 'website'){
+            if($("#text_website").val() == 'N.D.'){
+                $(".delete").hide();
+            }
+            else{
+                $(".delete").show();
+            }
         }
-        else{
-            $(".delete").show();
-        }
+
     });
 
     $('.delete').click(function () {
