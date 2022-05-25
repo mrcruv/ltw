@@ -40,6 +40,14 @@ input.hiddenborder {
     color: black;
 }
 
+select.hiddenborder {
+    background-color: transparent;
+    border: 0px solid;
+    font-weight: bold;
+    color: black;
+    -webkit-appearance: none;
+}
+
 th {
     color: #000000;
 }
