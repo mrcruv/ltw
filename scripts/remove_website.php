@@ -2,10 +2,6 @@
 global $connection;
 require_once('../includes/open_connection.php');
 require_once('../includes/session.php');
-if (!isset($_POST['remove_website_submit'])) {
-    header('Location: ../me.php?err=errore+remove+website+submit');
-    die('errore remove website submit');
-}
 
 $username = $_SESSION['username'];
 $usertype = $_SESSION['usertype'];
