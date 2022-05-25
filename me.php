@@ -202,9 +202,16 @@ if (mysqli_stmt_fetch($statement)) { ?>
                     <div class="row">
                         <div class="col-8 offset-2">
                             <label class="hiddenlabel" for="text_entityType"></label>
-                            <input type="text" class="hiddenborder text-center" id="text_entityType"
-                                   name="new_entity_type"
-                                   value="<?php echo($type); ?>" disabled>
+                            <select class="hiddenborder text-center" id="text_entityType" name="new_entity_type" disabled>
+                                <option selected><?php echo($type); ?></option>
+                                <?php
+                                if($type == 'pubblico'){?>
+                                <option value="privato">Privato</option>
+                                <?php } 
+                                else {?>
+                                <option value="pubblico">Pubblico</option>
+                                <?php } ?>
+                            </select>
                         </div>
                         <div class="col-2 d-flex justify-content-center">
                             <a class="edit pointer" title="Edit" data-toggle="tooltip" id="entityType_e"><i
