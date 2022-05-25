@@ -27,6 +27,7 @@ $usertype = $_SESSION['usertype'];
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script src="scripts/error.js"></script>
     <script src="scripts/message.js"></script>
+    <script src="scripts/toggle_psw.js"></script>
     <script src="scripts/update_info.js"></script>
     <script src="scripts/validate_update_cf.js"></script>
     <script src="scripts/validate_update_pec.js"></script>
