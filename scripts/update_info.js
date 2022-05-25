@@ -2,6 +2,13 @@ var current_value;
 
 $(document).ready(function () {
 
+    if($("#text_website").val() == 'N.D.'){
+        $(".delete").hide();
+    }
+    else{
+        $(".delete").show();
+    }
+
     $('.edit').click(function () {
         var id = $(this).attr('id');
         var array = id.split("_");
@@ -9,7 +16,6 @@ $(document).ready(function () {
         $('#text_' + array[0]).prop('disabled', false);
         $('#text_' + array[0]).removeClass("hiddenborder");
         $(this).parents("li").find(".edit, .save, .cancel").toggle();
-        $(this).parents("li").find(".delete").hide();
     });
 
     $('.save').click(function () {
@@ -18,7 +24,6 @@ $(document).ready(function () {
         $('#text_' + array[0]).prop('disabled', true);
         $('#text_' + array[0]).addClass("hiddenborder");
         $(this).parents("li").find(".edit, .save, .cancel").toggle();
-        $(this).parents("li").find(".delete").show();
     });
 
     $('.cancel').click(function () {
@@ -28,6 +33,9 @@ $(document).ready(function () {
         $('#text_' + array[0]).prop('disabled', true);
         $('#text_' + array[0]).addClass("hiddenborder");
         $(this).parents("li").find(".edit, .cancel, .save").toggle();
-        $(this).parents("li").find(".delete").show();
+    });
+
+    $('.delete').click(function () {
+        $(".delete").hide();
     });
 });
