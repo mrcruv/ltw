@@ -211,13 +211,13 @@ if (mysqli_stmt_fetch($statement)) { ?>
                         <div class="col-8 offset-2">
                             <label class="hiddenlabel" for="text_entityType"></label>
                             <select class="hiddenborder text-center" id="text_entityType" name="new_entity_type" disabled>
-                                <option selected><?php echo($type); ?></option>
+                                <option value="<?php echo($type); ?>" selected>Ente <?php echo($type); ?></option>
                                 <?php
                                 if($type == 'pubblico'){?>
-                                <option value="privato">Privato</option>
+                                <option value="privato">Ente privato</option>
                                 <?php } 
                                 else {?>
-                                <option value="pubblico">Pubblico</option>
+                                <option value="pubblico">Ente pubblico</option>
                                 <?php } ?>
                             </select>
                         </div>
