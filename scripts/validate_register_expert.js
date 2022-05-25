@@ -1,40 +1,40 @@
-const username_regex = /^[a-zA-Z0-9_]{1,30}$/;
-const cf_regex = /[A-Za-z]{6}[0-9lmnpqrstuvLMNPQRSTUV]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9lmnpqrstuvLMNPQRSTUV]{2}[A-Za-z]{1}[0-9lmnpqrstuvLMNPQRSTUV]{3}[A-Za-z]{1}/;
-const pec_regex = /(?:\w*.?pec(?:.?\w+)*)/;
-const piva_regex = /^[0-9]{11}$/;
-const website_regex = /^((https?|ftp|smtp):\/\/)(www.)[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/;
+const expert_username_regex = /^[a-zA-Z0-9_]{1,30}$/;
+const expert_cf_regex = /[A-Za-z]{6}[0-9lmnpqrstuvLMNPQRSTUV]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9lmnpqrstuvLMNPQRSTUV]{2}[A-Za-z]{1}[0-9lmnpqrstuvLMNPQRSTUV]{3}[A-Za-z]{1}/;
+const expert_pec_regex = /(?:\w*.?pec(?:.?\w+)*)/;
+const expert_piva_regex = /^[0-9]{11}$/;
+const expert_website_regex = /^((https?|ftp|smtp):\/\/)(www.)[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/;
 const expert_name_regex = /^[a-zA-Z0-9]{1,30}$/;
 const expert_surname_regex = expert_name_regex;
 const expert_city_regex = expert_name_regex;
-//const expert_date_regex = /^$/;
-const accept_conditions_regex = /^true$/;
-const password_regex = /^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/;
+const expert_accept_conditions_regex = /^true$/;
+const expert_password_regex = /^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/;
+
 
 jQuery.validator.addMethod("username_regex", function(value, element) {   
-    return username_regex.test(value);
+    return expert_username_regex.test(value);
     });
 jQuery.validator.addMethod("pec_regex", function(value, element) {   
-    return pec_regex.test(value);
+    return expert_pec_regex.test(value);   
     });
 jQuery.validator.addMethod("cf_regex", function(value, element) {   
-    return cf_regex.test(value);
+    return expert_cf_regex.test(value);   
     });
 jQuery.validator.addMethod("piva_regex", function(value, element) {   
-    return piva_regex.test(value);
+    return expert_piva_regex.test(value);   
     });
 jQuery.validator.addMethod("website_regex", function(value, element) {   
-    return website_regex.test(value);
+    return expert_website_regex.test(value);   
     });
 jQuery.validator.addMethod("password_regex", function(value, element) {   
-    return password_regex.test(value);
+    return expert_password_regex.test(value);
     });
-jQuery.validator.addMethod("expert_name_regex", function(value, element) {
+jQuery.validator.addMethod("name_regex", function(value, element) {   
     return expert_name_regex.test(value);   
     });
-jQuery.validator.addMethod("expert_surname_regex", function(value, element) {
+jQuery.validator.addMethod("surname_regex", function(value, element) {
     return expert_surname_regex.test(value);
     });
-jQuery.validator.addMethod("expert_city_regex", function(value, element) {
+jQuery.validator.addMethod("city_regex", function(value, element) {
     return expert_city_regex.test(value);
     });
 
@@ -43,7 +43,7 @@ jQuery.validator.addMethod("expert_city_regex", function(value, element) {
 // });
 
 jQuery.validator.addMethod("accept_conditions_regex", function (value, element) {
-    return accept_conditions_regex.test(value);
+    return expert_accept_conditions_regex.test(value);
 });
 
 jQuery.validator.addMethod("adult_date", function (value, element) {

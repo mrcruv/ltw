@@ -1,35 +1,35 @@
-const username_regex = /^[a-zA-Z0-9_]{1,30}$/;
-const cf_regex = /[A-Za-z]{6}[0-9lmnpqrstuvLMNPQRSTUV]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9lmnpqrstuvLMNPQRSTUV]{2}[A-Za-z]{1}[0-9lmnpqrstuvLMNPQRSTUV]{3}[A-Za-z]{1}/;
-const pec_regex = /(?:\w*.?pec(?:.?\w+)*)/;
-const piva_regex = /^[0-9]{11}$/;
-const website_regex = /^((https?|ftp|smtp):\/\/)(www.)[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/;
+const entity_username_regex = /^[a-zA-Z0-9_]{1,30}$/;
+const entity_cf_regex = /[A-Za-z]{6}[0-9lmnpqrstuvLMNPQRSTUV]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9lmnpqrstuvLMNPQRSTUV]{2}[A-Za-z]{1}[0-9lmnpqrstuvLMNPQRSTUV]{3}[A-Za-z]{1}/;
+const entity_pec_regex = /(?:\w*.?pec(?:.?\w+)*)/;
+const entity_piva_regex = /^[0-9]{11}$/;
+const entity_website_regex = /^((https?|ftp|smtp):\/\/)(www.)[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/;
 const entity_name_regex = /^[a-zA-Z0-9]{1,30}$/;
 const entity_type_regex = /^(pubblico|privato)$/;
-const accept_conditions_regex = /^true$/;
-const password_regex = /^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/;
+const entity_accept_conditions_regex = /^true$/;
+const entity_password_regex = /^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/;
 
 jQuery.validator.addMethod("username_regex", function (value, element) {
-    return username_regex.test(value);
+    return entity_username_regex.test(value);
 });
 
 jQuery.validator.addMethod("pec_regex", function (value, element) {
-    return pec_regex.test(value);
+    return entity_pec_regex.test(value);
 });
 
 jQuery.validator.addMethod("cf_regex", function (value, element) {
-    return cf_regex.test(value);
+    return entity_cf_regex.test(value);
 });
 
 jQuery.validator.addMethod("piva_regex", function (value, element) {
-    return piva_regex.test(value);
+    return entity_piva_regex.test(value);
 });
 
 jQuery.validator.addMethod("website_regex", function (value, element) {
-    return website_regex.test(value);
+    return entity_website_regex.test(value);
 });
 
 jQuery.validator.addMethod("password_regex", function (value, element) {
-    return password_regex.test(value);
+    return entity_password_regex.test(value);
 });
 
 jQuery.validator.addMethod("entity_name_regex", function (value, element) {
@@ -41,7 +41,7 @@ jQuery.validator.addMethod("entity_type_regex", function (value, element) {
 });
 
 jQuery.validator.addMethod("accept_conditions_regex", function (value, element) {
-    return accept_conditions_regex.test(value);
+    return entity_accept_conditions_regex.test(value);
 });
 
 $().ready(function () {
