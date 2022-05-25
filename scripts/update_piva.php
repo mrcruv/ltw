@@ -19,9 +19,7 @@ $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection
 mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 mysqli_stmt_bind_result($statement, $old_piva) or die(mysqli_error($connection));
-
 if (!mysqli_stmt_fetch($statement)) {
-    mysqli_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../me.php?err=utente+non+esistente');
     die('utente non esistente');

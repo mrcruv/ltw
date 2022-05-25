@@ -41,7 +41,7 @@ if (!preg_match($process_description_regex, $description)) {
     die('descrizione non corretta');
 }
 
-$query = 'SELECT * FROM processi WHERE nome=?';
+$query = 'SELECT * FROM processi WHERE nome = ?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
 mysqli_stmt_bind_param($statement, 's', $name) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));

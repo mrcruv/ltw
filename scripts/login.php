@@ -19,18 +19,16 @@ if (empty($password)) {
     die('password non inserita');
 }
 
-$query = 'SELECT password FROM utenti WHERE username=?';
+$query = 'SELECT password FROM utenti WHERE username = ?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
 mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 mysqli_stmt_bind_result($statement, $result_password) or die(mysqli_error($connection));
 if (!mysqli_stmt_fetch($statement)) {
-    mysqli_stmt_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../index.php?err=utente+non+esistente');
     die('utente non esistente');
 } else if (password_verify($password, $result_password)) {
-    mysqli_stmt_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     session_start();
 
@@ -46,12 +44,10 @@ if (!mysqli_stmt_fetch($statement)) {
     } else {
         $_SESSION['usertype'] = 'ente';
     }
-    mysqli_stmt_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
     header('Location: ../me.php?msg=login+effettuato+con+successo,+bentornato+' . $username . '!');
 } else {
-    mysqli_stmt_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../index.php?err=password+errata');
     die('password errata');

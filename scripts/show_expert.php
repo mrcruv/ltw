@@ -16,6 +16,7 @@ function show_all_experts()
         $i += 1;
     }
 //    require_once('includes/close_connection.php');
+    mysqli_free_result($result);
     return $rows;
 }
 
@@ -34,7 +35,6 @@ function show_expert_title($username)
         $rows[$i] = array('username' => $username, 'title' => $title, 'date' => $date, 'notes' => $notes, 'grade' => $grade);
         $i += 1;
     }
-    mysqli_stmt_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
 //    require_once('includes/close_connection.php');
     return $rows;

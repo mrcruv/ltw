@@ -15,7 +15,7 @@ if (empty($name)) {
     die('titolo non selezionato');
 }
 
-$query = 'SELECT * FROM titoli_esperti WHERE esperto=? AND titolo=?';
+$query = 'SELECT * FROM titoli_esperti WHERE esperto = ? AND titolo = ?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
 mysqli_stmt_bind_param($statement, 'ss', $username, $name) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));

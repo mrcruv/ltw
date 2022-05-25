@@ -20,7 +20,7 @@ if (empty($expert)) {
     die('selezionare esperto');
 }
 
-$query = 'SELECT * FROM esperti WHERE username=?';
+$query = 'SELECT * FROM esperti WHERE username = ?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
 mysqli_stmt_bind_param($statement, 's', $expert) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
@@ -31,7 +31,7 @@ if (!mysqli_stmt_fetch($statement)) {
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
-$query = 'SELECT * FROM processi WHERE nome=?';
+$query = 'SELECT * FROM processi WHERE nome = ?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
 mysqli_stmt_bind_param($statement, 's', $process) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
@@ -42,7 +42,7 @@ if (!mysqli_stmt_fetch($statement)) {
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
-$query = 'SELECT * FROM disponibilita WHERE processo=? AND esperto=?';
+$query = 'SELECT * FROM disponibilita WHERE processo = ? AND esperto = ?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
 mysqli_stmt_bind_param($statement, 'ss', $process, $expert) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));

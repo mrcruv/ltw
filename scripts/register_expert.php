@@ -127,7 +127,7 @@ if (empty($accept_conditions) or !preg_match($accept_conditions_regex, $accept_c
     die('condizioni non accettate');
 }
 
-$query = 'SELECT * FROM utenti WHERE username=? OR pec=? OR cf=? OR piva=?';
+$query = 'SELECT * FROM utenti WHERE username = ? OR pec = ? OR cf=? OR piva = ?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
 mysqli_stmt_bind_param($statement, 'ssss', $username, $pec, $cf, $piva) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
@@ -137,7 +137,6 @@ if (mysqli_stmt_fetch($statement)) {
     die('utente già esistente');
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
-
 
 $hash = password_hash($password, PASSWORD_BCRYPT);
 
@@ -154,7 +153,6 @@ $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection
 mysqli_stmt_bind_param($statement, 'sssss', $username, $name, $surname, $city, $date) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
-
 
 //require_once('../includes/close_connection.php');
 header('Location: ../index.php?msg=utente+esperto+registrato+con+successo');

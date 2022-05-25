@@ -17,7 +17,6 @@ function show_all_competences($username)
         $rows[$i] = array('name' => $name, 'area' => $area, 'description' => $description);
         $i += 1;
     }
-    mysqli_stmt_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
 //    require_once('includes/close_connection.php');

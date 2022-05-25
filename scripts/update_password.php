@@ -41,12 +41,10 @@ mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connecti
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 mysqli_stmt_bind_result($statement, $result_hash) or die(mysqli_error($connection));
 if (!mysqli_stmt_fetch($statement)) {
-    mysqli_stmt_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../me.php?err=utente+non+esistente');
     die('utente non esistente');
 } else if (password_verify($old_password, $result_hash)) {
-    mysqli_stmt_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     $query = 'UPDATE utenti SET password = ? WHERE username = ?';
     $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
@@ -55,7 +53,6 @@ if (!mysqli_stmt_fetch($statement)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: logout.php?msg=password+aggiornata+con+successo');
 } else {
-    mysqli_stmt_free_result($statement);
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     header('Location: ../me.php?err=password+attuale+incorretta');
     die('password attuale incorretta');

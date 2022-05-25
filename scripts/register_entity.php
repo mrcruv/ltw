@@ -99,7 +99,7 @@ if (empty($accept_conditions) or !preg_match($accept_conditions_regex, $accept_c
     die('condizioni non accettate');
 }
 
-$query = 'SELECT * FROM utenti WHERE username=? OR pec=? OR cf=? OR piva=?';
+$query = 'SELECT * FROM utenti WHERE username = ? OR pec = ? OR cf = ? OR piva = ?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
 mysqli_stmt_bind_param($statement, 'ssss', $username, $pec, $cf, $piva) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
