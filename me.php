@@ -72,7 +72,7 @@ mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 mysqli_stmt_bind_result($statement, $piva, $cf, $website, $pec) or die(mysqli_error($connection));
 if (mysqli_stmt_fetch($statement)) { ?>
 <div class="row container-fluid">
-    <div class="col-md-3 offset-md-1 text-center">
+    <div class="col-xl-3 offset-xl-1 text-center">
         <h3>Info</h3>
         <ul class="list-group list-group-flush">
             <li class="list-group-item"><small class="text-muted">Codice fiscale</small>
@@ -123,14 +123,20 @@ if (mysqli_stmt_fetch($statement)) { ?>
                     <div class="row">
                         <div class="col-8 offset-2">
                             <label class="hiddenlabel" for="text_website"></label>
+                            <?php if($website == null){?>
+                            <input type="text" class="hiddenborder text-center" id="text_website"
+                                   name="new_website"
+                                   value="N.D." disabled>
+                            <?php } else{ ?>
                             <input type="text" class="hiddenborder text-center" id="text_website"
                                    name="new_website"
                                    value="<?php echo($website); ?>" disabled>
+                                <?php } ?>   
                         </div>
                         <div class="col-2 d-flex justify-content-center">
                             <a class="edit pointer" title="Edit" data-toggle="tooltip" id="website_e"><i
                                         class="material-icons">&#xE254;</i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip" href="scripts/remove_website.php"><i
+                            <a class="delete" title="Delete" data-toggle="tooltip" name="delete_website_submit" href="scripts/remove_website.php"><i 
                                         class="material-icons icon-red">&#xE872;</i></a>
                             <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="website_c"><i
                                         class="material-icons icon-red">close</i></a>
@@ -208,10 +214,10 @@ if (mysqli_stmt_fetch($statement)) { ?>
                                 <option selected><?php echo($type); ?></option>
                                 <?php
                                 if($type == 'pubblico'){?>
-                                <option value="privato">privato</option>
+                                <option value="privato">Privato</option>
                                 <?php } 
                                 else {?>
-                                <option value="pubblico">pubblico</option>
+                                <option value="pubblico">Pubblico</option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -252,7 +258,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
         mysqli_stmt_close($statement) or die(mysqli_error($connection));
         ?>
     </div>
-    <div class="col-md-3 offset-md-1 align-items-center text-center">
+    <div class="col-xl-3 offset-xl-1 align-items-center text-center">
         <?php if ($usertype == 'esperto') { ?>
             <h3>Statistiche esperto</h3>
             <ul class="list-group list-group-flush">
@@ -296,7 +302,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
             </ul>
         <?php } ?>
     </div>
-    <div class="col-md-2 offset-md-2 text-center align-middle">
+    <div class="col-xl-2 offset-xl-2 text-center align-middle">
         <h3>Cambia password</h3>
         <form id="update_password_form" action="scripts/update_password.php" method="post" class="update">
             <div class="form-group mb-3 mt-4">
