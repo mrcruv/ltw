@@ -14,6 +14,9 @@ $(document).ready(function () {
         var array = id.split("_");
         current_value = $('#text_' + array[0]).val();
         $('#text_' + array[0]).prop('disabled', false);
+        if($('#text_' + array[0]).val() == 'N.D.'){
+            $('#text_' + array[0]).val('');
+        }
         $('#text_' + array[0]).removeClass("hiddenborder");
         $(this).parents("li").find(".edit, .save, .cancel").toggle();
         $(".delete").hide();
@@ -46,3 +49,4 @@ $(document).ready(function () {
         $(".delete").hide();
     });
 });
+
