@@ -136,7 +136,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                         <div class="col-2 d-flex justify-content-center">
                             <a class="edit pointer" title="Edit" data-toggle="tooltip" id="website_e"><i
                                         class="material-icons">&#xE254;</i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip" name="delete_website_submit" href="scripts/remove_website.php"><i 
+                            <a class="delete" title="Delete" data-toggle="tooltip" href="scripts/remove_website.php"><i
                                         class="material-icons icon-red">&#xE872;</i></a>
                             <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="website_c"><i
                                         class="material-icons icon-red">close</i></a>
