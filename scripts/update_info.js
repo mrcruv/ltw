@@ -36,6 +36,9 @@ $(document).ready(function () {
     $('.cancel').click(function () {
         var id = $(this).attr('id');
         var array = id.split("_");
+        
+        $("#update_"+array[0]+"_form").validate().resetForm();
+        
         $('#text_' + array[0]).val(current_value);
         $('#text_' + array[0]).prop('disabled', true);
         $('#text_' + array[0]).addClass("hiddenborder");
