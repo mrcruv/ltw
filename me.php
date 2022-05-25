@@ -302,20 +302,28 @@ if (mysqli_stmt_fetch($statement)) { ?>
             </ul>
         <?php } ?>
     </div>
-    <div class="col-xl-2 offset-xl-2 text-center align-middle">
-        <h3>Cambia password</h3>
+    <div class="col-xl-3 offset-xl-1 align-middle">
+        <h3 class="text-center">Cambia password</h3>
         <form id="update_password_form" action="scripts/update_password.php" method="post" class="update">
             <div class="form-group mb-3 mt-4">
                 <label class="hiddenlabel" for="old_password"></label>
-                <input type="password" class="form-control" id="old_password" placeholder="Password attuale"
-                       name="old_password"/>
+                <input type="password" aria-describedby="password_help"
+                        id="old_password" class="form-control"
+                        placeholder="Password attuale" name="old_password"/>
+                <span toggle="#old_password"
+                        class="fa fa-fw fa-eye field-icon toggle-password"></span>
             </div>
             <div class="form-group mb-3">
                 <label class="hiddenlabel" for="new_password"></label>
-                <input type="password" class="form-control" id="new_password" placeholder="Nuova password"
-                       name="new_password"/>
+                <input type="password" aria-describedby="password_help"
+                        id="new_password" class="form-control"
+                        placeholder="Password attuale" name="new_password"/>
+                <span toggle="#new_password"
+                        class="fa fa-fw fa-eye field-icon toggle-password"></span>
             </div>
-            <button type="submit" class="btn btn-primary" name="update_password_submit">Cambia password</button>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary" name="update_password_submit">Cambia password</button>
+            </div>
         </form>
     </div>
 </div>
