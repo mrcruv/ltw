@@ -9,6 +9,7 @@ $(document).ready(function () {
         $('#text_' + array[0]).prop('disabled', false);
         $('#text_' + array[0]).removeClass("hiddenborder");
         $(this).parents("li").find(".edit, .save, .cancel").toggle();
+        $(this).parents("li").find(".delete").hide();
     });
 
     $('.save').click(function () {
@@ -17,6 +18,7 @@ $(document).ready(function () {
         $('#text_' + array[0]).prop('disabled', true);
         $('#text_' + array[0]).addClass("hiddenborder");
         $(this).parents("li").find(".edit, .save, .cancel").toggle();
+        $(this).parents("li").find(".delete").show();
     });
 
     $('.cancel').click(function () {
@@ -26,5 +28,6 @@ $(document).ready(function () {
         $('#text_' + array[0]).prop('disabled', true);
         $('#text_' + array[0]).addClass("hiddenborder");
         $(this).parents("li").find(".edit, .cancel, .save").toggle();
+        $(this).parents("li").find(".delete").show();
     });
 });
