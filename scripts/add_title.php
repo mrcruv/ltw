@@ -1,7 +1,6 @@
 <?php
 global $connection;
 global $title_name_regex, $title_grade_regex, $title_notes_regex;
-// global $title_date_regex;
 require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
 require_once('../includes/session.php');
@@ -15,6 +14,9 @@ $name = isset($_POST['name']) ? trim($_POST['name']) : false;
 $date = isset($_POST['date']) ? trim($_POST['date']) : false;
 $notes = isset($_POST['notes']) ? trim($_POST['notes']) : false;
 $grade = isset($_POST['grade']) ? trim($_POST['grade']) : false;
+$year = (int)Date('Y', strtotime($date));
+$month = (int)Date('m', strtotime($date));
+$day = (int)Date('d', strtotime($date));
 
 if (empty($name)){
     header('Location: ../titoli.php?err=nome+non+inserito');
@@ -25,10 +27,10 @@ if (!preg_match($title_name_regex, $name)) {
     die('nome non corretto');
 }
 
-//if (!empty($date) and !preg_match($title_date_regex, $date) {
-//    header('Location: ../titoli.php?err=data+non+corretta');
-//    die('data non corretta');
-//}
+if (!strtotime($date) or !empty($date) and !checkdate($month, $day, $year)) {
+    header('Location: ../titoli.php?err=data+non+corretta');
+    die('data non corretta');
+}
 
 if (!empty($notes) and !preg_match($title_notes_regex, $notes)) {
     header('Location: ../titoli.php?err=note+non+corrette');

@@ -11,7 +11,6 @@ $entity_type_regex = '/^(pubblico|privato)$/';
 $expert_name_regex = '/^[a-zA-Z0-9]{1,30}$/';
 $expert_surname_regex = $expert_name_regex;
 $expert_city_regex = $expert_name_regex;
-//$expert_date_regex = '';
 
 $accept_conditions_regex = '/^true$/';
 
@@ -23,7 +22,6 @@ $contains_digit = '/[0-9]/';
 $title_name_regex = '/^[a-zA-Z ]{1,255}$/';
 $title_notes_regex = '/^[a-zA-Z0-9 .,;]{1,255}$/';
 $title_grade_regex = '/^[0-9]{1,3}$/';
-//$title_date_regex = '';
 
 $process_name_regex = '/^[a-zA-Z0-9]{1,255}$/';
 $process_type_regex = '/^[a-zA-Z0-9 ]{1,255}$/';

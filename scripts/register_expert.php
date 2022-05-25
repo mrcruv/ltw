@@ -3,7 +3,6 @@ global $connection;
 global $contains_lowercase, $contains_uppercase, $contains_special, $contains_digit,
        $username_regex, $cf_regex, $pec_regex, $piva_regex, $website_regex,
        $expert_name_regex, $expert_surname_regex, $expert_city_regex, $accept_conditions_regex;
-//global $expert_date_regex = '';
 require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
 if (!isset($_POST['register_expert_submit'])) {
@@ -22,6 +21,11 @@ $name = isset($_POST['name']) ? trim($_POST['name']) : false;
 $surname = isset($_POST['surname']) ? trim($_POST['surname']) : false;
 $city = isset($_POST['city']) ? trim($_POST['city']) : false;
 $date = isset($_POST['date']) ? trim($_POST['date']) : false;
+$current_date = date('Y-m-d');
+$calculated_age = floor((abs(strtotime($current_date) - strtotime($date)) / 86400) / 365);
+$year = (int)Date('Y', strtotime($date));
+$month = (int)Date('m', strtotime($date));
+$day = (int)Date('d', strtotime($date));
 
 if (empty($username)) {
     header('Location: ../index.php?err=username+non+inserito');
@@ -106,21 +110,18 @@ if (!preg_match($expert_city_regex, $city)) {
     die('città non corretta');
 }
 
-$current_date = date('Y-m-d');
-$calculated_age = floor((abs(strtotime($current_date) - strtotime($date)) / 86400) / 365);
+if (empty($date)) {
+    header('Location: ../index.php?err=data+non+inserita');
+    die('data non inserita');
+}
+if (!strtotime($date) or !checkdate($month, $day, $year)) {
+    header('Location: ../index.php?err=data+non+corretta');
+    die('data non corretta');
+}
 if ($calculated_age < 18) {
     header('Location: ../index.php?err=l\'+esperto+deve+essere+maggiorenne');
     die('l\'esperto deve essere maggiorenne');
 }
-
-//if (empty($date)) {
-//    header('Location: ../index.php?err=data+non+inserita');
-//    die('data non inserita');
-//}
-//if (!preg_match($expert_date_regex, $date)){
-//    header('Location: ../index.php?err=data+non+corretta');
-//    die('data non corretta');
-//}
 
 if (empty($accept_conditions) or !preg_match($accept_conditions_regex, $accept_conditions)) {
     header('Location: ../index.php?err=condizioni+non+accettate');
