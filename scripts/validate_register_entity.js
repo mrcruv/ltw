@@ -8,27 +8,27 @@ const entity_type_regex = /^(pubblico|privato)$/;
 const entity_accept_conditions_regex = /^true$/;
 const entity_password_regex = /^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/;
 
-jQuery.validator.addMethod("username_regex", function (value, element) {
+jQuery.validator.addMethod("entity_username_regex", function (value, element) {
     return entity_username_regex.test(value);
 });
 
-jQuery.validator.addMethod("pec_regex", function (value, element) {
+jQuery.validator.addMethod("entity_pec_regex", function (value, element) {
     return entity_pec_regex.test(value);
 });
 
-jQuery.validator.addMethod("cf_regex", function (value, element) {
+jQuery.validator.addMethod("entity_cf_regex", function (value, element) {
     return entity_cf_regex.test(value);
 });
 
-jQuery.validator.addMethod("piva_regex", function (value, element) {
+jQuery.validator.addMethod("entity_piva_regex", function (value, element) {
     return entity_piva_regex.test(value);
 });
 
-jQuery.validator.addMethod("website_regex", function (value, element) {
+jQuery.validator.addMethod("entity_website_regex", function (value, element) {
     return entity_website_regex.test(value);
 });
 
-jQuery.validator.addMethod("password_regex", function (value, element) {
+jQuery.validator.addMethod("entity_password_regex", function (value, element) {
     return entity_password_regex.test(value);
 });
 
@@ -40,7 +40,7 @@ jQuery.validator.addMethod("entity_type_regex", function (value, element) {
     return entity_type_regex.test(value);
 });
 
-jQuery.validator.addMethod("accept_conditions_regex", function (value, element) {
+jQuery.validator.addMethod("entity_accept_conditions_regex", function (value, element) {
     return entity_accept_conditions_regex.test(value);
 });
 
@@ -50,26 +50,26 @@ $().ready(function () {
         rules: {
             entity_username: {
                 required: true,
-                username_regex: true
+                entity_username_regex: true
             },
             entity_pec: {
                 required: true,
-                pec_regex: true
+                entity_pec_regex: true
             },
             entity_cf: {
                 required: true,
-                cf_regex: true
+                entity_cf_regex: true
             },
             entity_piva: {
                 required: true,
-                piva_regex: true
+                entity_piva_regex: true
             },
             entity_website: {
-                website_regex: true
+                entity_website_regex: true
             },
             entity_password: {
                 required: true,
-                password_regex: true
+                entity_password_regex: true
             },
             type: {
                 required: true,
@@ -81,32 +81,32 @@ $().ready(function () {
             },
             entity_term: {
                 required: true,
-                accept_conditions_regex: true
+                entity_accept_conditions_regex: true
             }
         },
         messages: {
             entity_username: {
                 required: "Inserire username",
-                username_regex: "Inserire caratteri alfanumerici"
+                entity_username_regex: "Inserire caratteri alfanumerici"
             },
             entity_pec: {
                 required: "Inserire PEC",
-                pec_regex: "Inserire PEC nel formato corretto"
+                entity_pec_regex: "Inserire PEC nel formato corretto"
             },
             entity_cf: {
                 required: "Inserire Codice Fiscale",
-                cf_regex: "Inserire Codice Fiscale nel formato corretto"
+                entity_cf_regex: "Inserire Codice Fiscale nel formato corretto"
             },
             entity_piva: {
                 required: "Inserire Partita IVA",
-                piva_regex: "Inserire Partita IVA nel formato corretto"
+                entity_piva_regex: "Inserire Partita IVA nel formato corretto"
             },
             entity_website: {
-                website_regex: "Inserire il sito web nel formato corretto"
+                entity_website_regex: "Inserire il sito web nel formato corretto"
             },
             entity_password: {
                 required: "Inserire password",
-                password_regex: "La password deve essere lunga almeno 8 caratteri.<br>" +
+                entity_password_regex: "La password deve essere lunga almeno 8 caratteri.<br>" +
                     "Inserire:<br>" +
                     "- Almeno un carattere alfanumerico minuscolo<br>" +
                     "- Almeno un carattere alfanumerico maiuscolo<br>" +
@@ -123,7 +123,7 @@ $().ready(function () {
             },
             entity_term: {
                 required: "<br>Accettare Termini & Condizioni",
-                accept_conditions_regex: ""
+                entity_accept_conditions_regex: ""
             }
         },
         submitHandler: function (form) {

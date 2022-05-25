@@ -6,35 +6,35 @@ const expert_website_regex = /^((https?|ftp|smtp):\/\/)(www.)[a-z0-9]+\.[a-z]+(\
 const expert_name_regex = /^[a-zA-Z0-9]{1,30}$/;
 const expert_surname_regex = expert_name_regex;
 const expert_city_regex = expert_name_regex;
+//const expert_date_regex = /^$/;
 const expert_accept_conditions_regex = /^true$/;
 const expert_password_regex = /^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/;
 
-
-jQuery.validator.addMethod("username_regex", function(value, element) {   
+jQuery.validator.addMethod("expert_username_regex", function(value, element) {
     return expert_username_regex.test(value);
     });
-jQuery.validator.addMethod("pec_regex", function(value, element) {   
+jQuery.validator.addMethod("expert_pec_regex", function(value, element) {
     return expert_pec_regex.test(value);   
     });
-jQuery.validator.addMethod("cf_regex", function(value, element) {   
+jQuery.validator.addMethod("expert_cf_regex", function(value, element) {
     return expert_cf_regex.test(value);   
     });
-jQuery.validator.addMethod("piva_regex", function(value, element) {   
+jQuery.validator.addMethod("expert_piva_regex", function(value, element) {
     return expert_piva_regex.test(value);   
     });
-jQuery.validator.addMethod("website_regex", function(value, element) {   
+jQuery.validator.addMethod("expert_website_regex", function(value, element) {
     return expert_website_regex.test(value);   
     });
-jQuery.validator.addMethod("password_regex", function(value, element) {   
+jQuery.validator.addMethod("expert_password_regex", function(value, element) {
     return expert_password_regex.test(value);
     });
-jQuery.validator.addMethod("name_regex", function(value, element) {   
+jQuery.validator.addMethod("expert_name_regex", function(value, element) {
     return expert_name_regex.test(value);   
     });
-jQuery.validator.addMethod("surname_regex", function(value, element) {
+jQuery.validator.addMethod("expert_surname_regex", function(value, element) {
     return expert_surname_regex.test(value);
     });
-jQuery.validator.addMethod("city_regex", function(value, element) {
+jQuery.validator.addMethod("expert_city_regex", function(value, element) {
     return expert_city_regex.test(value);
     });
 
@@ -42,7 +42,7 @@ jQuery.validator.addMethod("city_regex", function(value, element) {
 //     return expert_date_regex.test(value);
 // });
 
-jQuery.validator.addMethod("accept_conditions_regex", function (value, element) {
+jQuery.validator.addMethod("expert_accept_conditions_regex", function (value, element) {
     return expert_accept_conditions_regex.test(value);
 });
 
@@ -79,26 +79,26 @@ $().ready(function () {
         rules: {
             expert_username: {
                 required: true,
-                username_regex: true
+                expert_username_regex: true
             },
             expert_pec: {
                 required: true,
-                pec_regex: true
+                expert_pec_regex: true
             },
             expert_cf: {
                 required: true,
-                cf_regex: true
+                expert_cf_regex: true
             },
             expert_piva: {
                 required: true,
-                piva_regex: true
+                expert_piva_regex: true
             },
             expert_website: {
-                website_regex: true
+                expert_website_regex: true
             },
             expert_password: {
                 required: true,
-                password_regex: true
+                expert_password_regex: true
             },
             name: {
                 required: true,
@@ -119,32 +119,32 @@ $().ready(function () {
             },
             expert_term: {
                 required: true,
-                accept_conditions_regex: true
+                expert_accept_conditions_regex: true
             }
         },
         messages: {
             expert_username: {
                 required: "Inserire username",
-                username_regex: "Inserire caratteri alfanumerici"
+                expert_username_regex: "Inserire caratteri alfanumerici"
             },
             expert_pec: {
                 required: "Inserire PEC",
-                cf_regex: "Inserire PEC nel formato corretto"
+                expert_cf_regex: "Inserire PEC nel formato corretto"
             },
             expert_cf: {
                 required: "Inserire Codice Fiscale",
-                pec_regex: "Inserire Codice Fiscale nel formato corretto"
+                expert_pec_regex: "Inserire Codice Fiscale nel formato corretto"
             },
             expert_piva: {
                 required: "Inserire Partita IVA",
-                piva_regex: "Inserire Partita IVA nel formato corretto"
+                expert_piva_regex: "Inserire Partita IVA nel formato corretto"
             },
             expert_website: {
-                website_regex: "Inserire il sito web nel formato corretto"
+                expert_website_regex: "Inserire il sito web nel formato corretto"
             },
             expert_password: {
                 required: "Inserire password",
-                password_regex: "La password deve essere lunga almeno 8 caratteri. <br> Inserire:<br>- Almeno un carattere alfanumerico minuscolo<br>- Almeno un carattere alfanumerico maiuscolo<br>- Almeno un carattere numerico<br>- Almeno un carattere speciale"
+                expert_password_regex: "La password deve essere lunga almeno 8 caratteri. <br> Inserire:<br>- Almeno un carattere alfanumerico minuscolo<br>- Almeno un carattere alfanumerico maiuscolo<br>- Almeno un carattere numerico<br>- Almeno un carattere speciale"
             },
             name: {
                 required: "Inserire nome",
@@ -165,7 +165,7 @@ $().ready(function () {
             },
             expert_term: {
                 required: "<br>Accettare Termini & Condizioni",
-                accept_conditions_regex: ""
+                expert_accept_conditions_regex: ""
             }
         },
         submitHandler: function (form) {
