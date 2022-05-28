@@ -69,39 +69,41 @@ endif;
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Titolo</th>
-                            <th scope="col">Data conseguimento</th>
-                            <th scope="col">Note</th>
-                            <th scope="col">Voto</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                        $array = show_expert_title($_GET['username']);
-                        $n = count($array);
-                        if (!is_array($array) or $n <= 0): ?>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
                             <tr>
-                                <td colspan="6"><h6>L'esperto selezionato non ha inserito titoli di studio al
-                                        momento</h6></td>
+                                <th scope="col">#</th>
+                                <th scope="col">Titolo</th>
+                                <th scope="col">Data conseguimento</th>
+                                <th scope="col">Note</th>
+                                <th scope="col">Voto</th>
                             </tr>
-                        <?php else: ?>
+                            </thead>
+                            <tbody>
                             <?php
-                            for ($i = 0; $i < $n; $i += 1) { ?>
+                            $array = show_expert_title($_GET['username']);
+                            $n = count($array);
+                            if (!is_array($array) or $n <= 0): ?>
                                 <tr>
-                                    <th scope="row"><?php echo($i + 1); ?></th>
-                                    <td><?php echo($array[$i]['title']); ?></td>
-                                    <td><?php echo($array[$i]['date']); ?></td>
-                                    <td><?php echo($array[$i]['notes']); ?></td>
-                                    <td><?php echo($array[$i]['grade']); ?></td>
+                                    <td colspan="6"><h6>L'esperto selezionato non ha inserito titoli di studio al
+                                            momento</h6></td>
                                 </tr>
-                            <?php } ?>
-                        <?php endif; ?>
-                        </tbody>
-                    </table>
+                            <?php else: ?>
+                                <?php
+                                for ($i = 0; $i < $n; $i += 1) { ?>
+                                    <tr>
+                                        <th scope="row"><?php echo($i + 1); ?></th>
+                                        <td><?php echo($array[$i]['title']); ?></td>
+                                        <td><?php echo($array[$i]['date']); ?></td>
+                                        <td><?php echo($array[$i]['notes']); ?></td>
+                                        <td><?php echo($array[$i]['grade']); ?></td>
+                                    </tr>
+                                <?php } ?>
+                            <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-outline-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
@@ -120,7 +122,7 @@ endif;
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-striped">
+                    <table class="table">
                         <thead>
                         <tr>
                             <th scope="col">#</th>
