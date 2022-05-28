@@ -31,8 +31,11 @@ body {
   
 @media screen and (max-width: 600px) {
     body{
-      font-size: 11px;
+      font-size: 13px;
     }
+    .table{
+        font-size: 11px;
+      }
     h6{
         font-size: 12px;
       }
