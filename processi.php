@@ -53,8 +53,8 @@ endif;
         <h2>Processi - <?php echo($username); ?></h2>
     </div>
     <div class="row">
-        <div class="col-7">
-            <table class="table table-striped">
+        <div class="col-lg-8">
+            <table class="table">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -86,8 +86,7 @@ endif;
                 </tbody>
             </table>
         </div>
-        <div class="col-1"></div>
-        <div class="col-4 text-center mb-2">
+        <div class="col-lg-4 text-center mb-2">
             <h5>Aggiungi processo</h5>
             <a type="button" class="btn btn-info rounded-circle" id="add_button"><i class="fa fa-plus"></i></a>
             <form id="add_process_form" class="add_form" action="scripts/add_process.php" method="post">
