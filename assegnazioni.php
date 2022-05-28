@@ -66,7 +66,7 @@ endif;
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h5><?php echo($_GET['description']); ?></h5>
+                    <p><?php echo($_GET['description']); ?></p>
                 </div>
                 <div class="modal-footer">
                 </div>
