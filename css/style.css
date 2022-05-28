@@ -1,5 +1,6 @@
 
 
+
 body {
     background-color: #ebebeb2f;
     font-family: 'Open Sans', sans-serif;
@@ -7,14 +8,14 @@ body {
 
 
 @media (min-width: 601px) {
-    body {
+    body{
       font-size: 15px;
     }
   }
   
   @media screen and (max-width: 600px) {
-    body {
-      font-size: 12px;
+    body{
+      font-size: 11px;
     }
   }
 
@@ -101,6 +102,18 @@ i.icon-red:hover {
 
 .myButton:hover {
     color: blue;
+}
+
+.switch { color: rgb(163, 163, 163);display:inline-block; margin:0;}
+.switch:hover {
+  color: rgb(59, 59, 59);
+}
+
+.selected{
+    border-bottom: solid 5px rgb(61, 81, 255);
+    font-weight: bold;
+    color:#000000;
+    
 }
 
 /*TABLES*/
