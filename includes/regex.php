@@ -5,10 +5,10 @@ $pec_regex = '/(?:\w*.?pec(?:.?\w+)*)/';
 $piva_regex = '/^[0-9]{11}$/';
 $website_regex = '/^((https?|ftp|smtp):\/\/)(www.)[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/';
 
-$entity_name_regex = '/^[a-zA-Z0-9]{1,30}$/';
+$entity_name_regex = '/^[a-zA-Z0-9.-_ ]{1,50}$/';
 $entity_type_regex = '/^(pubblico|privato)$/';
 
-$expert_name_regex = '/^[a-zA-Z0-9]{1,30}$/';
+$expert_name_regex = '/^[a-zA-Z ]{1,255}$/';
 $expert_surname_regex = $expert_name_regex;
 $expert_city_regex = $expert_name_regex;
 

@@ -1,4 +1,5 @@
 const pec_regex = /(?:\w*.?pec(?:.?\w+)*)/;
+const pec_maxlength = 255;
 
 jQuery.validator.addMethod("pec_regex", function (value, element) {
     return pec_regex.test(value);
@@ -9,12 +10,14 @@ $().ready(function () {
         rules: {
             new_pec: {
                 required: true,
+                maxlength: pec_maxlength,
                 pec_regex: true
             }
         },
         messages: {
             new_pec: {
                 required: "Inserire PEC",
+                maxlength: "Superata lunghezza massima consentita" + pec_maxlength,
                 pec_regex: "Inserire PEC nel formato corretto"
             }
         },
