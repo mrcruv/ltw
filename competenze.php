@@ -53,7 +53,7 @@ endif;
         <h2>Competenze</h2>
     </div>
     <div class="row">
-        <div class="col-7">
+        <div class="col-lg-8">
             <table class="table">
                 <thead>
                 <tr>
@@ -69,7 +69,7 @@ endif;
                 $n = count($array);
                 if (!is_array($array) or $n <= 0): ?>
                     <tr>
-                        <td colspan="5"><h6>Non ci sono competenze al momento</h6></td>
+                        <td colspan="5"><p class="empty">Non ci sono competenze al momento</p></td>
                     </tr>
                 <?php else:
                     for ($i = 0; $i < $n; $i += 1) { ?>
@@ -90,8 +90,7 @@ endif;
                 </tbody>
             </table>
         </div>
-        <div class="col-1"></div>
-        <div class="col-4 text-center mb-2">
+        <div class="col-lg-4 text-center mb-2">
             <h5>Aggiungi competenza</h5>
             <a type="button" class="btn btn-info rounded-circle" id="add_button"><i class="fa fa-plus"></i></a>
             <form id="add_competence_form" class="add_form" action="scripts/add_competence.php" method="post">
