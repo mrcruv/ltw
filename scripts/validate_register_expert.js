@@ -159,7 +159,7 @@ $().ready(function () {
                 required: "Inserire password",
                 minlength: "Lunghezza minima non raggiunta: " + expert_password_minlength,
                 maxlength: "Superata lunghezza massima consentita: " + expert_password_maxlength,
-                expert_password_regex: "La password deve essere lunga almeno 8 caratteri. <br> Inserire:<br>- Almeno un carattere alfanumerico minuscolo<br>- Almeno un carattere alfanumerico maiuscolo<br>- Almeno un carattere numerico<br>- Almeno un carattere speciale"
+                expert_password_regex: "Inserire almeno:<br>-Carattere alfanumerico minuscolo<br>-Carattere alfanumerico maiuscolo<br>-Carattere numerico<br>-Carattere speciale"
             },
             name: {
                 required: "Inserire nome",
