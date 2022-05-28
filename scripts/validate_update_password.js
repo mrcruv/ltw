@@ -24,7 +24,7 @@ $().ready(function () {
                 required: "Inserire la nuova password",
                 minlength: "Lunghezza minima non raggiunta: " + password_minlength,
                 maxlength: "Superata lunghezza massima consentita" + password_maxlength,
-                password_regex: "La password deve essere lunga almeno 8 caratteri. <br> Inserire:<br>- Almeno un carattere alfanumerico minuscolo<br>- Almeno un carattere alfanumerico maiuscolo<br>- Almeno un carattere numerico<br>- Almeno un carattere speciale"
+                password_regex: "Inserire almeno:<br>-Carattere alfanumerico minuscolo<br>-Carattere alfanumerico maiuscolo<br>-Carattere numerico<br>-Carattere speciale"
             },
             old_password: {
                 required: "Inserire la password attuale"
