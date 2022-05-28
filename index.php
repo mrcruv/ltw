@@ -107,28 +107,9 @@ endif;
                                     <div class="step1">
                                         <div class="form-card">
                                             <div class="form-outline mb-2">
-                                                <label class="hiddenlabel" for="register_entity_username"></label>
-                                                <input type="text" id="register_entity_username" class="form-control"
-                                                       placeholder="Username" name="entity_username"/>
-                                            </div>
-                                            <div class="form-outline mb-2">
-                                                <label class="hiddenlabel" for="register_entity_pec"></label>
-                                                <input type="email" id="register_entity_pec" class="form-control"
-                                                       placeholder="PEC" name="entity_pec"/>
-                                            </div>
-                                            <div class="form-outline mb-5">
-                                                <label class="hiddenlabel" for="register_entity_cf"></label>
-                                                <input type="text" id="register_entity_cf" class="form-control"
-                                                       placeholder="Codice fiscale" name="entity_cf"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="step2">
-                                        <div class="form-card">
-                                            <div class="form-outline mb-2">
-                                                <label class="hiddenlabel" for="register_entity_piva"></label>
-                                                <input type="text" id="register_entity_piva" class="form-control"
-                                                       placeholder="Partita IVA" name="entity_piva"/>
+                                                <label class="hiddenlabel" for="register_entity_name"></label>
+                                                <input type="text" id="register_entity_name" class="form-control"
+                                                       placeholder="Denominazione" name="entity_name"/>
                                             </div>
                                             <div class="form-outline mb-2">
                                                 <label class="hiddenlabel" for="register_entity_website"></label>
@@ -145,12 +126,31 @@ endif;
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="step2">
+                                        <div class="form-card">
+                                            <div class="form-outline mb-2">
+                                                <label class="hiddenlabel" for="register_entity_cf"></label>
+                                                <input type="text" id="register_entity_cf" class="form-control"
+                                                       placeholder="Codice fiscale" name="entity_cf"/>
+                                            </div>
+                                            <div class="form-outline mb-2">
+                                                <label class="hiddenlabel" for="register_entity_piva"></label>
+                                                <input type="text" id="register_entity_piva" class="form-control"
+                                                       placeholder="Partita IVA" name="entity_piva"/>
+                                            </div>
+                                            <div class="form-outline mb-5">
+                                                <label class="hiddenlabel" for="register_entity_pec"></label>
+                                                <input type="email" id="register_entity_pec" class="form-control"
+                                                       placeholder="PEC" name="entity_pec"/>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="step3">
                                         <div class="form-card">
                                             <div class="form-outline mb-2">
-                                                <label class="hiddenlabel" for="register_entity_name"></label>
-                                                <input type="text" id="register_entity_name" class="form-control"
-                                                       placeholder="Denominazione" name="entity_name"/>
+                                                <label class="hiddenlabel" for="register_entity_username"></label>
+                                                <input type="text" id="register_entity_username" class="form-control"
+                                                       placeholder="Username" name="entity_username"/>
                                             </div>
                                             <div class="form-outline mb-2">
                                                 <label class="hiddenlabel" for="register_entity_password"></label>
@@ -186,35 +186,6 @@ endif;
                                     <div class="step1">
                                         <div class="form-card">
                                             <div class="form-outline mb-2">
-                                                <label class="hiddenlabel" for="register_expert_username"></label>
-                                                <input type="text" id="register_expert_username" class="form-control"
-                                                       placeholder="Username" name="expert_username"/>
-                                            </div>
-                                            <div class="form-outline mb-2">
-                                                <label class="hiddenlabel" for="register_expert_pec"></label>
-                                                <input type="email" id="register_expert_pec" class="form-control"
-                                                       placeholder="PEC" name="expert_pec"/>
-                                            </div>
-                                            <div class="form-outline mb-2">
-                                                <label class="hiddenlabel" for="register_expert_cf"></label>
-                                                <input type="text" id="register_expert_cf" class="form-control"
-                                                       placeholder="Codice fiscale" name="expert_cf"/>
-                                            </div>
-                                            <div class="form-outline mb-3">
-                                                <label class="hiddenlabel" for="register_expert_piva"></label>
-                                                <input type="text" id="register_expert_piva" class="form-control"
-                                                       placeholder="Partita IVA" name="expert_piva"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="step2">
-                                        <div class="form-card">
-                                            <div class="form-outline mb-2">
-                                                <label class="hiddenlabel" for="register_expert_website"></label>
-                                                <input type="text" id="register_expert_website" class="form-control"
-                                                       placeholder="Sito Web" name="expert_website"/>
-                                            </div>
-                                            <div class="form-outline mb-2">
                                                 <label class="hiddenlabel" for="register_expert_name"></label>
                                                 <input type="text" id="register_expert_name" class="form-control"
                                                        placeholder="Nome" name="name"/>
@@ -224,20 +195,49 @@ endif;
                                                 <input type="text" id="register_expert_surname" class="form-control"
                                                        placeholder="Cognome" name="surname"/>
                                             </div>
-                                            <div class="form-outline mb-3">
+                                            <div class="form-outline mb-2">
                                                 <label class="hiddenlabel" for="register_expert_city"></label>
                                                 <input type="text" id="register_expert_city" class="form-control"
                                                        placeholder="Città di nascita" name="city"/>
+                                            </div>
+                                            <div class="form-outline mb-3">
+                                                <label class="hiddenlabel" for="register_expert_date"></label>
+                                                <input type="text" id="register_expert_date" class="form-control"
+                                                       placeholder="Data di nascita" onfocus="(this.type='date')"
+                                                       name="date"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="step2">
+                                        <div class="form-card">
+                                            <div class="form-outline mb-2">
+                                                <label class="hiddenlabel" for="register_expert_cf"></label>
+                                                <input type="text" id="register_expert_cf" class="form-control"
+                                                       placeholder="Codice fiscale" name="expert_cf"/>
+                                            </div>
+                                            <div class="form-outline mb-2">
+                                                <label class="hiddenlabel" for="register_expert_website"></label>
+                                                <input type="text" id="register_expert_website" class="form-control"
+                                                       placeholder="Sito Web" name="expert_website"/>
+                                            </div>
+                                            <div class="form-outline mb-2">
+                                                <label class="hiddenlabel" for="register_expert_piva"></label>
+                                                <input type="text" id="register_expert_piva" class="form-control"
+                                                       placeholder="Partita IVA" name="expert_piva"/>
+                                            </div>
+                                            <div class="form-outline mb-3">
+                                                <label class="hiddenlabel" for="register_expert_pec"></label>
+                                                <input type="email" id="register_expert_pec" class="form-control"
+                                                       placeholder="PEC" name="expert_pec"/>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="step3">
                                         <div class="form-card">
                                             <div class="form-outline mb-2">
-                                                <label class="hiddenlabel" for="register_expert_date"></label>
-                                                <input type="text" id="register_expert_date" class="form-control"
-                                                       placeholder="Data di nascita" onfocus="(this.type='date')"
-                                                       name="date"/>
+                                                <label class="hiddenlabel" for="register_expert_username"></label>
+                                                <input type="text" id="register_expert_username" class="form-control"
+                                                       placeholder="Username" name="expert_username"/>
                                             </div>
                                             <div class="form-outline mb-2">
                                                 <input type="password" aria-describedby="password_help"
