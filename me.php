@@ -318,7 +318,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                 <label class="hiddenlabel" for="new_password"></label>
                 <input type="password" aria-describedby="password_help"
                         id="new_password" class="form-control"
-                        placeholder="Password attuale" name="new_password"/>
+                        placeholder="Nuova password" name="new_password"/>
                 <span toggle="#new_password"
                         class="fa fa-fw fa-eye field-icon toggle-password"></span>
             </div>

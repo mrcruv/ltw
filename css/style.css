@@ -21,6 +21,9 @@ body {
     input[type]{
         font-size: 15px;
     }
+    textarea{
+        font-size: 12px;
+    }
     .btn{
         font-size: 15px;
     }
@@ -28,8 +31,11 @@ body {
   
 @media screen and (max-width: 600px) {
     body{
-      font-size: 11px;
+      font-size: 13px;
     }
+    .table{
+        font-size: 11px;
+      }
     h6{
         font-size: 12px;
       }
@@ -42,14 +48,12 @@ body {
     input[type]{
         font-size: 13px;
     }
+    textarea{
+        font-size: 10px;
+    }
     .btn{
         font-size: 12px;
     }
-}
-
-input{ 
-    width:100%;
-    padding: 5px;
 }
 
 .empty{
@@ -281,4 +285,14 @@ i.icon-red:hover {
     color: #a94442;
 }
 
+.add_form input.error {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ff002b;
+}
+
+.add_form label.error {
+    color: #a94442;
+}
 /*-----------------------------------*/
+
