@@ -1,4 +1,5 @@
 
+
 body {
     background-color: #ebebeb2f;
     font-family: 'Open Sans', sans-serif;
@@ -13,10 +14,15 @@ body {
   
   @media screen and (max-width: 600px) {
     body {
-      font-size: 13px;
+      font-size: 12px;
     }
   }
 
+.empty{
+    color:red;
+    font-weight: bold;
+    text-transform: uppercase;
+}
 
 .content {
     padding: 7rem 0;
