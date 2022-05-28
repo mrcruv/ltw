@@ -282,13 +282,13 @@ i.icon-red:hover {
     color: #a94442;
 }
 
-.add input.error {
+.add_form input.error {
     color: #a94442;
     background-color: #f2dede;
     border-color: #ff002b;
 }
 
-.add label.error {
+.add_form label.error {
     color: #a94442;
 }
 /*-----------------------------------*/
