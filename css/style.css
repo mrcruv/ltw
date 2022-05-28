@@ -1,7 +1,22 @@
+
 body {
     background-color: #ebebeb2f;
     font-family: 'Open Sans', sans-serif;
 }
+
+
+@media (min-width: 601px) {
+    body {
+      font-size: 15px;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    body {
+      font-size: 13px;
+    }
+  }
+
 
 .content {
     padding: 7rem 0;
