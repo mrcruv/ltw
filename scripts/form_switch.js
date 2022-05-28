@@ -1,23 +1,22 @@
 $(document).ready(function () {
     $("#register_expert_form").hide();
-    $("#text_expert").hide();
     $("#entity_button").attr("disabled", true)
     $("#expert_button").attr("disabled", false)
     $("#expert_button").click(function () {
         $("#register_expert_form").show();
         $("#register_entity_form").hide();
-        $(this).attr("disabled", true)
-        $("#entity_button").attr("disabled", false)
-        $("#text_expert").show();
-        $("#text_entity").hide();
+        $(this).attr("disabled", true);
+        $("#entity_button").attr("disabled", false);
+        $("#entity_button").removeClass("selected");
+        $("#expert_button").addClass("selected");
     });
     $("#entity_button").click(function () {
         $("#register_expert_form").hide();
         $("#register_entity_form").show();
-        $(this).attr("disabled", true)
-        $("#expert_button").attr("disabled", false)
-        $("#text_entity").show();
-        $("#text_expert").hide();
+        $(this).attr("disabled", true);
+        $("#expert_button").attr("disabled", false);
+        $("#expert_button").removeClass("selected");
+        $("#entity_button").addClass("selected");
     });
     $('.nav-item a').on('click', function (e) {
         e.preventDefault();
