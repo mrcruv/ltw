@@ -97,7 +97,7 @@ endif;
         <div class="col-lg-4 text-center mb-2">
             <h5>Aggiungi titolo di studio</h5>
             <a type="button" class="btn btn-info rounded-circle" id="add_button"><i class="fa fa-plus"></i></a>
-            <form id="add_title_form" class="add_form" action="scripts/add_title.php" method="post" class="add">
+            <form id="add_title_form" class="add_form" action="scripts/add_title.php" method="post">
                 <div class="form-group mb-3 mt-4">
                     <label class="hiddenlabel" for="title_name"></label>
                     <input type="text" id="title_name" class="form-control" placeholder="Denominazione" name="name">
