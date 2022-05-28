@@ -1,8 +1,10 @@
 <?php
 global $connection;
 global $website_regex;
+global $website_maxlength;
 require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
+require_once('../includes/lengths.php');
 require_once('../includes/session.php');
 if (!isset($_POST['update_website_submit'])) {
     header('Location: ../me.php?err=errore+update+website+submit');
@@ -25,6 +27,10 @@ if (!mysqli_stmt_fetch($statement)) {
     die('utente non esistente');
 } else if (!empty($new_website)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
+    if (strlen($new_website) > $website_maxlength) {
+        header('Location: ../me.php?err=la+nuova+denominazioneil+nuovo+sito+web+supera+la+lunghezza+massima+consentita:+' . $website_maxlength);
+        die('il nuovo sito web supera la lunghezza massima consentita: ' . $website_maxlength);
+    }
     if ($new_website == $old_website) {
         header('Location: ../me.php?err=il+nuovo+sito+web+deve+essere+diverso+da+quello+attuale:+sito+web+non+modificato');
         die('il nuovo sito web deve essere diverso da quello attuale: sito web non modificato');

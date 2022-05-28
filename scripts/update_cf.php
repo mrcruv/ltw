@@ -1,8 +1,10 @@
 <?php
 global $connection;
 global $cf_regex;
+global $cf_maxlength;
 require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
+require_once('../includes/lengths.php');
 require_once('../includes/session.php');
 if (!isset($_POST['update_cf_submit'])) {
     header('Location: ../me.php?err=errore+update+cf+submit');
@@ -25,6 +27,10 @@ if (!mysqli_stmt_fetch($statement)) {
     die('utente non esistente');
 } else if (!empty($new_cf)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
+    if (strlen($new_cf) > $cf_maxlength) {
+        header('Location: ../me.php?err=il+nuovo+c.f.+supera+la+lunghezza+massima+consentita:+' . $cf_maxlength);
+        die('il nuoco c.f. supera la lunghezza massima consentita: ' . $cf_maxlength);
+    }
     if ($new_cf == $old_cf) {
         header('Location: ../me.php?err=il+nuovo+c.f.+deve+essere+diverso+da+quello+attuale:+c.f.+non+modificato');
         die('il nuovo c.f. deve essere diverso da quello attuale: c.f. non modificato');

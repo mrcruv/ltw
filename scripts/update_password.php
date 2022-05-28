@@ -1,8 +1,10 @@
 <?php
 global $connection;
 global $contains_lowercase, $contains_uppercase, $contains_special, $contains_digit;
+global $password_maxlength, $password_minlength;
 require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
+require_once('../includes/lengths.php');
 require_once('../includes/session.php');
 if (!isset($_POST['update_password_submit'])) {
     header('Location: ../me.php?err=errore+update+password+submit');
@@ -22,7 +24,15 @@ if (empty($old_password)) {
 
 if (empty($new_password)) {
     header('Location: ../me.php?err=nuova+password+non+inserita');
-    die('nuova+password non inserita');
+    die('nuova password non inserita');
+}
+if (strlen($new_password) < $password_minlength) {
+    header('Location: ../index.php?err=nuova+password+non+raggiunge+la+lunghezza+minima:+' . $password_minlength);
+    die('nuova password non raggiunge la lunghezza minima: ' . $password_minlength);
+}
+if (strlen($new_password) > $password_maxlength) {
+    header('Location: ../index.php?err=nuova+password+supera+la+lunghezza+massima+consentita:+' . $password_maxlength);
+    die('nuova password supera la lunghezza massima consentita: ' . $password_maxlength);
 }
 $msg = '';
 strlen($new_password) >= 8 or $msg .= 'lunghezza+minima+non+raggiunta';

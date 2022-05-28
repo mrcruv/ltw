@@ -11,7 +11,7 @@ $expert_name_maxlength = 255;
 $expert_surname_maxlength = $expert_name_maxlength;
 $expert_city_maxlength = $expert_name_maxlength;
 
-$password_maxlength = 24;
+$password_maxlength = 24; // bcrypt supports max 72 Byte, in MySQL 1 char takes up from 1 Byte to 3 Byte
 $password_minlength = 8;
 
 $title_name_maxlength = 255;

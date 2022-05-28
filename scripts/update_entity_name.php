@@ -1,8 +1,10 @@
 <?php
 global $connection;
 global $entity_name_regex;
+global $entity_name_maxlength;
 require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
+require_once('../includes/lengths.php');
 require_once('../includes/session.php');
 if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'ente') {
     header('Location: ../me.php?err=sessione+utente+ente+non+attiva');
@@ -29,6 +31,10 @@ if (!mysqli_stmt_fetch($statement)) {
     die('utente non esistente');
 } else if (!empty($new_entity_name)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
+    if (strlen($new_entity_name) > $entity_name_maxlength) {
+        header('Location: ../me.php?err=la+nuova+denominazione+supera+la+lunghezza+massima+consentita:+' . $entity_name_maxlength);
+        die('la nuova denominazione supera la lunghezza massima consentita: ' . $entity_name_maxlength);
+    }
     if ($new_entity_name == $old_entity_name) {
         header('Location: ../me.php?err=la+nuova+denominazione+deve+essere+diversa+da+quella+attuale:+denominazione+non+modificata');
         die('la nuova denominazione deve essere diversa da quella attuale: denominazione non modificata');

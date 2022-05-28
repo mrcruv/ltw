@@ -1,8 +1,10 @@
 <?php
 global $connection;
 global $pec_regex;
+global $pec_maxlength;
 require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
+require_once('../includes/lengths.php');
 require_once('../includes/session.php');
 if (!isset($_POST['update_pec_submit'])) {
     header('Location: ../me.php?err=errore+update+pec+submit');
@@ -25,6 +27,10 @@ if (!mysqli_stmt_fetch($statement)) {
     die('utente non esistente');
 } else if (!empty($new_pec)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
+    if (strlen($new_pec) > $pec_maxlength) {
+        header('Location: ../me.php?err=la+nuova+pec+supera+la+lunghezza+massima+consentita:+' . $pec_maxlength);
+        die('la nuova pec supera la lunghezza massima consentita: ' . $pec_maxlength);
+    }
     if ($new_pec == $old_pec) {
         header('Location: ../me.php?err=la+nuova+pec+deve+essere+diversa+da+quella+attuale:+pec+non+modificata');
         die('la nuova pec deve essere diversa da quella attuale: pec non modificata');

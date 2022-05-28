@@ -77,7 +77,7 @@ if (empty($pec)) {
     die('pec non inserita');
 }
 if (strlen($pec) > $pec_maxlength) {
-    header('Location: ../index.php?err=pec+supera+la+lunghezza+massima+consentita:+' . $_maxlength);
+    header('Location: ../index.php?err=pec+supera+la+lunghezza+massima+consentita:+' . $pec_maxlength);
     die('pec supera la lunghezza massima consentita: ' . $pec_maxlength);
 }
 if (!preg_match($pec_regex, $pec)) {

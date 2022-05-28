@@ -3,8 +3,12 @@ global $connection;
 global $contains_lowercase, $contains_uppercase, $contains_special, $contains_digit,
        $username_regex, $cf_regex, $pec_regex, $piva_regex, $website_regex,
        $expert_name_regex, $expert_surname_regex, $expert_city_regex, $accept_conditions_regex;
+global $username_maxlength, $password_minlength, $password_maxlength, $cf_maxlength,
+       $pec_maxlength, $piva_maxlength, $website_maxlength, $expert_name_maxlength,
+       $expert_surname_maxlength, $expert_city_maxlength;
 require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
+require_once('../includes/lengths.php');
 if (!isset($_POST['register_expert_submit'])) {
     header('Location: ../me.php?err=errore+register+expert+submit');
     die('errore register expert submit');
@@ -31,6 +35,10 @@ if (empty($username)) {
     header('Location: ../index.php?err=username+non+inserito');
     die('username non inserito');
 }
+if (strlen($username) > $username_maxlength) {
+    header('Location: ../index.php?err=username+supera+la+lunghezza+massima+consentita:+' . $username_maxlength);
+    die('username supera la lunghezza massima consentita: ' . $username_maxlength);
+}
 if (!preg_match($username_regex, $username)) {
     header('Location: ../index.php?err=username+non+corretto');
     die('username non corretto');
@@ -39,6 +47,14 @@ if (!preg_match($username_regex, $username)) {
 if (empty($password)) {
     header('Location: ../index.php?err=password+non+inserita');
     die('password non inserita');
+}
+if (strlen($password) < $password_minlength) {
+    header('Location: ../index.php?err=password+non+raggiunge+la+lunghezza+minima:+' . $password_minlength);
+    die('password non raggiunge la lunghezza minima: ' . $password_minlength);
+}
+if (strlen($password) > $password_maxlength) {
+    header('Location: ../index.php?err=password+supera+la+lunghezza+massima+consentita:+' . $password_maxlength);
+    die('password supera la lunghezza massima consentita: ' . $password_maxlength);
 }
 $msg = '';
 strlen($password) >= 8 or $msg .= 'lunghezza+minima+non+raggiunta';
@@ -55,6 +71,10 @@ if (empty($cf)) {
     header('Location: ../index.php?err=c.f.+non+inserito');
     die('c.f. non inserito');
 }
+if (strlen($cf) > $cf_maxlength) {
+    header('Location: ../index.php?err=cf+supera+la+lunghezza+massima+consentita:+' . $cf_maxlength);
+    die('cf supera la lunghezza massima consentita: ' . $cf_maxlength);
+}
 if (!preg_match($cf_regex, $cf)) {
     header('Location: ../index.php?err=c.f.+non+corretto');
     die('c.f. non corretto');
@@ -63,6 +83,10 @@ if (!preg_match($cf_regex, $cf)) {
 if (empty($pec)) {
     header('Location: ../index.php?err=pec+non+inserita');
     die('pec non inserita');
+}
+if (strlen($pec) > $pec_maxlength) {
+    header('Location: ../index.php?err=pec+supera+la+lunghezza+massima+consentita:+' . $pec_maxlength);
+    die('pec supera la lunghezza massima consentita: ' . $pec_maxlength);
 }
 if (!preg_match($pec_regex, $pec)) {
     header('Location: ../index.php?err=pec+non+corretta');
@@ -73,19 +97,33 @@ if (empty($piva)) {
     header('Location: ../index.php?err=p.+iva+non+inserita');
     die('p. iva non inserita');
 }
+if (strlen($piva) > $piva_maxlength) {
+    header('Location: ../index.php?err=p.+iva+supera+la+lunghezza+massima+consentita:+' . $piva_maxlength);
+    die('p. iva supera la lunghezza massima consentita: ' . $piva_maxlength);
+}
 if (!preg_match($piva_regex, $piva)) {
     header('Location: ../index.php?err=p.+iva+non+corretta');
     die('p. iva non corretta');
 }
 
-if (!empty($website) and !preg_match($website_regex, $website)) {
-    header('Location: ../index.php?err=sito+web+non+corretto');
-    die('sito web non corretto');
+if (!empty($website)) {
+    if (strlen($website) > $website_maxlength) {
+        header('Location: ../index.php?err=sito+web+supera+la+lunghezza+massima+consentita:+' . $website_maxlength);
+        die('sito web supera la lunghezza massima consentita: ' . $website_maxlength);
+    }
+    if (!preg_match($website_regex, $website)) {
+        header('Location: ../index.php?err=sito+web+non+corretto');
+        die('sito web non corretto');
+    }
 }
 
 if (empty($name)) {
     header('Location: ../index.php?err=nome+non+inserito');
     die('nome non inserito');
+}
+if (strlen($name) > $expert_name_maxlength) {
+    header('Location: ../index.php?err=nome+supera+la+lunghezza+massima+consentita:+' . $username_maxlength);
+    die('nome supera la lunghezza massima consentita: ' . $expert_name_maxlength);
 }
 if (!preg_match($expert_name_regex, $name)) {
     header('Location: ../index.php?err=nome+non+corretto');
@@ -96,6 +134,10 @@ if (empty($surname)) {
     header('Location: ../index.php?err=cognome+non+inserito');
     die('cognome non inserito');
 }
+if (strlen($surname) > $expert_surname_maxlength) {
+    header('Location: ../index.php?err=cognome+supera+la+lunghezza+massima+consentita:+' . $expert_surname_maxlength);
+    die('cognome supera la lunghezza massima consentita: ' . $expert_surname_maxlength);
+}
 if (!preg_match($expert_surname_regex, $surname)) {
     header('Location: ../index.php?err=cognome+non+corretto');
     die('cognome non corretto');
@@ -105,9 +147,13 @@ if (empty($city)) {
     header('Location: ../index.php?err=città+non+inserita');
     die('città non inserita');
 }
+if (strlen($city) > $expert_city_maxlength) {
+    header('Location: ../index.php?err=citta+supera+la+lunghezza+massima+consentita:+' . $expert_city_maxlength);
+    die('citta supera la lunghezza massima consentita: ' . $expert_city_maxlength);
+}
 if (!preg_match($expert_city_regex, $city)) {
-    header('Location: ../index.php?err=città+non+corretta');
-    die('città non corretta');
+    header('Location: ../index.php?err=citta+non+corretta');
+    die('citta non corretta');
 }
 
 if (empty($date)) {

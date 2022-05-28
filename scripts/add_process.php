@@ -1,8 +1,10 @@
 <?php
 global $connection;
 global $process_name_regex, $process_type_regex, $process_description_regex;
+global $process_name_maxlength, $process_type_maxlength, $process_description_maxlength;
 require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
+require_once('../includes/lengths.php');
 require_once('../includes/session.php');
 if (!isset($_POST['add_process_submit'])) {
     header('Location: ../processi.php?err=errore+add+process+submit');
@@ -18,6 +20,10 @@ if (empty($name)) {
     header('Location: ../processi.php?err=nome+non+inserito');
     die('nome non inserito');
 }
+if (strlen($name) > $process_name_maxlength) {
+    header('Location: ../processi.php?err=nome+supera+la+lunghezza+massima+consentita:+' . $process_name_maxlength);
+    die('nome supera la lunghezza massima consentita: ' . $process_name_maxlength);
+}
 if (!preg_match($process_name_regex, $name)) {
     header('Location: ../processi.php?err=nome+non+corretto');
     die('nome non corretto');
@@ -27,6 +33,10 @@ if (empty($type)) {
     header('Location: ../processi.php?err=tipo+non+inserito');
     die('tipo non inserito');
 }
+if (strlen($type) > $process_type_maxlength) {
+    header('Location: ../processi.php?err=tipo+supera+la+lunghezza+massima+consentita:+' . $process_type_maxlength);
+    die('tipo supera la lunghezza massima consentita: ' . $process_type_maxlength);
+}
 if (!preg_match($process_type_regex, $type)) {
     header('Location: ../processi.php?err=tipo+non+corretto');
     die('tipo non corretto');
@@ -35,6 +45,10 @@ if (!preg_match($process_type_regex, $type)) {
 if (empty($description)) {
     header('Location: ../processi.php?err=descrizione+non+inserita');
     die('descrizione non inserita');
+}
+if (strlen($description) > $process_description_maxlength) {
+    header('Location: ../process.php?err=descrizione+supera+la+lunghezza+massima+consentita:+' . $process_description_maxlength);
+    die('descrizione supera la lunghezza massima consentita: ' . $process_description_maxlength);
 }
 if (!preg_match($process_description_regex, $description)) {
     header('Location: ../processi.php?err=descrizione+non+corretta');

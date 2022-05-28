@@ -1,8 +1,10 @@
 <?php
 global $connection;
 global $piva_regex;
+global $piva_maxlength;
 require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
+require_once('../includes/lengths.php');
 require_once('../includes/session.php');
 if (!isset($_POST['update_piva_submit'])) {
     header('Location: ../me.php?err=errore+update+piva+submit');
@@ -25,6 +27,10 @@ if (!mysqli_stmt_fetch($statement)) {
     die('utente non esistente');
 } else if (!empty($new_piva)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
+    if (strlen($new_piva) > $piva_maxlength) {
+        header('Location: ../me.php?err=la+nuova+p.iva+supera+la+lunghezza+massima+consentita:+' . $piva_maxlength);
+        die('la nuova p.iva supera la lunghezza massima consentita: ' . $piva_maxlength);
+    }
     if ($new_piva == $old_piva) {
         header('Location: ../me.php?err=la+nuova+p.iva+deve+essere+diversa+da+quella+attuale:+p.iva+non+modificata');
         die('la nuova p.iva deve essere diversa da quella attuale: p.iva non modificata');
