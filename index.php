@@ -93,17 +93,15 @@ endif;
                         </div>
                         <div class="tab-content">
                             <div class="tab" data-tab="pills-register">
-                                <ul class="nav nav-pills nav-justified border rounded mt-4 mb-1" id="entity_expert_name"
+                                <ul class="nav nav-pills nav-justified border rounded mt-4 mb-4" id="entity_expert_name"
                                     role="tablist">
                                     <li>
-                                        <button class="btn switch" type="button" id="entity_button">Ente</button>
+                                        <button class="btn switch selected" type="button" id="entity_button">Ente</button>
                                     </li>
                                     <li>
                                         <button class="btn switch" type="button" id="expert_button">Esperto</button>
                                     </li>
                                 </ul>
-                                <h3 id="text_entity">Ente</h3>
-                                <h3 id="text_expert">Esperto</h3>
                                 <form id="register_entity_form" action="scripts/register_entity.php" class="register"
                                       method="post">
                                     <div class="step1">
@@ -269,7 +267,7 @@ endif;
                                         </button>
                                     </div>
                                 </form>
-                                <div class="d-flex justify-content-between">
+                                <div class="d-flex justify-content-between mb-3">
                                     <div>
                                         <button type="button" id="prev" class="btn btn-secondary btn-sm">
                                             <span class="glyphicon glyphicon-chevron-left">Prev</span>
