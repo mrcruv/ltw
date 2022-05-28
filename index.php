@@ -59,7 +59,7 @@ endif;
                     <h4 class="mb-5 mt-1 pb-1"><?php echo($sitename); ?></h4>
                 </div>
                 <div class="row">
-                    <div class="col-8 offset-2">
+                    <div class="col-lg-8 offset-lg-2 px-2">
                         <ul class="nav nav-pills nav-justified mb-3" id="login_register_nav" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link active" data-target="pills-login" href="#">Login</a>
@@ -71,20 +71,20 @@ endif;
                         <div class="tab-content">
                             <div class="tab active" data-tab="pills-login">
                                 <form id="login_form" action="scripts/login.php" method="post" class="login">
-                                    <div class="form-outline mt-4 mb-4">
+                                    <div class="form-outline mt-4 mb-2">
                                         <label class="hiddenlabel" for="login_username"></label>
                                         <input type="text" id="login_username" class="form-control"
                                                placeholder="Username" name="username"/>
                                     </div>
-                                    <div class="form-outline mb-3">
+                                    <div class="form-outline mb-4">
                                         <label class="hiddenlabel" for="login_password"></label>
                                         <input type="password" id="login_password" class="form-control"
                                                placeholder="Password" name="password" aria-describedby="password_help"/>
                                         <span toggle="#login_password"
                                               class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                     </div>
-                                    <div class="row mb-4">
-                                        <button type="submit" class="btn btn-primary btn-block mb-4"
+                                    <div class="row mx-1 mb-4">
+                                        <button type="submit" class="btn btn-block btn-primary mb-4"
                                                 name="login_submit">Sign in
                                         </button>
                                     </div>
@@ -175,7 +175,7 @@ endif;
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
+                                    <div class="row mx-1 mb-3">
                                         <button type="submit" class="btn btn-block btn-primary register_button"
                                                 name="register_entity_submit">Register
                                         </button>
@@ -261,7 +261,7 @@ endif;
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mb-4">
+                                    <div class="row mx-1 mb-4">
                                         <button type="submit" class="btn btn-block btn-primary register_button"
                                                 name="register_expert_submit">Register
                                         </button>
