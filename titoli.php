@@ -53,7 +53,7 @@ endif;
         <h2>Titoli di studio</h2>
     </div>
     <div class="row">
-        <div class="col-7">
+        <div class="col-xl-8">
             <table class="table">
                 <thead>
                 <tr>
@@ -70,7 +70,7 @@ endif;
                 $n = count($array);
                 if (!is_array($array) or $n <= 0) { ?>
                     <tr>
-                        <td colspan="6"><h6>Non ci sono titoli di studio al momento</h6></td>
+                        <td colspan="6"><p class="empty">Non ci sono titoli di studio al momento</p></td>
                     </tr>
                     <?php
                 } else {
@@ -94,8 +94,7 @@ endif;
                 </tbody>
             </table>
         </div>
-        <div class="col-1"></div>
-        <div class="col-4 text-center mb-2">
+        <div class="col-lg-4 text-center mb-2">
             <h5>Aggiungi titolo di studio</h5>
             <a type="button" class="btn btn-info rounded-circle" id="add_button"><i class="fa fa-plus"></i></a>
             <form id="add_title_form" class="add_form" action="scripts/add_title.php" method="post">
