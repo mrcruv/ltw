@@ -23,8 +23,8 @@ $title_name_regex = '/^[a-zA-Z ]{1,255}$/';
 $title_notes_regex = '/^[a-zA-Z0-9 .,;]{1,255}$/';
 $title_grade_regex = '/^[0-9]{1,3}$/';
 
-$process_name_regex = '/^[a-zA-Z0-9]{1,255}$/';
-$process_type_regex = '/^[a-zA-Z0-9 ]{1,255}$/';
+$process_name_regex = '/^[a-zA-Z0-9 ]{1,255}$/';
+$process_type_regex = '/^[a-zA-Z ]{1,255}$/';
 $process_description_regex = '/^[a-zA-Z0-9 .,;]{1,255}$/';
 
 $competence_name_regex = '/^[a-zA-Z0-9]{1,255}$/';

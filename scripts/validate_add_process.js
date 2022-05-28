@@ -1,5 +1,5 @@
-const process_name_regex = /^[a-zA-Z0-9]{1,255}$/;
-const process_type_regex = /^[a-zA-Z0-9 ]{1,255}$/;
+const process_name_regex = /^[a-zA-Z0-9 ]{1,255}$/;
+const process_type_regex = /^[a-zA-Z ]{1,255}$/;
 const process_description_regex = /^[a-zA-Z0-9 .,;]{1,255}$/;
 const process_name_maxlength = 255;
 const process_type_maxlength = 255;
