@@ -73,18 +73,18 @@ mysqli_stmt_execute($statement) or die(mysqli_error($connection));
 mysqli_stmt_bind_result($statement, $piva, $cf, $website, $pec) or die(mysqli_error($connection));
 if (mysqli_stmt_fetch($statement)) { ?>
 <div class="row container-fluid">
-    <div class="col-xl-3 offset-xl-1 text-center">
+    <div class="col-xl-4 text-center mt-4">
         <h3>Info</h3>
         <ul class="list-group list-group-flush">
             <li class="list-group-item"><small class="text-muted">Codice fiscale</small>
                 <form id="update_cf_form" method="post" action="scripts/update_cf.php" class="update">
                     <div class="row">
-                        <div class="col-8 offset-2">
+                        <div class="col-lg-8 offset-lg-2 text-center">
                             <label class="hiddenlabel" for="text_cf"></label>
                             <input type="text" class="hiddenborder text-center" id="text_cf" name="new_cf"
                                    value="<?php echo($cf); ?>" disabled>
                         </div>
-                        <div class="col-2 d-flex justify-content-center">
+                        <div class="col-lg-2 d-flex justify-content-center">
                             <a class="edit pointer" id="cf_e"><i class="material-icons">&#xE254;</i></a>
                             <a class="cancel pointer" id="cf_c"><i class="material-icons icon-red">close</i></a>
                             <i class="material-icons save">
@@ -100,12 +100,12 @@ if (mysqli_stmt_fetch($statement)) { ?>
             <li class="list-group-item"><small class="text-muted">Partita IVA</small>
                 <form id="update_piva_form" method="post" action="scripts/update_piva.php" class="update">
                     <div class="row">
-                        <div class="col-8 offset-2">
+                        <div class="col-lg-8 offset-lg-2 text-center">
                             <label class="hiddenlabel" for="text_piva"></label>
                             <input type="text" class="hiddenborder text-center" id="text_piva" name="new_piva"
                                    value="<?php echo($piva); ?>" disabled/>
                         </div>
-                        <div class="col-2 d-flex justify-content-center">
+                        <div class="col-lg-2 d-flex justify-content-center">
                             <a class="edit pointer" title="Edit" data-toggle="tooltip" id="piva_e"><i
                                         class="material-icons">&#xE254;</i></a>
                             <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="piva_c"><i
@@ -122,7 +122,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
             <li class="list-group-item"><small class="text-muted">Sito web</small>
                 <form id="update_website_form" method="post" action="scripts/update_website.php" class="update">
                     <div class="row">
-                        <div class="col-8 offset-2">
+                        <div class="col-lg-8 offset-lg-2 text-center">
                             <label class="hiddenlabel" for="text_website"></label>
                             <?php if($website == null){?>
                             <input type="text" class="hiddenborder text-center" id="text_website"
@@ -134,7 +134,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                                    value="<?php echo($website); ?>" disabled>
                                 <?php } ?>   
                         </div>
-                        <div class="col-2 d-flex justify-content-center">
+                        <div class="col-lg-2 d-flex justify-content-center">
                             <a class="edit pointer" title="Edit" data-toggle="tooltip" id="website_e"><i
                                         class="material-icons">&#xE254;</i></a>
                             <a class="delete" title="Delete" data-toggle="tooltip" href="scripts/remove_website.php"><i
@@ -153,12 +153,12 @@ if (mysqli_stmt_fetch($statement)) { ?>
             <li class="list-group-item"><small class="text-muted">PEC</small>
                 <form id="update_pec_form" method="post" action="scripts/update_pec.php" class="update">
                     <div class="row">
-                        <div class="col-8 offset-2">
+                        <div class="col-lg-8 offset-lg-2 text-center">
                             <label class="hiddenlabel" for="text_pec"></label>
                             <input type="text" class="hiddenborder text-center" id="text_pec" name="new_pec"
                                    value="<?php echo($pec); ?>" disabled>
                         </div>
-                        <div class="col-2 d-flex justify-content-center">
+                        <div class="col-lg-2 d-flex justify-content-center">
                             <a class="edit pointer" title="Edit" data-toggle="tooltip" id="pec_e"><i
                                         class="material-icons">&#xE254;</i></a>
                             <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="pec_c"><i
@@ -186,13 +186,13 @@ if (mysqli_stmt_fetch($statement)) { ?>
             <li class="list-group-item"><small class="text-muted">Denominazione</small>
                 <form id="update_entity_name_form" method="post" action="scripts/update_entity_name.php" class="update">
                     <div class="row">
-                        <div class="col-8 offset-2">
+                        <div class="col-lg-8 offset-lg-2 text-center">
                             <label class="hiddenlabel" for="text_entityName"></label>
                             <input type="text" class="hiddenborder text-center" id="text_entityName"
                                    name="new_entity_name"
                                    value="<?php echo($name); ?>" disabled>
                         </div>
-                        <div class="col-2 d-flex justify-content-center">
+                        <div class="col-lg-2 d-flex justify-content-center">
                             <a class="edit pointer" title="Edit" data-toggle="tooltip" id="entityName_e"><i
                                         class="material-icons">&#xE254;</i></a>
                             <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="entityName_c"><i
@@ -209,7 +209,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
             <li class="list-group-item"><small class="text-muted">Tipo</small>
                 <form id="update_entity_type_form" method="post" action="scripts/update_entity_type.php" class="update">
                     <div class="row">
-                        <div class="col-8 offset-2">
+                        <div class="col-lg-8 offset-lg-2 text-center">
                             <label class="hiddenlabel" for="text_entityType"></label>
                             <select class="hiddenborder text-center" id="text_entityType" name="new_entity_type" disabled>
                                 <option value="<?php echo($type); ?>" selected>Ente <?php echo($type); ?></option>
@@ -222,7 +222,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                                 <?php } ?>
                             </select>
                         </div>
-                        <div class="col-2 d-flex justify-content-center">
+                        <div class="col-lg-2 d-flex justify-content-center">
                             <a class="edit pointer" title="Edit" data-toggle="tooltip" id="entityType_e"><i
                                         class="material-icons">&#xE254;</i></a>
                             <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="entityType_c"><i
@@ -259,7 +259,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
         mysqli_stmt_close($statement) or die(mysqli_error($connection));
         ?>
     </div>
-    <div class="col-xl-3 offset-xl-1 align-items-center text-center">
+    <div class="col-xl-4 align-items-center text-center mt-4">
         <?php if ($usertype == 'esperto') { ?>
             <h3>Statistiche esperto</h3>
             <ul class="list-group list-group-flush">
@@ -303,10 +303,10 @@ if (mysqli_stmt_fetch($statement)) { ?>
             </ul>
         <?php } ?>
     </div>
-    <div class="col-xl-3 offset-xl-1 align-middle">
+    <div class="col-xl-3 offset-xl-1 mt-4 mb-2">
         <h3 class="text-center">Cambia password</h3>
         <form id="update_password_form" action="scripts/update_password.php" method="post" class="update">
-            <div class="form-group mb-3 mt-4">
+            <div class="form-group mb-3 mt-3">
                 <label class="hiddenlabel" for="old_password"></label>
                 <input type="password" aria-describedby="password_help"
                         id="old_password" class="form-control"
