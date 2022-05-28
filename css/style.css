@@ -1,4 +1,5 @@
 
+
 body {
     background-color: #ebebeb2f;
     font-family: 'Open Sans', sans-serif;
@@ -21,15 +22,18 @@ body {
     input[type]{
         font-size: 15px;
     }
+    select{
+        font-size: 15px;  
+    }
     textarea{
-        font-size: 12px;
+        font-size: 15px;
     }
     .btn{
         font-size: 15px;
     }
 }
   
-@media screen and (max-width: 600px) {
+@media (max-width: 600px) {
     body{
       font-size: 13px;
     }
@@ -48,8 +52,11 @@ body {
     input[type]{
         font-size: 13px;
     }
+    select{
+        font-size: 13px;  
+    }
     textarea{
-        font-size: 10px;
+        font-size: 12px;
     }
     .btn{
         font-size: 12px;
@@ -295,4 +302,3 @@ i.icon-red:hover {
     color: #a94442;
 }
 /*-----------------------------------*/
-
