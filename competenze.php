@@ -93,7 +93,7 @@ endif;
         <div class="col-lg-4 text-center mb-2">
             <h5>Aggiungi competenza</h5>
             <a type="button" class="btn btn-info rounded-circle" id="add_button"><i class="fa fa-plus"></i></a>
-            <form id="add_competence_form" class="add_form" action="scripts/add_competence.php" method="post">
+            <form id="add_competence_form" class="add_form" action="scripts/add_competence.php" method="post" class="add">
                 <div class="form-group mb-3 mt-4">
                     <label class="hiddenlabel" for="competence_name"></label>
                     <input type="text" id="competence_name" class="form-control" placeholder="Nome competenza"
