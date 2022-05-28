@@ -1,6 +1,7 @@
 
 
 
+
 body {
     background-color: #ebebeb2f;
     font-family: 'Open Sans', sans-serif;
@@ -11,13 +12,37 @@ body {
     body{
       font-size: 15px;
     }
-  }
+}
   
-  @media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
     body{
       font-size: 11px;
     }
-  }
+}
+
+@media (min-width: 601px) {
+    h6{
+      font-size: 15px;
+    }
+}
+  
+@media screen and (max-width: 600px) {
+    h6{
+      font-size: 11px;
+    }
+}
+
+@media (min-width: 601px) {
+    h5{
+      font-size: 20px;
+    }
+}
+  
+@media screen and (max-width: 600px) {
+    h5{
+      font-size: 15px;
+    }
+}
 
 .empty{
     color:red;
