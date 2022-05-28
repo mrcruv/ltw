@@ -141,18 +141,18 @@ endif;
                                 </div>
                             </div>
                             <div class="mt-5">
-                                <h3 class="heading"><?php echo($array[$i]['process']); ?></h3>
+                                <h2 class="heading"><?php echo($array[$i]['process']); ?></h2>
                                 <a class="btn btn-outline-primary mb-3"
                                    href="assegnazioni.php?description=<?php echo($array[$i]['description']); ?>"
                                    role="button">Mostra descrizione</a>
-                                <h4>
+                                <h5>
                                     <?php if (!is_null($array[$i]['website'])): ?>
                                         <a target="_blank" href="<?php echo($array[$i]['website']); ?>"><?php echo($array[$i]['expert']); ?></a>
                                     <?php else:
                                         echo($array[$i]['expert']);
                                     endif;
                                     ?>
-                                </h4>
+                                </h5>
                                 <h5><?php echo($array[$i]['pec']); ?></h5>
                                 <div class="mt-5">
                                     <?php
@@ -223,18 +223,18 @@ endif;
                                 </div>
                             </div>
                             <div class="mt-5">
-                                <h3 class="heading"><?php echo($array[$i]['process']); ?></h3>
+                                <h2 class="heading"><?php echo($array[$i]['process']); ?></h2>
                                 <a class="btn btn-outline-primary mb-3"
                                    href="assegnazioni.php?description=<?php echo($array[$i]['description']); ?>"
                                    role="button">Mostra descrizione</a>
-                                <h4>
+                                <h5>
                                     <?php if (!is_null($array[$i]['website'])): ?>
                                         <a target="_blank" href="<?php echo($array[$i]['website']); ?>"><?php echo($array[$i]['entity']); ?></a>
                                     <?php else:
                                         echo($array[$i]['entity']);
                                     endif;
                                     ?>
-                                </h4>
+                                </h5>
                                 <h5><?php echo($array[$i]['pec']); ?></h5>
                                 <div class="mt-5">
                                     <?php
