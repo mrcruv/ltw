@@ -53,7 +53,7 @@ endif;
         <h2>Titoli di studio</h2>
     </div>
     <div class="row">
-        <div class="col-xl-8">
+        <div class="col-lg-8">
             <table class="table">
                 <thead>
                 <tr>
