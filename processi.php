@@ -89,7 +89,7 @@ endif;
         <div class="col-lg-4 text-center mb-2">
             <h5>Aggiungi processo</h5>
             <a type="button" class="btn btn-info rounded-circle" id="add_button"><i class="fa fa-plus"></i></a>
-            <form id="add_process_form" class="add_form" action="scripts/add_process.php" method="post" class="add">
+            <form id="add_process_form" class="add_form" action="scripts/add_process.php" method="post">
                 <div class="form-group mb-3 mt-4">
                     <label class="hiddenlabel" for="process_name"></label>
                     <input type="text" class="form-control" id="process_name" placeholder="Nome processo" name="name">
