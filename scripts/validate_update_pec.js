@@ -17,7 +17,7 @@ $().ready(function () {
         messages: {
             new_pec: {
                 required: "Inserire PEC",
-                maxlength: "Superata lunghezza massima consentita" + pec_maxlength,
+                maxlength: "Superata lunghezza massima consentita: " + pec_maxlength,
                 pec_regex: "Inserire PEC nel formato corretto"
             }
         },

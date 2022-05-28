@@ -17,7 +17,7 @@ $().ready(function () {
         messages: {
             new_entity_name: {
                 required: "Inserire denominazione",
-                maxlength: "Superata lunghezza massima consentita" + entity_name_maxlength,
+                maxlength: "Superata lunghezza massima consentita: " + entity_name_maxlength,
                 entity_name_regex: "Inserire denominazione nel formato corretto"
             }
         },

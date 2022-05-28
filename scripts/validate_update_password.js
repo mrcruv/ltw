@@ -23,7 +23,7 @@ $().ready(function () {
             new_password: {
                 required: "Inserire la nuova password",
                 minlength: "Lunghezza minima non raggiunta: " + password_minlength,
-                maxlength: "Superata lunghezza massima consentita" + password_maxlength,
+                maxlength: "Superata lunghezza massima consentita: " + password_maxlength,
                 password_regex: "Inserire almeno:<br>-Carattere alfanumerico minuscolo<br>-Carattere alfanumerico maiuscolo<br>-Carattere numerico<br>-Carattere speciale"
             },
             old_password: {

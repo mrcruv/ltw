@@ -133,7 +133,7 @@ $().ready(function () {
         messages: {
             expert_username: {
                 required: "Inserire username",
-                maxlength: "Superata lunghezza massima consentita" + expert_username_maxlength,
+                maxlength: "Superata lunghezza massima consentita: " + expert_username_maxlength,
                 expert_username_regex: "Inserire username nel formato corretto"
             },
             expert_pec: {

@@ -37,15 +37,15 @@ $().ready(function () {
         messages: {
             name: {
                 required: "Inserire nome titolo",
-                maxlength: "Superata lunghezza massima consentita" + title_name_maxlength,
+                maxlength: "Superata lunghezza massima consentita: " + title_name_maxlength,
                 title_name_regex: "Inserire nome nel formato corretto"
             },
             notes: {
-                maxlength: "Superata lunghezza massima consentita" + title_notes_maxlength,
+                maxlength: "Superata lunghezza massima consentita: " + title_notes_maxlength,
                 title_notes_regex: "Inserire note nel formato corretto"
             },
             grade: {
-                maxlength: "Superata lunghezza massima consentita" + title_grade_maxlength,
+                maxlength: "Superata lunghezza massima consentita: " + title_grade_maxlength,
                 title_grade_regex: "Inserire voto nel formato corretto"
             }
         },

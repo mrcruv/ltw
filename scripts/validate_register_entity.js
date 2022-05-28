@@ -103,32 +103,32 @@ $().ready(function () {
         messages: {
             entity_username: {
                 required: "Inserire username",
-                maxlength: "Superata lunghezza massima consentita" + entity_username_maxlength,
+                maxlength: "Superata lunghezza massima consentita: " + entity_username_maxlength,
                 entity_username_regex: "Inserire caratteri alfanumerici"
             },
             entity_pec: {
                 required: "Inserire PEC",
-                maxlength: "Superata lunghezza massima consentita" + entity_pec_maxlength,
+                maxlength: "Superata lunghezza massima consentita: " + entity_pec_maxlength,
                 entity_pec_regex: "Inserire PEC nel formato corretto"
             },
             entity_cf: {
                 required: "Inserire Codice Fiscale",
-                maxlength: "Superata lunghezza massima consentita" + entity_cf_maxlength,
+                maxlength: "Superata lunghezza massima consentita: " + entity_cf_maxlength,
                 entity_cf_regex: "Inserire Codice Fiscale nel formato corretto"
             },
             entity_piva: {
                 required: "Inserire Partita IVA",
-                maxlength: "Superata lunghezza massima consentita" + entity_piva_maxlength,
+                maxlength: "Superata lunghezza massima consentita: " + entity_piva_maxlength,
                 entity_piva_regex: "Inserire Partita IVA nel formato corretto"
             },
             entity_website: {
-                maxlength: "Superata lunghezza massima consentita" + entity_website_maxlength,
+                maxlength: "Superata lunghezza massima consentita: " + entity_website_maxlength,
                 entity_website_regex: "Inserire il sito web nel formato corretto"
             },
             entity_password: {
                 required: "Inserire password",
                 minlength: "Lunghezza minima non raggiunta: " + entity_password_minlength,
-                maxlength: "Superata lunghezza massima consentita" + entity_password_maxlength,
+                maxlength: "Superata lunghezza massima consentita: " + entity_password_maxlength,
                 entity_password_regex: "Inserire almeno:<br>-Carattere alfanumerico minuscolo<br>-Carattere alfanumerico maiuscolo<br>-Carattere numerico<br>-Carattere speciale"
             },
             type: {
@@ -137,7 +137,7 @@ $().ready(function () {
             },
             entity_name: {
                 required: "Inserire nome ente",
-                maxlength: "Superata lunghezza massima consentita" + entity_name_maxlength,
+                maxlength: "Superata lunghezza massima consentita: " + entity_name_maxlength,
                 entity_name_regex: "Inserire nome ente nel formato corretto"
             },
             entity_term: {

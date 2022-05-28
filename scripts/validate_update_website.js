@@ -17,7 +17,7 @@ $().ready(function () {
         messages: {
             new_website: {
                 required: "Inserire sito web",
-                maxlength: "Superata lunghezza massima consentita" + website_maxlength,
+                maxlength: "Superata lunghezza massima consentita: " + website_maxlength,
                 website_regex: "Inserire sito web nel formato corretto"
             }
         },

@@ -39,17 +39,17 @@ $().ready(function () {
         messages: {
             name: {
                 required: "Inserire nome processo",
-                maxlength: "Superata lunghezza massima consentita" + process_name_maxlength,
+                maxlength: "Superata lunghezza massima consentita: " + process_name_maxlength,
                 process_name_regex: "Inserire nome nel formato corretto"
             },
             type: {
                 required: "Inserire tipo",
-                maxlength: "Superata lunghezza massima consentita" + process_type_maxlength,
+                maxlength: "Superata lunghezza massima consentita: " + process_type_maxlength,
                 process_type_regex: "Inserire tipo nel formato corretto"
             },
             description: {
                 required: "Inserire descrizione",
-                maxlength: "Superata lunghezza massima consentita" + process_description_maxlength,
+                maxlength: "Superata lunghezza massima consentita: " + process_description_maxlength,
                 process_description_regex: "Inserire descrizione nel formato corretto"
             }
         },

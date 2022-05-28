@@ -17,7 +17,7 @@ $().ready(function () {
         messages: {
             new_piva: {
                 required: "Inserire Partita IVA",
-                maxlength: "Superata lunghezza massima consentita" + piva_maxlength,
+                maxlength: "Superata lunghezza massima consentita: " + piva_maxlength,
                 piva_regex: "Inserire Partita IVA nel formato corretto"
             }
         },

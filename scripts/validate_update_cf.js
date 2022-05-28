@@ -17,7 +17,7 @@ $().ready(function () {
         messages: {
             new_cf: {
                 required: "Inserire Codice Fiscale",
-                maxlength: "Superata lunghezza massima consentita" + cf_maxlength,
+                maxlength: "Superata lunghezza massima consentita: " + cf_maxlength,
                 cf_regex: "Inserire Codice Fiscale nel formato corretto"
             }
         },

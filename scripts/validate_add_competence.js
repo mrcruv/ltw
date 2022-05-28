@@ -35,16 +35,16 @@ $().ready(function () {
         messages: {
             name: {
                 required: "Inserire nome competenza",
-                maxlength: "Superata lunghezza massima consentita" + competence_name_maxlength,
+                maxlength: "Superata lunghezza massima consentita: " + competence_name_maxlength,
                 competence_name_regex: "Inserire nome nel formato corretto"
             },
             area: {
                 required: "Inserire area",
-                maxlength: "Superata lunghezza massima consentita" + competence_area_maxlength,
+                maxlength: "Superata lunghezza massima consentita: " + competence_area_maxlength,
                 competence_area_regex: "Inserire area nel formato corretto"
             },
             description: {
-                maxlength: "Superata lunghezza massima consentita" + competence_description_maxlength,
+                maxlength: "Superata lunghezza massima consentita: " + competence_description_maxlength,
                 competence_description_regex: "Inserire descrizione nel formato corretto"
             }
         },
