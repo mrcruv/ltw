@@ -1,7 +1,4 @@
 
-
-
-
 body {
     background-color: #ebebeb2f;
     font-family: 'Open Sans', sans-serif;
@@ -12,36 +9,47 @@ body {
     body{
       font-size: 15px;
     }
+    h6{
+        font-size: 15px;
+    }
+    h5{
+        font-size: 20px;
+    }
+    h2{
+        font-size: 24px;
+    }
+    input[type]{
+        font-size: 15px;
+    }
+    .btn{
+        font-size: 15px;
+    }
 }
   
 @media screen and (max-width: 600px) {
     body{
       font-size: 11px;
     }
+    h6{
+        font-size: 12px;
+      }
+    h5{
+        font-size: 15px;
+    }
+    h2{
+        font-size: 20px;  
+    }
+    input[type]{
+        font-size: 13px;
+    }
+    .btn{
+        font-size: 12px;
+    }
 }
 
-@media (min-width: 601px) {
-    h6{
-      font-size: 15px;
-    }
-}
-  
-@media screen and (max-width: 600px) {
-    h6{
-      font-size: 11px;
-    }
-}
-
-@media (min-width: 601px) {
-    h5{
-      font-size: 20px;
-    }
-}
-  
-@media screen and (max-width: 600px) {
-    h5{
-      font-size: 15px;
-    }
+input{ 
+    width:100%;
+    padding: 5px;
 }
 
 .empty{
