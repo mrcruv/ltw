@@ -54,45 +54,47 @@ endif;
     </div>
     <div class="row">
         <div class="col-lg-8">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Data conseguimento</th>
-                    <th scope="col">Note</th>
-                    <th scope="col">Voto</th>
-                    <th class="text-center" scope="col">Azioni</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php $array = show_all_titles($username);
-                $n = count($array);
-                if (!is_array($array) or $n <= 0) { ?>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
                     <tr>
-                        <td colspan="6"><p class="empty">Non ci sono titoli di studio al momento</p></td>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Data conseguimento</th>
+                        <th scope="col">Note</th>
+                        <th scope="col">Voto</th>
+                        <th class="text-center" scope="col">Azioni</th>
                     </tr>
-                    <?php
-                } else {
-                    for ($i = 0; $i < $n; $i += 1) { ?>
+                    </thead>
+                    <tbody>
+                    <?php $array = show_all_titles($username);
+                    $n = count($array);
+                    if (!is_array($array) or $n <= 0) { ?>
                         <tr>
-                            <td><?php echo($i + 1); ?></td>
-                            <td><?php echo($array[$i]['name']); ?></td>
-                            <td><?php if ($array[$i]['date'] != '0000-00-00') echo($array[$i]['date']); else echo('N.D.'); ?></td>
-                            <td><?php echo($array[$i]['notes']); ?></td>
-                            <td><?php echo($array[$i]['grade']); ?></td>
-                            <td class="text-center">
-                                <?php
-                                echo('<a class="delete" title="Delete" data-toggle="tooltip" href="scripts/delete_title.php?name=' . $array[$i]['name'] . '">');
-                                echo('<i class="material-icons icon-red">&#xE872;</i></a>');
-                                ?>
-                            </td>
+                            <td colspan="6"><p class="empty">Non ci sono titoli di studio al momento</p></td>
                         </tr>
                         <?php
-                    }
-                } ?>
-                </tbody>
-            </table>
+                    } else {
+                        for ($i = 0; $i < $n; $i += 1) { ?>
+                            <tr>
+                                <td><?php echo($i + 1); ?></td>
+                                <td><?php echo($array[$i]['name']); ?></td>
+                                <td><?php if ($array[$i]['date'] != '0000-00-00') echo($array[$i]['date']); else echo('N.D.'); ?></td>
+                                <td><?php echo($array[$i]['notes']); ?></td>
+                                <td><?php echo($array[$i]['grade']); ?></td>
+                                <td class="text-center">
+                                    <?php
+                                    echo('<a class="delete" title="Delete" data-toggle="tooltip" href="scripts/delete_title.php?name=' . $array[$i]['name'] . '">');
+                                    echo('<i class="material-icons icon-red">&#xE872;</i></a>');
+                                    ?>
+                                </td>
+                            </tr>
+                            <?php
+                        }
+                    } ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="col-lg-4 text-center mb-2">
             <h5>Aggiungi titolo di studio</h5>
