@@ -75,7 +75,7 @@ endif;
     </div>
     <?php if ($usertype == 'ente'): ?>
         <div class="row">
-            <div class="col-12 text-center align-middle mb-2">
+            <div class="col-lg-8 offset-lg-2 text-center align-middle mb-2">
                 <h5>Aggiungi assegnazione</h5>
                 <a type="button" class="btn btn-info rounded-circle" id="add_button"><i class="fa fa-plus"></i></a>
                 <form id="add_availability_form" class="add_form" action="scripts/add_availability.php" method="post">
