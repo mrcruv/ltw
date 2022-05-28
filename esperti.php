@@ -167,7 +167,7 @@ endif;
         $rowCount = 0;
         $bootstrapColWidth = 12 / $numOfCols;
         if (!is_array($array) or $n <= 0): ?>
-            <h6>Non ci sono esperti al momento</h6>
+            <p class="empty">Non ci sono esperti al momento</p>
         <?php else: ?>
         <?php for ($i = 0; $i < $n; $i += 1) { ?>
             <div class="col-lg-<?php echo($bootstrapColWidth); ?>">
