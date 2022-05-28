@@ -129,12 +129,7 @@ $().ready(function () {
                 required: "Inserire password",
                 minlength: "Lunghezza minima non raggiunta: " + entity_password_minlength,
                 maxlength: "Superata lunghezza massima consentita" + entity_password_maxlength,
-                entity_password_regex: "La password deve essere lunga almeno 8 caratteri.<br>" +
-                    "Inserire:<br>" +
-                    "- Almeno un carattere alfanumerico minuscolo<br>" +
-                    "- Almeno un carattere alfanumerico maiuscolo<br>" +
-                    "- Almeno un carattere numerico<br>" +
-                    "- Almeno un carattere speciale"
+                entity_password_regex: "Inserire almeno:<br>-Carattere alfanumerico minuscolo<br>-Carattere alfanumerico maiuscolo<br>-Carattere numerico<br>-Carattere speciale"
             },
             type: {
                 required: "Inserire il tipo di ente",
