@@ -81,7 +81,7 @@ endif;
                 <form id="add_availability_form" class="add_form" action="scripts/add_availability.php" method="post">
                     <div class="mx-5">
                         <div>
-			    <label class="hidenn" for="availability_process"></label>
+                            <label class="hidenn" for="availability_process"></label>
                             <select id="availability_process" class="form-select mt-4 mb-3 selectpicker" name="process">
                                 <option selected disabled value="">Scegli il processo</option>
                                 <?php
@@ -147,7 +147,8 @@ endif;
                                    role="button">Mostra descrizione</a>
                                 <h5>
                                     <?php if (!is_null($array[$i]['website'])): ?>
-                                        <a target="_blank" href="<?php echo($array[$i]['website']); ?>"><?php echo($array[$i]['expert']); ?></a>
+                                        <a target="_blank"
+                                           href="<?php echo($array[$i]['website']); ?>"><?php echo($array[$i]['expert']); ?></a>
                                     <?php else:
                                         echo($array[$i]['expert']);
                                     endif;
@@ -229,7 +230,8 @@ endif;
                                    role="button">Mostra descrizione</a>
                                 <h5>
                                     <?php if (!is_null($array[$i]['website'])): ?>
-                                        <a target="_blank" href="<?php echo($array[$i]['website']); ?>"><?php echo($array[$i]['entity']); ?></a>
+                                        <a target="_blank"
+                                           href="<?php echo($array[$i]['website']); ?>"><?php echo($array[$i]['entity']); ?></a>
                                     <?php else:
                                         echo($array[$i]['entity']);
                                     endif;

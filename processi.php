@@ -101,7 +101,8 @@ endif;
                 </div>
                 <div class="form-group mb-3">
                     <label class="hiddenlabel" for="process_description"></label>
-                    <textarea form="add_process_form" class="form-control areapicker" id="process_description" placeholder="Descrizione processo" name="description">
+                    <textarea form="add_process_form" class="form-control areapicker" id="process_description"
+                              placeholder="Descrizione processo" name="description">
                         </textarea>
                 </div>
                 <button type="submit" class="btn btn-primary" name="add_process_submit">Aggiungi</button>

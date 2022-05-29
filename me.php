@@ -124,15 +124,15 @@ if (mysqli_stmt_fetch($statement)) { ?>
                     <div class="row">
                         <div class="col-lg-8 offset-lg-2 text-center">
                             <label class="hiddenlabel" for="text_website"></label>
-                            <?php if($website == null){?>
-                            <input type="text" class="hiddenborder text-center" id="text_website"
-                                   name="new_website"
-                                   value="N.D." disabled>
-                            <?php } else{ ?>
-                            <input type="text" class="hiddenborder text-center" id="text_website"
-                                   name="new_website"
-                                   value="<?php echo($website); ?>" disabled>
-                                <?php } ?>   
+                            <?php if ($website == null) { ?>
+                                <input type="text" class="hiddenborder text-center" id="text_website"
+                                       name="new_website"
+                                       value="N.D." disabled>
+                            <?php } else { ?>
+                                <input type="text" class="hiddenborder text-center" id="text_website"
+                                       name="new_website"
+                                       value="<?php echo($website); ?>" disabled>
+                            <?php } ?>
                         </div>
                         <div class="col-lg-2 d-flex justify-content-center">
                             <a class="edit pointer" title="Edit" data-toggle="tooltip" id="website_e"><i
@@ -211,14 +211,15 @@ if (mysqli_stmt_fetch($statement)) { ?>
                     <div class="row">
                         <div class="col-lg-8 offset-lg-2 text-center">
                             <label class="hiddenlabel" for="text_entityType"></label>
-                            <select class="hiddenborder text-center" id="text_entityType" name="new_entity_type" disabled>
+                            <select class="hiddenborder text-center" id="text_entityType" name="new_entity_type"
+                                    disabled>
                                 <option value="<?php echo($type); ?>" selected>Ente <?php echo($type); ?></option>
                                 <?php
-                                if($type == 'pubblico'){?>
-                                <option value="privato">Ente privato</option>
-                                <?php } 
-                                else {?>
-                                <option value="pubblico">Ente pubblico</option>
+                                if ($type == 'pubblico') {
+                                    ?>
+                                    <option value="privato">Ente privato</option>
+                                <?php } else { ?>
+                                    <option value="pubblico">Ente pubblico</option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -309,18 +310,18 @@ if (mysqli_stmt_fetch($statement)) { ?>
             <div class="form-group mb-3 mt-3">
                 <label class="hiddenlabel" for="old_password"></label>
                 <input type="password" aria-describedby="password_help"
-                        id="old_password" class="form-control"
-                        placeholder="Password attuale" name="old_password"/>
+                       id="old_password" class="form-control"
+                       placeholder="Password attuale" name="old_password"/>
                 <span toggle="#old_password"
-                        class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                      class="fa fa-fw fa-eye field-icon toggle-password"></span>
             </div>
             <div class="form-group mb-3">
                 <label class="hiddenlabel" for="new_password"></label>
                 <input type="password" aria-describedby="password_help"
-                        id="new_password" class="form-control"
-                        placeholder="Nuova password" name="new_password"/>
+                       id="new_password" class="form-control"
+                       placeholder="Nuova password" name="new_password"/>
                 <span toggle="#new_password"
-                        class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                      class="fa fa-fw fa-eye field-icon toggle-password"></span>
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary" name="update_password_submit">Cambia password</button>
