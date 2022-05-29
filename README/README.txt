@@ -1,3 +1,9 @@
+CONTATTI:
+Federico Detomaso, detomaso.1903906@studenti.uniroma1.it
+Marco Ruvolo, ruvolo.1883257@studenti.uniroma1.it
+
+REPOSITORY GITHUB: https://github.com/mrcruv/ltw
+
 Il progetto presentato è una piattaforma che funge da punto di incontro tra enti (pubblici e privati) ed esperti (in vari settori).
 La piattaforma presenta un modulo di login per gli utenti registrati e due moduli di registrazione (uno per gli enti ed uno per gli esperti).
 Un esempio di caso d'uso per un utente-ente è il seguente: l'ente si registra alla piattaforma, effettua il login, inserisce nuovi processi,
