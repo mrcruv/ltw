@@ -1,5 +1,7 @@
 
 
+
+
 body {
     background-color: #ebebeb2f;
     font-family: 'Open Sans', sans-serif;
@@ -22,10 +24,10 @@ body {
     input[type]{
         font-size: 15px;
     }
-    select{
+    .selectpicker{
         font-size: 15px;  
     }
-    textarea{
+    .areapicker{
         font-size: 15px;
     }
     .btn{
@@ -52,10 +54,10 @@ body {
     input[type]{
         font-size: 13px;
     }
-    select{
+    .selectpicker{
         font-size: 13px;  
     }
-    textarea{
+    .areapicker{
         font-size: 12px;
     }
     .btn{
@@ -293,6 +295,12 @@ i.icon-red:hover {
 }
 
 .add_form input.error {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ff002b;
+}
+
+.add_form textarea.error {
     color: #a94442;
     background-color: #f2dede;
     border-color: #ff002b;
