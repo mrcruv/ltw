@@ -118,7 +118,7 @@ endif;
                                             </div>
                                             <div class="form-outline mb-5">
                                                 <label class="hiddenlabel" for="register_entity_type"></label>
-                                                <select class="form-select" id="register_entity_type" name="type">
+                                                <select class="form-select selectpicker" id="register_entity_type" name="type">
                                                     <option selected disabled>Scegli il tipo di ente</option>
                                                     <option value="pubblico">Ente pubblico</option>
                                                     <option value="privato">Ente privato</option>
