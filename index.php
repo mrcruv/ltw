@@ -84,7 +84,7 @@ endif;
                                               class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                     </div>
                                     <div class="row mx-1 mb-4">
-                                        <button type="submit" class="btn btn-block btn-primary mb-4"
+                                        <button type="submit" class="btn btn-block myButton mb-4"
                                                 name="login_submit">Sign in
                                         </button>
                                     </div>
@@ -96,8 +96,7 @@ endif;
                                 <ul class="nav nav-pills nav-justified border rounded mt-4 mb-4" id="entity_expert_name"
                                     role="tablist">
                                     <li>
-                                        <button class="btn switch selected" type="button" id="entity_button">Ente
-                                        </button>
+                                        <button class="btn switch selected" type="button" id="entity_button">Ente</button>
                                     </li>
                                     <li>
                                         <button class="btn switch" type="button" id="expert_button">Esperto</button>
@@ -119,8 +118,7 @@ endif;
                                             </div>
                                             <div class="form-outline mb-5">
                                                 <label class="hiddenlabel" for="register_entity_type"></label>
-                                                <select class="form-select selectpicker" id="register_entity_type"
-                                                        name="type">
+                                                <select class="form-select selectpicker" id="register_entity_type" name="type">
                                                     <option selected disabled>Scegli il tipo di ente</option>
                                                     <option value="pubblico">Ente pubblico</option>
                                                     <option value="privato">Ente privato</option>
@@ -178,7 +176,7 @@ endif;
                                         </div>
                                     </div>
                                     <div class="row mx-1 mb-3">
-                                        <button type="submit" class="btn btn-block btn-primary register_button"
+                                        <button type="submit" class="btn btn-block myButton register_button"
                                                 name="register_entity_submit">Register
                                         </button>
                                     </div>
@@ -242,7 +240,6 @@ endif;
                                                        placeholder="Username" name="expert_username"/>
                                             </div>
                                             <div class="form-outline mb-2">
-                                                <label class="hiddenlabel" for="register_expert_password"></label>
                                                 <input type="password" aria-describedby="password_help"
                                                        id="register_expert_password" class="form-control"
                                                        placeholder="Password" name="expert_password"/>
@@ -265,7 +262,7 @@ endif;
                                         </div>
                                     </div>
                                     <div class="row mx-1 mb-4">
-                                        <button type="submit" class="btn btn-block btn-primary register_button"
+                                        <button type="submit" class="btn btn-block myButton register_button"
                                                 name="register_expert_submit">Register
                                         </button>
                                     </div>
