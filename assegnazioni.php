@@ -82,7 +82,7 @@ endif;
                     <div class="mx-5">
                         <div>
 			    <label class="hidenn" for="availability_process"></label>
-                            <select id="availability_process" class="form-select mt-4 mb-3" name="process">
+                            <select id="availability_process" class="form-select mt-4 mb-3 selectpicker" name="process">
                                 <option selected disabled value="">Scegli il processo</option>
                                 <?php
                                 $array = show_all_processes($username);
@@ -99,7 +99,7 @@ endif;
                         </div>
                         <div>
                             <label class="hiddenlabel" for="availability_expert"></label>
-                            <select id="availability_expert" class="form-select mb-3" name="expert">
+                            <select id="availability_expert" class="form-select mb-3 selectpicker" name="expert">
                                 <option selected disabled value="">Scegli l'esperto</option>
                                 <?php
                                 $array = show_all_experts();
