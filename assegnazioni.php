@@ -115,7 +115,7 @@ endif;
                             </select>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary" name="add_availability_submit">Aggiungi</button>
+                    <button type="submit" class="btn myButton" name="add_availability_submit">Aggiungi</button>
                 </form>
             </div>
         </div>
