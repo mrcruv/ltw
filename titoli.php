@@ -117,7 +117,7 @@ endif;
                     <label class="hiddenlabel" for="title_grade"></label>
                     <input type="number" id="title_grade" class="form-control" placeholder="Voto" name="grade">
                 </div>
-                <button type="submit" class="btn btn-primary" name="add_title_submit">Aggiungi</button>
+                <button type="submit" class="btn myButton" name="add_title_submit">Aggiungi</button>
             </form>
         </div>
     </div>
