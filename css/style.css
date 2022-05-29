@@ -1,7 +1,5 @@
 
 
-
-
 body {
     background-color: #ebebeb2f;
     font-family: 'Open Sans', sans-serif;
@@ -141,13 +139,17 @@ i.icon-red:hover {
 }
 
 .myButton {
-    background-color: transparent;
-    border: 0px solid;
-    color: rgb(61, 81, 255);
+    background-color: rgb(1, 1, 168);
+    color:white;
 }
 
 .myButton:hover {
-    color: blue;
+    background-color:blue;
+    color:white;
+}
+
+.nav-item .active { 
+    background-color: rgb(1, 1, 168) !important; 
 }
 
 .switch { color: rgb(163, 163, 163);display:inline-block; margin:0;}
@@ -156,7 +158,7 @@ i.icon-red:hover {
 }
 
 .selected{
-    border-bottom: solid 5px rgb(61, 81, 255);
+    border-bottom: solid 5px rgb(1, 1, 168);
     font-weight: bold;
     color:#000000;
     
@@ -310,3 +312,7 @@ i.icon-red:hover {
     color: #a94442;
 }
 /*-----------------------------------*/
+
+
+
+
