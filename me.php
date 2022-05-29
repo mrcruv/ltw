@@ -88,7 +88,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                             <a class="edit pointer" id="cf_e"><i class="material-icons">&#xE254;</i></a>
                             <a class="cancel pointer" id="cf_c"><i class="material-icons icon-red">close</i></a>
                             <i class="material-icons save">
-                                <button type="submit" class="mdc-icon-button myButton" name="update_cf_submit">
+                                <button type="submit" class="mdc-icon-button buttonSave" name="update_cf_submit">
                                     &#xE161;
                                 </button>
                             </i>
@@ -111,7 +111,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                             <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="piva_c"><i
                                         class="material-icons icon-red">close</i></a>
                             <i class="material-icons save">
-                                <button type="submit" class="mdc-icon-button myButton" name="update_piva_submit">
+                                <button type="submit" class="mdc-icon-button buttonSave" name="update_piva_submit">
                                     &#xE161;
                                 </button>
                             </i>
@@ -142,7 +142,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                             <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="website_c"><i
                                         class="material-icons icon-red">close</i></a>
                             <i class="material-icons save">
-                                <button type="submit" class="mdc-icon-button myButton" name="update_website_submit">
+                                <button type="submit" class="mdc-icon-button buttonSave" name="update_website_submit">
                                     &#xE161;
                                 </button>
                             </i>
@@ -164,7 +164,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                             <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="pec_c"><i
                                         class="material-icons icon-red">close</i></a>
                             <i class="material-icons save">
-                                <button type="submit" class="mdc-icon-button myButton" name="update_pec_submit">
+                                <button type="submit" class="mdc-icon-button buttonSave" name="update_pec_submit">
                                     &#xE161;
                                 </button>
                             </i>
@@ -198,7 +198,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                             <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="entityName_c"><i
                                         class="material-icons icon-red">close</i></a>
                             <i class="material-icons save">
-                                <button type="submit" class="mdc-icon-button myButton" name="update_entity_name_submit">
+                                <button type="submit" class="mdc-icon-button buttonSave" name="update_entity_name_submit">
                                     &#xE161;
                                 </button>
                             </i>
@@ -229,7 +229,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                             <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="entityType_c"><i
                                         class="material-icons icon-red">close</i></a>
                             <i class="material-icons save">
-                                <button type="submit" class="mdc-icon-button myButton" name="update_entity_type_submit">
+                                <button type="submit" class="mdc-icon-button buttonSave" name="update_entity_type_submit">
                                     &#xE161;
                                 </button>
                             </i>
@@ -324,7 +324,7 @@ if (mysqli_stmt_fetch($statement)) { ?>
                       class="fa fa-fw fa-eye field-icon toggle-password"></span>
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary" name="update_password_submit">Cambia password</button>
+                <button type="submit" class="btn myButton" name="update_password_submit">Cambia password</button>
             </div>
         </form>
     </div>

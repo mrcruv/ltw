@@ -1,5 +1,7 @@
 
 
+
+
 body {
     background-color: #ebebeb2f;
     font-family: 'Open Sans', sans-serif;
@@ -146,6 +148,18 @@ i.icon-red:hover {
 .myButton:hover {
     background-color:blue;
     color:white;
+}
+
+.buttonSave {
+    background-color: transparent;
+    border: 0px solid;
+    color:blue;
+}
+
+.buttonSave:hover{
+    background-color: transparent;
+    border: 0px solid;
+    color:rgb(3, 3, 179);
 }
 
 .nav-item .active { 

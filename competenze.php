@@ -108,7 +108,7 @@ endif;
                     <textarea class="form-control areapicker" id="competence_description" placeholder="Descrizione"
                               name="description" rows="3"></textarea>
                 </div class="form-group mb-3">
-                <button type="submit" class="btn btn-primary" name="add_competence_submit">Aggiungi</button>
+                <button type="submit" class="btn myButton" name="add_competence_submit">Aggiungi</button>
             </form>
         </div>
     </div>
