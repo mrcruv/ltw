@@ -22,6 +22,64 @@ SET time_zone = "+00:00";
 --
 
 --
+-- Dump dei dati per la tabella `utenti`
+--
+
+INSERT INTO `utenti` (`username`, `password`, `piva`, `cf`, `sito_web`, `pec`) VALUES
+                                                                                   ('ente1', '$2y$10$qWivSsC2/jEmSZ7GTU5IuOAcbBYQfPfFSFgpi/sBe4Hie9gOomDES', '00000000001', 'AAAANT00A00A001A', 'https://www.ente1.it', 'ente1@pec.it'),
+                                                                                   ('ente2', '$2y$10$/IXLsYqvS80k0UD0DxyXsuvhWXkebYdqm3XBS/rZquieJrA/cC5Fe', '00000000002', 'AAAANT00A00A002A', 'http://www.ente2.it', 'ente2@pec.it'),
+                                                                                   ('ente3', '$2y$10$ayIIySBCUdEOks2CuE6GveWASou8.wJakC6/ipHLLspdjQ7xUCs2m', '00000000003', 'AAAANT00A00A003A', 'http://www.ente3.it', 'ente3@pec.it'),
+                                                                                   ('ente4', '$2y$10$28qELMutGBR8HikP4xvbc.wvChBpg4X7IQck3owTlyCBEm11alHvy', '00000000004', 'AAAANT00A00A004A', NULL, 'ente4@pec.it'),
+                                                                                   ('ente5', '$2y$10$noqDyhCKgcXPUu/uPsLt2OcVqpRiEIhRr36TXBwIQ./k9C8piEjWW', '00000000005', 'AAAANT00A00A005A', 'http://www.ente5.it', 'ente5@pec.it'),
+                                                                                   ('esperto1', '$2y$10$V.H092BazNw9aV29wSkZ8eGUIjibKWsHfyoWtbiECh.3inJnji5QO', '10000000001', 'AASPRT00A00A001A', 'http://www.esperto1.it', 'esperto1@pec.it'),
+                                                                                   ('esperto2', '$2y$10$BAvs6gUfdecTN5PVV/SrwOB1gWr2P1y3ShOT/LosrT/2b5J./NnRa', '10000000002', 'AASPRT00A00A002A', NULL, 'esperto2@pec.it'),
+                                                                                   ('esperto3', '$2y$10$imcrzBua0PH0gg8LlDbMee4VlOPjAVCJn1Rj/5A.sZh8AlAebvHS6', '10000000003', 'AASPRT00A00A003A', 'http://www.esperto3.it', 'esperto3@pec.it'),
+                                                                                   ('esperto4', '$2y$10$1B0q9rG04g9PtRHKq91tVuoAl4zUr2kLJZSdfV2IGMRLhiIBrojf2', '10000000004', 'AASPRT00A00A004A', 'http://www.esperto4.it', 'esperto4@pec.it'),
+                                                                                   ('esperto5', '$2y$10$rDa2umYteu9mhhkk/HSTh.MrKOBymiczVZeeEMWPvYkRAcWE.7b7e', '10000000005', 'AASPRT00A00A005A', 'http://www.esperto5.it', 'esperto5@pec.it'),
+                                                                                   ('esperto6', '$2y$10$Hf5pQdMnDXiBZcEMHxK07.SJTOwwg9A4o9gPeZDawZFGJ4HXcgoXK', '10000000006', 'AASPRT00A00A006A', 'http://www.esperto6.it', 'esperto6@pec.it'),
+                                                                                   ('esperto7', '$2y$10$E6.T6AjiJ0ryqdRUisV2IO7XftmHXuzQrAM4bolu405Qpm43cDsPO', '10000000007', 'AASPRT00A00A007A', 'http://www.esperto7.it', 'esperto7@pec.it');
+
+--
+-- Dump dei dati per la tabella `enti`
+--
+
+INSERT INTO `enti` (`username`, `denominazione`, `tipo`) VALUES
+                                                             ('ente1', 'Ente1', 'privato'),
+                                                             ('ente2', 'Ente2', 'pubblico'),
+                                                             ('ente3', 'Ente3', 'privato'),
+                                                             ('ente4', 'Ente4', 'privato'),
+                                                             ('ente5', 'Ente5', 'privato');
+
+--
+-- Dump dei dati per la tabella `processi`
+--
+
+INSERT INTO `processi` (`nome`, `ente`, `data_conclusione`, `tipologia`, `descrizione`) VALUES
+                                                                                            ('processo1', 'ente1', NULL, 'informatico', 'processo informatico'),
+                                                                                            ('processo10', 'ente1', NULL, 'aziendale', 'processo aziendale'),
+                                                                                            ('processo2', 'ente2', NULL, 'aziendale', 'processo aziendale'),
+                                                                                            ('processo3', 'ente2', NULL, 'economico', 'processo economico'),
+                                                                                            ('processo4', 'ente2', NULL, 'giuridico', 'processo giuridico'),
+                                                                                            ('processo5', 'ente1', NULL, 'aziendale', 'processo aziendale'),
+                                                                                            ('processo6', 'ente1', NULL, 'informatico', 'processo informatico'),
+                                                                                            ('processo7', 'ente4', NULL, 'industriale', 'processo industriale'),
+                                                                                            ('processo8', 'ente4', NULL, 'formativo', 'processo formativo'),
+                                                                                            ('processo9', 'ente5', NULL, 'commerciale', 'processo commerciale');
+
+--
+-- Dump dei dati per la tabella `esperti`
+--
+
+INSERT INTO `esperti` (`username`, `nome`, `cognome`, `citta_nascita`, `data_nascita`) VALUES
+                                                                                           ('esperto1', 'Esperto', 'Uno', 'Roma', '1995-02-11'),
+                                                                                           ('esperto2', 'Esperto', 'Due', 'Milano', '1991-05-14'),
+                                                                                           ('esperto3', 'Esperto', 'Tre', 'Torino', '2000-09-19'),
+                                                                                           ('esperto4', 'Esperto', 'Quattro', 'Bari', '1986-07-25'),
+                                                                                           ('esperto5', 'Esperto', 'Cinque', 'Palermo', '1994-07-21'),
+                                                                                           ('esperto6', 'Esperto', 'Sei', 'Firenze', '1994-02-02'),
+                                                                                           ('esperto7', 'Esperto', 'Sette', 'Frosinone', '2001-02-11');
+
+--
 -- Dump dei dati per la tabella `competenze_esperti`
 --
 
@@ -55,46 +113,6 @@ INSERT INTO `disponibilita` (`processo`, `ente`, `esperto`, `data_richiesta`, `d
 ('processo8', 'ente4', 'esperto7', '2022-05-26', '2022-05-26', NULL);
 
 --
--- Dump dei dati per la tabella `enti`
---
-
-INSERT INTO `enti` (`username`, `denominazione`, `tipo`) VALUES
-('ente1', 'Ente1', 'privato'),
-('ente2', 'Ente2', 'pubblico'),
-('ente3', 'Ente3', 'privato'),
-('ente4', 'Ente4', 'privato'),
-('ente5', 'Ente5', 'privato');
-
---
--- Dump dei dati per la tabella `esperti`
---
-
-INSERT INTO `esperti` (`username`, `nome`, `cognome`, `citta_nascita`, `data_nascita`) VALUES
-('esperto1', 'Esperto', 'Uno', 'Roma', '1995-02-11'),
-('esperto2', 'Esperto', 'Due', 'Milano', '1991-05-14'),
-('esperto3', 'Esperto', 'Tre', 'Torino', '2000-09-19'),
-('esperto4', 'Esperto', 'Quattro', 'Bari', '1986-07-25'),
-('esperto5', 'Esperto', 'Cinque', 'Palermo', '1994-07-21'),
-('esperto6', 'Esperto', 'Sei', 'Firenze', '1994-02-02'),
-('esperto7', 'Esperto', 'Sette', 'Frosinone', '2001-02-11');
-
---
--- Dump dei dati per la tabella `processi`
---
-
-INSERT INTO `processi` (`nome`, `ente`, `data_conclusione`, `tipologia`, `descrizione`) VALUES
-('processo1', 'ente1', NULL, 'informatico', 'processo informatico'),
-('processo10', 'ente1', NULL, 'aziendale', 'processo aziendale'),
-('processo2', 'ente2', NULL, 'aziendale', 'processo aziendale'),
-('processo3', 'ente2', NULL, 'economico', 'processo economico'),
-('processo4', 'ente2', NULL, 'giuridico', 'processo giuridico'),
-('processo5', 'ente1', NULL, 'aziendale', 'processo aziendale'),
-('processo6', 'ente1', NULL, 'informatico', 'processo informatico'),
-('processo7', 'ente4', NULL, 'industriale', 'processo industriale'),
-('processo8', 'ente4', NULL, 'formativo', 'processo formativo'),
-('processo9', 'ente5', NULL, 'commerciale', 'processo commerciale');
-
---
 -- Dump dei dati per la tabella `titoli_esperti`
 --
 
@@ -107,24 +125,6 @@ INSERT INTO `titoli_esperti` (`esperto`, `titolo`, `data_conseguimento`, `note`,
 ('esperto6', 'dottorato di ricerca in filosofia', '2021-02-26', 'tesi di dottorato pubblicata su rivista accademica', 110),
 ('esperto6', 'laurea in lettere e filosofia', '2016-01-26', 'tesi sul naturalismo', 110),
 ('esperto6', 'laurea in lettere moderne', '2018-08-26', 'tesi sul ruolo della semiotica nella letteratura di tardo 1900', 110);
-
---
--- Dump dei dati per la tabella `utenti`
---
-
-INSERT INTO `utenti` (`username`, `password`, `piva`, `cf`, `sito_web`, `pec`) VALUES
-('ente1', '$2y$10$qWivSsC2/jEmSZ7GTU5IuOAcbBYQfPfFSFgpi/sBe4Hie9gOomDES', '00000000001', 'AAAANT00A00A001A', 'https://www.ente1.it', 'ente1@pec.it'),
-('ente2', '$2y$10$/IXLsYqvS80k0UD0DxyXsuvhWXkebYdqm3XBS/rZquieJrA/cC5Fe', '00000000002', 'AAAANT00A00A002A', 'http://www.ente2.it', 'ente2@pec.it'),
-('ente3', '$2y$10$ayIIySBCUdEOks2CuE6GveWASou8.wJakC6/ipHLLspdjQ7xUCs2m', '00000000003', 'AAAANT00A00A003A', 'http://www.ente3.it', 'ente3@pec.it'),
-('ente4', '$2y$10$28qELMutGBR8HikP4xvbc.wvChBpg4X7IQck3owTlyCBEm11alHvy', '00000000004', 'AAAANT00A00A004A', NULL, 'ente4@pec.it'),
-('ente5', '$2y$10$noqDyhCKgcXPUu/uPsLt2OcVqpRiEIhRr36TXBwIQ./k9C8piEjWW', '00000000005', 'AAAANT00A00A005A', 'http://www.ente5.it', 'ente5@pec.it'),
-('esperto1', '$2y$10$V.H092BazNw9aV29wSkZ8eGUIjibKWsHfyoWtbiECh.3inJnji5QO', '10000000001', 'AASPRT00A00A001A', 'http://www.esperto1.it', 'esperto1@pec.it'),
-('esperto2', '$2y$10$BAvs6gUfdecTN5PVV/SrwOB1gWr2P1y3ShOT/LosrT/2b5J./NnRa', '10000000002', 'AASPRT00A00A002A', NULL, 'esperto2@pec.it'),
-('esperto3', '$2y$10$imcrzBua0PH0gg8LlDbMee4VlOPjAVCJn1Rj/5A.sZh8AlAebvHS6', '10000000003', 'AASPRT00A00A003A', 'http://www.esperto3.it', 'esperto3@pec.it'),
-('esperto4', '$2y$10$1B0q9rG04g9PtRHKq91tVuoAl4zUr2kLJZSdfV2IGMRLhiIBrojf2', '10000000004', 'AASPRT00A00A004A', 'http://www.esperto4.it', 'esperto4@pec.it'),
-('esperto5', '$2y$10$rDa2umYteu9mhhkk/HSTh.MrKOBymiczVZeeEMWPvYkRAcWE.7b7e', '10000000005', 'AASPRT00A00A005A', 'http://www.esperto5.it', 'esperto5@pec.it'),
-('esperto6', '$2y$10$Hf5pQdMnDXiBZcEMHxK07.SJTOwwg9A4o9gPeZDawZFGJ4HXcgoXK', '10000000006', 'AASPRT00A00A006A', 'http://www.esperto6.it', 'esperto6@pec.it'),
-('esperto7', '$2y$10$E6.T6AjiJ0ryqdRUisV2IO7XftmHXuzQrAM4bolu405Qpm43cDsPO', '10000000007', 'AASPRT00A00A007A', 'http://www.esperto7.it', 'esperto7@pec.it');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
