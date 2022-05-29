@@ -105,7 +105,7 @@ endif;
                               placeholder="Descrizione processo" name="description">
                         </textarea>
                 </div>
-                <button type="submit" class="btn btn-primary" name="add_process_submit">Aggiungi</button>
+                <button type="submit" class="btn myButton" name="add_process_submit">Aggiungi</button>
             </form>
         </div>
     </div>
