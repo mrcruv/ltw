@@ -13,7 +13,7 @@ $().ready(function () {
                 required: "Inserire username",
             },
             password: {
-                required: "Inserire Password",
+                required: "Inserire password",
             }
         },
         submitHandler: function (form) {
