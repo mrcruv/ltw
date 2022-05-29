@@ -6,7 +6,8 @@ function show_all_availabilities_from_expert($expert_username)
 {
     global $connection;
     $query = 'SELECT processo, descrizione, tipologia, pec, sito_web, disponibilita.ente, data_richiesta, data_assegnazione, data_rifiuto, data_conclusione
-    FROM disponibilita JOIN processi ON disponibilita.processo = processi.nome JOIN utenti ON disponibilita.ente = utenti.username WHERE esperto=?';
+    FROM disponibilita JOIN processi ON disponibilita.processo = processi.nome JOIN utenti ON disponibilita.ente = utenti.username
+    WHERE esperto = ?';
     $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
     mysqli_stmt_bind_param($statement, 's', $expert_username) or die(mysqli_error($connection));
     mysqli_stmt_execute($statement) or die(mysqli_error($connection));

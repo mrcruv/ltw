@@ -105,7 +105,7 @@ $().ready(function () {
             entity_username: {
                 required: "Inserire username",
                 maxlength: "Superata lunghezza massima consentita: " + entity_username_maxlength,
-                entity_username_regex: "Inserire caratteri alfanumerici"
+                entity_username_regex: "Inserire username nel formato corretto"
             },
             entity_pec: {
                 required: "Inserire PEC",

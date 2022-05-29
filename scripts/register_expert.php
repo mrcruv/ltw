@@ -57,7 +57,6 @@ if (strlen($password) > $password_maxlength) {
     die('password supera la lunghezza massima consentita: ' . $password_maxlength);
 }
 $msg = '';
-strlen($password) >= 8 or $msg .= 'lunghezza+minima+non+raggiunta';
 preg_match($contains_lowercase, $password) or $msg .= 'lowercase+non+incluso';
 preg_match($contains_special, $password) or $msg .= 'special+non+incluso';
 preg_match($contains_uppercase, $password) or $msg .= 'uppercase+non+incluso';

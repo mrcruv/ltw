@@ -15,8 +15,8 @@ function show_all_experts()
             'city' => $row[3], 'date' => $row[4], 'website' => $row[5], 'pec' => $row[6]);
         $i += 1;
     }
-//    require_once('includes/close_connection.php');
     mysqli_free_result($result);
+//    require_once('includes/close_connection.php');
     return $rows;
 }
 

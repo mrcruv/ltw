@@ -47,7 +47,7 @@ if (empty($description)) {
     die('descrizione non inserita');
 }
 if (strlen($description) > $process_description_maxlength) {
-    header('Location: ../process.php?err=descrizione+supera+la+lunghezza+massima+consentita:+' . $process_description_maxlength);
+    header('Location: ../processi.php?err=descrizione+supera+la+lunghezza+massima+consentita:+' . $process_description_maxlength);
     die('descrizione supera la lunghezza massima consentita: ' . $process_description_maxlength);
 }
 if (!preg_match($process_description_regex, $description)) {
