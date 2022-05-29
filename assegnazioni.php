@@ -49,7 +49,7 @@ endif;
         <h2>Assegnazioni - <?php echo($username); ?></h2>
     </div>
     <?php
-    if (isset($_GET['description'])) {
+    if (isset($_GET['description']) && isset($_GET['process'])) {
         echo('<script type="text/javascript">
 			$(document).ready(function(){
 				$("#exampleModalToggle").modal("show");
@@ -62,7 +62,7 @@ endif;
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel">Descrizione</h5>
+                    <h5 class="modal-title" id="exampleModalToggleLabel">Descrizione - <?php echo($_GET['process']); ?></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -143,7 +143,7 @@ endif;
                             <div class="mt-5">
                                 <h2 class="heading"><?php echo($array[$i]['process']); ?></h2>
                                 <a class="btn btn-outline-primary mb-3"
-                                   href="assegnazioni.php?description=<?php echo($array[$i]['description']); ?>"
+                                   href="assegnazioni.php?process=<?php echo($array[$i]['process']); ?>&description=<?php echo($array[$i]['description']); ?>"
                                    role="button">Mostra descrizione</a>
                                 <h5>
                                     <?php if (!is_null($array[$i]['website'])): ?>
@@ -226,7 +226,7 @@ endif;
                             <div class="mt-5">
                                 <h2 class="heading"><?php echo($array[$i]['process']); ?></h2>
                                 <a class="btn btn-outline-primary mb-3"
-                                   href="assegnazioni.php?description=<?php echo($array[$i]['description']); ?>"
+                                   href="assegnazioni.php?process=<?php echo($array[$i]['process']); ?>&description=<?php echo($array[$i]['description']); ?>"
                                    role="button">Mostra descrizione</a>
                                 <h5>
                                     <?php if (!is_null($array[$i]['website'])): ?>
