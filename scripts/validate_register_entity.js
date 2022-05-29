@@ -7,6 +7,7 @@ const entity_name_regex = /^[a-zA-Z0-9.-_ ]{1,50}$/;
 const entity_type_regex = /^(pubblico|privato)$/;
 const entity_accept_conditions_regex = /^true$/;
 const entity_password_regex = /^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,24}$/;
+const entity_password_regex_neg = /^[^àòùèì,.;:_<>"£/()+='?[°§ç{}\]]+$/;
 const entity_username_maxlength = 30;
 const entity_cf_maxlength = 16;
 const entity_pec_maxlength = 255;
@@ -37,7 +38,7 @@ jQuery.validator.addMethod("entity_website_regex", function (value, element) {
 });
 
 jQuery.validator.addMethod("entity_password_regex", function (value, element) {
-    return entity_password_regex.test(value);
+    return entity_password_regex.test(value) && entity_password_regex_neg.test(value);
 });
 
 jQuery.validator.addMethod("entity_name_regex", function (value, element) {
