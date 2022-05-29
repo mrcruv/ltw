@@ -6,7 +6,7 @@ const entity_website_regex = /^((https?|ftp|smtp):\/\/)(www.)[a-z0-9]+\.[a-z]+(\
 const entity_name_regex = /^[a-zA-Z0-9.-_ ]{1,50}$/;
 const entity_type_regex = /^(pubblico|privato)$/;
 const entity_accept_conditions_regex = /^true$/;
-const entity_password_regex = /^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/;
+const entity_password_regex = /^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,24}$/;
 const entity_username_maxlength = 30;
 const entity_cf_maxlength = 16;
 const entity_pec_maxlength = 255;

@@ -9,7 +9,7 @@ require_once('../includes/open_connection.php');
 require_once('../includes/regex.php');
 require_once('../includes/lengths.php');
 if (!isset($_POST['register_entity_submit'])) {
-    header('Location: ../me.php?err=errore+register+entity+submit');
+    header('Location: ../index.php?err=errore+register+entity+submit');
     die('errore register entity submit');
 }
 

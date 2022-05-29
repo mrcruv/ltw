@@ -7,7 +7,7 @@ const expert_name_regex = /^[a-zA-Z ]{1,255}$/;
 const expert_surname_regex = expert_name_regex;
 const expert_city_regex = expert_name_regex;
 const expert_accept_conditions_regex = /^true$/;
-const expert_password_regex = /^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/;
+const expert_password_regex = /^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,24}$/;
 const expert_username_maxlength = 30;
 const expert_cf_maxlength = 16;
 const expert_pec_maxlength = 255;

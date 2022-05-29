@@ -4,6 +4,7 @@ $cf_regex = '/[A-Za-z]{6}[0-9lmnpqrstuvLMNPQRSTUV]{2}[abcdehlmprstABCDEHLMPRST]{
 $pec_regex = '/(?:\w*.?pec(?:.?\w+)*)/';
 $piva_regex = '/^[0-9]{11}$/';
 $website_regex = '/^((https?|ftp|smtp):\/\/)(www.)[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/';
+$password_regex = '/^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,24}$/';
 
 $entity_name_regex = '/^[a-zA-Z0-9.-_ ]{1,50}$/';
 $entity_type_regex = '/^(pubblico|privato)$/';
