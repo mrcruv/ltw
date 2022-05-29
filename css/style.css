@@ -1,72 +1,82 @@
-
-
-
-
 body {
     background-color: #ebebeb2f;
     font-family: 'Open Sans', sans-serif;
 }
 
-
 @media (min-width: 601px) {
-    body{
-      font-size: 15px;
-    }
-    h6{
+    body {
         font-size: 15px;
     }
-    h5{
+
+    h6 {
+        font-size: 15px;
+    }
+
+    h5 {
         font-size: 20px;
     }
-    h2{
+
+    h2 {
         font-size: 24px;
     }
-    input[type]{
+
+    input[type] {
         font-size: 15px;
     }
-    .selectpicker{
-        font-size: 15px;  
-    }
-    .areapicker{
+
+    .selectpicker {
         font-size: 15px;
     }
-    .btn{
+
+    .areapicker {
+        font-size: 15px;
+    }
+
+    .btn {
         font-size: 15px;
     }
 }
-  
+
 @media (max-width: 600px) {
-    body{
-      font-size: 13px;
-    }
-    .table{
-        font-size: 11px;
-      }
-    h6{
-        font-size: 12px;
-      }
-    h5{
-        font-size: 15px;
-    }
-    h2{
-        font-size: 20px;  
-    }
-    input[type]{
+    body {
         font-size: 13px;
     }
-    .selectpicker{
-        font-size: 13px;  
+
+    .table {
+        font-size: 11px;
     }
-    .areapicker{
+
+    h6 {
         font-size: 12px;
     }
-    .btn{
+
+    h5 {
+        font-size: 15px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    input[type] {
+        font-size: 13px;
+    }
+
+    .selectpicker {
+        font-size: 13px;
+    }
+
+    .areapicker {
+        font-size: 12px;
+    }
+
+    .btn {
         font-size: 12px;
     }
 }
 
-.empty{
-    color:red;
+.empty {
+    color: red;
     font-weight: bold;
     text-transform: uppercase;
 }
@@ -142,40 +152,45 @@ i.icon-red:hover {
 
 .myButton {
     background-color: rgb(1, 1, 168);
-    color:white;
+    color: white;
 }
 
 .myButton:hover {
-    background-color:blue;
-    color:white;
+    background-color: blue;
+    color: white;
 }
 
 .buttonSave {
     background-color: transparent;
     border: 0px solid;
-    color:blue;
+    color: blue;
 }
 
-.buttonSave:hover{
+.buttonSave:hover {
     background-color: transparent;
     border: 0px solid;
-    color:rgb(3, 3, 179);
+    color: rgb(3, 3, 179);
 }
 
-.nav-item .active { 
-    background-color: rgb(1, 1, 168) !important; 
+.nav-item .active {
+    background-color: rgb(1, 1, 168) !important;
 }
 
-.switch { color: rgb(163, 163, 163);display:inline-block; margin:0;}
+.switch {
+    color: rgb(163, 163, 163);
+    display: inline-block;
+    margin: 0;
+}
+
 .switch:hover {
-  color: rgb(59, 59, 59);
+    color: rgb(59, 59, 59);
 }
 
-.selected{
+.selected {
     border-bottom: solid 5px rgb(1, 1, 168);
     font-weight: bold;
-    color:#000000;
-    
+    color: #000000;
+
 }
 
 /*TABLES*/
@@ -195,7 +210,6 @@ i.icon-red:hover {
     margin-bottom: 1.5rem;
     box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%);
 }
-
 /*-----------------------------------*/
 
 /*INDEX*/
@@ -232,7 +246,6 @@ i.icon-red:hover {
         border-bottom-right-radius: .3rem;
     }
 }
-
 /*-----------------------------------*/
 
 /*ANIMAZIONI*/
@@ -274,7 +287,6 @@ i.icon-red:hover {
         opacity: 1;
     }
 }
-
 /*-----------------------------------*/
 
 /*VALIDATE*/
