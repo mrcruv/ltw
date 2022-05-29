@@ -49,3 +49,10 @@ server-side: PHP valida e redireziona senza effettuare modifiche al database in 
 validazione lato server per la sicurezza; (tenendo conto del fatto che l'obiettivo del progetto non era dimostrare di padroneggiare le interfacce utenti
 o l'esperienza utente (UI/UX)) la grafica, seppur minimale, è stata curata in modo attento, con particolare enfasi sulla responsività (Bootstrap, media query, viewport) 
 delle pagine web.
+
+NOTA:
+Per completezza:
+-negli header HTML delle pagine principali (index, me, titoli, processi, esperti, competenze, assegnazioni), sono stati inseriti i meta-tag author, keywords
+e description (oltre a viewport)
+-è stato generato attraverso un tool online, un file che fungesse da foglio di termini e condizioni d'uso dell'applicazione (è ovviamente un fac-simile ed è del tutto generico)
+-si assume che l'applicazione venga utilizzata nel rispetto delle normative sul copyright (soprattutto per le immagini utilizzate)
