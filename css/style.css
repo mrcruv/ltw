@@ -75,6 +75,10 @@ body {
     }
 }
 
+.dimImg{
+    width: 185px;
+}
+
 .empty {
     color: red;
     font-weight: bold;
