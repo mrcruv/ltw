@@ -1,12 +1,12 @@
 <?php
 $username_regex = '/^[a-zA-Z0-9_]{1,30}$/';
-$cf_regex = '/[A-Za-z]{6}[0-9lmnpqrstuvLMNPQRSTUV]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9lmnpqrstuvLMNPQRSTUV]{2}[A-Za-z]{1}[0-9lmnpqrstuvLMNPQRSTUV]{3}[A-Za-z]{1}/';
-$pec_regex = '/[A-z0-9.+_-]+@[pec]+\.[a-z]{2,3}/';
+$cf_regex = '/[A-Za-z]{6}[0-9lmnpqrstuvLMNPQRSTUV]{2}[abcdehlmprstABCDEHLMPRST][0-9lmnpqrstuvLMNPQRSTUV]{2}[A-Za-z][0-9lmnpqrstuvLMNPQRSTUV]{3}[A-Za-z]/';
+$pec_regex = '/[a-zA-Z0-9.+_-]+@[pec]+\.[a-z]{2,3}/';
 $piva_regex = '/^[0-9]{11}$/';
 $website_regex = '/^((https?|ftp|smtp):\/\/)(www.)[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/';
 $password_regex = '/^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,24}$/';
 
-$entity_name_regex = '/^[a-zA-Z0-9.-_ ]{1,50}$/';
+$entity_name_regex = '/^[a-zA-Z0-9.\-_ ]{1,50}$/';
 $entity_type_regex = '/^(pubblico|privato)$/';
 
 $expert_name_regex = '/^[a-zA-Z ]{1,255}$/';

@@ -1,4 +1,4 @@
-const entity_name_regex = /^[a-zA-Z0-9.-_ ]{1,50}$/;
+const entity_name_regex = /^[a-zA-Z0-9.\-_ ]{1,50}$/;
 const entity_name_maxlength = 50
 
 jQuery.validator.addMethod("entity_name_regex", function (value, element) {

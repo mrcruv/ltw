@@ -1,6 +1,6 @@
 const expert_username_regex = /^[a-zA-Z0-9_]{1,30}$/;
-const expert_cf_regex = /[A-Za-z]{6}[0-9lmnpqrstuvLMNPQRSTUV]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9lmnpqrstuvLMNPQRSTUV]{2}[A-Za-z]{1}[0-9lmnpqrstuvLMNPQRSTUV]{3}[A-Za-z]{1}/;
-const expert_pec_regex = /[A-z0-9.+_-]+@[pec]+\.[a-z]{2,3}/;
+const expert_cf_regex = /[A-Za-z]{6}[0-9lmnpqrstuvLMNPQRSTUV]{2}[abcdehlmprstABCDEHLMPRST][0-9lmnpqrstuvLMNPQRSTUV]{2}[A-Za-z][0-9lmnpqrstuvLMNPQRSTUV]{3}[A-Za-z]/;
+const expert_pec_regex = /[a-zA-Z0-9.+_-]+@[pec]+\.[a-z]{2,3}/;
 const expert_piva_regex = /^[0-9]{11}$/;
 const expert_website_regex = /^((https?|ftp|smtp):\/\/)(www.)[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/;
 const expert_name_regex = /^[a-zA-Z ]{1,255}$/;

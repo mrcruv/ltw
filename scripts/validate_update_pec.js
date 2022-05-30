@@ -1,4 +1,4 @@
-const pec_regex = /[A-z0-9.+_-]+@[pec]+\.[a-z]{2,3}/;
+const pec_regex = /[a-zA-Z0-9.+_-]+@[pec]+\.[a-z]{2,3}/;
 const pec_maxlength = 255;
 
 jQuery.validator.addMethod("pec_regex", function (value, element) {

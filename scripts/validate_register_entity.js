@@ -1,9 +1,9 @@
 const entity_username_regex = /^[a-zA-Z0-9_]{1,30}$/;
-const entity_cf_regex = /[A-Za-z]{6}[0-9lmnpqrstuvLMNPQRSTUV]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9lmnpqrstuvLMNPQRSTUV]{2}[A-Za-z]{1}[0-9lmnpqrstuvLMNPQRSTUV]{3}[A-Za-z]{1}/;
-const entity_pec_regex = /[A-z0-9.+_-]+@[pec]+\.[a-z]{2,3}/;
+const entity_cf_regex = /[A-Za-z]{6}[0-9lmnpqrstuvLMNPQRSTUV]{2}[abcdehlmprstABCDEHLMPRST][0-9lmnpqrstuvLMNPQRSTUV]{2}[A-Za-z][0-9lmnpqrstuvLMNPQRSTUV]{3}[A-Za-z]/;
+const entity_pec_regex = /[a-zA-Z0-9.+_-]+@[pec]+\.[a-z]{2,3}/;
 const entity_piva_regex = /^[0-9]{11}$/;
 const entity_website_regex = /^((https?|ftp|smtp):\/\/)(www.)[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/;
-const entity_name_regex = /^[a-zA-Z0-9.-_ ]{1,50}$/;
+const entity_name_regex = /^[a-zA-Z0-9.\-_ ]{1,50}$/;
 const entity_type_regex = /^(pubblico|privato)$/;
 const entity_accept_conditions_regex = /^true$/;
 const entity_password_regex = /^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,24}$/;
