@@ -51,11 +51,10 @@ endif;
 ?>
 <section class="h-100 gradient-form">
     <div class="container py-3 h-100">
-        <div class="row d-flex justify-content-center h-100 shadow rounded-2"
-             style="background-color: rgb(255, 255, 255);">
+        <div class="row d-flex justify-content-center h-100 shadow rounded-2">
             <div class="col-lg-6 align-self-center h-75">
                 <div class="text-center">
-                    <img src="img/prova_logo.png" style="width: 185px;" alt="logo">
+                    <img src="img/prova_logo.png" class="dimImg" alt="logo">
                     <h4 class="mb-5 mt-1 pb-1"><?php echo($sitename); ?></h4>
                 </div>
                 <div class="row">
