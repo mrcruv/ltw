@@ -1,6 +1,6 @@
 const entity_username_regex = /^[a-zA-Z0-9_]{1,30}$/;
 const entity_cf_regex = /[A-Za-z]{6}[0-9lmnpqrstuvLMNPQRSTUV]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9lmnpqrstuvLMNPQRSTUV]{2}[A-Za-z]{1}[0-9lmnpqrstuvLMNPQRSTUV]{3}[A-Za-z]{1}/;
-const entity_pec_regex = /(?:\w*.?pec(?:.?\w+)*)/;
+const entity_pec_regex = /[A-z0-9\.\+_-]+@[pec]+\.[a-z]{2,3}/;
 const entity_piva_regex = /^[0-9]{11}$/;
 const entity_website_regex = /^((https?|ftp|smtp):\/\/)(www.)[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/;
 const entity_name_regex = /^[a-zA-Z0-9.-_ ]{1,50}$/;
@@ -33,7 +33,10 @@ jQuery.validator.addMethod("entity_piva_regex", function (value, element) {
 });
 
 jQuery.validator.addMethod("entity_website_regex", function (value, element) {
-    return entity_website_regex.test(value);
+    if(value == '')
+        return true;
+    else
+        return entity_website_regex.test(value);
 });
 
 jQuery.validator.addMethod("entity_password_regex", function (value, element) {
