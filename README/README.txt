@@ -32,7 +32,9 @@ La directory del progetto contiene:
 	operazioni CRUDI (prefissi add, delete, update, show), effetti grafici/gestione eventi/visualizzazione alert (error, message, form_switch, toggle_psw, ecc...)
 -una sottodirectory includes, contenente files (fondamentalmente scripts PHP) inclusi ricorrentemente in più pagine dell'applicazione (modularità e riuso del codice!)
 -una sottodirectory img, contenente le immagini utilizzate nell'applicazione
--una sottodirectory README, contenente i diagrammi concettuali e logici in formato JPG e drawio, gli script SQL per la creazione e popolazione del database, questo file README
+-una sottodirectory README, contenente i diagrammi concettuali e logici in formato JPG e drawio, gli script SQL per la creazione e popolazione del database, questo file README ed
+    un'ulteriore sottodirectory screenshots contenente gli screenshots delle pagine che compongono l'applicazione (suddivise in quattro tipologie: ente, esperto, responsiveness
+    ed infine altro - sotto responsiveness sono raccolti gli screenshots che mostrano la visualizzazione delle pagine web in modalità mobile/smartphone)
 
 Suddivisione task di progettazione e sviluppo:
 Federico Detomaso: validazione lato client, grafica con bootstrap, interazione utente con JS/JQuery, effetti grafici
