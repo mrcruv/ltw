@@ -22,7 +22,7 @@ nello sviluppo di una versione più ricca della piattaforma.
 
 Tecnologie usate: HTML, Bootstrap, JavaScript (JQuery), PHP, MySQL.
 Altri strumenti usati: XAMPP (Apache Web Server, MySQL, PHP), GitHub (code versioning e sviluppo collaborativo),
-	diagrams.net (per disegnare diagrammi ER), VSC e PhpStorm (editor/IDE)
+	diagrams.net (per disegnare diagrammi ER), VSC e PhpStorm (editor/IDE), Adobe Photoshop (loghi, icone)
 
 Per quanto riguarda gli aspetti più tecnici, si riporta di seguito una breve descrizione della struttura dei file componenti l'applicazione.
 La directory del progetto contiene:
