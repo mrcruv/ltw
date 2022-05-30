@@ -107,6 +107,7 @@ if (!empty($website)) {
         die('sito web non corretto');
     }
 }
+else $website = null;
 
 if (empty($entity_name)) {
     header('Location: ../index.php?err=denominazione+non+inserita');
