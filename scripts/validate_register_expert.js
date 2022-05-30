@@ -19,36 +19,36 @@ const expert_city_maxlength = 255;
 const expert_password_minlength = 8;
 const expert_password_maxlength = 24; // bcrypt supports max 72 Byte, in MySQL 1 char takes up to 3 Byte
 
-jQuery.validator.addMethod("expert_username_regex", function(value, element) {
+jQuery.validator.addMethod("expert_username_regex", function (value, element) {
     return expert_username_regex.test(value);
-    });
-jQuery.validator.addMethod("expert_pec_regex", function(value, element) {
-    return expert_pec_regex.test(value);   
-    });
-jQuery.validator.addMethod("expert_cf_regex", function(value, element) {
-    return expert_cf_regex.test(value);   
-    });
-jQuery.validator.addMethod("expert_piva_regex", function(value, element) {
-    return expert_piva_regex.test(value);   
-    });
-jQuery.validator.addMethod("expert_website_regex", function(value, element) {
-    if(value == '')
+});
+jQuery.validator.addMethod("expert_pec_regex", function (value, element) {
+    return expert_pec_regex.test(value);
+});
+jQuery.validator.addMethod("expert_cf_regex", function (value, element) {
+    return expert_cf_regex.test(value);
+});
+jQuery.validator.addMethod("expert_piva_regex", function (value, element) {
+    return expert_piva_regex.test(value);
+});
+jQuery.validator.addMethod("expert_website_regex", function (value, element) {
+    if (value == '')
         return true;
     else
-        return expert_website_regex.test(value);   
-    });
-jQuery.validator.addMethod("expert_password_regex", function(value, element) {
+        return expert_website_regex.test(value);
+});
+jQuery.validator.addMethod("expert_password_regex", function (value, element) {
     return expert_password_regex.test(value);
-    });
-jQuery.validator.addMethod("expert_name_regex", function(value, element) {
-    return expert_name_regex.test(value);   
-    });
-jQuery.validator.addMethod("expert_surname_regex", function(value, element) {
+});
+jQuery.validator.addMethod("expert_name_regex", function (value, element) {
+    return expert_name_regex.test(value);
+});
+jQuery.validator.addMethod("expert_surname_regex", function (value, element) {
     return expert_surname_regex.test(value);
-    });
-jQuery.validator.addMethod("expert_city_regex", function(value, element) {
+});
+jQuery.validator.addMethod("expert_city_regex", function (value, element) {
     return expert_city_regex.test(value);
-    });
+});
 
 jQuery.validator.addMethod("expert_accept_conditions_regex", function (value, element) {
     return expert_accept_conditions_regex.test(value);

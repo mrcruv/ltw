@@ -95,7 +95,8 @@ endif;
                                 <ul class="nav nav-pills nav-justified border rounded mt-4 mb-4" id="entity_expert_name"
                                     role="tablist">
                                     <li>
-                                        <button class="btn switch selected" type="button" id="entity_button">Ente</button>
+                                        <button class="btn switch selected" type="button" id="entity_button">Ente
+                                        </button>
                                     </li>
                                     <li>
                                         <button class="btn switch" type="button" id="expert_button">Esperto</button>
@@ -117,7 +118,8 @@ endif;
                                             </div>
                                             <div class="form-outline mb-5">
                                                 <label class="hiddenlabel" for="register_entity_type"></label>
-                                                <select class="form-select selectpicker" id="register_entity_type" name="type">
+                                                <select class="form-select selectpicker" id="register_entity_type"
+                                                        name="type">
                                                     <option selected disabled>Scegli il tipo di ente</option>
                                                     <option value="pubblico">Ente pubblico</option>
                                                     <option value="privato">Ente privato</option>
@@ -239,6 +241,7 @@ endif;
                                                        placeholder="Username" name="expert_username"/>
                                             </div>
                                             <div class="form-outline mb-2">
+                                                <label class="hiddenlabel" for="register_expert_password"></label>
                                                 <input type="password" aria-describedby="password_help"
                                                        id="register_expert_password" class="form-control"
                                                        placeholder="Password" name="expert_password"/>

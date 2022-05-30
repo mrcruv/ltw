@@ -198,7 +198,8 @@ if (mysqli_stmt_fetch($statement)) { ?>
                             <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="entityName_c"><i
                                         class="material-icons icon-red">close</i></a>
                             <i class="material-icons save">
-                                <button type="submit" class="mdc-icon-button buttonSave" name="update_entity_name_submit">
+                                <button type="submit" class="mdc-icon-button buttonSave"
+                                        name="update_entity_name_submit">
                                     &#xE161;
                                 </button>
                             </i>
@@ -229,7 +230,8 @@ if (mysqli_stmt_fetch($statement)) { ?>
                             <a class="cancel pointer" title="Cancel" data-toggle="tooltip" id="entityType_c"><i
                                         class="material-icons icon-red">close</i></a>
                             <i class="material-icons save">
-                                <button type="submit" class="mdc-icon-button buttonSave" name="update_entity_type_submit">
+                                <button type="submit" class="mdc-icon-button buttonSave"
+                                        name="update_entity_type_submit">
                                     &#xE161;
                                 </button>
                             </i>

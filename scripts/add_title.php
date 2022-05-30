@@ -7,7 +7,7 @@ require_once('../includes/regex.php');
 require_once('../includes/lengths.php');
 require_once('../includes/session.php');
 if (!isset($_POST['add_title_submit'])) {
-    header ('Location: ../titoli.php?err=errore+add+title+submit');
+    header('Location: ../titoli.php?err=errore+add+title+submit');
     die('errore add title submit');
 }
 
@@ -20,7 +20,7 @@ $year = (int)Date('Y', strtotime($date));
 $month = (int)Date('m', strtotime($date));
 $day = (int)Date('d', strtotime($date));
 
-if (empty($name)){
+if (empty($name)) {
     header('Location: ../titoli.php?err=nome+non+inserito');
     die('nome non inserito');
 }

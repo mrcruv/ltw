@@ -114,8 +114,7 @@ if (!empty($website)) {
         header('Location: ../index.php?err=sito+web+non+corretto');
         die('sito web non corretto');
     }
-}
-else $website = null;
+} else $website = null;
 
 if (empty($name)) {
     header('Location: ../index.php?err=nome+non+inserito');

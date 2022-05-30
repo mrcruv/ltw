@@ -21,7 +21,6 @@ $(document).ready(function () {
         $("#prev").show();
     });
     $("#prev").click(function () {
-        ;
         if ($(".step2").is(":visible")) {
             $(".step2").hide();
             $(".step1").show();

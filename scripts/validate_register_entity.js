@@ -33,7 +33,7 @@ jQuery.validator.addMethod("entity_piva_regex", function (value, element) {
 });
 
 jQuery.validator.addMethod("entity_website_regex", function (value, element) {
-    if(value == '')
+    if (value == '')
         return true;
     else
         return entity_website_regex.test(value);
