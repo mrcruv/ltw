@@ -65,7 +65,7 @@ endif;
                                 <a class="nav-link active" data-target="pills-login" href="#">Login</a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a class="nav-link" id="tab-register" data-target="pills-register" href="#">Register</a>
+                                <a class="nav-link" id="tab-register" data-target="pills-register" href="#">Registrazione</a>
                             </li>
                         </ul>
                         <div class="tab-content">
@@ -85,7 +85,7 @@ endif;
                                     </div>
                                     <div class="row mx-1 mb-4">
                                         <button type="submit" class="btn btn-block myButton mb-4"
-                                                name="login_submit">Sign in
+                                                name="login_submit">Accedi
                                         </button>
                                     </div>
                                 </form>
@@ -177,7 +177,7 @@ endif;
                                     </div>
                                     <div class="row mx-1 mb-3">
                                         <button type="submit" class="btn btn-block myButton register_button"
-                                                name="register_entity_submit">Register
+                                                name="register_entity_submit">Registrati
                                         </button>
                                     </div>
                                 </form>
@@ -263,7 +263,7 @@ endif;
                                     </div>
                                     <div class="row mx-1 mb-4">
                                         <button type="submit" class="btn btn-block myButton register_button"
-                                                name="register_expert_submit">Register
+                                                name="register_expert_submit">Registrati
                                         </button>
                                     </div>
                                 </form>
