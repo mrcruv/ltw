@@ -29,7 +29,7 @@ if (!mysqli_stmt_fetch($statement)) {
     mysqli_stmt_close($statement) or die(mysqli_error($connection));
     if (strlen($new_cf) > $cf_maxlength) {
         header('Location: ../me.php?err=il+nuovo+c.f.+supera+la+lunghezza+massima+consentita:+' . $cf_maxlength);
-        die('il nuoco c.f. supera la lunghezza massima consentita: ' . $cf_maxlength);
+        die('il nuovo c.f. supera la lunghezza massima consentita: ' . $cf_maxlength);
     }
     if ($new_cf == $old_cf) {
         header('Location: ../me.php?err=il+nuovo+c.f.+deve+essere+diverso+da+quello+attuale:+c.f.+non+modificato');
@@ -39,6 +39,16 @@ if (!mysqli_stmt_fetch($statement)) {
         header('Location: ../me.php?err=c.f.+non+corretto');
         die('c.f. non corretto');
     }
+    $query = 'SELECT * FROM utenti WHERE username <> ? AND cf = ?';
+    $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
+    mysqli_stmt_bind_param($statement, 'ss', $username, $new_cf) or die(mysqli_error($connection));
+    mysqli_stmt_execute($statement) or die(mysqli_error($connection));
+    if (mysqli_stmt_fetch($statement)) {
+        mysqli_stmt_close($statement) or die(mysqli_error($connection));
+        header('Location: ../me.php?err=nuovo+c.f.+gia+assegnato+ad+un+altro+utente');
+        die('nuovo c.f. gia assegnato ad un altro utente');
+    }
+    mysqli_stmt_close($statement) or die(mysqli_error($connection));
     $query = 'UPDATE utenti SET cf = ? WHERE username = ?';
     $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
     mysqli_stmt_bind_param($statement, 'ss', $new_cf, $username) or die(mysqli_error($connection));

@@ -43,6 +43,16 @@ if (!mysqli_stmt_fetch($statement)) {
         header('Location: ../me.php?err=denominazione+non+corretta');
         die('denominazione non corretta');
     }
+    $query = 'SELECT * FROM enti WHERE username <> ? AND denominazione = ?';
+    $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
+    mysqli_stmt_bind_param($statement, 'ss', $username, $new_entity_name) or die(mysqli_error($connection));
+    mysqli_stmt_execute($statement) or die(mysqli_error($connection));
+    if (mysqli_stmt_fetch($statement)) {
+        mysqli_stmt_close($statement) or die(mysqli_error($connection));
+        header('Location: ../me.php?err=nuova+denominazione+gia+assegnata+ad+un+altro+utente');
+        die('nuova denominazione gia assegnata ad un altro utente');
+    }
+    mysqli_stmt_close($statement) or die(mysqli_error($connection));
     $query = 'UPDATE enti SET denominazione = ? WHERE username = ?';
     $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
     mysqli_stmt_bind_param($statement, 'ss', $new_entity_name, $username) or die(mysqli_error($connection));

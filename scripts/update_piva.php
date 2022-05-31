@@ -39,6 +39,16 @@ if (!mysqli_stmt_fetch($statement)) {
         header('Location: ../me.php?err=p.iva+non+corretta');
         die('p.iva non corretta');
     }
+    $query = 'SELECT * FROM utenti WHERE username <> ? AND piva = ?';
+    $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
+    mysqli_stmt_bind_param($statement, 'ss', $username, $new_piva) or die(mysqli_error($connection));
+    mysqli_stmt_execute($statement) or die(mysqli_error($connection));
+    if (mysqli_stmt_fetch($statement)) {
+        mysqli_stmt_close($statement) or die(mysqli_error($connection));
+        header('Location: ../me.php?err=nuova+p.iva+gia+assegnata+ad+un+altro+utente');
+        die('nuova p.iva gia assegnata ad un altro utente');
+    }
+    mysqli_stmt_close($statement) or die(mysqli_error($connection));
     $query = 'UPDATE utenti SET piva = ? WHERE username = ?';
     $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
     mysqli_stmt_bind_param($statement, 'ss', $new_piva, $username) or die(mysqli_error($connection));
