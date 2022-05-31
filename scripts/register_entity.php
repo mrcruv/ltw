@@ -146,6 +146,17 @@ if (mysqli_stmt_fetch($statement)) {
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
+$query = 'SELECT * FROM enti WHERE denominazione = ?';
+$statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
+mysqli_stmt_bind_param($statement, 's', $entity_name) or die(mysqli_error($connection));
+mysqli_stmt_execute($statement) or die(mysqli_error($connection));
+if (mysqli_stmt_fetch($statement)) {
+    mysqli_stmt_close($statement) or die(mysqli_error($connection));
+    header('Location: ../index.php?err=utente+gia+esistente');
+    die('utente già esistente');
+}
+mysqli_stmt_close($statement) or die(mysqli_error($connection));
+
 $hash = password_hash($password, PASSWORD_BCRYPT);
 
 $query = 'INSERT INTO utenti(username, password, pec, cf, piva, sito_web)

@@ -143,8 +143,8 @@ if (!preg_match($expert_surname_regex, $surname)) {
 }
 
 if (empty($city)) {
-    header('Location: ../index.php?err=città+non+inserita');
-    die('città non inserita');
+    header('Location: ../index.php?err=citta+non+inserita');
+    die('citta non inserita');
 }
 if (strlen($city) > $expert_city_maxlength) {
     header('Location: ../index.php?err=citta+supera+la+lunghezza+massima+consentita:+' . $expert_city_maxlength);
