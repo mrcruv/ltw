@@ -1,6 +1,6 @@
 CONTATTI:
-Federico Detomaso, detomaso.1903906@studenti.uniroma1.it
-Marco Ruvolo, ruvolo.1883257@studenti.uniroma1.it
+Federico Detomaso, mat. 1903906 - detomaso.1903906@studenti.uniroma1.it
+Marco Ruvolo, mat. 1883257 - ruvolo.1883257@studenti.uniroma1.it
 
 REPOSITORY GITHUB: https://github.com/mrcruv/ltw
 
@@ -11,8 +11,8 @@ Un esempio di caso d'uso (per un utente-ente) è il seguente: l'ente si registra
 consulta la lista degli esperti iscritti, aggiunge nuove assegnazioni di processi ad esperti.
 Un altro esempio di caso d'uso (per un utente-esperto) è il seguente: l'esperto si registra alla piattaforma, effettua il login, inserisce i propri
 titoli di studio e le proprie competenze, all'arrivo dell'assegnazione di un processo da parte di un ente accetta/rifiuta l'assegnazione.
-Sono state implementate le operazioni basilari CRUDI (Create, Read, Update, Delete, Index) per ogni oggetto utilizzato nella piattaforma (per alcuni oggetti non tutte le 5
-operazioni sono state implementate in quanto non previste nei requisiti oppure non necessarie).
+Sono state implementate alcune delle operazioni basilari CRUDI (Create, Read, Update, Delete, Index) per ogni oggetto utilizzato nella piattaforma (per alcuni oggetti non tutte
+le 5 operazioni sono state implementate, in quanto non previste nei requisiti oppure non necessarie).
 In particolare, l'operazione di Update è stata prevista solo per le informazioni associate all'account di un utente (sito web, PEC, ecc...),
 mentre l'operazione di Delete non è stata prevista, ad esempio, per le assegnazioni e per i processi.
 In ogni caso, l'evoluzione dell'applicazione ne prevede l'implementazione per pressoché tutti gli oggetti utilizzati; inoltre, già in fase di progettazione concettuale,
@@ -33,22 +33,22 @@ altri task sono stati portati avanti in maniera più indipendente, in particolar
 
 NOTA:
 Abbiamo privilegiato una linea di sviluppo che si incentrasse soprattutto sul buon funzionamento e sulla manutenibilità dell'applicazione:
-per raggiungere un eccellente livello di modularità, i vari script sono stati scritti in file separati, in cartelle apposite ed importati in base alle necessità;
-per raggiungere un buon livello di manutenibilità abbiamo optato, quando possibile, per la definizione di variabili e costanti utilizzate da più script in file appositi
-(vedi regex.php, e.g.: basta modificare una regex in regex.php per aggiornare tutti i file che ne fanno uso);
-per rendere leggibile il codice abbiamo utilizzato nomi di variabili, file, funzioni quanto più significativi e seguito i buoni principi della programmazione
-(sebbeno i commenti siano rari, il codice stesso dovrebbe fungere da autodocumentazione ed essere di facile comprensione e lettura);
-per ottenere un livello di sicurezza medio/alto abbiamo scelto di procedere con una validazione form utente two-step:
-validazione lato client per l'usabilità e validazione lato server per la sicurezza (client-side: JQuery valida ed espone a video eventuali messaggi di errore,
-server-side: PHP valida e redireziona senza effettuare modifiche al database in caso di errore);
-tenendo conto del fatto che l'obiettivo del progetto non era dimostrare di padroneggiare le interfacce utenti o l'esperienza utente (UI/UX)), la grafica, seppur minimale,
-è stata curata in modo attento, con particolare enfasi sulla responsività (Bootstrap, media query, viewport)  delle pagine web.
+-per raggiungere un eccellente livello di modularità, i vari script sono stati scritti in file separati, in cartelle apposite ed importati in base alle necessità
+-per raggiungere un buon livello di manutenibilità abbiamo optato, quando possibile, per la definizione di variabili e costanti utilizzate da più script in file appositi
+    (vedi regex.php, e.g.: basta modificare una regex in regex.php per aggiornare tutti i file che ne fanno uso)
+-per rendere leggibile il codice abbiamo utilizzato nomi di variabili, file, funzioni quanto più significativi e seguito i buoni principi della programmazione
+    (sebbeno i commenti siano rari, il codice stesso dovrebbe fungere da autodocumentazione ed essere di facile comprensione e lettura)
+-per ottenere un livello di sicurezza medio/alto abbiamo scelto di procedere con una validazione form utente two-step:
+    validazione lato client per l'usabilità (JQuery valida ed espone eventuali messaggi di errore direttamente sotto ai campi del modulo associati)
+    e validazione lato server per la sicurezza (PHP valida e redireziona l'utente senza effettuare modifiche al database in caso di errore)
+-tenendo conto del fatto che l'obiettivo del progetto non è dimostrare di padroneggiare le interfacce utenti o l'esperienza utente (UI/UX)), la grafica, seppur minimale,
+    è stata curata in modo attento, con particolare enfasi sulla responsività (Bootstrap, media query, viewport) delle pagine web
 
 NOTA:
 Per completezza:
 -negli header HTML delle pagine principali (index, me, titoli, processi, esperti, competenze, assegnazioni), sono stati inseriti i meta-tag author, keywords,
-description (oltre a viewport) ed il tag di collegamento alla favicon (prova_logo.ico)
--è stato generato attraverso un tool online, un file che fungesse da foglio di termini e condizioni d'uso dell'applicazione (è ovviamente un fac-simile ed è del tutto generico)
+    description (oltre a viewport) ed il tag di collegamento alla favicon (prova_logo.ico)
+-è stato generato, attraverso un tool online, un file che fungesse da foglio di termini e condizioni d'uso dell'applicazione (è ovviamente un fac-simile ed è del tutto generico)
 -si assume che l'applicazione venga utilizzata nel rispetto delle normative sul copyright (soprattutto per le immagini utilizzate)
 -l'applicazione è stata testata con successo sui principali browser moderni (Google Chrome, Microsoft Edge, Mozilla Firefox)
 
