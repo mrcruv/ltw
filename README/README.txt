@@ -37,8 +37,8 @@ La directory del progetto contiene:
     ed infine altro - sotto responsiveness sono raccolti gli screenshots che mostrano la visualizzazione delle pagine web in modalità mobile/smartphone)
 
 NOTA:
-Entrambi i componenti del gruppo hanno collaborato allo sviluppo comune di alcuni task (form, progettazione struttura applicazione); altri task sono stati portati avanti in maniera
-più indipendente, in particolare:
+Entrambi i componenti del gruppo hanno collaborato allo sviluppo comune di alcuni task (form, progettazione struttura applicazione);
+altri task sono stati portati avanti in maniera più indipendente, in particolare:
 -validazione lato client, grafica ed effetti grafici, interazione utente con JS/JQuery (Federico Detomaso)
 -validazione lato server, interazione con server (query, ecc...), strutturazione in moduli (Marco Ruvolo)
 
