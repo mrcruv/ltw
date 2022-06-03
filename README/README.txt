@@ -170,3 +170,7 @@ ltw-main
     /me.php: visualizza la dashboard dell'utente con tutte le informazioni, statistiche e form di cambio password.
     /processi.php: visualizza tutti i processi che un utente ente ha creato; viene visualizzato anche un form a comparsa per l'aggiunta di un processo.
     /titoli.php: visualizza tutti i titoli di studio di un utente esperto; viene visualizzato anche un form a comparsa per l'aggiunta di un titolo di studio.
+
+RINGRAZIAMENTI:
+Ringraziamo per l'attenzione,
+    -MR e FD.
