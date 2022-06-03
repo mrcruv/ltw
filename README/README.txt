@@ -56,16 +56,17 @@ delle pagine web.
 
 NOTA:
 Per completezza:
--negli header HTML delle pagine principali (index, me, titoli, processi, esperti, competenze, assegnazioni), sono stati inseriti i meta-tag author, keywords
-e description (oltre a viewport)
+-negli header HTML delle pagine principali (index, me, titoli, processi, esperti, competenze, assegnazioni), sono stati inseriti i meta-tag author, keywords,
+description (oltre a viewport) ed il tag di collegamento alla favicon (prova_logo.ico)
 -è stato generato attraverso un tool online, un file che fungesse da foglio di termini e condizioni d'uso dell'applicazione (è ovviamente un fac-simile ed è del tutto generico)
 -si assume che l'applicazione venga utilizzata nel rispetto delle normative sul copyright (soprattutto per le immagini utilizzate)
+-l'applicazione è stata testata con successo sui principali browser moderni (Google Chrome, Microsoft Edge, Mozilla Firefox)
 
-BREVE DESCRIZIONE DIRECTORY E FILE COMPONENTI L'APPLICAZIONE:
+BREVE DESCRIZIONE DEI FILE COMPONENTI L'APPLICAZIONE:
 ltw-main
 
     /css
-        /style.css: foglio di stile utilizzato per la grafica (ricorrente nelle pagine principali).
+        /style.css: foglio di stile utilizzato per la grafica (utilizzato nelle pagine principali).
 
     /img
         /logo_ente.png: immagine rappresentativa di un ente; utilizzata in me.php.
@@ -76,7 +77,7 @@ ltw-main
     /includes
         /close_connection.php: effettua la chiusura della connessione al database.
         /config.php: contiene le informazioni di configurazione del server e del database (IP, porta, ecc...).
-        /error:php: contiene il modal visualizzato in caso di errore lato server (visualizzato attraverso la variabile globale $_GET).
+        /error.php: contiene il modal visualizzato in caso di errore lato server (visualizzato attraverso la variabile globale $_GET).
         /footer.php: contiene il footer visualizzato in tutte le principali pagine dell'applicazione dopo aver effettuato il login.
         /header.php: contiene l'header (dinamico in base al tipo di utente) visualizzato in tutte le principali pagine dell'applicazione dopo aver effettuato il login.
         /info.php: contiene le informazioni dell'applicazione visualizzate nel footer (nome applicazione, autori, ecc...).
@@ -84,16 +85,16 @@ ltw-main
         /message.php: contiene il modal visualizzato in caso di successo di un'operazione (login, update, ecc... - visualizzato attraverso la variabile globale $_GET).
         /open_connection.php: effettua l'apertura della connessione con il database (prendendo le informazioni di configurazione dal file config.php).
         /regex.php: contiene le espressioni regolari per le validazioni lato server delle principali operazioni di login, register, add, update e delete.
-        /session.php: avvia una sessione se non è già stata avviata altrimenti reindirizza l'utente.
-        /terms.html: contiene un fac-simile dei termini e delle condizioni d'uso dell'applicazione (scaricabile/consultabile da index.php, al termine della registrazione).
+        /session.php: reindirizza l'utente con un messaggio di errore su index.php, se l'utente non ha effettuato il login.
+        /terms.html: contiene un fac-simile dei termini e delle condizioni d'uso dell'applicazione (è scaricabile/consultabile da index.php, al termine della registrazione).
 
     /README
         /screenshots
             /altro: contiene gli screenshots di index.php (login) e di terms.html
-            /ente: contiene gli screenshots (dal punto di vista di un ente) di assegnazioni.php, me.php, esperti.php, index.php (varie fasi di registrazione), processi.php
-            /esperto: contiene gli screenshots (dal punto di vista di un esperto) di assegnazioni.php, competenze.php, me.php, index.php (varie fasi di registrazione), titoli.php
+            /ente: contiene gli screenshots (dal punto di vista di un ente) di assegnazioni.php, me.php, esperti.php, index.php (varie fasi di registrazione) e processi.php
+            /esperto: contiene gli screenshots (dal punto di vista di un esperto) di assegnazioni.php, competenze.php, me.php, index.php (varie fasi di registrazione) e titoli.php
             /responsiveness: contiene gli screenshots (in modalità mobile/smartphone) di assegnazioni.php (sia dal punto di vista di un ente che di un esperto),
-                             competenze.php, me.php (sia dal punto di vista di un ente che di un esperto), esperti.php, processi.php, titoli.php
+                             competenze.php, me.php (sia dal punto di vista di un ente che di un esperto), esperti.php, processi.php, titoli.php e
                              index.php (login e fase iniziale di registrazione sia per enti che per esperti).
 
         /create_database.sql: contiene le istruzioni di definizione del database.
@@ -107,8 +108,8 @@ ltw-main
     /scripts
         /accept_reject.php: effettua l'accettazione o il rifiuto di una assegnazione pendente da parte dell'esperto associato;
                             dopo opporturni controlli viene aggiornata la data di accettazione, in caso di accettazione, o la data di rifiuto in caso di rifiuto.
-        /add_availability.php: effettua l'aggiunta di una assegnazione da parte di un ente;
-                               dopo opporturni controlli viene aggiunta l'assegnazione dell'ente con il processo e l'esperto designati.
+        /add_availability.php: effettua l'aggiunta, da parte di un ente, di una assegnazione;
+                               dopo opporturni controlli viene aggiunta al database l'assegnazione dell'ente con il processo e l'esperto designati.
         /add_competence.php: effettua l'aggiunta, da parte di un esperto, di una competenza; viene inoltre effettuata la validazione lato server.
         /add_process.php: effettua l'aggiunta, da parte di un ente, di un processo; viene inoltre effettuata la validazione lato server.
         /add_title.php: effettua l'aggiunta, da parte di un esperto, di un titolo di studio; viene inoltre effettuata la validazione lato server.
@@ -126,16 +127,13 @@ ltw-main
         /show_availability.php: contiene una funzione che memorizza in un array tutte le assegnazioni di un ente e lo restituisce
                                 ed una funzione che memorizza in un array tutte le assegnazioni di un esperto e lo restituisce.
         /show_competence.php: contiene una funzione che memorizza in un array tutte le competenze di un esperto e lo restituisce.
-        /show_expert.php: contiene una funzione che memorizza in un array tutti gli esperti e lo restituisce,
-                          una funzione che memorizza in un array i titoli di studio di un esperto e lo restituisce,
-                          una funzione che memorrizza in un array le competenze di un esperto e lo restituisce
-                          ed una funzione che controlla l'esistenza di un esperto.
-        /show_process.php: contiene una funzione che memorizza in un array tutte i processi di un ente e lo restituisce.
-        /show_title.php: contiene una funzione che memorizza in un array tutte i titoli di studio di un esperto e lo restituisce.
+        /show_expert.php: contiene una funzione che memorizza in un array tutti gli esperti e lo restituisce
+                          ed una funzione che verifica l'esistenza di un esperto.
+        /show_process.php: contiene una funzione che memorizza in un array tutti i processi di un ente e lo restituisce.
+        /show_title.php: contiene una funzione che memorizza in un array tutti i titoli di studio di un esperto e lo restituisce.
         /update_cf.php: effettua l'update del Codice Fiscale di un utente; viene effettuata la validazione lato server.
-        /update_entity_name.php: effettua l'update del nome dell'ente; viene effettuata la validazione lato server.
-        /update_entity_type.php: effettua l'update del tipo dell'ente; viene effettuata la validazione lato server.
-        /update_info.js: contiene il meccanismo di gestione degli eventi generati dalle operazioni di update/remove sulle informazioni utente.
+        /update_entity_name.php: effettua l'update del nome di un ente; viene effettuata la validazione lato server.
+        /update_entity_type.php: effettua l'update del tipo di un ente; viene effettuata la validazione lato server.
         /update_password.php: effettua l'update della password di un utente; viene effettuata la validazione lato server.
         /update_pec.php: effettua l'update della PEC di un utente; viene effettuata la validazione lato server.
         /update_piva.php: effettua l'update della Partita IVA di un utente; viene effettuata la validazione lato server.
@@ -145,8 +143,9 @@ ltw-main
         /validate_add_process.js: effettua la validazione lato client dell'aggiunta di un processo.
         /validate_add_title.js: effettua la validazione lato client dell'aggiunta di un titolo di studio.
         /validate_login.js: effettua la validazione lato client del login di un utente.
-        /validate_register_entity.js: effettua la validazione lato client della registrazione.
-        /validate_register_expert.js: effettua la validazione lato client dell'aggiunta di una competenza.
+        /validate_register_entity.js: effettua la validazione lato client della registrazione di un ente.
+        /validate_register_expert.js: effettua la validazione lato client della registrazione di un esperto.
+        /update_info.js: contiene il meccanismo di gestione degli eventi generati dalle operazioni di update/remove sulle informazioni utente.
         /validate_update_cf.js: effettua la validazione lato client dell'update del Codice Fiscale di un utente.
         /validate_update_entity_name.js: effettua la validazione lato client dell'update del nome di un ente.
         /validate_update_entity_type.js: effettua la validazione lato client dell'update del tipo di un ente.
@@ -155,7 +154,7 @@ ltw-main
         /validate_update_piva.js: effettua la validazione lato client dell'update della Partita IVA di un utente.
         /validate_update_website.js: effettua la validazione lato client dell'update del sito web di un utente.
         /form_switch.js: genera l'animazione del form di login e registrazione di index.php.
-        /register_slide.js: genera l'animazione di scorrimento del form di registrazione nella pagina di index.php.
+        /register_slide.js: genera l'animazione di scorrimento del form di registrazione di index.php.
         /toggle_psw.js: contiene il meccanismo di toggle per la visibilità della password.
         /message.js: mostra il modal di successo dell'operazione eseguita.
         /error.js: mostra il modal di errore.
