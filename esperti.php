@@ -3,6 +3,8 @@ global $sitename_brief, $authors;
 require_once('includes/info.php');
 require_once('includes/session.php');
 require_once('scripts/show_expert.php');
+require_once('scripts/show_title.php');
+require_once('scripts/show_competence.php');
 if (!isset($_SESSION['usertype']) or $_SESSION['usertype'] != 'ente') {
     header('Location: me.php?err=sessione+utente+ente+non+attiva');
     die('sessione utente ente non attiva');
@@ -65,7 +67,8 @@ endif;
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel">Titoli di studio - <?php echo($_GET['username']); ?></h5>
+                    <h5 class="modal-title" id="exampleModalToggleLabel">Titoli di studio
+                        - <?php echo($_GET['username']); ?></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -82,7 +85,7 @@ endif;
                             </thead>
                             <tbody>
                             <?php
-                            $array = show_expert_title($_GET['username']);
+                            $array = show_all_titles($_GET['username']);
                             $n = count($array);
                             if (!is_array($array) or $n <= 0): ?>
                                 <tr>
@@ -94,7 +97,7 @@ endif;
                                 for ($i = 0; $i < $n; $i += 1) { ?>
                                     <tr>
                                         <th scope="row"><?php echo($i + 1); ?></th>
-                                        <td><?php echo($array[$i]['title']); ?></td>
+                                        <td><?php echo($array[$i]['name']); ?></td>
                                         <td><?php echo($array[$i]['date']); ?></td>
                                         <td><?php echo($array[$i]['notes']); ?></td>
                                         <td><?php echo($array[$i]['grade']); ?></td>
@@ -118,7 +121,8 @@ endif;
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel2">Competenze - <?php echo($_GET['username']); ?></h5>
+                    <h5 class="modal-title" id="exampleModalToggleLabel2">Competenze
+                        - <?php echo($_GET['username']); ?></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -133,7 +137,7 @@ endif;
                         </thead>
                         <tbody>
                         <?php
-                        $array = show_expert_competence($_GET['username']);
+                        $array = show_all_competences($_GET['username']);
                         $n = count($array);
                         if (!is_array($array) or $n <= 0): ?>
                             <tr>
@@ -144,7 +148,7 @@ endif;
                             <?php for ($i = 0; $i < $n; $i += 1) { ?>
                                 <tr>
                                     <th scope="row"><?php echo($i + 1); ?></th>
-                                    <td><?php echo($array[$i]['competence']); ?></td>
+                                    <td><?php echo($array[$i]['name']); ?></td>
                                     <td><?php echo($array[$i]['area']); ?></td>
                                     <td><?php echo($array[$i]['description']); ?></td>
                                 </tr>

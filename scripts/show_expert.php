@@ -20,47 +20,6 @@ function show_all_experts()
     return $rows;
 }
 
-function show_expert_title($username)
-{
-    global $connection;
-    $query = 'SELECT esperto, titolo, data_conseguimento, note, voto FROM titoli_esperti WHERE esperto = ?';
-    $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
-    mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
-    mysqli_stmt_execute($statement) or die(mysqli_error($connection));
-    mysqli_stmt_bind_result($statement, $username, $title, $date, $notes, $grade) or die(mysqli_error($connection));
-    $num_rows = mysqli_stmt_num_rows($statement);
-    $i = 0;
-    $rows = array();
-    while (mysqli_stmt_fetch($statement)) {
-        $rows[$i] = array('username' => $username, 'title' => $title, 'date' => $date, 'notes' => $notes, 'grade' => $grade);
-        $i += 1;
-    }
-    mysqli_stmt_close($statement) or die(mysqli_error($connection));
-//    require_once('includes/close_connection.php');
-    return $rows;
-}
-
-function show_expert_competence($username)
-{
-    global $connection;
-    $query = 'SELECT esperto, competenza, settore, descrizione FROM competenze_esperti WHERE esperto = ?';
-    $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
-    mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
-    mysqli_stmt_execute($statement) or die(mysqli_error($connection));
-    mysqli_stmt_bind_result($statement, $username, $competence, $area, $description) or die(mysqli_error($connection));
-    $num_rows = mysqli_stmt_num_rows($statement);
-    $i = 0;
-    $rows = array();
-    while (mysqli_stmt_fetch($statement)) {
-        $rows[$i] = array('username' => $username, 'competence' => $competence, 'area' => $area, 'description' => $description);
-        $i += 1;
-    }
-    mysqli_stmt_free_result($statement);
-    mysqli_stmt_close($statement) or die(mysqli_error($connection));
-//    require_once('includes/close_connection.php');
-    return $rows;
-}
-
 function expert_exists($username)
 {
     global $connection;
