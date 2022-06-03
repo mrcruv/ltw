@@ -1,75 +1,107 @@
 ltw-main
 
     /css
-        /style.css: foglio di stile utilizzato per la grafica rincorrente nelle pagine principali.
+        /style.css: foglio di stile utilizzato per la grafica (ricorrente nelle pagine principali).
+
+    /img
+        /logo_ente.png: immagine rappresentativa di un ente; utilizzata in me.php.
+        /logo_esperto.png: immagine rappresentativa di un esperto; utilizzata in me.php.
+        /prova_logo.ico: favicon utilizzata in tutte le pagine principali.
+        /prova_logo.png: logo dell'applicazione; utilizzata in index.php.
 
     /includes
-        /close_connection.php: file php che effettua la chiusura della connessione con il server prendendo le informazioni di configurazione includendo il file config.php.
-        /config.php: file php contenente le informazioni di configurazione del server e del database.
-        /error:php: file php contenente il modal visualizzato in caso di errore lato server attraverso la variabile globale $_GET.
-        /footer.php: file php contentente il footer visualizzato in tutte le principali pagine del sito dopo aver effettuato il login.
-        /header.php: file php contentente il header visualizzato in tutte le principali pagine del sito dopo aver effettuato il login. 
-        /info.php: file php contentente le informazioni del sito visualizzate nel footer. 
-        /lengths.php: file php contentente le dimensioni minime e massime ammissibili per le validazioni lato server delle principali operazioni di login, register, add, update e delete. 
-        /message.php: file php contenente il modal visualizzato in caso di successo di un'operazione (login, update, ecc..) attraverso la variabile globale $_GET.
-        /open_connection.php: file php che effettua l'apertura della connessione con il server prendendo le informazioni di configurazione dal file config.php.
-        /regex.php: file php contentente le espressioni regolari per le validazioni lato server delle principali operazioni di login, register, add, update e delete. 
-        /session.php: file php che effettua avviare la sessione con un controllo in caso di connessione già avviata. 
+        /close_connection.php: effettua la chiusura della connessione al database.
+        /config.php: contiene le informazioni di configurazione del server e del database (IP, porta, ecc...).
+        /error:php: contiene il modal visualizzato in caso di errore lato server (visualizzato attraverso la variabile globale $_GET).
+        /footer.php: contiene il footer visualizzato in tutte le principali pagine dell'applicazione dopo aver effettuato il login.
+        /header.php: contiene l'header (dinamico in base al tipo di utente) visualizzato in tutte le principali pagine dell'applicazione dopo aver effettuato il login.
+        /info.php: contiene le informazioni dell'applicazione visualizzate nel footer (nome applicazione, autori, ecc...).
+        /lengths.php: contiene le dimensioni minime e massime ammissibili per le validazioni lato server delle principali operazioni di login, register, add, update e delete. 
+        /message.php: contiene il modal visualizzato in caso di successo di un'operazione (login, update, ecc... - visualizzato attraverso la variabile globale $_GET).
+        /open_connection.php: effettua l'apertura della connessione con il database (prendendo le informazioni di configurazione dal file config.php).
+        /regex.php: contiene le espressioni regolari per le validazioni lato server delle principali operazioni di login, register, add, update e delete. 
+        /session.php: avvia una sessione se non è già stata avviata altrimenti reindirizza l'utente.
+        /terms.html: contiene un fac-simile dei termini e delle condizioni d'uso dell'applicazione (scaricabile/consultabile da index.php, al termine della registrazione).
+
+    /README
+        /screenshots
+            /altro: contiene gli screenshots di index.php (login) e di terms.html
+            /ente: contiene gli screenshots (dal punto di vista di un ente) di assegnazioni.php, me.php, esperti.php, index.php (varie fasi di registrazione), processi.php
+            /esperto: contiene gli screenshots (dal punto di vista di un esperto) di assegnazioni.php, competenze.php, me.php, index.php (varie fasi di registrazione), titoli.php
+            /responsiveness: contiene gli screenshots (in modalità mobile/smartphone) di assegnazioni.php (sia dal punto di vista di un ente che di un esperto),
+                             competenze.php, me.php (sia dal punto di vista di un ente che di un esperto), esperti.php, processi.php, titoli.php
+                             index.php (login e fase iniziale di registrazione sia per enti che per esperti).
+
+        /create_database.sql: contiene le istruzioni di definizione del database.
+        /populate_database.sql: contiene le istruzioni per popolare il database.
+        /diagramma_ER.jpg: schema concettuale individuato in fase di progettazione concettuale.
+        /diagramma_ER_ristrutturato.jpg: schema concettuale ristrutturato.
+        /diagramma_logico: schema logico individuato in fase di progettazione logica (esportato da phphMyAdmin).
+        /ER.drawio: schema concettuale e schema concettuale ristrutturato in formato DRAWIO.
+        /README.txt: questo file, definizione ricorsiva! :).
 
     /scripts
-        /accept_reject.php: file php che effettua l'accettazione o il rifiuto di una assegnazione pendente. Dopo i controlli opporturni viene aggiornata la data di accettazione, nel caso l'esperto accetta, o la data di rifiuto nel caso l'esperto rifiuta.
-        /add_availability.php: file php che effettua l'aggiunta di una assegnazione da parte di un ente. Dopo i controlli opportuni viene aggiunta l'assegnazione dell'ente con il processo e l'esperto scelti.
-        /add_competence.php: file php che effettua l'aggiunta da parte di un esperto di una competenza. Viene effettuata la validazione lato server includendo i file regex.php e lengths.php.
-        /add_form.js: file javascript che genera l'animazione a comparsa dei form di aggiunta nelle pagine titoli.php, assegnazioni.php, competenze.php, processi.php.
-        /add_process.php: file php che effettua l'aggiunta da parte di un ente di un processo. Viene effettuata la validazione lato server includendo i file regex.php e lengths.php.
-        /add_title.php: file php che effettua l'aggiunta da parte di un esperto di un titolo di studio. Viene effettuata la validazione lato server includendo i file regex.php e lengths.php.
-        /delete_competence.php: file php che effettua l'eliminazione da parte di un esperto di una competenza.
-        /delete_title.php: file php che effettua l'eliminazione da parte di un esperto di un titolo di studio.
-        /entity_stats.php: file php che effettua il calcolo delle statistiche di un ente. Vengono visualizzati il numero di: processi, assegnazioni (divise in pendenti, accettate, rifiutate).
-        /error.js: file javascript che mostra il modal di errore.
-        /expert_stats.php: file php che effettua il calcolo delle statistiche di un esperto. Vengono visualizzati il numero di: titoli di studio, competenze, assegnazioni (divise in pendenti, accettate, rifiutate). 
-        /form_switch.js: file javascript che genera l'animazione del form di login e registrazione di index.php.
-        /login.php: file php che effettua il login e setta la variabile $_SESSION con username e tipo di utente.
-        /logout.php: file php che effettua il logout, l'unset della variabile $_SESSION e distrugge la sessione.
-        /message.js: file javascript che mostra il modal di successo dell'operazione eseguita.
-        /register_entity.php: file php che effettua la registrazione di un ente. Viene effettuata la validazione lato server includendo i file regex.php e lengths.php.
-        /register_expert.php: file php che effettua la registrazione di un esperto. Viene effettuata la validazione lato server includendo i file regex.php e lengths.php.
-        /register_slide.js: file javascript che genera l'animazione di scorrimento del form di registrazione nella pagina di index.php.
-        /remove_website.php: file php che effettua l'eliminazione da parte di un utente del sito web.
-        /show_availability.php: file php formato da due funzioni che memorizzano in un array tutte le assegnazioni di un ente (funzione ente) o di un esperto (funzione esperto) ritornando l'array stesso.
-        /show_competence.php: file php formato da una funzione che memorizza in un array tutte le competenze di un esperto ritornando l'array stesso.
-        /show_expert.php: file php formato da una funzione che memorizza in un array tutti gli esperti ritornado l'array stesso. Due funzioni che memorizzano in degli array i titoli di studio e le competenze di ogni esperto che vengono ritornati. Infine una quarta funzione che controlla se l'esperto esiste. 
-        /show_process.php: file php formato da una funzione che memorizza in un array tutte i processi di un ente ritornando l'array stesso.
-        /show_title.php: file php formato da una funzione che memorizza in un array tutte i titoli di studio di un esperto ritornando l'array stesso.
-        /toggle_psw.js: file javascript per il toggle della visibilità della password.
-        /update_cf.php: file php che effettua l'update del Codice Fiscale di un utente. Viene effettuata la validazione lato server includendo i file regex.php e lengths.php.
-        /update_entity_name.php: file php che effettua l'update del nome dell'ente. Viene effettuata la validazione lato server includendo i file regex.php e lengths.php.
-        /update_entity_type.php: file php che effettua l'update del tipo dell'ente. Viene effettuata la validazione lato server includendo i file regex.php e lengths.php.
-        /update_info.js: file javascript 
-        /update_password.php: file php che effettua l'update della password di un utente. Viene effettuata la validazione lato server includendo i file regex.php e lengths.php.
-        /update_pec.php: file php che effettua l'update della PEC di un utente. Viene effettuata la validazione lato server includendo i file regex.php e lengths.php.
-        /update_piva.php: file php che effettua l'update della Partita IVA di un utente. Viene effettuata la validazione lato server includendo i file regex.php e lengths.php.
-        /update_website.php: file php che effettua l'update del sito web di un utente. Viene effettuata la validazione lato server includendo i file regex.php e lengths.php.
-        /validate_add_competence.js: file javascript che effettua la validazione dell'aggiunta di una competenza attraverso il metodo validate() di JQuery. Viene effettuata la vaidazione lato client con esperessioni regolari e minime e massime dimensioni.
-        /validate_add_process.js: file javascript che effettua la validazione dell'aggiunta di un processo attraverso il metodo validate() di JQuery. Viene effettuata la vaidazione lato client con esperessioni regolari e minime e massime dimensioni.
-        /validate_add_title.js: file javascript che effettua la validazione dell'aggiunta di un titolo di studio attraverso il metodo validate() di JQuery. Viene effettuata la vaidazione lato client con esperessioni regolari e minime e massime dimensioni. 
-        /validate_login.js: file javascript che effettua la validazione del login di un utente attraverso il metodo validate() di JQuery. Viene effettuata la vaidazione lato client con esperessioni regolari e minime e massime dimensioni. 
-        /validate_register_entity.js: file javascript che effettua la validazione della registrazione attraverso il metodo validate() di JQuery. Viene effettuata la vaidazione lato client con esperessioni regolari e minime e massime dimensioni.
-        /validate_register_expert.js: file javascript che effettua la validazione dell'aggiunta di una competenza attraverso il metodo validate() di JQuery. Viene effettuata la vaidazione lato client con esperessioni regolari e minime e massime dimensioni.
-        /validate_update_cf.js: file javascript che effettua la validazione dell'update del Codice Fiscale di un utente attraverso il metodo validate() di JQuery. Viene effettuata la vaidazione lato client con esperessioni regolari e minime e massime dimensioni.
-        /validate_update_entity_name.js: file javascript che effettua la validazione dell'update del nome di un ente attraverso il metodo validate() di JQuery. Viene effettuata la vaidazione lato client con esperessioni regolari e minime e massime dimensioni.
-        /validate_update_entity_type.js: file javascript che effettua la validazione dell'update del tipo di un ente attraverso il metodo validate() di JQuery. Viene effettuata la vaidazione lato client con esperessioni regolari e minime e massime dimensioni.
-        /validate_update_password.js: file javascript che effettua la validazione dell'update della password di un utente attraverso il metodo validate() di JQuery. Viene effettuata la vaidazione lato client con esperessioni regolari e minime e massime dimensioni.
-        /validate_update_pec.js: file javascript che effettua la validazione dell'update della PEC di un utente attraverso il metodo validate() di JQuery. Viene effettuata la vaidazione lato client con esperessioni regolari e minime e massime dimensioni.
-        /validate_update_piva.js: file javascript che effettua la validazione dell'update della Partita IVA di un utente attraverso il metodo validate() di JQuery. Viene effettuata la vaidazione lato client con esperessioni regolari e minime e massime dimensioni.
-        /validate_update_website.js: file javascript che effettua la validazione dell'update del sito web di un utente attraverso il metodo validate() di JQuery. Viene effettuata la vaidazione lato client con esperessioni regolari e minime e massime dimensioni. 
+        /accept_reject.php: effettua l'accettazione o il rifiuto di una assegnazione pendente da parte dell'esperto associato;
+                            dopo opporturni controlli viene aggiornata la data di accettazione, in caso di accettazione, o la data di rifiuto in caso di rifiuto.
+        /add_availability.php: effettua l'aggiunta di una assegnazione da parte di un ente;
+                               dopo opporturni controlli viene aggiunta l'assegnazione dell'ente con il processo e l'esperto designati.
+        /add_competence.php: effettua l'aggiunta, da parte di un esperto, di una competenza; viene inoltre effettuata la validazione lato server.
+        /add_process.php: effettua l'aggiunta, da parte di un ente, di un processo; viene inoltre effettuata la validazione lato server.
+        /add_title.php: effettua l'aggiunta, da parte di un esperto, di un titolo di studio; viene inoltre effettuata la validazione lato server.
+        /delete_competence.php: effettua l'eliminazione, da parte di un esperto, di una competenza.
+        /delete_title.php: effettua l'eliminazione, da parte di un esperto, di un titolo di studio.
+        /entity_stats.php: effettua il calcolo delle statistiche di un ente;
+                           vengono visualizzati il numero di: processi, assegnazioni (divise in pendenti, accettate, rifiutate).
+        /expert_stats.php: effettua il calcolo delle statistiche di un esperto;
+                           vengono visualizzati il numero di: titoli di studio, competenze, assegnazioni (divise in pendenti, accettate, rifiutate).
+        /login.php: effettua il login e setta la variabile globale $_SESSION con username e tipo di utente.
+        /logout.php: effettua il logout, l'unset della variabile globale $_SESSION e distrugge la sessione.
+        /register_entity.php: effettua la registrazione di un ente; viene effettuata la validazione lato server.
+        /register_expert.php: effettua la registrazione di un esperto; viene effettuata la validazione lato server.
+        /remove_website.php: effettua la rimozione, da parte di un utente, del sito web.
+        /show_availability.php: contiene una funzione che memorizza in un array tutte le assegnazioni di un ente e lo restituisce
+                                ed una funzione che memorizza in un array tutte le assegnazioni di un esperto e lo restituisce.
+        /show_competence.php: contiene una funzione che memorizza in un array tutte le competenze di un esperto e lo restituisce.
+        /show_expert.php: contiene una funzione che memorizza in un array tutti gli esperti e lo restituisce,
+                          una funzione che memorizza in un array i titoli di studio di un esperto e lo restituisce,
+                          una funzione che memorrizza in un array le competenze di un esperto e lo restituisce
+                          ed una funzione che controlla l'esistenza di un esperto.
+        /show_process.php: contiene una funzione che memorizza in un array tutte i processi di un ente e lo restituisce.
+        /show_title.php: contiene una funzione che memorizza in un array tutte i titoli di studio di un esperto e lo restituisce.
+        /update_cf.php: effettua l'update del Codice Fiscale di un utente; viene effettuata la validazione lato server.
+        /update_entity_name.php: effettua l'update del nome dell'ente; viene effettuata la validazione lato server.
+        /update_entity_type.php: effettua l'update del tipo dell'ente; viene effettuata la validazione lato server.
+        /update_info.js: contiene il meccanismo di gestione degli eventi generati dalle operazioni di update/remove sulle informazioni utente.
+        /update_password.php: effettua l'update della password di un utente; viene effettuata la validazione lato server.
+        /update_pec.php: effettua l'update della PEC di un utente; viene effettuata la validazione lato server.
+        /update_piva.php: effettua l'update della Partita IVA di un utente; viene effettuata la validazione lato server.
+        /update_website.php: effettua l'update del sito web di un utente; viene effettuata la validazione lato server.
+        /add_form.js: genera l'animazione a comparsa dei form di aggiunta nelle pagine titoli.php, assegnazioni.php, competenze.php, processi.php.
+        /validate_add_competence.js: effettua la validazione lato client dell'aggiunta di una competenza.
+        /validate_add_process.js: effettua la validazione lato client dell'aggiunta di un processo.
+        /validate_add_title.js: effettua la validazione lato client dell'aggiunta di un titolo di studio.
+        /validate_login.js: effettua la validazione lato client del login di un utente. 
+        /validate_register_entity.js: effettua la validazione lato client della registrazione.
+        /validate_register_expert.js: effettua la validazione lato client dell'aggiunta di una competenza.
+        /validate_update_cf.js: effettua la validazione lato client dell'update del Codice Fiscale di un utente.
+        /validate_update_entity_name.js: effettua la validazione lato client dell'update del nome di un ente.
+        /validate_update_entity_type.js: effettua la validazione lato client dell'update del tipo di un ente.
+        /validate_update_password.js: effettua la validazione lato client dell'update della password di un utente.
+        /validate_update_pec.js: effettua la validazione lato client dell'update della PEC di un utente.
+        /validate_update_piva.js: effettua la validazione lato client dell'update della Partita IVA di un utente.
+        /validate_update_website.js: effettua la validazione lato client dell'update del sito web di un utente.
+        /form_switch.js: genera l'animazione del form di login e registrazione di index.php.
+        /register_slide.js: genera l'animazione di scorrimento del form di registrazione nella pagina di index.php.
+        /toggle_psw.js: contiene il meccanismo di toggle per la visibilità della password.
+        /message.js: mostra il modal di successo dell'operazione eseguita.
+        /error.js: mostra il modal di errore.
 
-    /assegnazioni.php: file php che visualizza tutte le assegnazioni che ha un utente (pendenti, accettate e rifiutate) e nel caso l'utente sia un ente viene visualizzato anche un form a comparsa per l'aggiunta di un'assegnazione.
-    /competenze.php: file php che visualizza tutte le competenze che ha un utente esperto. Viene visualizzato anche un form a comparsa per l'aggiunta di una competenza.
-    /esperti.php: file php che visualizza tutti gli esperti registrati al sito. In questa pagina un utente ente può visualizzare tutte le informazioni di un esperto (titoli di studio e competenze).
-    /index.php: file php che visualizza i form di login e registrazione e una breve descrizione del sito.
-    /me.php: file php che visualizza la dashboard dell'utente con tutte le informazioni, statistiche e form di cambio password.
-    /processi.php: file php che visualizza tutti i processi che un ente ha creato. Viene visualizzato anche un form a comparsa per l'aggiunta di un processo.
-    /titoli.php: file php che visualizza tutti i titoli di studio di un utente esperto. Viene visualizzato anche un form a comparsa per l'aggiunta di un titolo di studio.
-    
-
+    /assegnazioni.php: visualizza tutte le assegnazioni che ha un utente (pendenti, accettate e rifiutate);
+                       nel caso l'utente sia un ente viene visualizzato anche un form a comparsa per l'aggiunta di un'assegnazione.
+    /competenze.php: visualizza tutte le competenze che ha un utente esperto; viene visualizzato anche un form a comparsa per l'aggiunta di una competenza.
+    /esperti.php: visualizza tutti gli esperti registrati alla piattaforma;
+                  in questa pagina un utente ente può visualizzare tutte le informazioni di un esperto (titoli di studio e competenze).
+    /index.php: visualizza i form di login e registrazione e una breve descrizione dell'applicazione.
+    /me.php: visualizza la dashboard dell'utente con tutte le informazioni, statistiche e form di cambio password.
+    /processi.php: visualizza tutti i processi che un utente ente ha creato; viene visualizzato anche un form a comparsa per l'aggiunta di un processo.
+    /titoli.php: visualizza tutti i titoli di studio di un utente esperto; viene visualizzato anche un form a comparsa per l'aggiunta di un titolo di studio.
