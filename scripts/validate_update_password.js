@@ -1,5 +1,5 @@
 const password_regex = /^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/;
-const password_minlength = 8;
+const password_minlength = 12;
 const password_maxlength = 24; // bcrypt supports max 72 Byte, in MySQL 1 char takes up from 1 Byte to 3 Byte
 
 jQuery.validator.addMethod("password_regex", function (value, element) {

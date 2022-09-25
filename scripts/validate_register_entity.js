@@ -13,7 +13,7 @@ const entity_pec_maxlength = 255;
 const entity_piva_maxlength = 11;
 const entity_website_maxlength = 255;
 const entity_name_maxlength = 50;
-const entity_password_minlength = 8;
+const entity_password_minlength = 12;
 const entity_password_maxlength = 24; // bcrypt supports max 72 Byte, in MySQL 1 char takes up from 1 Byte to 3 Byte
 
 jQuery.validator.addMethod("entity_username_regex", function (value, element) {

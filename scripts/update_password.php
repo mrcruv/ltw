@@ -35,7 +35,6 @@ if (strlen($new_password) > $password_maxlength) {
     die('nuova password supera la lunghezza massima consentita: ' . $password_maxlength);
 }
 $msg = '';
-strlen($new_password) >= 8 or $msg .= 'lunghezza+minima+non+raggiunta';
 preg_match($contains_lowercase, $new_password) or $msg .= 'lowercase+non+incluso';
 preg_match($contains_special, $new_password) or $msg .= 'special+non+incluso';
 preg_match($contains_uppercase, $new_password) or $msg .= 'uppercase+non+incluso';
