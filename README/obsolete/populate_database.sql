@@ -66,17 +66,17 @@ VALUES ('ente1', 'Ente1', 'privato'),
 -- Dump dei dati per la tabella `processi`
 --
 
-INSERT INTO `processi` (`nome`, `ente`, `tipologia`, `descrizione`)
-VALUES ('processo1', 'ente1', 'informatico', 'processo informatico'),
-       ('processo10', 'ente1', 'aziendale', 'processo aziendale'),
-       ('processo2', 'ente2', 'aziendale', 'processo aziendale'),
-       ('processo3', 'ente2', 'economico', 'processo economico'),
-       ('processo4', 'ente2', 'giuridico', 'processo giuridico'),
-       ('processo5', 'ente1', 'aziendale', 'processo aziendale'),
-       ('processo6', 'ente1', 'informatico', 'processo informatico'),
-       ('processo7', 'ente4', 'industriale', 'processo industriale'),
-       ('processo8', 'ente4', 'formativo', 'processo formativo'),
-       ('processo9', 'ente5', 'commerciale', 'processo commerciale');
+INSERT INTO `processi` (`nome`, `ente`, `data_conclusione`, `tipologia`, `descrizione`)
+VALUES ('processo1', 'ente1', NULL, 'informatico', 'processo informatico'),
+       ('processo10', 'ente1', NULL, 'aziendale', 'processo aziendale'),
+       ('processo2', 'ente2', NULL, 'aziendale', 'processo aziendale'),
+       ('processo3', 'ente2', NULL, 'economico', 'processo economico'),
+       ('processo4', 'ente2', NULL, 'giuridico', 'processo giuridico'),
+       ('processo5', 'ente1', NULL, 'aziendale', 'processo aziendale'),
+       ('processo6', 'ente1', NULL, 'informatico', 'processo informatico'),
+       ('processo7', 'ente4', NULL, 'industriale', 'processo industriale'),
+       ('processo8', 'ente4', NULL, 'formativo', 'processo formativo'),
+       ('processo9', 'ente5', NULL, 'commerciale', 'processo commerciale');
 
 --
 -- Dump dei dati per la tabella `esperti`

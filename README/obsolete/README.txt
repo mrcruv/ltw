@@ -21,14 +21,14 @@ attributo data_conclusione in Processi (+ funzionalità associate), generalizzaz
 Essendo questa una versione dimostrativa, questi aspetti e funzionalità avanzate non sono state implementate, sebbene gli autori dell'applicazione abbiano intenzione di proseguire
 nello sviluppo di una versione più ricca e completa della piattaforma.
 
-TECNOLOGIE UTILIZZATE: HTML, Bootstrap, JavaScript (jQuery), PHP, MariaDB.
-ALTRI STRUMENTI UTILIZZATI: XAMPP (Apache Web Server, MySQL, PHP), Git e GitHub (code versioning e sviluppo collaborativo),
+TECNOLOGIE UTILIZZATE: HTML, Bootstrap, JavaScript (JQuery), PHP, MySQL.
+ALTRI STRUMENTI UTILIZZATI: XAMPP (Apache Web Server, MySQL, PHP), GitHub (code versioning e sviluppo collaborativo),
 	diagrams.net (per disegnare diagrammi ER), VSC e PhpStorm (editor/IDE), Adobe Photoshop (loghi, icone)
 
 NOTA:
 Entrambi i componenti del gruppo hanno collaborato allo sviluppo comune di alcuni task (form, progettazione struttura applicazione, test) mentre
 altri task sono stati portati avanti in maniera più indipendente, in particolare:
--validazione lato client, grafica ed effetti grafici, interazione utente con JS/jQuery, modifica immagini con PS (Federico Detomaso)
+-validazione lato client, grafica ed effetti grafici, interazione utente con JS/JQuery, modifica immagini con PS (Federico Detomaso)
 -validazione lato server, interazione con server (query, ecc...), strutturazione in moduli, definizione database (Marco Ruvolo)
 
 NOTA:
@@ -39,7 +39,7 @@ Abbiamo privilegiato una linea di sviluppo che si incentrasse soprattutto sul bu
 -per rendere leggibile il codice abbiamo utilizzato nomi di variabili, file, funzioni quanto più significativi e seguito i buoni principi della programmazione
     (sebbeno i commenti siano rari, il codice stesso dovrebbe fungere da autodocumentazione ed essere di facile comprensione e lettura)
 -per ottenere un livello di sicurezza medio/alto abbiamo scelto di procedere con una validazione form utente two-step:
-    validazione lato client per l'usabilità (jQuery valida ed espone eventuali messaggi di errore direttamente sotto ai campi del modulo associati)
+    validazione lato client per l'usabilità (JQuery valida ed espone eventuali messaggi di errore direttamente sotto ai campi del modulo associati)
     e validazione lato server per la sicurezza (PHP valida e redireziona l'utente senza effettuare modifiche al database in caso di errore)
 -tenendo conto del fatto che l'obiettivo del progetto non è dimostrare di padroneggiare le interfacce utenti o l'esperienza utente (UI/UX)), la grafica, seppur minimale,
     è stata curata in modo attento, con particolare enfasi sulla responsività (Bootstrap, media query, viewport) delle pagine web
@@ -57,12 +57,12 @@ Si riporta di seguito una breve descrizione della struttura dell'applicazione (d
 La directory principale del progetto contiene:
 -le pagine principali dell'applicazione (assegnazioni, competenze, esperti, index, me, processi, titoli)
 -una sottodirectory css, contenente il foglio di stile style utilizzato ricorrentemente nelle pagine principali
--una sottodirectory scripts, contenente vari scripts in PHP e JS (jQuery) utilizzati per diversi scopi tra cui validazione form (lato client, lato server),
+-una sottodirectory scripts, contenente vari scripts in PHP e JS (JQuery) utilizzati per diversi scopi tra cui validazione form (lato client, lato server),
 	operazioni CRUDI (scripts i cui nomi hanno i prefissi add, delete, update, show),
 	effetti grafici/gestione eventi/visualizzazione alert (error, message, form_switch, toggle_psw, ecc...)
 -una sottodirectory includes, contenente files (fondamentalmente scripts PHP) inclusi ricorrentemente in più pagine dell'applicazione (modularità e riuso del codice!)
 -una sottodirectory img, contenente le immagini utilizzate nell'applicazione
--una sottodirectory README, contenente i diagrammi concettuali e logici , gli script SQL per la creazione e popolazione del database, questo file README
+-una sottodirectory README, contenente i diagrammi concettuali e logici in formato JPG e drawio, gli script SQL per la creazione e popolazione del database, questo file README
     ed un'ulteriore sottodirectory screenshots contenente gli screenshots delle pagine che compongono l'applicazione (suddivise in quattro tipologie: ente, esperto, responsiveness
     ed infine altro - sotto responsiveness sono raccolti gli screenshots che mostrano la visualizzazione delle pagine web in modalità mobile/smartphone)
 

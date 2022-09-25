@@ -103,6 +103,7 @@ CREATE TABLE IF NOT EXISTS `processi`
 (
     `nome`             varchar(255) NOT NULL,
     `ente`             varchar(30)  NOT NULL,
+    `data_conclusione` date DEFAULT NULL,
     `tipologia`        varchar(255) NOT NULL,
     `descrizione`      text         NOT NULL,
     PRIMARY KEY (`nome`, `ente`),
