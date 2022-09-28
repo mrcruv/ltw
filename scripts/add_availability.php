@@ -42,7 +42,7 @@ if (!mysqli_stmt_fetch($statement)) {
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
-$query = 'SELECT * FROM disponibilita WHERE processo = ? AND esperto = ?';
+$query = 'SELECT * FROM assegnazioni WHERE processo = ? AND esperto = ?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
 mysqli_stmt_bind_param($statement, 'ss', $process, $expert) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
@@ -53,7 +53,7 @@ if (mysqli_stmt_fetch($statement)) {
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
-$query = "INSERT INTO disponibilita(processo, ente, esperto) VALUES (?, ?, ?);";
+$query = "INSERT INTO assegnazioni(processo, ente, esperto) VALUES (?, ?, ?);";
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
 mysqli_stmt_bind_param($statement, 'sss', $process, $username, $expert) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));

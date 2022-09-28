@@ -53,7 +53,7 @@ if (!mysqli_stmt_fetch($statement)) {
 }
 mysqli_stmt_close($statement) or die(mysqli_error($connection));
 
-$query = 'SELECT data_assegnazione, data_rifiuto FROM disponibilita WHERE processo = ? AND esperto = ?';
+$query = 'SELECT data_assegnazione, data_rifiuto FROM assegnazioni WHERE processo = ? AND esperto = ?';
 $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
 mysqli_stmt_bind_param($statement, 'ss', $process, $username) or die(mysqli_error($connection));
 mysqli_stmt_execute($statement) or die(mysqli_error($connection));
@@ -78,9 +78,9 @@ if (empty($action)) {
     header('Location: ../assegnazioni.php?err=operazione+non+inserita');
     die('azione non inserita');
 } else if ($action == 'accept') {
-    $query = 'UPDATE disponibilita SET data_assegnazione = ? WHERE processo = ? AND esperto = ?';
+    $query = 'UPDATE assegnazioni SET data_assegnazione = ? WHERE processo = ? AND esperto = ?';
 } else if ($action == 'reject') {
-    $query = 'UPDATE disponibilita SET data_rifiuto = ? WHERE processo = ? AND esperto = ?';
+    $query = 'UPDATE assegnazioni SET data_rifiuto = ? WHERE processo = ? AND esperto = ?';
 } else {
     header('Location: ../assegnazioni.php?err=operazione+non+valida');
     die('operazione non valida');

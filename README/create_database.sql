@@ -41,10 +41,10 @@ CREATE TABLE IF NOT EXISTS `competenze_esperti`
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `disponibilita`
+-- Struttura della tabella `assegnazioni`
 --
 
-CREATE TABLE IF NOT EXISTS `disponibilita`
+CREATE TABLE IF NOT EXISTS `assegnazioni`
 (
     `processo`          varchar(255) NOT NULL,
     `ente`              varchar(30)  NOT NULL,
@@ -160,11 +160,11 @@ ALTER TABLE `competenze_esperti`
     ADD CONSTRAINT `competenze_esperti_ibfk_1` FOREIGN KEY (`esperto`) REFERENCES `esperti` (`username`);
 
 --
--- Limiti per la tabella `disponibilita`
+-- Limiti per la tabella `assegnazioni`
 --
-ALTER TABLE `disponibilita`
-    ADD CONSTRAINT `disponibilita_ibfk_1` FOREIGN KEY (`processo`, `ente`) REFERENCES `processi` (`nome`, `ente`),
-    ADD CONSTRAINT `disponibilita_ibfk_2` FOREIGN KEY (`esperto`) REFERENCES `esperti` (`username`);
+ALTER TABLE `assegnazioni`
+    ADD CONSTRAINT `assegnazioni_ibfk_1` FOREIGN KEY (`processo`, `ente`) REFERENCES `processi` (`nome`, `ente`),
+    ADD CONSTRAINT `assegnazioni_ibfk_2` FOREIGN KEY (`esperto`) REFERENCES `esperti` (`username`);
 
 --
 -- Limiti per la tabella `enti`

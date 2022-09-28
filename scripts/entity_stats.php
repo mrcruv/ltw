@@ -24,7 +24,7 @@ function n_accepted_from_entity($username)
 {
     global $connection;
     $n = 0;
-    $query = 'SELECT COUNT(*) AS n FROM disponibilita WHERE ente = ? AND data_assegnazione IS NOT NULL';
+    $query = 'SELECT COUNT(*) AS n FROM assegnazioni WHERE ente = ? AND data_assegnazione IS NOT NULL';
     $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
     mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
     mysqli_stmt_execute($statement) or die(mysqli_error($connection));
@@ -42,7 +42,7 @@ function n_rejected_from_entity($username)
 {
     global $connection;
     $n = 0;
-    $query = 'SELECT COUNT(*) AS n FROM disponibilita WHERE ente = ? AND data_rifiuto IS NOT NULL';
+    $query = 'SELECT COUNT(*) AS n FROM assegnazioni WHERE ente = ? AND data_rifiuto IS NOT NULL';
     $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
     mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
     mysqli_stmt_execute($statement) or die(mysqli_error($connection));
@@ -60,7 +60,7 @@ function n_dangling_from_entity($username)
 {
     global $connection;
     $n = 0;
-    $query = 'SELECT COUNT(*) AS n FROM disponibilita WHERE ente = ? AND data_assegnazione IS NULL AND data_rifiuto IS NULL';
+    $query = 'SELECT COUNT(*) AS n FROM assegnazioni WHERE ente = ? AND data_assegnazione IS NULL AND data_rifiuto IS NULL';
     $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
     mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
     mysqli_stmt_execute($statement) or die(mysqli_error($connection));
@@ -78,7 +78,7 @@ function n_availability_from_entity($username)
 {
     global $connection;
     $n = 0;
-    $query = 'SELECT COUNT(*) AS n FROM disponibilita WHERE ente = ?';
+    $query = 'SELECT COUNT(*) AS n FROM assegnazioni WHERE ente = ?';
     $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
     mysqli_stmt_bind_param($statement, 's', $username) or die(mysqli_error($connection));
     mysqli_stmt_execute($statement) or die(mysqli_error($connection));

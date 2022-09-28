@@ -5,8 +5,8 @@ require_once('includes/session.php');
 function show_all_availabilities_from_expert($expert_username)
 {
     global $connection;
-    $query = 'SELECT processo, descrizione, tipologia, pec, sito_web, disponibilita.ente, data_richiesta, data_assegnazione, data_rifiuto
-    FROM disponibilita JOIN processi ON disponibilita.processo = processi.nome JOIN utenti ON disponibilita.ente = utenti.username
+    $query = 'SELECT processo, descrizione, tipologia, pec, sito_web, assegnazioni.ente, data_richiesta, data_assegnazione, data_rifiuto
+    FROM assegnazioni JOIN processi ON assegnazioni.processo = processi.nome JOIN utenti ON assegnazioni.ente = utenti.username
     WHERE esperto = ?';
     $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
     mysqli_stmt_bind_param($statement, 's', $expert_username) or die(mysqli_error($connection));
@@ -30,8 +30,8 @@ function show_all_availabilities_from_entity($entity_username)
 {
     global $connection;
     $query = 'SELECT processo, descrizione, tipologia, pec, sito_web, esperto, data_richiesta, data_assegnazione, data_rifiuto
-    FROM disponibilita JOIN processi ON disponibilita.processo = processi.nome JOIN utenti ON disponibilita.esperto = utenti.username
-    WHERE disponibilita.ente = ?';
+    FROM assegnazioni JOIN processi ON assegnazioni.processo = processi.nome JOIN utenti ON assegnazioni.esperto = utenti.username
+    WHERE assegnazioni.ente = ?';
     $statement = mysqli_prepare($connection, $query) or die(mysqli_error($connection));
     mysqli_stmt_bind_param($statement, 's', $entity_username) or die(mysqli_error($connection));
     mysqli_stmt_execute($statement) or die(mysqli_error($connection));

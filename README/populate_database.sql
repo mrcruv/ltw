@@ -102,10 +102,10 @@ VALUES ('esperto1', 'Linux', 'informatico', NULL),
        ('esperto5', 'Business model plan', 'economico', NULL);
 
 --
--- Dump dei dati per la tabella `disponibilita`
+-- Dump dei dati per la tabella `assegnazioni`
 --
 
-INSERT INTO `disponibilita` (`processo`, `ente`, `esperto`, `data_richiesta`, `data_assegnazione`, `data_rifiuto`)
+INSERT INTO `assegnazioni` (`processo`, `ente`, `esperto`, `data_richiesta`, `data_assegnazione`, `data_rifiuto`)
 VALUES ('processo1', 'ente1', 'esperto1', '2022-05-29', NULL, NULL),
        ('processo1', 'ente1', 'esperto2', '2022-05-20', NULL, NULL),
        ('processo1', 'ente1', 'esperto3', '2022-05-16', '2022-05-21', NULL),
