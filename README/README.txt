@@ -61,7 +61,7 @@ La directory principale del progetto contiene:
 	operazioni CRUDI (scripts i cui nomi hanno i prefissi add, delete, update, show),
 	effetti grafici/gestione eventi/visualizzazione alert (error, message, form_switch, toggle_psw, ecc...)
 -una sottodirectory includes, contenente files (fondamentalmente scripts PHP) inclusi ricorrentemente in più pagine dell'applicazione (modularità e riuso del codice!)
--una sottodirectory img, contenente le immagini utilizzate nell'applicazione
+-una sottodirectory imgs, contenente le immagini utilizzate nell'applicazione
 -una sottodirectory README, contenente i diagrammi concettuali e logici , gli script SQL per la creazione e popolazione del database, questo file README
     ed un'ulteriore sottodirectory screenshots contenente gli screenshots delle pagine che compongono l'applicazione (suddivise in quattro tipologie: ente, esperto, responsiveness
     ed infine altro - sotto responsiveness sono raccolti gli screenshots che mostrano la visualizzazione delle pagine web in modalità mobile/smartphone)
@@ -70,7 +70,7 @@ ltw-main
     /css
         /style.css: foglio di stile utilizzato per la grafica (utilizzato nelle pagine principali).
 
-    /img
+    /imgs
         /logo_ente.png: immagine rappresentativa di un ente; utilizzata in me.php.
         /logo_esperto.png: immagine rappresentativa di un esperto; utilizzata in me.php.
         /prova_logo.ico: favicon utilizzata in tutte le pagine principali.
