@@ -22,7 +22,7 @@ $usertype = $_SESSION['usertype'];
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/x-icon" href="img/prova_logo.ico">
+    <link rel="icon" type="image/x-icon" href="imgs/prova_logo.ico">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <script src="scripts/error.js"></script>
@@ -56,10 +56,10 @@ endif;
 <header class="py-2 shadow p-3 mb-3">
     <div class="text-center my-1">
         <?php if ($usertype == 'ente') { ?>
-            <img class="img-fluid rounded-circle mb-4" src="img/logo_ente.png" alt="..."/>
+            <img class="img-fluid rounded-circle mb-4" src="imgs/logo_ente.png" alt="..."/>
             <?php
         } else { ?>
-            <img class="img-fluid rounded-circle mb-4" src="img/logo_esperto.png" alt="..."/>
+            <img class="img-fluid rounded-circle mb-4" src="imgs/logo_esperto.png" alt="..."/>
         <?php } ?>
         <h1 class="text-black fs-3 fw-bolder"><?php echo($username); ?></h1>
         <p class="text-black-50 mb-0 text-uppercase"><?php echo($usertype); ?></p>

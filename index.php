@@ -54,7 +54,7 @@ endif;
         <div class="row d-flex justify-content-center h-100 shadow rounded-2">
             <div class="col-lg-6 align-self-center h-75">
                 <div class="text-center">
-                    <img src="img/prova_logo.png" class="dimImg" alt="logo">
+                    <img src="imgs/prova_logo.png" class="dimImg" alt="logo">
                     <h4 class="mb-5 mt-1 pb-1"><?php echo($sitename); ?></h4>
                 </div>
                 <div class="row">

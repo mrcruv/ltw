@@ -28,7 +28,7 @@ $usertype = $_SESSION['usertype'];
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/x-icon" href="img/prova_logo.ico">
+    <link rel="icon" type="image/x-icon" href="imgs/prova_logo.ico">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="scripts/error.js"></script>
     <script src="scripts/message.js"></script>
@@ -180,7 +180,7 @@ endif;
                 <div class="card radius-15 shadow">
                     <div class="card-body text-center">
                         <div class="p-4 border radius-15">
-                            <img src="img/logo_esperto.png" class="rounded-circle shadow img-fluid" alt="">
+                            <img src="imgs/logo_esperto.png" class="rounded-circle shadow img-fluid" alt="">
                             <h5 class="mb-0 mt-2">
                                 <?php if (!is_null($array[$i]['website'])): ?>
                                     <a target="_blank"
